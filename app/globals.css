@@ -92,3 +92,63 @@ h1, h2, button {
     transform: translateY(0);
   }
 }
+
+/* Education Timeline Styling */
+.education-timeline {
+  position: relative;
+}
+
+.education-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: currentColor;
+  opacity: 0.2;
+  transition: opacity 0.4s ease;
+}
+
+.education-timeline:hover::before {
+  opacity: 0.4;
+}
+
+.education-item:hover .education-dot {
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.education-item:hover .education-content {
+  background-color: var(--background-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.education-item:hover h3 {
+  transform: translateY(-2px);
+}
+
+.education-item:hover .education-degree {
+  opacity: 1;
+}
+
+.education-item:hover .education-duration {
+  opacity: 0.8;
+}
+
+.education-item:hover .education-achievements li {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+@media (min-width: 800px) {
+  .education-timeline::before {
+    left: 1rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .education-timeline::before {
+    left: 2rem;
+  }
+}
