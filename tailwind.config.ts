@@ -2,8 +2,6 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
     content: [
-        './pages/**/*.{js,ts,jsx,tsx,mdx}',
-        './components/**/*.{js,ts,jsx,tsx,mdx}',
         './app/**/*.{js,ts,jsx,tsx,mdx}',
     ],
     theme: {
@@ -29,24 +27,9 @@ const config: Config = {
             scale: {
                 '115': '1.15',
             },
-            rotate: {
-                'y-180': 'rotateY(180deg)',
-            },
-            transformStyle: {
-                'preserve-3d': 'preserve-3d',
-            },
-            backfaceVisibility: {
-                'hidden': 'hidden',
-            },
-            perspective: {
-                '1000': '1000px',
-            },
             transitionDuration: {
                 '400': '400ms',
                 '600': '600ms',
-            },
-            dropShadow: {
-                'theme': '0 0 5px var(--bt-color)',
             },
             screens: {
                 'md': '800px',
@@ -54,7 +37,7 @@ const config: Config = {
         },
     },
     plugins: [
-        function ({ addUtilities }) {
+        function ({ addUtilities }: { addUtilities: (utilities: Record<string, Record<string, string>>) => void }) {
             const newUtilities = {
                 '.backface-hidden': {
                     'backfaceVisibility': 'hidden',
