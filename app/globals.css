@@ -52,20 +52,17 @@ h1, h2, button {
   -webkit-transform: rotateY(180deg);
 }
 
+/* Glow animation for flip card */
+.flip-img {
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 700ms ease, transform 600ms ease;
+}
+
 /* Hover effects for flip card */
 .flip-container:hover .flip-img {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
-  animation: glowFade 700ms forwards;
-}
-
-@keyframes glowFade {
-  0% {
-    box-shadow: 0 0 0 0 transparent;
-  }
-  100% {
-    box-shadow: 0 0 15px 5px var(--bt-color);
-  }
+  box-shadow: 0 0 15px 5px var(--bt-color);
 }
 
 .filter-drop-shadow {
