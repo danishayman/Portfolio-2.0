@@ -1,26 +1,27 @@
-@import "tailwindcss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bt-color: #007bff; /* Default button color for light mode */
+    --btn-text-color: #ffffff; /* Default button text color for light mode */
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  [data-theme="dark"] {
+    --bt-color: #ff6b00; /* Button color for dark mode */
+    --btn-text-color: #ffffff; /* Button text color for dark mode */
+  }
+
+  body {
+    @apply transition-colors duration-500;
+  }
+
+  body[data-theme="light"] {
+    @apply bg-white text-black;
+  }
+
+  body[data-theme="dark"] {
+    @apply bg-gray-900 text-white;
+  }
 }
