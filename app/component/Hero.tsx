@@ -1,7 +1,6 @@
 'use client';
 
 import { useTheme } from '../common/ThemeContext';
-import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -34,7 +33,7 @@ const Hero: React.FC = () => {
         <section id="hero" className="flex flex-col justify-center gap-5 text-center h-screen min-h-[500px] select-none">
             <div className="relative">
                 <div className="inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px]">
-                    <div className="relative w-full h-full transition-transform duration-600 transform-style-preserve-3d rounded-full group hover:rotate-y-180 hover:shadow-theme">
+                    <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 group-hover:rotate-y-180 hover:shadow-[0_0_15px_5px_var(--bt-color)]">
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
                                 src={heroImg}
@@ -54,7 +53,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 <Image
-                    className={`absolute w-6 h-6 rounded-full transition-all duration-400 cursor-pointer hover:scale-115 hover:filter-drop-shadow ${isTransitioning ? 'animate-fadeInOut' : ''}`}
+                    className={`absolute w-6 h-6 rounded-full transition-all duration-400 cursor-pointer hover:scale-110 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
                     src={themeIcon}
                     alt="Colour mode icon"
                     onClick={handleThemeToggle}
@@ -92,7 +91,7 @@ const Hero: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <button className="bg-theme text-btn-text rounded-[20px] w-[126px] h-[50px] text-xl font-bold shadow-md transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-sm">
+                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-xl font-bold shadow-md transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-sm">
                         Résumé
                     </button>
                 </Link>
