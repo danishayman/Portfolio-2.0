@@ -86,13 +86,13 @@ const Hero: React.FC = () => {
 
                 <span className="flex gap-6 justify-center">
                     <a href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={emailIcon} alt="Email icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
+                        <Image src={emailIcon} alt="Email icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
                     </a>
                     <Link href="https://github.com/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={githubIcon} alt="Github icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
+                        <Image src={githubIcon} alt="Github icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
                     </Link>
                     <Link href="https://www.linkedin.com/in/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={linkedinIcon} alt="LinkedIn icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
+                        <Image src={linkedinIcon} alt="LinkedIn icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
                     </Link>
                 </span>
 
