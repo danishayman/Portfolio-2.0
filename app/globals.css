@@ -1,27 +1,59 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@layer base {
-  :root {
-    --bt-color: #007bff; /* Default button color for light mode */
-    --btn-text-color: #ffffff; /* Default button text color for light mode */
-  }
+:root {
+  --bt-color: #007bff; /* Default button color for light mode */
+  --btn-text-color: #ffffff; /* Default button text color for light mode */
+}
 
-  [data-theme="dark"] {
-    --bt-color: #ff6b00; /* Button color for dark mode */
-    --btn-text-color: #ffffff; /* Button text color for dark mode */
-  }
+[data-theme='dark'] {
+  --bt-color: #ff6b00; /* Button color for dark mode */
+  --btn-text-color: #ffffff; /* Button text color for dark mode */
+}
 
-  body {
-    @apply transition-colors duration-500;
-  }
+body {
+  transition-property: color, background-color;
+  transition-duration: 500ms;
+}
 
-  body[data-theme="light"] {
-    @apply bg-white text-black;
-  }
+body[data-theme='light'] {
+  background-color: white;
+  color: black;
+}
 
-  body[data-theme="dark"] {
-    @apply bg-gray-900 text-white;
-  }
+body[data-theme='dark'] {
+  background-color: #111827; /* This is the Tailwind gray-900 color */
+  color: white;
+}
+
+/* Custom utility classes for the flip card */
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.filter-drop-shadow {
+  filter: drop-shadow(0 0 5px var(--bt-color));
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-fadeInOut {
+  animation: fadeInOut 0.5s ease-in-out;
 }
