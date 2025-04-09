@@ -56,7 +56,16 @@ h1, h2, button {
 .flip-container:hover .flip-img {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
-  box-shadow: 0 0 15px 5px var(--bt-color);
+  animation: glowFade 700ms forwards;
+}
+
+@keyframes glowFade {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  100% {
+    box-shadow: 0 0 15px 5px var(--bt-color);
+  }
 }
 
 .filter-drop-shadow {
