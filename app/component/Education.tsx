@@ -35,21 +35,16 @@ const Education: React.FC = () => {
         <section id="education" className="min-h-[100dvh] flex flex-col items-center p-8 md:p-16 xl:p-24 gap-12">
             <h1 className="text-5xl font-rubik font-black tracking-wider">EDUCATION</h1>
 
-            <div className="education-timeline relative flex flex-col gap-8 w-full max-w-[600px] hover:cursor-default">
+            <div className="education-timeline">
                 {educationData.map((edu, index) => (
                     <div
                         key={index}
-                        className="education-item relative pl-8 pb-4 transition-all duration-400 hover:translate-x-[10px] opacity-0 animate-[fadeInUp_0.6s_ease_forwards]"
-                        style={{ animationDelay: `${0.1 + index * 0.3}s` }}
+                        className="education-item opacity-0 animate-[fadeInUp_0.6s_ease_forwards]"
                     >
-                        <div className="education-dot absolute left-[-5px] top-0 w-3 h-3 rounded-full bg-current transition-all duration-400 md:left-[calc(1rem-5px)] xl:left-[calc(2rem-5px)]"></div>
-
-                        <div className="education-content flex flex-col gap-2 p-4 rounded-lg transition-all duration-400">
-                            <h3 className="text-xl font-bold transition-transform duration-400">
-                                {edu.institution}
-                            </h3>
-
-                            <p className="education-degree opacity-80 transition-opacity duration-400">
+                        <div className="education-dot"></div>
+                        <div className="education-content">
+                            <h3>{edu.institution}</h3>
+                            <p className="education-degree">
                                 {edu.degree.split('\n').map((line, i) => (
                                     <span key={i}>
                                         {line}
@@ -57,19 +52,10 @@ const Education: React.FC = () => {
                                     </span>
                                 ))}
                             </p>
-
-                            <p className="education-duration opacity-60 text-sm transition-opacity duration-400">
-                                {edu.duration}
-                            </p>
-
-                            <ul className="education-achievements list-none p-0 mt-2 font-mono">
+                            <p className="education-duration">{edu.duration}</p>
+                            <ul className="education-achievements">
                                 {edu.achievements.map((achievement, achIndex) => (
-                                    <li
-                                        key={achIndex}
-                                        className="opacity-90 text-[0.95rem] mb-1 transition-all duration-400 origin-left"
-                                    >
-                                        ✓ {achievement}
-                                    </li>
+                                    <li key={achIndex}>✓ {achievement}</li>
                                 ))}
                             </ul>
                         </div>
