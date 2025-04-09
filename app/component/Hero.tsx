@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
                     </Link>
                 </span>
 
-                <p className="max-w-[26ch] text-center font-mono text-sm md:text-base">
+                <p className="max-w-[26ch] text-center font-mono text-lg md:text-xl">
                     A developer majoring in Intelligent Computing. SUPER into Machine
                     Learning and Artificial Intelligence.
                 </p>

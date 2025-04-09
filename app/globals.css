@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bt-color: #007bff; /* Default button color for light mode */
+  --bt-color: #0987f2; /* Default button color for light mode */
   --btn-text-color: #ffffff; /* Default button text color for light mode */
 }
 
