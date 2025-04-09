@@ -8,8 +8,8 @@
 }
 
 [data-theme='dark'] {
-  --bt-color: #ff6b00; /* Button color for dark mode */
-  --btn-text-color: #ffffff; /* Button text color for dark mode */
+  --bt-color: #ffffff; /* Button color for dark mode - white instead of blue */
+  --btn-text-color: #121212; /* Button text color for dark mode - dark to contrast with white button */
 }
 
 body {
@@ -20,11 +20,11 @@ body {
 
 body[data-theme='light'] {
   background-color: white;
-  color: black;
+  color: #121212; /* Slightly darker than pure black for better readability */
 }
 
 body[data-theme='dark'] {
-  background-color: #111827; /* This is the Tailwind gray-900 color */
+  background-color: #222; /* Dark theme background color */
   color: white;
 }
 

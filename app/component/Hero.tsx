@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 <Image
-                    className={`absolute w-6 h-6 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
+                    className={`absolute top-2 right-2 w-6 h-6 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
                     src={themeIcon}
                     alt="Colour mode icon"
                     onClick={handleThemeToggle}
@@ -76,22 +76,22 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-5 items-center">
-                <h1 className="text-4xl font-rubik font-black">
-                    Danish
+                <h1 className="text-5xl md:text-4.5xl font-rubik font-black tracking-wider">
+                    DANISH
                     <br />
-                    Aiman
+                    AIMAN
                 </h1>
 
-                <h2 className="text-xl font-rubik font-black">Computer Science Student</h2>
+                <h2 className="text-xl md:text-2xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
 
                 <span className="flex gap-6 justify-center">
-                    <a href="mailto:danishaiman3b@gmail.com">
+                    <a href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">
                         <Image src={emailIcon} alt="Email icon" width={30} height={30} />
                     </a>
-                    <Link href="https://github.com/danishayman/" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://github.com/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
                         <Image src={githubIcon} alt="Github icon" width={30} height={30} />
                     </Link>
-                    <Link href="https://www.linkedin.com/in/danishayman/" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://www.linkedin.com/in/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
                         <Image src={linkedinIcon} alt="LinkedIn icon" width={30} height={30} />
                     </Link>
                 </span>
@@ -105,8 +105,9 @@ const Hero: React.FC = () => {
                     href="https://drive.google.com/file/d/1fYD_o_qPofZylzwzJGxuFIu8R8_ExIQx/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="-webkit-tap-highlight-color-transparent w-fit self-center"
                 >
-                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-xl font-bold font-rubik shadow-md transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-sm">
+                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-xl font-semibold font-rubik shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
                         Résumé
                     </button>
                 </Link>
