@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 type Theme = 'light' | 'dark';
@@ -25,24 +27,21 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>('light');
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+    const [mounted, setMounted] = useState<boolean>(false);
 
     useEffect(() => {
-        // Handle server-side rendering safely
-        if (typeof window !== 'undefined') {
-            const savedTheme = localStorage.getItem('theme') as Theme | null;
-            setTheme(savedTheme || 'light');
-        }
+        setMounted(true);
+        // Handle client-side only
+        const savedTheme = localStorage.getItem('theme') as Theme | null;
+        setTheme(savedTheme || 'light');
     }, []);
 
     useEffect(() => {
-        // Only run on client-side
-        if (typeof document !== 'undefined') {
+        if (mounted) {
             document.body.setAttribute('data-theme', theme);
-            if (typeof window !== 'undefined') {
-                localStorage.setItem('theme', theme);
-            }
+            localStorage.setItem('theme', theme);
         }
-    }, [theme]);
+    }, [theme, mounted]);
 
     const toggleTheme = (): void => {
         setIsTransitioning(true);
