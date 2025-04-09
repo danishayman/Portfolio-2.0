@@ -3,6 +3,7 @@
 import { useTheme } from '../common/ThemeContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 // Import images - update paths to match your structure
 import heroImg from '../../public/assets/hero.webp';
@@ -25,15 +26,30 @@ const Hero: React.FC = () => {
     const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark;
     const emailIcon = theme === 'light' ? emailLight : emailDark;
 
+    // Preload images
+    useEffect(() => {
+        // Preload images when the component mounts
+        const imagesToPreload = [
+            heroImg.src, lelouchImg.src, sun.src, moon.src, 
+            emailLight.src, githubLight.src, linkedinLight.src,
+            emailDark.src, githubDark.src, linkedinDark.src
+        ];
+        
+        imagesToPreload.forEach((imgSrc) => {
+            const image = new window.Image();
+            image.src = imgSrc;
+        });
+    }, []);
+
     const handleThemeToggle = (): void => {
         toggleTheme();
     };
 
     return (
-        <section id="hero" className="flex flex-col justify-center gap-5 text-center h-screen min-h-[500px] select-none">
+        <section id="hero" className="flex flex-col justify-center gap-5 text-center h-screen min-h-[500px] select-none md:flex-row-reverse md:items-center md:justify-evenly">
             <div className="relative">
                 <div className="inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px]">
-                    <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 group-hover:rotate-y-180 hover:shadow-[0_0_15px_5px_var(--bt-color)]">
+                    <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 hover:rotate-y-180 hover:shadow-[0_0_15px_5px_var(--bt-color)]">
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
                                 src={heroImg}
@@ -53,7 +69,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 <Image
-                    className={`absolute w-6 h-6 rounded-full transition-all duration-400 cursor-pointer hover:scale-110 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
+                    className={`absolute w-6 h-6 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
                     src={themeIcon}
                     alt="Colour mode icon"
                     onClick={handleThemeToggle}
