@@ -13,7 +13,7 @@ const robotoMono = Roboto_Mono({
 
 const rubik = Rubik({
   subsets: ['latin'],
-  weight: ['900'],
+  weight: ['400', '500', '600', '700', '900'],
   variable: '--font-rubik',
   display: 'swap',
 });

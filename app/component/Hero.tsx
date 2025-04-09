@@ -45,9 +45,9 @@ const Hero: React.FC = () => {
     };
 
     return (
-        <section id="hero" className="flex flex-col justify-center gap-5 text-center h-screen min-h-[500px] select-none md:flex-row-reverse md:items-center md:justify-evenly">
+        <section id="hero" className="flex flex-col justify-center gap-5 text-center h-[100dvh] min-h-[500px] select-none md:flex-row-reverse md:items-center md:justify-evenly">
             <div className="relative">
-                <div className="inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px]">
+                <div className="inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px]">
                     <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 hover:rotate-y-180 hover:shadow-[0_0_15px_5px_var(--bt-color)]">
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
@@ -76,27 +76,27 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-5 items-center">
-                <h1 className="text-5xl md:text-4.5xl font-rubik font-black tracking-wider">
+                <h1 className="text-[2.5rem] md:text-[3rem] font-rubik font-black tracking-wider">
                     DANISH
                     <br />
                     AIMAN
                 </h1>
 
-                <h2 className="text-xl md:text-2xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
+                <h2 className="text-base md:text-xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
 
                 <span className="flex gap-6 justify-center">
                     <a href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={emailIcon} alt="Email icon" width={30} height={30} />
+                        <Image src={emailIcon} alt="Email icon" width={30} height={30} className="w-[25px] h-[25px] md:w-[30px] md:h-[30px]" />
                     </a>
                     <Link href="https://github.com/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={githubIcon} alt="Github icon" width={30} height={30} />
+                        <Image src={githubIcon} alt="Github icon" width={30} height={30} className="w-[25px] h-[25px] md:w-[30px] md:h-[30px]" />
                     </Link>
                     <Link href="https://www.linkedin.com/in/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={linkedinIcon} alt="LinkedIn icon" width={30} height={30} />
+                        <Image src={linkedinIcon} alt="LinkedIn icon" width={30} height={30} className="w-[25px] h-[25px] md:w-[30px] md:h-[30px]" />
                     </Link>
                 </span>
 
-                <p className="max-w-[26ch] text-center font-mono">
+                <p className="max-w-[26ch] text-center font-mono text-sm md:text-base">
                     A developer majoring in Intelligent Computing. SUPER into Machine
                     Learning and Artificial Intelligence.
                 </p>
@@ -107,7 +107,7 @@ const Hero: React.FC = () => {
                     rel="noopener noreferrer"
                     className="-webkit-tap-highlight-color-transparent w-fit self-center"
                 >
-                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-xl font-semibold font-rubik shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
+                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-lg md:text-xl font-bold font-rubik shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
                         Résumé
                     </button>
                 </Link>
