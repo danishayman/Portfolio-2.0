@@ -47,8 +47,8 @@ const Hero: React.FC = () => {
     return (
         <section id="hero" className="flex flex-col justify-center gap-5 text-center h-[100dvh] min-h-[500px] select-none md:flex-row-reverse md:items-center md:justify-evenly">
             <div className="relative">
-                <div className="inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] flip-container">
-                    <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-700 flip-img">
+                <div className="relative inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] flip-container">
+                    <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 flip-img">
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
                                 src={heroImg}
@@ -65,14 +65,14 @@ const Hero: React.FC = () => {
                             />
                         </div>
                     </div>
+                    
+                    <Image
+                        className={`absolute top-0 right-0 translate-x-[190%] -translate-y-[10%] w-7 h-7 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
+                        src={themeIcon}
+                        alt="Colour mode icon"
+                        onClick={handleThemeToggle}
+                    />
                 </div>
-
-                <Image
-                    className={`absolute top-2 right-2 w-6 h-6 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
-                    src={themeIcon}
-                    alt="Colour mode icon"
-                    onClick={handleThemeToggle}
-                />
             </div>
 
             <div className="flex flex-col gap-5 items-center">
@@ -82,21 +82,21 @@ const Hero: React.FC = () => {
                     AIMAN
                 </h1>
 
-                <h2 className="text-[1.2rem] md:text-[1.5rem] font-mono tracking-wider uppercase font-semibold">Computer Science Student</h2>
+                <h2 className="text-base md:text-xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
 
                 <span className="flex gap-6 justify-center">
                     <a href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={emailIcon} alt="Email icon" width={30} height={30} className="w-[25px] h-[25px] md:w-[30px] md:h-[30px]" />
+                        <Image src={emailIcon} alt="Email icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
                     </a>
                     <Link href="https://github.com/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={githubIcon} alt="Github icon" width={30} height={30} className="w-[25px] h-[25px] md:w-[30px] md:h-[30px]" />
+                        <Image src={githubIcon} alt="Github icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
                     </Link>
                     <Link href="https://www.linkedin.com/in/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={linkedinIcon} alt="LinkedIn icon" width={30} height={30} className="w-[25px] h-[25px] md:w-[30px] md:h-[30px]" />
+                        <Image src={linkedinIcon} alt="LinkedIn icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
                     </Link>
                 </span>
 
-                <p className="max-w-[26ch] text-center font-mono text-lg md:text-xl">
+                <p className="max-w-[26ch] text-center font-mono text-base md:text-xl">
                     A developer majoring in Intelligent Computing. SUPER into Machine
                     Learning and Artificial Intelligence.
                 </p>
