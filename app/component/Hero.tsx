@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-// Import images - update paths to match your structure
 import heroImg from '../../public/assets/hero.webp';
 import lelouchImg from '../../public/assets/lelouch.webp';
 import sun from '../../public/assets/sun.svg';
@@ -77,13 +76,13 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-5 items-center">
-                <h1 className="text-4xl font-bold">
+                <h1 className="text-4xl font-rubik font-black">
                     Danish
                     <br />
                     Aiman
                 </h1>
 
-                <h2 className="text-xl">Computer Science Student</h2>
+                <h2 className="text-xl font-rubik font-black">Computer Science Student</h2>
 
                 <span className="flex gap-6 justify-center">
                     <a href="mailto:danishaiman3b@gmail.com">
@@ -97,7 +96,7 @@ const Hero: React.FC = () => {
                     </Link>
                 </span>
 
-                <p className="max-w-[26ch] text-center">
+                <p className="max-w-[26ch] text-center font-mono">
                     A developer majoring in Intelligent Computing. SUPER into Machine
                     Learning and Artificial Intelligence.
                 </p>
@@ -107,7 +106,7 @@ const Hero: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-xl font-bold shadow-md transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-sm">
+                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-xl font-bold font-rubik shadow-md transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-sm">
                         Résumé
                     </button>
                 </Link>

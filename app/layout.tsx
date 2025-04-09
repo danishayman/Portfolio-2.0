@@ -1,6 +1,22 @@
 import './globals.css';
 import { ThemeProvider } from './common/ThemeContext';
 import type { Metadata } from 'next';
+import { Roboto_Mono, Rubik } from 'next/font/google';
+
+// Initialize the fonts
+const robotoMono = Roboto_Mono({
+  subsets: ['latin'],
+  weight: ['300'],
+  variable: '--font-roboto-mono',
+  display: 'swap',
+});
+
+const rubik = Rubik({
+  subsets: ['latin'],
+  weight: ['900'],
+  variable: '--font-rubik',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'danishayman',
@@ -21,8 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${robotoMono.variable} ${rubik.variable}`}>
+      <head>
+        <meta name="google-site-verification" content="bZyz4TL7ElDmE33G3CMvYh_GIj6Vah461AEhU8Uz224" />
+      </head>
+      <body className={robotoMono.className}>
         <ThemeProvider>
           {children}
         </ThemeProvider>
