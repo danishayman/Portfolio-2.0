@@ -47,8 +47,8 @@ const Hero: React.FC = () => {
     return (
         <section id="hero" className="flex flex-col justify-center gap-5 text-center h-[100dvh] min-h-[500px] select-none md:flex-row-reverse md:items-center md:justify-evenly">
             <div className="relative">
-                <div className="inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px]">
-                    <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 hover:rotate-y-180 hover:shadow-[0_0_15px_5px_var(--bt-color)]">
+                <div className="inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] flip-container">
+                    <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-700 flip-img">
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
                                 src={heroImg}
@@ -76,13 +76,13 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-5 items-center">
-                <h1 className="text-[2.5rem] md:text-[3rem] font-rubik font-black tracking-wider">
+                <h1 className="text-[2rem] md:text-[3rem] font-rubik font-black tracking-wider leading-[1.1]">
                     DANISH
                     <br />
                     AIMAN
                 </h1>
 
-                <h2 className="text-base md:text-xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
+                <h2 className="text-[1.2rem] md:text-[1.5rem] font-mono tracking-wider uppercase font-semibold">Computer Science Student</h2>
 
                 <span className="flex gap-6 justify-center">
                     <a href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">

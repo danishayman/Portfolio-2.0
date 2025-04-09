@@ -44,10 +44,19 @@ h1, h2, button {
 
 .transform-style-preserve-3d {
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .rotate-y-180 {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+/* Hover effects for flip card */
+.flip-container:hover .flip-img {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  box-shadow: 0 0 15px 5px var(--bt-color);
 }
 
 .filter-drop-shadow {
