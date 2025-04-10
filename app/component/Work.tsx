@@ -126,13 +126,13 @@ const Work = () => {
 
     return (
         <section id="work" className="min-h-[100dvh] flex flex-col items-center py-6 px-6 gap-8 md:py-16 md:px-16 md:gap-12">
-            <h1 className="text-3xl md:text-4xl font-rubik font-bold">Work Experience</h1>
+            <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">WORK  EXPERIENCE</h1>
 
             <div className="flex flex-col w-full max-w-[1000px] gap-4 md:flex-row md:gap-12">
                 {/* Mobile Dropdown */}
                 <div className="relative md:hidden w-full" ref={dropdownRef}>
                     <div 
-                        className="flex justify-between items-center p-4 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] bg-[var(--background-color)] cursor-pointer transition-all duration-400 hover:translate-y-0.5 hover:shadow-sm"
+                        className="flex justify-between items-center p-4 rounded-lg border-100 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] bg-[var(--background-color)] cursor-pointer transition-all duration-400 hover:translate-y-0.5 hover:shadow-sm"
                         onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                         <div>
@@ -190,22 +190,20 @@ const Work = () => {
                     
                     <div className="grid grid-cols-2 gap-3 md:gap-4 mb-2 md:mb-8">
                         {workExperience[activeTab].images.map((image, index) => (
-                            <div key={index} className="aspect-square">
+                            <div key={index} className="aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden">
                                 {(!imagesLoaded[`${activeTab}-${image.src}`] && isFirstLoad) ? (
-                                    <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse">
+                                    <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 animate-pulse">
                                         <p className="text-sm opacity-70">Loading...</p>
                                     </div>
                                 ) : (
-                                    <div className="relative w-full h-full">
-                                        <Image
-                                            src={image}
-                                            alt={`${workExperience[activeTab].role} ${index + 1}`}
-                                            className="rounded-lg border-2 border-[var(--text-color)] object-cover transition-transform duration-400 hover:scale-[1.01]"
-                                            fill
-                                            sizes="(max-width: 800px) 45vw, 300px"
-                                            priority={index === 0}
-                                        />
-                                    </div>
+                                    <Image
+                                        src={image}
+                                        alt={`${workExperience[activeTab].role} ${index + 1}`}
+                                        className="object-cover transition-transform duration-400 hover:scale-[1.01]"
+                                        fill
+                                        sizes="(max-width: 800px) 45vw, 300px"
+                                        priority={index === 0}
+                                    />
                                 )}
                             </div>
                         ))}
