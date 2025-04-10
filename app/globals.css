@@ -29,12 +29,12 @@ body {
 
 body[data-theme='light'] {
   background-color: white;
-  color: #121212; /* Slightly darker than pure black for better readability */
+  color: #222; /* Slightly darker than pure black for better readability */
 }
 
 body[data-theme='dark'] {
   background-color: #222; /* Dark theme background color */
-  color: white;
+  color: #fff;
 }
 
 h1, h2, button {
