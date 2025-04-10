@@ -5,7 +5,7 @@
 :root {
   --bt-color: #007bff; /* Default button color for light mode */
   --btn-text-color: #ffffff; /* Default button text color for light mode */
-  --background-color: rgba(0, 0, 0, 0.03); /* Light hover background */
+  --background-color: #ffffff; /* Light hover background */
   --text-color: currentColor; /* Current text color */
   --project-card-bg: rgba(0, 0, 0, 0.00); /* Light mode project card background */
   --border-color: currentColor; /* Border color variable */

@@ -152,7 +152,7 @@ const Work = () => {
                                 index !== activeTab && (
                                     <div
                                         key={index}
-                                        className="p-3 cursor-pointer transition-colors duration-400 hover:bg-opacity-10 hover:bg-gray-500 border-b border-[var(--text-color)] last:border-b-0"
+                                        className="p-3 cursor-pointer transition-colors duration-400 hover:bg-opacity-10  hover:bg-gray-500 border-b border-[var(--text-color)] last:border-b-0"
                                         onClick={() => handleTabChange(index)}
                                     >
                                         <h3 className="text-lg font-medium">{work.role}</h3>
@@ -196,21 +196,14 @@ const Work = () => {
                                         <p className="text-sm opacity-70">Loading...</p>
                                     </div>
                                 ) : (
-                                    <div className="w-full h-full">
-                                        {workExperience.map((work, workIndex) => (
-                                            <Image
-                                                key={`${workIndex}-${index}`}
-                                                src={work.images[index]}
-                                                alt={`${work.role} ${index + 1}`}
-                                                className={`object-cover transition-all duration-400 absolute inset-0 ${
-                                                    activeTab === workIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                                                }`}
-                                                fill
-                                                sizes="(max-width: 800px) 45vw, 300px"
-                                                priority={true}
-                                            />
-                                        ))}
-                                    </div>
+                                    <Image
+                                        src={workExperience[activeTab].images[index]}
+                                        alt={`${workExperience[activeTab].role} ${index + 1}`}
+                                        className="object-cover transition-all duration-400"
+                                        fill
+                                        sizes="(max-width: 800px) 45vw, 300px"
+                                        priority={true}
+                                    />
                                 )}
                             </div>
                         ))}
