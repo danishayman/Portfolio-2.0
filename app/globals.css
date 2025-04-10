@@ -8,6 +8,8 @@
   --background-color: rgba(0, 0, 0, 0.03); /* Light hover background */
   --text-color: currentColor; /* Current text color */
   --project-card-bg: rgba(0, 0, 0, 0.03); /* Light mode project card background */
+  --border-color: currentColor; /* Border color variable */
+  --box-shadow-color: rgba(0, 0, 0, 0.25); /* Box shadow color variable */
 }
 
 [data-theme='dark'] {
@@ -15,6 +17,8 @@
   --btn-text-color: #121212; /* Button text color for dark mode - dark to contrast with white button */
   --background-color: rgba(255, 255, 255, 0.05); /* Dark hover background */
   --project-card-bg: rgba(255, 255, 255, 0.05); /* Dark mode project card background */
+  --border-color: currentColor; /* Border color for dark mode */
+  --box-shadow-color: rgba(255, 255, 255, 0.25); /* Box shadow color for dark mode */
 }
 
 body {
@@ -77,6 +81,17 @@ h1, h2, button {
 @keyframes fadeInOut {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fadeInOut {
