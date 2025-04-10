@@ -7,18 +7,18 @@
   --btn-text-color: #ffffff; /* Default button text color for light mode */
   --background-color: rgba(0, 0, 0, 0.03); /* Light hover background */
   --text-color: currentColor; /* Current text color */
-  --project-card-bg: rgba(0, 0, 0, 0.03); /* Light mode project card background */
+  --project-card-bg: rgba(0, 0, 0, 0.00); /* Light mode project card background */
   --border-color: currentColor; /* Border color variable */
-  --box-shadow-color: rgba(0, 0, 0, 0.25); /* Box shadow color variable */
+  --box-shadow-color: #888; /* Box shadow color variable */
 }
 
 [data-theme='dark'] {
   --bt-color: #ffffff; /* Button color for dark mode - white instead of blue */
-  --btn-text-color: #121212; /* Button text color for dark mode - dark to contrast with white button */
-  --background-color: rgba(255, 255, 255, 0.05); /* Dark hover background */
-  --project-card-bg: rgba(255, 255, 255, 0.05); /* Dark mode project card background */
+  --btn-text-color: #222; /* Button text color for dark mode - dark to contrast with white button */
+  --background-color: #222; /* Dark hover background */
+  --project-card-bg: #fff; /* Dark mode project card background */
   --border-color: currentColor; /* Border color for dark mode */
-  --box-shadow-color: rgba(255, 255, 255, 0.25); /* Box shadow color for dark mode */
+  --box-shadow-color: #ffffff66; /* Box shadow color for dark mode */
 }
 
 body {
@@ -33,7 +33,7 @@ body[data-theme='light'] {
 }
 
 body[data-theme='dark'] {
-  background-color: #121212; /* Dark theme background color */
+  background-color: #222; /* Dark theme background color */
   color: white;
 }
 

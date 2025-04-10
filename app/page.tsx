@@ -10,8 +10,8 @@ export default function Home() {
       <Hero />
       <Education />
       <Skills />
-      <Work />
       <Projects />
+      <Work />
       {/* Add other components here */}
     </main>
   );
