@@ -17,7 +17,7 @@ import inari2 from '../../public/assets/inari2.webp';
 const Work = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
-    const [isFirstLoad, setIsFirstLoad] = useState(true);
+    const [allImagesLoaded, setAllImagesLoaded] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     
@@ -96,9 +96,9 @@ const Work = () => {
                 })
             );
 
-            // Wait for all images to load, then mark first load complete
+            // Wait for all images to load
             await Promise.all(allImagePromises);
-            setIsFirstLoad(false);
+            setAllImagesLoaded(true);
         };
 
         loadImages();
@@ -191,19 +191,26 @@ const Work = () => {
                     <div className="grid grid-cols-2 gap-3 md:gap-4 mb-2 md:mb-8">
                         {workExperience[activeTab].images.map((image, index) => (
                             <div key={index} className="aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden">
-                                {(!imagesLoaded[`${activeTab}-${image.src}`] && isFirstLoad) ? (
+                                {!allImagesLoaded ? (
                                     <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 animate-pulse">
                                         <p className="text-sm opacity-70">Loading...</p>
                                     </div>
                                 ) : (
-                                    <Image
-                                        src={image}
-                                        alt={`${workExperience[activeTab].role} ${index + 1}`}
-                                        className="object-cover transition-transform duration-400 hover:scale-[1.01]"
-                                        fill
-                                        sizes="(max-width: 800px) 45vw, 300px"
-                                        priority={index === 0}
-                                    />
+                                    <div className="w-full h-full">
+                                        {workExperience.map((work, workIndex) => (
+                                            <Image
+                                                key={`${workIndex}-${index}`}
+                                                src={work.images[index]}
+                                                alt={`${work.role} ${index + 1}`}
+                                                className={`object-cover transition-all duration-400 absolute inset-0 ${
+                                                    activeTab === workIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                                                }`}
+                                                fill
+                                                sizes="(max-width: 800px) 45vw, 300px"
+                                                priority={true}
+                                            />
+                                        ))}
+                                    </div>
                                 )}
                             </div>
                         ))}
