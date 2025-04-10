@@ -7,12 +7,14 @@
   --btn-text-color: #ffffff; /* Default button text color for light mode */
   --background-color: rgba(0, 0, 0, 0.03); /* Light hover background */
   --text-color: currentColor; /* Current text color */
+  --project-card-bg: rgba(0, 0, 0, 0.03); /* Light mode project card background */
 }
 
 [data-theme='dark'] {
   --bt-color: #ffffff; /* Button color for dark mode - white instead of blue */
   --btn-text-color: #121212; /* Button text color for dark mode - dark to contrast with white button */
   --background-color: rgba(255, 255, 255, 0.05); /* Dark hover background */
+  --project-card-bg: rgba(255, 255, 255, 0.05); /* Dark mode project card background */
 }
 
 body {

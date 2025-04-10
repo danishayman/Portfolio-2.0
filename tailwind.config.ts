@@ -9,6 +9,7 @@ const config: Config = {
             colors: {
                 'theme': 'var(--bt-color)',
                 'btn-text': 'var(--btn-text-color)',
+                'project-card-bg': 'var(--project-card-bg, rgba(0, 0, 0, 0.03))',
             },
             boxShadow: {
                 'theme': '0 0 15px 5px var(--bt-color)',
