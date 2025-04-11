@@ -22,6 +22,9 @@ const Contact = () => {
         }));
     };
 
+    // Determine border color based on theme
+    const borderColorClass = theme === 'dark' ? 'border-white' : 'border-gray-400';
+
     return (
         <section
             id="contact"
@@ -44,10 +47,10 @@ const Contact = () => {
                         id="name"
                         placeholder="Name"
                         required
-                        className="h-[50px] px-4 w-full rounded-[20px] border border-gray-400 dark:border-gray-600 
+                        className={`h-[50px] px-4 w-full rounded-[20px] border ${borderColorClass} 
                                 bg-[var(--background-color)] text-[var(--text-color)]
                                 focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
-                                transition-all duration-300"
+                                transition-all duration-300`}
                     />
                 </div>
 
@@ -59,10 +62,10 @@ const Contact = () => {
                         id="email"
                         placeholder="Email"
                         required
-                        className="h-[50px] px-4 w-full rounded-[20px] border border-gray-400 dark:border-gray-600 
+                        className={`h-[50px] px-4 w-full rounded-[20px] border ${borderColorClass} 
                                 bg-[var(--background-color)] text-[var(--text-color)]
                                 focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
-                                transition-all duration-300"
+                                transition-all duration-300`}
                     />
                 </div>
 
@@ -73,10 +76,10 @@ const Contact = () => {
                         id="message"
                         placeholder="Message"
                         required
-                        className="h-[250px] p-4 w-full rounded-[20px] border border-gray-400 dark:border-gray-600 
+                        className={`h-[250px] p-4 w-full rounded-[20px] border ${borderColorClass} 
                                 bg-[var(--background-color)] text-[var(--text-color)] resize-none
                                 focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
-                                transition-all duration-300"
+                                transition-all duration-300`}
                     ></textarea>
                 </div>
 
