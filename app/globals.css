@@ -25,6 +25,19 @@ body {
   transition-property: color, background-color;
   transition-duration: 500ms;
   font-family: var(--font-roboto-mono), monospace;
+  /* Ensure body allows proper scrolling */
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+html {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Fix for iOS Safari scrolling */
+html, body {
+  -webkit-overflow-scrolling: touch;
 }
 
 body[data-theme='light'] {
@@ -37,8 +50,30 @@ body[data-theme='dark'] {
   color: #fff;
 }
 
+/* Make sure sections don't create scrolling issues */
+section {
+  position: relative;
+  width: 100%;
+}
+
 h1, h2, button {
   font-family: var(--font-rubik), sans-serif;
+}
+
+/* Enhanced mobile nav animation */
+@keyframes navFadeIn {
+  0% { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav-animation {
+  animation: navFadeIn 0.5s ease-out forwards;
 }
 
 /* Custom utility classes for the flip card */

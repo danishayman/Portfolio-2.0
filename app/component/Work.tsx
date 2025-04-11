@@ -181,7 +181,7 @@ const Work = () => {
                                     : 'border-transparent hover:border-[var(--border-color)] hover:bg-[var(--background-color)] hover:translate-x-2.5'}`}
                             onClick={() => handleTabChange(index)}
                         >
-                            <h3 className="text-xl md:text-2xl font-semibold">{work.role}</h3>
+                            <h3 className="text-xl md:text-lg font-semibold">{work.role}</h3>
                             <p className="text-xs md:text-sm opacity-80">{work.company}</p>
                         </div>
                     ))}
@@ -215,7 +215,7 @@ const Work = () => {
                         ))}
                     </div>
                     
-                    <ul className="font-mono text-xs md:text-sm flex flex-col gap-4 mt-4">
+                    <ul className="font-mono text-sm md:text-base flex flex-col gap-4 mt-4">
                         {workExperience[activeTab].description.map((item, index) => (
                             <li key={index} className="relative pl-6 leading-tight">
                                 <span className="absolute left-2 top-0 opacity-80">•</span>

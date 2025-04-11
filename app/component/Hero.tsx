@@ -3,7 +3,7 @@
 import { useTheme } from '../common/ThemeContext';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import heroImg from '../../public/assets/hero.webp';
 import lelouchImg from '../../public/assets/lelouch.webp';
@@ -18,6 +18,7 @@ import linkedinDark from '../../public/assets/linkedin-dark.svg';
 
 const Hero: React.FC = () => {
     const { theme, toggleTheme, isTransitioning } = useTheme();
+    const [isFlippable, setIsFlippable] = useState(true);
 
     // Determine which icons to use based on theme
     const themeIcon = theme === 'light' ? sun : moon;
@@ -40,14 +41,25 @@ const Hero: React.FC = () => {
         });
     }, []);
 
-    const handleThemeToggle = (): void => {
+    const handleThemeToggle = (e: React.MouseEvent): void => {
+        // Stop propagation to prevent parent hover events
+        e.stopPropagation();
         toggleTheme();
     };
 
+    // Mouse enter/leave handlers for theme icon
+    const handleMouseEnter = () => {
+        setIsFlippable(false);
+    };
+
+    const handleMouseLeave = () => {
+        setIsFlippable(true);
+    };
+
     return (
-        <section id="hero" className="flex flex-col justify-center gap-5 text-center py-16 md:py-24 min-h-[550px] md:min-h-[650px] lg:min-h-[700px] select-none md:flex-row-reverse md:items-center md:justify-evenly">
+        <section id="hero" className="flex flex-col justify-center gap-5 text-center py-16 md:py-24 min-h-[550px] md:min-h-screen select-none md:flex-row-reverse md:items-center md:justify-evenly">
             <div className="relative">
-                <div className="relative inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] flip-container">
+                <div className={`relative inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] ${isFlippable ? 'flip-container' : ''}`}>
                     <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 flip-img">
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
@@ -66,12 +78,18 @@ const Hero: React.FC = () => {
                         </div>
                     </div>
                     
-                    <Image
-                        className={`absolute top-0 right-0 translate-x-[190%] -translate-y-[10%] w-7 h-7 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
-                        src={themeIcon}
-                        alt="Colour mode icon"
-                        onClick={handleThemeToggle}
-                    />
+                    <div 
+                        className="z-10 absolute top-0 right-0 translate-x-[190%] -translate-y-[10%]"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <Image
+                            className={`w-7 h-7 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400 ${isTransitioning ? 'animate-fadeInOut' : ''}`}
+                            src={themeIcon}
+                            alt="Colour mode icon"
+                            onClick={handleThemeToggle}
+                        />
+                    </div>
                 </div>
             </div>
 

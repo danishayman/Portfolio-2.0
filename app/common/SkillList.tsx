@@ -9,8 +9,8 @@ interface SkillListProps {
 
 const SkillList: React.FC<SkillListProps> = ({ src, skill }) => {
     return (
-        <span className="flex items-center gap-[5px] p-2 md:px-3 lg:px-4 rounded-lg mx-1 group">
-            <div className="relative w-4 md:w-[18px] lg:w-5 h-4 md:h-[18px] lg:h-5 flex items-center justify-center overflow-visible">
+        <span className="flex items-center gap-[7px] p-3 md:px-3 lg:px-4 rounded-lg mx-1 group">
+            <div className="relative w-5 md:w-[18px] lg:w-5 h-5 md:h-[18px] lg:h-5 flex items-center justify-center overflow-visible">
                 <Image 
                     src={src} 
                     alt={`${skill} icon`} 
@@ -19,7 +19,7 @@ const SkillList: React.FC<SkillListProps> = ({ src, skill }) => {
                     className="w-full h-full transition-transform duration-400 group-hover:scale-[1.2] group-hover:rotate-[5deg]" 
                 />
             </div>
-            <p className="text-xs md:text-sm lg:text-base">{skill}</p>
+            <p className="text-sm md:text-sm lg:text-base font-medium">{skill}</p>
         </span>
     );
 };

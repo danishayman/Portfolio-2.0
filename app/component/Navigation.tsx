@@ -9,6 +9,7 @@ function Navigation() {
   const { isTransitioning } = useTheme();
   const scrollLock = useRef(false);
   const mobileNavRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
 
   const navItems = [
     { id: 'hero', label: 'HOME', mobileLabel: 'HOME', icon: <Home size={18} /> },
@@ -18,6 +19,17 @@ function Navigation() {
     { id: 'work', label: 'EXPERIENCE', mobileLabel: 'WORK', icon: <Briefcase size={18} /> },
     { id: 'contact', label: 'CONTACT', mobileLabel: 'CONTACT', icon: <Mail size={18} /> },
   ];
+
+  // Mark component as mounted on initial render
+  useEffect(() => {
+    setMounted(true);
+    
+    // Remove the no-js fallback nav when JS loads
+    const fallbackNav = document.getElementById('fallback-nav');
+    if (fallbackNav) {
+      fallbackNav.style.display = 'none';
+    }
+  }, []);
 
   // Simplified scroll handler with intersection observer
   const updateActiveSection = useCallback(() => {
@@ -60,6 +72,13 @@ function Navigation() {
     const navHeight = isMobile 
       ? (mobileNavRef.current ? (mobileNavRef.current as HTMLElement).offsetHeight + 20 : 20)
       : 80; // Desktop nav height + padding
+    
+    // For desktop, trigger a custom event to show sections when navigating to non-hero sections
+    if (!isMobile && id !== 'hero') {
+      // Create and dispatch a custom event to signal that sections should be shown
+      const showSectionsEvent = new CustomEvent('showSections');
+      window.dispatchEvent(showSectionsEvent);
+    }
     
     // Get the top position of the section
     const sectionTop = element.getBoundingClientRect().top + window.scrollY;
@@ -149,30 +168,53 @@ function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Navigation */}
+      {/* No-JS fallback mobile navigation - will be hidden once JS loads */}
       <nav 
-        ref={mobileNavRef}
-        className={`fixed bottom-3 left-3 right-3 z-[1000] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-2 max-w-[400px] mx-auto -webkit-tap-highlight-color-transparent touch-auto will-change-transform block md:hidden ${isTransitioning ? 'animate-smoothTransition' : ''}`}
+        id="fallback-nav"
+        className="fixed bottom-3 left-3 right-3 z-[9999] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-2 max-w-[400px] mx-auto block md:hidden"
       >
         <div className="flex justify-between items-start w-full">
           {navItems.map((item) => (
-            <button
+            <a
               key={item.id}
-              className={`bg-transparent border-none text-[var(--text-color)] cursor-pointer py-1 px-0 m-0 flex flex-col items-center justify-center flex-1 transition-all duration-300 touch-manipulation select-none relative
-                ${activeSection === item.id ? 'opacity-100' : 'opacity-70'} 
-                before:content-[''] before:absolute before:-top-[10px] before:-left-[5px] before:-right-[5px] before:-bottom-[10px] before:z-[-1]`}
-              onClick={() => scrollToSection(item.id)}
+              href={`#${item.id}`}
+              className="bg-transparent border-none text-[var(--text-color)] py-1 px-0 m-0 flex flex-col items-center justify-center flex-1 relative"
               aria-label={item.label}
             >
-              <div className={`w-7 h-7 flex items-center justify-center rounded-md transition-all duration-300
-                ${activeSection === item.id ? 'bg-[var(--background-color)] border border-[var(--text-color)] shadow-[2px_2px_var(--box-shadow-color)] -translate-y-[3px]' : ''}`}>
+              <div className="w-7 h-7 flex items-center justify-center rounded-md">
                 {item.icon}
               </div>
-              <span className="text-xs mt-1 font-mono">{item.mobileLabel}</span>
-            </button>
+            </a>
           ))}
         </div>
       </nav>
+
+      {/* JS Mobile Navigation */}
+      {mounted && (
+        <nav 
+          ref={mobileNavRef}
+          className={`fixed bottom-3 left-3 right-3 z-[1000] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-2 max-w-[400px] mx-auto -webkit-tap-highlight-color-transparent touch-auto will-change-transform block md:hidden mobile-nav-animation ${isTransitioning ? 'animate-smoothTransition' : ''}`}
+          style={{zIndex: 9999}} // Ensure highest z-index
+        >
+          <div className="flex justify-between items-start w-full">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                className={`bg-transparent border-none text-[var(--text-color)] cursor-pointer py-1 px-0 m-0 flex flex-col items-center justify-center flex-1 transition-all duration-300 touch-manipulation select-none relative
+                  ${activeSection === item.id ? 'opacity-100' : 'opacity-70'} 
+                  before:content-[''] before:absolute before:-top-[10px] before:-left-[5px] before:-right-[5px] before:-bottom-[10px] before:z-[-1]`}
+                onClick={() => scrollToSection(item.id)}
+                aria-label={item.label}
+              >
+                <div className={`w-7 h-7 flex items-center justify-center rounded-md transition-all duration-300
+                  ${activeSection === item.id ? 'bg-[var(--background-color)] border border-[var(--text-color)] shadow-[2px_2px_var(--box-shadow-color)] -translate-y-[3px]' : ''}`}>
+                  {item.icon}
+                </div>
+              </button>
+            ))}
+          </div>
+        </nav>
+      )}
     </>
   );
 }

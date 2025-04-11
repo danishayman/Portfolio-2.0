@@ -81,7 +81,7 @@ const Skills: React.FC = () => {
                 <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">SKILLS</h1>
             </div>
 
-            <div className="skills-list flex justify-center self-center flex-wrap gap-[5px] md:gap-[10px] lg:gap-5 row-gap-3 md:row-gap-4 lg:row-gap-5 w-full max-w-full md:max-w-[450px] lg:max-w-fit relative p-2 hover:cursor-default">
+            <div className="skills-list flex justify-center self-center flex-wrap gap-[8px] md:gap-[10px] lg:gap-5 row-gap-4 md:row-gap-4 lg:row-gap-5 w-full max-w-full md:max-w-[450px] lg:max-w-fit relative p-2 hover:cursor-default">
                 {[
                     { icon: icons.html, name: "HTML" },
                     { icon: icons.css, name: "CSS" },
@@ -100,9 +100,9 @@ const Skills: React.FC = () => {
                 ))}
             </div>
 
-            <hr className="w-[60px] h-[1px] border-none bg-current mx-auto my-[15px] transition-all duration-400 opacity-50 hover:w-[100px] md:w-[300px] md:my-[30px] md:hover:w-[400px] hover:opacity-100" />
+            <hr className="w-[80px] h-[1px] border-none bg-current mx-auto my-[20px] transition-all duration-400 opacity-50 hover:w-[120px] md:w-[300px] md:my-[30px] md:hover:w-[400px] hover:opacity-100" />
 
-            <div className="skills-list flex justify-center self-center flex-wrap gap-[5px] md:gap-[10px] lg:gap-5 row-gap-3 md:row-gap-4 lg:row-gap-5 w-full max-w-full md:max-w-[450px] lg:max-w-fit relative p-2 hover:cursor-default">
+            <div className="skills-list flex justify-center self-center flex-wrap gap-[8px] md:gap-[10px] lg:gap-5 row-gap-4 md:row-gap-4 lg:row-gap-5 w-full max-w-full md:max-w-[450px] lg:max-w-fit relative p-2 hover:cursor-default">
                 {[
                     { icon: icons.python, name: "Python" },
                     { icon: icons.java, name: "Java" },
@@ -122,9 +122,9 @@ const Skills: React.FC = () => {
                 ))}
             </div>
 
-            <hr className="w-[60px] h-[1px] border-none bg-current mx-auto my-[15px] transition-all duration-400 opacity-50 hover:w-[100px] md:w-[300px] md:my-[30px] md:hover:w-[400px] hover:opacity-100" />
+            <hr className="w-[80px] h-[1px] border-none bg-current mx-auto my-[20px] transition-all duration-400 opacity-50 hover:w-[120px] md:w-[300px] md:my-[30px] md:hover:w-[400px] hover:opacity-100" />
 
-            <div className="skills-list flex justify-center self-center flex-wrap gap-[5px] md:gap-[10px] lg:gap-5 row-gap-3 md:row-gap-4 lg:row-gap-5 w-full max-w-full md:max-w-[450px] lg:max-w-fit relative p-2 hover:cursor-default">
+            <div className="skills-list flex justify-center self-center flex-wrap gap-[8px] md:gap-[10px] lg:gap-5 row-gap-4 md:row-gap-4 lg:row-gap-5 w-full max-w-full md:max-w-[450px] lg:max-w-fit relative p-2 hover:cursor-default">
                 {[
                     { icon: icons.pandas, name: "Pandas" },
                     { icon: icons.tensorflow, name: "TensorFlow" },
