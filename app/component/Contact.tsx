@@ -1,39 +1,46 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useTheme } from '../common/ThemeContext';
+import { useState } from "react";
+import { useTheme } from "../common/ThemeContext";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
+        name: "",
+        email: "",
+        message: "",
     });
-    
+
     const { theme } = useTheme();
-    
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }));
     };
-    
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle form submission here
-        console.log('Form submitted:', formData);
+        console.log("Form submitted:", formData);
         // Reset form
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: "", email: "", message: "" });
     };
-    
+
     return (
-        <section id="contact" className="min-h-[100dvh] flex flex-col items-center py-6 px-6 md:py-16 md:px-16">
-            <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal mb-8 md:mb-12">CONTACT</h1>
-            
-            <form 
-                onSubmit={handleSubmit} 
+        <section
+            id="contact"
+            className="min-h-[100dvh] flex flex-col items-center py-6 px-6 md:py-16 md:px-16"
+        >
+            <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal mb-8 md:mb-12">
+                CONTACT
+            </h1>
+
+            <form
+                onSubmit={handleSubmit}
                 className="flex flex-col gap-6 md:gap-8 w-full max-w-md md:max-w-lg lg:max-w-xl font-mono"
             >
                 <input
@@ -48,7 +55,7 @@ const Contact = () => {
                              focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
                              transition-all duration-300"
                 />
-                
+
                 <input
                     type="email"
                     name="email"
@@ -57,11 +64,11 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="h-[50px] px-4 rounded-[20px] border border-gray-400 dark:border-gray-600 
-                             bg-[var(--background-color)] text-[var(--text-color)]
-                             focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
-                             transition-all duration-300"
+                                bg-[var(--background-color)] text-[var(--text-color)]
+                                focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
+                                transition-all duration-300"
                 />
-                
+
                 <textarea
                     name="message"
                     placeholder="Message"
@@ -69,11 +76,11 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="h-[250px] p-4 rounded-[20px] border border-gray-400 dark:border-gray-600 
-                             bg-[var(--background-color)] text-[var(--text-color)] resize-none
-                             focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
-                             transition-all duration-300"
+                                bg-[var(--background-color)] text-[var(--text-color)] resize-none
+                                focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
+                                transition-all duration-300"
                 />
-                
+
                 <button
                     type="submit"
                     className="bg-[var(--bt-color)] text-[var(--btn-text-color)] 
@@ -90,4 +97,4 @@ const Contact = () => {
     );
 };
 
-export default Contact; 
+export default Contact;
