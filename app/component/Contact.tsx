@@ -51,9 +51,9 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="h-[50px] px-4 rounded-[20px] border border-gray-400 dark:border-gray-600 
-                             bg-[var(--background-color)] text-[var(--text-color)]
-                             focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
-                             transition-all duration-300"
+                                bg-[var(--background-color)] text-[var(--text-color)]
+                                focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
+                                transition-all duration-300"
                 />
 
                 <input
