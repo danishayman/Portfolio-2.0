@@ -3,6 +3,7 @@ import Education from './component/Education';
 import Skills from './component/Skills';
 import Projects from './component/Projects';
 import Work from './component/Work';
+import Contact from './component/Contact';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Work />
+      <Contact />
       {/* Add other components*/}
     </main>
   );
