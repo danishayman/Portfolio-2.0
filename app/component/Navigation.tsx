@@ -9,7 +9,6 @@ function Navigation() {
   const { isTransitioning } = useTheme();
   const scrollLock = useRef(false);
   const mobileNavRef = useRef(null);
-  const resizeObserver = useRef(null);
 
   const navItems = [
     { id: 'hero', label: 'HOME', icon: <Home size={18} /> },
@@ -33,9 +32,9 @@ function Navigation() {
 
     if (visibleSections.length > 0) {
       const topSection = visibleSections.reduce((prev, current) => 
-        prev.getBoundingClientRect().top < current.getBoundingClientRect().top ? prev : current
+        prev!.getBoundingClientRect().top < current!.getBoundingClientRect().top ? prev : current
       );
-      setActiveSection(topSection.id);
+      setActiveSection(topSection!.id);
     }
   }, [navItems]);
 
@@ -47,15 +46,14 @@ function Navigation() {
   }, [updateActiveSection]);
 
   // Improved scroll-to-section with momentum handling
-  const scrollToSection = useCallback((id) => {
+  const scrollToSection = useCallback((id: string) => {
     const element = document.getElementById(id);
     if (!element) return;
 
     scrollLock.current = true;
     setActiveSection(id);
-
     const isMobile = window.innerWidth <= 768;
-    const navHeight = mobileNavRef.current?.offsetHeight || 0;
+    const navHeight = mobileNavRef.current ? (mobileNavRef.current as HTMLElement).offsetHeight : 0;
     const offset = isMobile ? navHeight + 20 : 80;
 
     window.scrollTo({
@@ -101,18 +99,17 @@ function Navigation() {
       const element = document.getElementById(item.id);
       if (element) observer.observe(element);
     });
-
     // Handle resize events with observer
-    resizeObserver.current = new ResizeObserver(() => {
+    const resizeObserver = new ResizeObserver(() => {
       updateActiveSection();
     });
-    resizeObserver.current.observe(document.documentElement);
+    resizeObserver.observe(document.documentElement);
 
     window.addEventListener('scroll', handleScroll, passiveOptions);
 
     return () => {
       observer.disconnect();
-      resizeObserver.current?.disconnect();
+      resizeObserver.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll, navItems, updateActiveSection]);
