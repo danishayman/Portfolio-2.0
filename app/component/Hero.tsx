@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
     };
 
     return (
-        <section id="hero" className="flex flex-col justify-center gap-5 text-center h-[100dvh] min-h-[500px] select-none md:flex-row-reverse md:items-center md:justify-evenly">
+        <section id="hero" className="flex flex-col justify-center gap-5 text-center h-[100vh] min-h-[500px] select-none md:flex-row-reverse md:items-center md:justify-evenly">
             <div className="relative">
                 <div className="relative inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] flip-container">
                     <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 flip-img">
