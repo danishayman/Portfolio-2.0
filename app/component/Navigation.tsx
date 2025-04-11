@@ -65,6 +65,33 @@ function Navigation() {
     scrollLock.current = true;
     setActiveSection(id);
     
+    // If clicking on the HOME/hero item, scroll to the very top of the page
+    if (id === 'hero') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      // Handle momentum scroll on iOS
+      let lastScrollPosition = window.scrollY;
+      const momentumCheck = setInterval(() => {
+        if (Math.abs(window.scrollY - lastScrollPosition) < 1) {
+          clearInterval(momentumCheck);
+          scrollLock.current = false;
+          updateActiveSection();
+        }
+        lastScrollPosition = window.scrollY;
+      }, 100);
+
+      // Fallback unlock
+      setTimeout(() => {
+        scrollLock.current = false;
+        clearInterval(momentumCheck);
+      }, 2000);
+      
+      return;
+    }
+    
     // Find the section-header div or h1 element within the section
     const sectionHeader = element.querySelector('.section-header, h1');
     
