@@ -86,7 +86,7 @@ const Contact = () => {
                 <button
                     type="submit"
                     className="bg-[var(--bt-color)] text-[var(--btn-text-color)] 
-                                rounded-[20px] w-[126px] h-[50px] text-lg md:text-xl 
+                                rounded-[20px] w-[126px] h-[50px] text-base md:text-lg 
                                 font-bold font-rubik shadow-[0_4px_4px_rgba(0,0,0,0.25)] 
                                 hover:scale-105 active:translate-y-0.5 active:shadow-[0_2px_2px_rgba(0,0,0,0.25)]
                                 transition-all duration-200 mx-auto"

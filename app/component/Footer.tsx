@@ -11,7 +11,7 @@ const Footer = () => {
             id="footer"
             className="py-6 text-center font-mono"
         >
-            <p className={`text-sm md:text-base ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className={`text-xs md:text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                 &copy; {currentYear} danishayman.<br />
                 All rights reserved.
             </p>

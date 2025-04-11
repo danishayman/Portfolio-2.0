@@ -20,7 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ src, link, h3, p }) => {
                 alt={typeof h3 === 'string' ? `${h3} logo` : 'Project logo'} 
                 className="w-[230px] h-[230px] object-contain self-center bg-project-card-bg rounded-2xl p-[15px]"
             />
-            <h3 className="my-[15px] mt-[15px] mb-[10px] min-h-[48px] w-[230px] flex items-center justify-center text-center text-balance text-[1.2rem] font-bold">{h3}</h3>
+            <h3 className="my-[15px] mt-[15px] mb-[10px] min-h-[48px] w-[230px] flex items-center justify-center text-center text-balance text-xl md:text-2xl font-bold">{h3}</h3>
             <p className="m-0 pt-2 min-h-[24px] w-[230px] flex items-center justify-center text-[1rem] font-medium">{p}</p>
         </a>
     );

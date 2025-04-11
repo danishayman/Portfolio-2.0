@@ -19,7 +19,7 @@ const SkillList: React.FC<SkillListProps> = ({ src, skill }) => {
                     className="w-full h-full transition-transform duration-400 group-hover:scale-[1.2] group-hover:rotate-[5deg]" 
                 />
             </div>
-            <p className="text-sm md:text-base lg:text-lg">{skill}</p>
+            <p className="text-xs md:text-sm lg:text-base">{skill}</p>
         </span>
     );
 };

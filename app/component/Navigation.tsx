@@ -126,7 +126,7 @@ function Navigation() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                className={`bg-transparent border-none text-[var(--text-color)] text-base font-bold cursor-pointer py-2 px-4 rounded-md transition-all duration-300 relative font-mono
+                className={`bg-transparent border-none text-[var(--text-color)] text-xs md:text-sm font-bold cursor-pointer py-2 px-4 rounded-md transition-all duration-300 relative font-mono
                 ${activeSection === item.id ? 'opacity-100 after:w-full' : 'opacity-70 hover:opacity-100 hover:after:w-full after:w-0'} 
                 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:bg-[var(--text-color)] after:transition-all after:duration-300 after:-translate-x-1/2`}
                 onClick={() => scrollToSection(item.id)}

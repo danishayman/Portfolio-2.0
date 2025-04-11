@@ -44,11 +44,11 @@ const Education: React.FC = () => {
                         <div className="education-dot absolute left-[-5px] top-0 w-3 h-3 rounded-full bg-current transition-all duration-400 md:left-[calc(1rem-5px)] xl:left-[calc(2rem-5px)]"></div>
 
                         <div className="education-content flex flex-col gap-1 md:gap-2 p-3 md:p-4 rounded-lg transition-all duration-400">
-                            <h3 className="text-lg md:text-xl font-bold transition-transform duration-400">
+                            <h3 className="text-xl md:text-2xl font-bold transition-transform duration-400">
                                 {edu.institution}
                             </h3>
 
-                            <p className="education-degree text-sm md:text-base lg:text-lg">
+                            <p className="education-degree text-sm md:text-base lg:text-base">
                                 {edu.degree.split('\n').map((line, i) => (
                                     <span key={i}>
                                         {line}
@@ -65,7 +65,7 @@ const Education: React.FC = () => {
                                 {edu.achievements.map((achievement, achIndex) => (
                                     <li
                                         key={achIndex}
-                                        className="opacity-90 text-xs md:text-sm lg:text-[0.95rem] mb-1 transition-all duration-400 origin-left"
+                                        className="opacity-90 text-xs md:text-sm mb-1 transition-all duration-400 origin-left"
                                     >
                                         ✓ {achievement}
                                     </li>

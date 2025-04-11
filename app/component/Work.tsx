@@ -136,10 +136,10 @@ const Work = () => {
                         onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                         <div>
-                            <h3 className="text-base font-medium">
+                            <h3 className="text-base md:text-lg font-medium">
                                 {workExperience[activeTab].role}
                             </h3>
-                            <p className="text-sm text-gray-500">{workExperience[activeTab].company}</p>
+                            <p className="text-xs md:text-sm text-gray-500">{workExperience[activeTab].company}</p>
                         </div>
                         <div className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}>
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -157,10 +157,10 @@ const Work = () => {
                                         className="px-5 py-3 cursor-pointer transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 border-b border-[var(--border-color)] last:border-b-0"
                                         onClick={() => handleTabChange(index)}
                                     >
-                                        <h3 className="text-base font-medium">
+                                        <h3 className="text-base md:text-lg font-medium">
                                             {work.role}
                                         </h3>
-                                        <p className="text-sm text-gray-500">{work.company}</p>
+                                        <p className="text-xs md:text-sm text-gray-500">{work.company}</p>
                                     </div>
                                 )
                             ))}
@@ -179,8 +179,8 @@ const Work = () => {
                                     : 'border-transparent hover:border-[var(--border-color)] hover:bg-[var(--background-color)] hover:translate-x-2.5'}`}
                             onClick={() => handleTabChange(index)}
                         >
-                            <h3 className="text-lg font-semibold">{work.role}</h3>
-                            <p className="text-sm opacity-80">{work.company}</p>
+                            <h3 className="text-xl md:text-2xl font-semibold">{work.role}</h3>
+                            <p className="text-xs md:text-sm opacity-80">{work.company}</p>
                         </div>
                     ))}
                 </div>
@@ -188,8 +188,8 @@ const Work = () => {
                 <div className="border-2 border-[var(--text-color)] shadow-[5px_5px_var(--box-shadow-color)] p-5 md:p-8 rounded-lg bg-[var(--background-color)] w-full md:max-w-[calc(100%-350px)] animate-[fadeIn_0.4s_ease-out]">
                     <div className="mb-4 md:mb-8">
                         <h3 className="text-xl md:text-2xl font-medium mb-1">{workExperience[activeTab].role}</h3>
-                        <p className="text-base md:text-lg opacity-90 mb-1">{workExperience[activeTab].company}</p>
-                        <p className="text-sm md:text-base opacity-70">{workExperience[activeTab].duration}</p>
+                        <p className="text-sm md:text-base opacity-90 mb-1">{workExperience[activeTab].company}</p>
+                        <p className="text-xs md:text-sm opacity-70">{workExperience[activeTab].duration}</p>
                     </div>
                     
                     <div className="grid grid-cols-2 gap-3 md:gap-4 mb-2 md:mb-8">
@@ -197,7 +197,7 @@ const Work = () => {
                             <div key={index} className="aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden">
                                 {!allImagesLoaded ? (
                                     <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 animate-pulse">
-                                        <p className="text-sm opacity-70">Loading...</p>
+                                        <p className="text-xs md:text-sm opacity-70">Loading...</p>
                                     </div>
                                 ) : (
                                     <Image
@@ -213,7 +213,7 @@ const Work = () => {
                         ))}
                     </div>
                     
-                    <ul className="font-mono text-sm md:text-base flex flex-col gap-4 mt-4">
+                    <ul className="font-mono text-xs md:text-sm flex flex-col gap-4 mt-4">
                         {workExperience[activeTab].description.map((item, index) => (
                             <li key={index} className="relative pl-6 leading-tight">
                                 <span className="absolute left-2 top-0 opacity-80">•</span>

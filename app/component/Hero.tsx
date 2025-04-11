@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
                     AIMAN
                 </h1>
 
-                <h2 className="text-base md:text-xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
+                <h2 className="text-xl md:text-2xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
 
                 <span className="flex gap-6 justify-center">
                     <a href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
                     </Link>
                 </span>
 
-                <p className="max-w-[26ch] text-center font-mono text-base md:text-xl">
+                <p className="max-w-[26ch] text-center font-mono text-sm md:text-base">
                     A developer majoring in Intelligent Computing. SUPER into Machine
                     Learning and Artificial Intelligence.
                 </p>
@@ -107,7 +107,7 @@ const Hero: React.FC = () => {
                     rel="noopener noreferrer"
                     className="-webkit-tap-highlight-color-transparent w-fit self-center"
                 >
-                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-lg md:text-xl font-bold font-rubik shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
+                    <button className="bg-[var(--bt-color)] text-[var(--btn-text-color)] rounded-[20px] w-[126px] h-[50px] text-base md:text-lg font-bold font-rubik shadow-[0_4px_4px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-105 active:translate-y-0.5 active:shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
                         Résumé
                     </button>
                 </Link>
