@@ -14,6 +14,7 @@ export default function Home() {
     <main className="pb-20 md:pb-0">
       <Navigation />
       <Hero />
+      <SpeedInsights />
       <SectionVisibilityWrapper>
         <Education />
         <Skills />
