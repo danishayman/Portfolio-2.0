@@ -125,7 +125,7 @@ const Work = () => {
     }, []);
 
     return (
-        <section id="work" className="min-h-[100vh] flex flex-col items-center py-6 px-6 gap-8 md:py-16 md:px-16 md:gap-12">
+        <section id="work" className="min-h-[650px] md:min-h-[750px] flex flex-col items-center py-16 px-6 gap-8 md:py-24 md:px-16 md:gap-12">
             <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">WORK  EXPERIENCE</h1>
 
             <div className="flex flex-col w-full max-w-[1000px] gap-4 md:flex-row md:gap-12">
@@ -138,8 +138,8 @@ const Work = () => {
                         <div>
                             <h3 className="text-base font-medium">
                                 {workExperience[activeTab].role}
-                                <span className="ml-2 text-sm font-normal text-gray-500">{workExperience[activeTab].company}</span>
                             </h3>
+                            <p className="text-sm text-gray-500">{workExperience[activeTab].company}</p>
                         </div>
                         <div className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}>
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -159,8 +159,8 @@ const Work = () => {
                                     >
                                         <h3 className="text-base font-medium">
                                             {work.role}
-                                            <span className="ml-2 text-sm font-normal text-gray-500">{work.company}</span>
                                         </h3>
+                                        <p className="text-sm text-gray-500">{work.company}</p>
                                     </div>
                                 )
                             ))}

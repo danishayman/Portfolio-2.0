@@ -28,7 +28,7 @@ const Contact = () => {
     return (
         <section
             id="contact"
-            className="min-h-[100vh] flex flex-col items-center py-6 px-6 md:py-16 md:px-16"
+            className="min-h-[650px] md:min-h-[750px] flex flex-col items-center py-16 px-6 md:py-24 md:px-16"
         >
             <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal mb-8 md:mb-12">
                 CONTACT

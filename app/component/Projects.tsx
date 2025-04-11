@@ -6,7 +6,7 @@ import ProjectCard from '../common/ProjectCard';
 // Use your existing assets from the public folder
 const Projects = () => {
     return (
-        <section id="projects" className="min-h-[100vh] flex flex-col items-center p-6 md:p-8 lg:p-16">
+        <section id="projects" className="py-16 md:py-24 min-h-[650px] flex flex-col items-center p-6 md:p-8 lg:p-16">
             <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">PROJECTS</h1>
 
             <div className="flex flex-col items-center gap-4 pt-4 md:pt-5 lg:pt-8 md:flex-row md:flex-wrap md:justify-center md:gap-6 lg:gap-8">
