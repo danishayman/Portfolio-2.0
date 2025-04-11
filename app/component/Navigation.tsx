@@ -126,9 +126,9 @@ function Navigation() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                className={`bg-transparent border-none text-[var(--text-color)] text-base font-bold cursor-pointer py-2 px-4 rounded-md transition-all duration-[var(--transition-duration)] relative font-mono
+                className={`bg-transparent border-none text-[var(--text-color)] text-base font-bold cursor-pointer py-2 px-4 rounded-md transition-all duration-300 relative font-mono
                 ${activeSection === item.id ? 'opacity-100 after:w-full' : 'opacity-70 hover:opacity-100 hover:after:w-full after:w-0'} 
-                after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:bg-[var(--text-color)] after:transition-all after:duration-[var(--transition-duration)] after:-translate-x-1/2`}
+                after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:bg-[var(--text-color)] after:transition-all after:duration-300 after:-translate-x-1/2`}
                 onClick={() => scrollToSection(item.id)}
               >
                 {item.label}
@@ -147,13 +147,13 @@ function Navigation() {
           {navItems.map((item) => (
             <button
               key={item.id}
-              className={`bg-transparent border-none text-[var(--text-color)] cursor-pointer py-2 px-0 m-0 flex flex-col items-center justify-center flex-1 transition-all duration-400 touch-manipulation select-none relative
+              className={`bg-transparent border-none text-[var(--text-color)] cursor-pointer py-2 px-0 m-0 flex flex-col items-center justify-center flex-1 transition-all duration-300 touch-manipulation select-none relative
                 ${activeSection === item.id ? 'opacity-100' : 'opacity-70'} 
                 before:content-[''] before:absolute before:-top-[10px] before:-left-[5px] before:-right-[5px] before:-bottom-[10px] before:z-[-1]`}
               onClick={() => scrollToSection(item.id)}
               aria-label={item.label}
             >
-              <div className={`w-7 h-7 flex items-center justify-center rounded-md transition-all duration-400
+              <div className={`w-7 h-7 flex items-center justify-center rounded-md transition-all duration-300
                 ${activeSection === item.id ? 'bg-[var(--background-color)] border border-[var(--text-color)] shadow-[2px_2px_var(--box-shadow-color)] -translate-y-[3px]' : ''}`}>
                 {item.icon}
               </div>
