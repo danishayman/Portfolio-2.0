@@ -5,10 +5,12 @@ import Projects from './component/Projects';
 import Work from './component/Work';
 import Contact from './component/Contact';
 import Footer from './component/Footer';
+import Navigation from './component/Navigation';
 
 export default function Home() {
   return (
-    <main>
+    <main className="pb-20 md:pb-0">
+      <Navigation />
       <Hero />
       <Education />
       <Skills />
