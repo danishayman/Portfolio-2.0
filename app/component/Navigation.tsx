@@ -11,12 +11,12 @@ function Navigation() {
   const mobileNavRef = useRef(null);
 
   const navItems = [
-    { id: 'hero', label: 'HOME', icon: <Home size={18} /> },
-    { id: 'education', label: 'EDUCATION', icon: <GraduationCap size={18} /> },
-    { id: 'skills', label: 'SKILLS', icon: <Code size={18} /> },
-    { id: 'projects', label: 'PROJECTS', icon: <Laptop size={18} /> },
-    { id: 'work', label: 'EXPERIENCE', icon: <Briefcase size={18} /> },
-    { id: 'contact', label: 'CONTACT', icon: <Mail size={18} /> },
+    { id: 'hero', label: 'HOME', mobileLabel: 'HOME', icon: <Home size={18} /> },
+    { id: 'education', label: 'EDUCATION', mobileLabel: 'EDU', icon: <GraduationCap size={18} /> },
+    { id: 'skills', label: 'SKILLS', mobileLabel: 'SKILLS', icon: <Code size={18} /> },
+    { id: 'projects', label: 'PROJECTS', mobileLabel: 'PROJ', icon: <Laptop size={18} /> },
+    { id: 'work', label: 'EXPERIENCE', mobileLabel: 'WORK', icon: <Briefcase size={18} /> },
+    { id: 'contact', label: 'CONTACT', mobileLabel: 'CONTACT', icon: <Mail size={18} /> },
   ];
 
   // Simplified scroll handler with intersection observer
@@ -137,7 +137,7 @@ function Navigation() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                className={`bg-transparent border-none text-[var(--text-color)] text-xs md:text-sm font-bold cursor-pointer py-2 px-4 rounded-md transition-all duration-300 relative font-mono
+                className={`bg-transparent border-none text-[var(--text-color)] text-sm md:text-base font-bold cursor-pointer py-2 px-4 rounded-md transition-all duration-300 relative font-mono
                 ${activeSection === item.id ? 'opacity-100 after:w-full' : 'opacity-70 hover:opacity-100 hover:after:w-full after:w-0'} 
                 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:bg-[var(--text-color)] after:transition-all after:duration-300 after:-translate-x-1/2`}
                 onClick={() => scrollToSection(item.id)}
@@ -152,13 +152,13 @@ function Navigation() {
       {/* Mobile Navigation */}
       <nav 
         ref={mobileNavRef}
-        className={`fixed bottom-3 left-3 right-3 z-[1000] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-1.5 max-w-[380px] mx-auto -webkit-tap-highlight-color-transparent touch-auto will-change-transform block md:hidden ${isTransitioning ? 'animate-smoothTransition' : ''}`}
+        className={`fixed bottom-3 left-3 right-3 z-[1000] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-2 max-w-[400px] mx-auto -webkit-tap-highlight-color-transparent touch-auto will-change-transform block md:hidden ${isTransitioning ? 'animate-smoothTransition' : ''}`}
       >
-        <div className="flex justify-between items-center w-full">
+        <div className="flex justify-between items-start w-full">
           {navItems.map((item) => (
             <button
               key={item.id}
-              className={`bg-transparent border-none text-[var(--text-color)] cursor-pointer py-2 px-0 m-0 flex flex-col items-center justify-center flex-1 transition-all duration-300 touch-manipulation select-none relative
+              className={`bg-transparent border-none text-[var(--text-color)] cursor-pointer py-1 px-0 m-0 flex flex-col items-center justify-center flex-1 transition-all duration-300 touch-manipulation select-none relative
                 ${activeSection === item.id ? 'opacity-100' : 'opacity-70'} 
                 before:content-[''] before:absolute before:-top-[10px] before:-left-[5px] before:-right-[5px] before:-bottom-[10px] before:z-[-1]`}
               onClick={() => scrollToSection(item.id)}
@@ -168,6 +168,7 @@ function Navigation() {
                 ${activeSection === item.id ? 'bg-[var(--background-color)] border border-[var(--text-color)] shadow-[2px_2px_var(--box-shadow-color)] -translate-y-[3px]' : ''}`}>
                 {item.icon}
               </div>
+              <span className="text-xs mt-1 font-mono">{item.mobileLabel}</span>
             </button>
           ))}
         </div>
