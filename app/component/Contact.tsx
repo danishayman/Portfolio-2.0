@@ -30,7 +30,7 @@ const Contact = () => {
     
     return (
         <section id="contact" className="min-h-[100dvh] flex flex-col items-center py-6 px-6 md:py-16 md:px-16">
-            <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal mb-8 md:mb-12">CONTACT ME</h1>
+            <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal mb-8 md:mb-12">CONTACT</h1>
             
             <form 
                 onSubmit={handleSubmit} 
@@ -77,12 +77,13 @@ const Contact = () => {
                 <button
                     type="submit"
                     className="bg-[var(--bt-color)] text-[var(--btn-text-color)] 
-                             border-none rounded-[20px] w-[126px] h-[50px] text-xl font-bold
-                             shadow-md hover:scale-105 active:translate-y-0.5 active:shadow-sm
-                             transition-all duration-200 mx-auto
-                             focus:outline-none focus:ring-2 focus:ring-[var(--text-color)]"
+                             rounded-[20px] w-[126px] h-[50px] text-lg md:text-xl 
+                             font-bold font-rubik shadow-[0_4px_4px_rgba(0,0,0,0.25)] 
+                             transition-all duration-200 hover:scale-105 
+                             active:translate-y-0.5 active:shadow-[0_2px_2px_rgba(0,0,0,0.25)]
+                             mx-auto"
                 >
-                    Send
+                    Submit
                 </button>
             </form>
         </section>
