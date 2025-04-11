@@ -319,3 +319,27 @@ h1, h2, button {
   transform: scale(1);
   transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
+
+/* Section headers standardization */
+.section-header {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  position: relative;
+  margin-top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-header h1 {
+  margin: 0;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .section-header {
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
+  }
+}

@@ -52,12 +52,26 @@ function Navigation() {
 
     scrollLock.current = true;
     setActiveSection(id);
+    
+    // Find the section-header div or h1 element within the section
+    const sectionHeader = element.querySelector('.section-header, h1');
+    
     const isMobile = window.innerWidth <= 768;
-    const navHeight = mobileNavRef.current ? (mobileNavRef.current as HTMLElement).offsetHeight : 0;
-    const offset = isMobile ? navHeight + 20 : 80;
-
+    const navHeight = isMobile 
+      ? (mobileNavRef.current ? (mobileNavRef.current as HTMLElement).offsetHeight + 20 : 20)
+      : 80; // Desktop nav height + padding
+    
+    // Get the top position of the section
+    const sectionTop = element.getBoundingClientRect().top + window.scrollY;
+    
+    // If we found the header, scroll to position it with a consistent offset
+    // Otherwise, fall back to the previous behavior with improved offset
+    const scrollPosition = sectionHeader 
+      ? sectionHeader.getBoundingClientRect().top + window.scrollY - navHeight
+      : sectionTop - navHeight;
+    
     window.scrollTo({
-      top: element.offsetTop - offset,
+      top: scrollPosition,
       behavior: 'smooth'
     });
 

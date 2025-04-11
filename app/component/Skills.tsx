@@ -77,7 +77,9 @@ const Skills: React.FC = () => {
 
     return (
         <section id="skills" className="flex flex-col text-center p-6 md:p-8 lg:p-16 py-16 md:py-24 min-h-[650px] md:min-h-[750px] lg:min-h-[800px] justify-center gap-6 md:gap-8 animate-[fadeIn_0.5s_ease-out]">
-            <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">SKILLS</h1>
+            <div className="section-header">
+                <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">SKILLS</h1>
+            </div>
 
             <div className="skills-list flex justify-center self-center flex-wrap gap-[5px] md:gap-[10px] lg:gap-5 row-gap-3 md:row-gap-4 lg:row-gap-5 w-full max-w-full md:max-w-[450px] lg:max-w-fit relative p-2 hover:cursor-default">
                 {[

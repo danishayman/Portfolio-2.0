@@ -30,9 +30,11 @@ const Contact = () => {
             id="contact"
             className="min-h-[650px] md:min-h-[750px] flex flex-col items-center py-16 px-6 md:py-24 md:px-16"
         >
-            <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal mb-8 md:mb-12">
-                CONTACT
-            </h1>
+            <div className="section-header">
+                <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">
+                    CONTACT
+                </h1>
+            </div>
 
             <form
                 action="https://formspree.io/f/xgvvypqo"
