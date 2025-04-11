@@ -132,31 +132,35 @@ const Work = () => {
                 {/* Mobile Dropdown */}
                 <div className="relative md:hidden w-full" ref={dropdownRef}>
                     <div 
-                        className="flex justify-between items-center p-4 rounded-lg border-100 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] bg-[var(--background-color)] cursor-pointer transition-all duration-400 hover:translate-y-0.5 hover:shadow-sm"
+                        className="flex justify-between items-center px-5 py-3 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] bg-[var(--background-color)] cursor-pointer transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm"
                         onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                         <div>
-                            <h3 className="text-lg font-medium">{workExperience[activeTab].role}</h3>
-                            <p className="text-sm opacity-80">{workExperience[activeTab].company}</p>
+                            <h3 className="text-base font-medium">
+                                {workExperience[activeTab].role}
+                                <span className="ml-2 text-sm font-normal text-gray-500">{workExperience[activeTab].company}</span>
+                            </h3>
                         </div>
-                        <div className={`transition-transform duration-400 ${dropdownOpen ? 'rotate-180' : ''}`}>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <div className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </div>
                     </div>
                     
                     {dropdownOpen && (
-                        <div className="absolute top-[calc(100%+5px)] left-0 w-full bg-[var(--background-color)] border-2 border-[var(--text-color)] rounded-lg shadow-[3px_3px_var(--box-shadow-color)] overflow-hidden z-10 animate-[dropdownFadeIn_0.4s_ease-out]">
+                        <div className="absolute top-[calc(100%+5px)] left-0 w-full bg-[var(--background-color)] border-2 border-[var(--text-color)] rounded-lg shadow-md overflow-hidden z-10 animate-[dropdownFadeIn_0.3s_ease-out]">
                             {workExperience.map((work, index) => (
                                 index !== activeTab && (
                                     <div
                                         key={index}
-                                        className="p-3 cursor-pointer transition-colors duration-400 hover:bg-opacity-10  hover:bg-gray-500 border-b border-[var(--text-color)] last:border-b-0"
+                                        className="px-5 py-3 cursor-pointer transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 border-b border-[var(--border-color)] last:border-b-0"
                                         onClick={() => handleTabChange(index)}
                                     >
-                                        <h3 className="text-lg font-medium">{work.role}</h3>
-                                        <p className="text-sm opacity-80">{work.company}</p>
+                                        <h3 className="text-base font-medium">
+                                            {work.role}
+                                            <span className="ml-2 text-sm font-normal text-gray-500">{work.company}</span>
+                                        </h3>
                                     </div>
                                 )
                             ))}
@@ -175,7 +179,7 @@ const Work = () => {
                                     : 'border-transparent hover:border-[var(--border-color)] hover:bg-[var(--background-color)] hover:translate-x-2.5'}`}
                             onClick={() => handleTabChange(index)}
                         >
-                            <h3 className="text-lg font-medium">{work.role}</h3>
+                            <h3 className="text-lg font-semibold">{work.role}</h3>
                             <p className="text-sm opacity-80">{work.company}</p>
                         </div>
                     ))}

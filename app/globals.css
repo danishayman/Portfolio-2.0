@@ -319,32 +319,3 @@ h1, h2, button {
   transform: scale(1);
   transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
-
-/* Fix for mobile scroll jumping */
-html, body {
-  overscroll-behavior: none;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  scroll-behavior: smooth;
-}
-
-@media (max-width: 768px) {
-  * {
-    /* Reduce animation complexity on mobile */
-    transition-property: none !important;
-    animation-duration: 0.001s !important;
-    animation-delay: 0s !important;
-    animation-iteration-count: 1 !important;
-  }
-
-  html, body {
-    touch-action: manipulation;
-  }
-
-  /* Force hardware acceleration to reduce jank */
-  section, div, img, a {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000;
-  }
-}

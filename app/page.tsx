@@ -12,7 +12,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Work />
-      {/* Add other components here */}
+      {/* Add other components*/}
     </main>
   );
 }
