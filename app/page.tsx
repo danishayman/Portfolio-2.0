@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Hero from './component/Hero';
 import Education from './component/Education';
 import Skills from './component/Skills';
