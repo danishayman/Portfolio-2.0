@@ -96,9 +96,15 @@ function Navigation() {
     const sectionHeader = element.querySelector('.section-header, h1');
     
     const isMobile = window.innerWidth <= 768;
+    
+    // Fixed position from top where we want section headers to appear
+    // For desktop and mobile, we use different consistent heights
+    const FIXED_HEADER_POSITION = isMobile ? 80 : 120; // pixels from top
+    
+    // Calculate nav height for offset calculation
     const navHeight = isMobile 
       ? (mobileNavRef.current ? (mobileNavRef.current as HTMLElement).offsetHeight + 20 : 20)
-      : 80; // Desktop nav height + padding
+      : 50; // Desktop nav height
     
     // For desktop, trigger a custom event to show sections when navigating to non-hero sections
     if (!isMobile && id !== 'hero') {
@@ -107,14 +113,17 @@ function Navigation() {
       window.dispatchEvent(showSectionsEvent);
     }
     
-    // Get the top position of the section
-    const sectionTop = element.getBoundingClientRect().top + window.scrollY;
+    let scrollPosition;
     
-    // If we found the header, scroll to position it with a consistent offset
-    // Otherwise, fall back to the previous behavior with improved offset
-    const scrollPosition = sectionHeader 
-      ? sectionHeader.getBoundingClientRect().top + window.scrollY - navHeight
-      : sectionTop - navHeight;
+    if (sectionHeader) {
+      // Calculate position to place the header exactly at our fixed position
+      const headerRect = sectionHeader.getBoundingClientRect();
+      scrollPosition = window.scrollY + headerRect.top - FIXED_HEADER_POSITION;
+    } else {
+      // Fallback to section top with consistent offset
+      const sectionTop = element.getBoundingClientRect().top + window.scrollY;
+      scrollPosition = sectionTop - FIXED_HEADER_POSITION;
+    }
     
     window.scrollTo({
       top: scrollPosition,
