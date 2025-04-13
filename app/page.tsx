@@ -1,4 +1,5 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import Hero from './component/Hero';
 import Education from './component/Education';
 import Skills from './component/Skills';
@@ -15,6 +16,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <SpeedInsights />
+      <Analytics />
       <SectionVisibilityWrapper>
         <Education />
         <Skills />
