@@ -33,7 +33,7 @@ This project represents the evolution of my portfolio website, taking advantage 
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/portfolio-2.0.git
+git clone https://github.com/danishayman/portfolio-2.0.git
 cd portfolio-2.0
 ```
 
