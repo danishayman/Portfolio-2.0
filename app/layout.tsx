@@ -9,6 +9,7 @@ const robotoMono = Roboto_Mono({
   weight: ['300'],
   variable: '--font-roboto-mono',
   display: 'swap',
+  adjustFontFallback: false,
 });
 
 const rubik = Rubik({
@@ -16,6 +17,7 @@ const rubik = Rubik({
   weight: ['400', '500', '600', '700', '900'],
   variable: '--font-rubik',
   display: 'swap',
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
