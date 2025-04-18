@@ -6,7 +6,6 @@ import { useTheme } from '../common/ThemeContext';
 
 function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
-  const { isTransitioning } = useTheme();
   const scrollLock = useRef(false);
   const mobileNavRef = useRef(null);
   const [mounted, setMounted] = useState(false);
@@ -186,7 +185,7 @@ function Navigation() {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-[1000] bg-[var(--background-color)] backdrop-blur-[10px] border-b border-[rgba(255,255,255,0.1)] select-none ${isTransitioning ? 'animate-smoothTransition' : ''} hidden md:block`}>
+      <nav className="fixed top-0 left-0 right-0 z-[1000] bg-[var(--background-color)] backdrop-blur-[10px] border-b border-[rgba(255,255,255,0.1)] select-none hidden md:block">
         <div className="h-[50px] max-w-[1200px] mx-auto px-8 py-4 flex justify-center items-center relative">
           <div className="flex gap-8">
             {navItems.map((item) => (
@@ -229,7 +228,7 @@ function Navigation() {
       {mounted && (
         <nav 
           ref={mobileNavRef}
-          className={`fixed bottom-3 left-3 right-3 z-[1000] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-2 max-w-[400px] mx-auto -webkit-tap-highlight-color-transparent touch-auto will-change-transform block md:hidden mobile-nav-animation ${isTransitioning ? 'animate-smoothTransition' : ''}`}
+          className="fixed bottom-3 left-3 right-3 z-[1000] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-2 max-w-[400px] mx-auto -webkit-tap-highlight-color-transparent touch-auto will-change-transform block md:hidden mobile-nav-animation"
           style={{zIndex: 9999}} // Ensure highest z-index
         >
           <div className="flex justify-between items-start w-full">

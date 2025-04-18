@@ -22,8 +22,6 @@
 }
 
 body {
-  transition-property: color, background-color;
-  transition-duration: 500ms;
   font-family: var(--font-roboto-mono), monospace;
   /* Ensure body allows proper scrolling */
   min-height: 100%;
@@ -113,11 +111,6 @@ h1, h2, button {
   filter: drop-shadow(0 0 5px var(--bt-color));
 }
 
-@keyframes fadeInOut {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
 @keyframes dropdownFadeIn {
   from {
     opacity: 0;
@@ -127,10 +120,6 @@ h1, h2, button {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.animate-fadeInOut {
-  animation: fadeInOut 0.5s ease-in-out;
 }
 
 /* Animation for education timeline */

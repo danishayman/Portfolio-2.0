@@ -7,7 +7,6 @@ type Theme = 'light' | 'dark';
 interface ThemeContextType {
     theme: Theme;
     toggleTheme: () => void;
-    isTransitioning: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -26,7 +25,6 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>('light');
-    const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
     const [mounted, setMounted] = useState<boolean>(false);
 
     useEffect(() => {
@@ -44,17 +42,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     }, [theme, mounted]);
 
     const toggleTheme = (): void => {
-        setIsTransitioning(true);
         setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-
-        // Reset the transitioning state after the transition has completed
-        setTimeout(() => {
-            setIsTransitioning(false);
-        }, 500); // Match this with the fadeInOut animation duration
     };
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme, isTransitioning }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
             {children}
         </ThemeContext.Provider>
     );

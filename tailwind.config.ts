@@ -33,10 +33,6 @@ const config: Config = {
                 'md': '800px',
             },
             keyframes: {
-                smoothTransition: {
-                    '0%': { opacity: '0.8' },
-                    '100%': { opacity: '1' },
-                },
                 dropdownFadeIn: {
                     '0%': { opacity: '0', transform: 'translateY(-10px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
@@ -51,7 +47,6 @@ const config: Config = {
                 },
             },
             animation: {
-                smoothTransition: 'smoothTransition 0.4s ease',
                 dropdownFadeIn: 'dropdownFadeIn 0.3s ease-out',
                 fadeIn: 'fadeIn 0.5s ease-out',
                 fadeInUp: 'fadeInUp 0.6s ease forwards',
