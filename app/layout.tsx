@@ -41,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${robotoMono.variable} ${rubik.variable}`}>
       <head>
+        <meta name="apple-mobile-web-app-title" content="danishayman" />
         <meta name="google-site-verification" content="bZyz4TL7ElDmE33G3CMvYh_GIj6Vah461AEhU8Uz224" />
       </head>
       <body className={robotoMono.className}>
