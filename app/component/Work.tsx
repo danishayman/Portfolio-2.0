@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTheme } from '../common/ThemeContext';
 
 // Import images
@@ -33,7 +34,8 @@ const Work = () => {
                 "Fixed bugs and optimized performance with cross-functional teams.",
                 "Conducted code reviews and testing for quality assurance.",
             ],
-            images: [inari1, inari2]
+            images: [inari1, inari2],
+            slug: "inari-amertron-berhad"
         },
         {
             role: "Computer Technician",
@@ -44,7 +46,8 @@ const Work = () => {
                 "Provided technical support to customers and staff.",
                 "Maintained inventory of computer parts and accessories.",
             ],
-            images: [daboss1, daboss2]
+            images: [daboss1, daboss2],
+            slug: "pc-daboss"
         },
         {
             role: "Part-Time Crew: Steward",
@@ -55,7 +58,8 @@ const Work = () => {
                 "Assisted with crowd control, seating, and safety compliance.",
                 "Operated servers and projectors for seamless screenings."
             ],
-            images: [gsc1, gsc2]
+            images: [gsc1, gsc2],
+            slug: "gsc"
         },
         {
             role: "Phone Technician",
@@ -66,7 +70,8 @@ const Work = () => {
                 "Managed inventory for efficient repairs.",
                 "Provided technical support and device maintenance guidance."
             ],
-            images: [teenfix1, teenfix2]
+            images: [teenfix1, teenfix2],
+            slug: "teenfix-studio"
         },
     ];
 
@@ -223,6 +228,14 @@ const Work = () => {
                             </li>
                         ))}
                     </ul>
+                    
+                    <div className="mt-6 text-center">
+                        <Link href={`/work/${workExperience[activeTab].slug}`}>
+                            <button className="px-4 py-2 bg-[var(--background-color)] border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] rounded-lg font-medium transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
+                                Read More
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>
