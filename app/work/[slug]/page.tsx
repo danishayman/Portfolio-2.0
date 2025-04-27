@@ -28,16 +28,14 @@ const workExperienceData = [
             "Fixed bugs and optimized performance with cross-functional teams.",
             "Conducted code reviews and testing for quality assurance.",
         ],
-        detailedDescription: `As a Software Engineer Intern at Inari Amertron Berhad, I've been responsible for developing and maintaining internal software applications that improve operational efficiency and data accuracy across the organization.
+        detailedDescription: `My internship at Inari Technology has been a real glimpse into how unpredictable and hands-on real-world work can be. I was given ownership of an active project, which meant learning to adapt quickly, solve problems on the fly, and communicate effectively with different teams.
 
-Working alongside senior developers and cross-functional teams, I've gained valuable experience in software development lifecycle practices, including requirements gathering, design, implementation, testing, and deployment.
+This experience taught me that technical skills alone aren't enough — real growth comes from navigating changing requirements, tight deadlines, and unexpected challenges. I learned how to stay focused under pressure, manage my time better, and think beyond just the code to see the bigger picture.
 
-My daily responsibilities include debugging issues, optimizing application performance, and implementing new features based on stakeholder requirements. I've also been actively involved in code reviews, which has significantly improved my coding standards and best practices.
-
-The technologies I've worked with include JavaScript, React, and Node.js for frontend and backend development. I've also gained experience with SQL databases and RESTful API design and implementation.`,
+So far, this internship has been less about following a script and more about learning how to thrive when there isn't one — a real stepping stone for both my technical and personal growth.`,
         images: [inari1, inari2],
         slug: "inari-amertron-berhad",
-        skills: ["JavaScript", "React", "Node.js", "SQL", "RESTful APIs", "Git", "Agile"]
+        skills: ["ASP.NET", "C#", "SQL", "Git", "Agile"]
     },
     {
         role: "Computer Technician",
@@ -48,13 +46,15 @@ The technologies I've worked with include JavaScript, React, and Node.js for fro
             "Provided technical support to customers and staff.",
             "Maintained inventory of computer parts and accessories.",
         ],
-        detailedDescription: `As a Computer Technician at PC DaBoss Technology, I was responsible for diagnosing and resolving a wide range of computer hardware and software issues for both individual and business clients.
+        detailedDescription: `While waiting for my internship to kick off, I spent about two months working part-time at PC DaBoss Technology, a local PC shop. It wasn’t a long time, but honestly, it was a crash course in the real basics of computers.
 
-My primary responsibilities included performing hardware repairs and upgrades, software installation and configuration, virus and malware removal, data recovery, and network troubleshooting. I also provided remote technical support to clients via phone and email.
+Most days, I was getting my hands dirty building custom PCs, cleaning dusty laptops, installing RAM and SSDs, troubleshooting random issues, replacing cracked laptop screens and busted keyboards, and just figuring out how to solve problems fast. It wasn’t glamorous work — it was the kind where you’re elbow-deep inside a laptop trying to figure out why it won’t boot — but it taught me how computers actually behave in the wild, outside the theory we learn in school.
 
-Working in a busy retail environment, I developed strong customer service skills while explaining technical issues in easy-to-understand terms. I regularly maintained the shop's inventory of computer parts and accessories, ensuring we had essential components in stock for common repairs.
+Even though I had to resign earlier than planned (thanks to getting my internship offer ahead of schedule), I walked away with a lot. Those two months gave me real-world skills, a better technical instinct, and a deeper appreciation for the tiny details that make machines work. It also made me more confident in handling hardware, something that’s super easy to overlook when you’re mostly focused on the software side.
 
-This role helped me develop a deep understanding of computer systems and troubleshooting methodologies. I became proficient at identifying issues efficiently and implementing the most cost-effective solutions for our clients.`,
+Short stint — but definitely a meaningful one.
+
+`,
         images: [daboss1, daboss2],
         slug: "pc-daboss",
         skills: ["Hardware Repair", "Software Troubleshooting", "Customer Service", "Windows OS", "Networking", "Data Recovery"]
@@ -68,13 +68,13 @@ This role helped me develop a deep understanding of computer systems and trouble
             "Assisted with crowd control, seating, and safety compliance.",
             "Operated servers and projectors for seamless screenings."
         ],
-        detailedDescription: `Working as a Part-Time Crew member at Golden Screen Cinemas gave me valuable experience in customer service and operations in the entertainment industry.
+        detailedDescription: `Worked at GSC for almost five months as a steward, a role that initially seemed straightforward but quickly became an intense lesson in customer service and conflict management. The main tasks included managing ticketing, checking customers, and making sure everything ran smoothly. But the job involved much more than that. There were the difficult customers — angry parents arguing about underage kids trying to sneak into 18+ shows, “Karen” types demanding refunds for shows they missed, and customers upset over service issues that were often beyond control. It required a lot of patience and the ability to stay calm in tense situations.
 
-My responsibilities included welcoming and guiding customers to their seats, checking tickets, and ensuring theater cleanliness before and after screenings. I also assisted with crowd management during peak hours and special events, ensuring all safety protocols were followed.
+One particularly chaotic moment was when the fire alarm went off mid-show, leading to mass panic in the cinema. Turned out it was just a malfunction, but the experience emphasized how critical it is to stay composed when things go sideways.
 
-One of the more technical aspects of my role involved operating digital projection systems after receiving specialized training. This included preparing content for screening, monitoring systems during shows, and troubleshooting basic technical issues when they arose.
+While the job started out as a way to earn extra money, it ended up being an invaluable learning experience. The role pushed communication skills to the next level, helped manage stressful situations, and forced an introvert to adapt and engage with all kinds of people. Explaining policies clearly, diffusing tense moments, and staying professional under pressure were skills learned on the job.
 
-During my time at GSC, I developed strong interpersonal skills working with diverse customers and colleagues in a fast-paced environment. I learned to maintain composure during busy periods while continuing to provide high-quality service to all patrons.`,
+Balancing late-night shifts with university work was tough, and by mid-semester, it became clear that it was too much to juggle. So, I decided to resign during the break. Even though it was a challenging experience, working at GSC taught a lot about handling pressure, managing customer relationships, and working as part of a team. It was a memorable chapter, and despite the tough moments, it was an experience that helped me grow both professionally and personally.`,
         images: [gsc1, gsc2],
         slug: "gsc",
         skills: ["Customer Service", "Team Collaboration", "Problem Solving", "Digital Projection Systems", "Safety Compliance"]
@@ -135,8 +135,8 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
                     Back to Portfolio
                 </Link>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div>
+                <div className="flex flex-col mb-12">
+                    <div className="mb-12">
                         <h1 className="text-3xl md:text-4xl font-bold mb-2">{workData.role}</h1>
                         <h2 className="text-xl md:text-2xl opacity-80 mb-2">{workData.company}</h2>
                         <p className="text-sm md:text-base opacity-70 mb-8">{workData.duration}</p>
@@ -160,7 +160,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
                         </div>
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {workData.images.map((image: any, index: number) => (
                             <div key={index} className="w-full aspect-video relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]">
                                 <Image
