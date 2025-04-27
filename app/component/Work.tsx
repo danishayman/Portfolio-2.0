@@ -232,7 +232,7 @@ const Work = () => {
                     <div className="mt-6 text-center">
                         <Link href={`/work/${workExperience[activeTab].slug}`}>
                             <button className="px-4 py-2 bg-[var(--background-color)] border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] rounded-lg font-medium transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
-                                Read More
+                                yapping
                             </button>
                         </Link>
                     </div>

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from '../../common/ThemeContext';
 import { notFound } from 'next/navigation';
-import Navigation from '../../component/Navigation';
 import Footer from '../../component/Footer';
 
 // Import images
@@ -128,14 +127,12 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
 
     return (
         <div className="min-h-screen bg-[var(--background-color)] text-[var(--text-color)]">
-            <Navigation />
-
             <main className="max-w-5xl mx-auto px-6 py-12 md:py-24 md:px-12">
-                <Link href="/#work" className="inline-flex items-center mb-10 text-sm font-medium hover:underline">
+                <Link href="/#work" className="inline-flex items-center mb-10 text-sm md:text-base font-medium px-4 py-2 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
                     <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
-                    Back to Work Experience
+                    Back to Portfolio
                 </Link>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
