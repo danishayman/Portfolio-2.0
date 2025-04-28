@@ -28,11 +28,13 @@ const workExperienceData = [
             "Fixed bugs and optimized performance with cross-functional teams.",
             "Conducted code reviews and testing for quality assurance.",
         ],
-        detailedDescription: `My internship at Inari Technology has been a real glimpse into how unpredictable and hands-on real-world work can be. I was given ownership of an active project, which meant learning to adapt quickly, solve problems on the fly, and communicate effectively with different teams.
+        detailedDescription: `Internship at Inari Technology has been a real eye-opener into how messy and hands-on real-world work can get. Got thrown into an active project right away, which meant having to figure things out quick, fix problems as they came, and constantly bounce between teams to keep things moving.
 
-This experience taught me that technical skills alone aren't enough — real growth comes from navigating changing requirements, tight deadlines, and unexpected challenges. I learned how to stay focused under pressure, manage my time better, and think beyond just the code to see the bigger picture.
+Turns out, knowing how to code isn’t even half the battle — the real challenge is dealing with changes, deadlines, and random problems popping up out of nowhere. Staying calm under pressure, managing time better, and thinking beyond just “making it work” became part of the daily routine.
 
-So far, this internship has been less about following a script and more about learning how to thrive when there isn't one — a real stepping stone for both my technical and personal growth.`,
+So far, it’s been way less about following a clear plan and way more about learning how to survive when there isn’t one — easily one of the biggest jumps in both skill and mindset so far.
+
+`,
         images: [inari1, inari2],
         slug: "inari-amertron-berhad",
         skills: ["ASP.NET", "C#", "SQL", "Git", "Agile"]
@@ -46,15 +48,13 @@ So far, this internship has been less about following a script and more about le
             "Provided technical support to customers and staff.",
             "Maintained inventory of computer parts and accessories.",
         ],
-        detailedDescription: `While waiting for my internship to kick off, I spent about two months working part-time at PC DaBoss Technology, a local PC shop. It wasn’t a long time, but honestly, it was a crash course in the real basics of computers.
+        detailedDescription: `While waiting for the internship to start, spent about two months working part-time at PC DaBoss Technology, a small local PC shop. Short time, but honestly, it felt like a full crash course in the real basics of computers.
 
-Most days, I was getting my hands dirty building custom PCs, cleaning dusty laptops, installing RAM and SSDs, troubleshooting random issues, replacing cracked laptop screens and busted keyboards, and just figuring out how to solve problems fast. It wasn’t glamorous work — it was the kind where you’re elbow-deep inside a laptop trying to figure out why it won’t boot — but it taught me how computers actually behave in the wild, outside the theory we learn in school.
+Most days were spent building custom PCs, cleaning out dusty old laptops, installing RAM and SSDs, swapping out cracked screens and broken keyboards, and troubleshooting all sorts of random problems. Nothing too glamorous — just hands-on, elbow-deep work trying to figure out why a machine wouldn’t boot or why a laptop decided to die out of nowhere. Definitely different from the clean theory taught in class.
 
-Even though I had to resign earlier than planned (thanks to getting my internship offer ahead of schedule), I walked away with a lot. Those two months gave me real-world skills, a better technical instinct, and a deeper appreciation for the tiny details that make machines work. It also made me more confident in handling hardware, something that’s super easy to overlook when you’re mostly focused on the software side.
+Had to resign earlier than planned after landing the internship, but still walked away with a lot. Those two months built real instincts with hardware, made it easier to catch the little things that actually make machines tick, and added way more confidence when dealing with tech outside of just software.
 
-Short stint — but definitely a meaningful one.
-
-`,
+Short stint — but a seriously meaningful one.`,
         images: [daboss1, daboss2],
         slug: "pc-daboss",
         skills: ["Hardware Repair", "Software Troubleshooting", "Customer Service", "Windows OS", "Networking", "Data Recovery"]
@@ -68,13 +68,13 @@ Short stint — but definitely a meaningful one.
             "Assisted with crowd control, seating, and safety compliance.",
             "Operated servers and projectors for seamless screenings."
         ],
-        detailedDescription: `Worked at GSC for almost five months as a steward, a role that initially seemed straightforward but quickly became an intense lesson in customer service and conflict management. The main tasks included managing ticketing, checking customers, and making sure everything ran smoothly. But the job involved much more than that. There were the difficult customers — angry parents arguing about underage kids trying to sneak into 18+ shows, “Karen” types demanding refunds for shows they missed, and customers upset over service issues that were often beyond control. It required a lot of patience and the ability to stay calm in tense situations.
+        detailedDescription: `Worked at GSC for almost five months as a steward, a role that initially seemed straightforward but quickly became an intense lesson in customer service and conflict management. The main tasks included managing ticketing, checking customers, and making sure everything ran smoothly. But the job involved much more than that. There were the difficult customers — angry parents arguing about underage kids trying to sneak into 18+ shows, dumb types demanding refunds for shows they missed, and customers upset over service issues that were often beyond control.
 
 One particularly chaotic moment was when the fire alarm went off mid-show, leading to mass panic in the cinema. Turned out it was just a malfunction, but the experience emphasized how critical it is to stay composed when things go sideways.
 
-While the job started out as a way to earn extra money, it ended up being an invaluable learning experience. The role pushed communication skills to the next level, helped manage stressful situations, and forced an introvert to adapt and engage with all kinds of people. Explaining policies clearly, diffusing tense moments, and staying professional under pressure were skills learned on the job.
+Though it started simply as a way to earn extra cash, it ended up being an invaluable learning experience. The role pushed communication skills to the next level, helped manage stressful situations, and forced an introvert to adapt and engage with all kinds of people. Explaining policies clearly, diffusing tense moments, and staying professional under pressure were skills learned on the job.
 
-Balancing late-night shifts with university work was tough, and by mid-semester, it became clear that it was too much to juggle. So, I decided to resign during the break. Even though it was a challenging experience, working at GSC taught a lot about handling pressure, managing customer relationships, and working as part of a team. It was a memorable chapter, and despite the tough moments, it was an experience that helped me grow both professionally and personally.`,
+Balancing late-night shifts with university work was tough, and by mid-semester, it became clear that it was too much to juggle. So, decided to resign during the break. Even though it was a challenging experience, working at GSC taught a lot about handling pressure, managing customer relationships, and working as part of a team. Beyond the tough moments, there were plenty of memories that made it all worth it — the dumb, hilarious things done with the team during opening and closing shifts, sneaking quick peeks at newly released movies before the crowds came in, and the sense of camaraderie that made even the long nights feel lighter. It was a memorable chapter, and despite the tough moments, it was an experience that helped me grow both professionally and personally.`,
         images: [gsc1, gsc2],
         slug: "gsc",
         skills: ["Customer Service", "Team Collaboration", "Problem Solving", "Digital Projection Systems", "Safety Compliance"]
@@ -88,15 +88,15 @@ Balancing late-night shifts with university work was tough, and by mid-semester,
             "Managed inventory for efficient repairs.",
             "Provided technical support and device maintenance guidance."
         ],
-        detailedDescription: `As a Phone Technician at Teenfix Studio, I specialized in diagnosing and repairing a wide range of smartphones and tablets across different brands and models.
+        detailedDescription: `Started out at Teenfix Studio just working the cashier counter — handling payments, talking to customers, basic front-desk stuff. Nothing fancy at first. But after a while, got the chance to jump into the repair side of things, and from there it just took off.
 
-My daily responsibilities included screen replacements, battery replacements, charging port repairs, water damage recovery, and software troubleshooting. I worked directly with customers to understand their device issues, provide cost estimates, and explain repair options.
+Ended up going full-time as a technician, getting hands-on with all kinds of phone and tablet repairs. Daily grind was stuff like replacing cracked screens, swapping batteries, fixing charging ports, saving water-damaged phones, and figuring out random software issues. Some days were smooth, others felt like performing surgery on tiny, stubborn machines.
 
-I managed our repair parts inventory, ensuring we had common components in stock while coordinating special orders for less common repairs. This required staying updated on new device models and their repair requirements.
+Also spent a lot of time talking to customers — diagnosing their device problems, explaining what needed fixing, and giving them the best repair options without all the tech mumbo jumbo. Managed the parts inventory too, making sure the shop always had enough components ready for the usual break-fix jobs.
 
-Throughout my time at Teenfix, I developed technical skills specific to mobile device repair and troubleshooting. I became proficient at working with small components, using specialized tools, and following detailed repair procedures for different device models.
+Learned real fast that no two devices break the same way, and sometimes repairs meant getting creative. Got way better at handling delicate parts, troubleshooting weird problems, and keeping calm when things didn’t go as planned.
 
-The experience also enhanced my problem-solving abilities as I often encountered unique device issues that required creative solutions.`,
+What started off as a simple cashier job turned into a legit skill set — hands-on technical work, customer communication, and problem-solving, all rolled into one.`,
         images: [teenfix1, teenfix2],
         slug: "teenfix-studio",
         skills: ["Mobile Device Repair", "Customer Communication", "Inventory Management", "Technical Troubleshooting", "Quality Control"]
