@@ -30,9 +30,9 @@ const workExperienceData = [
         ],
         detailedDescription: `Internship at Inari Technology has been a real eye-opener into how messy and hands-on real-world work can get. Got thrown into an active project right away, which meant having to figure things out quick, fix problems as they came, and constantly bounce between teams to keep things moving.
 
-Turns out, knowing how to code isn’t even half the battle — the real challenge is dealing with changes, deadlines, and random problems popping up out of nowhere. Staying calm under pressure, managing time better, and thinking beyond just “making it work” became part of the daily routine.
+Turns out, knowing how to code isn't even half the battle — the real challenge is dealing with changes, deadlines, and random problems popping up out of nowhere. Staying calm under pressure, managing time better, and thinking beyond just "making it work" became part of the daily routine.
 
-So far, it’s been way less about following a clear plan and way more about learning how to survive when there isn’t one — easily one of the biggest jumps in both skill and mindset so far.
+So far, it's been way less about following a clear plan and way more about learning how to survive when there isn't one — easily one of the biggest jumps in both skill and mindset so far.
 
 `,
         images: [inari1, inari2],
@@ -50,7 +50,7 @@ So far, it’s been way less about following a clear plan and way more about lea
         ],
         detailedDescription: `While waiting for the internship to start, spent about two months working part-time at PC DaBoss Technology, a small local PC shop. Short time, but honestly, it felt like a full crash course in the real basics of computers.
 
-Most days were spent building custom PCs, cleaning out dusty old laptops, installing RAM and SSDs, swapping out cracked screens and broken keyboards, and troubleshooting all sorts of random problems. Nothing too glamorous — just hands-on, elbow-deep work trying to figure out why a machine wouldn’t boot or why a laptop decided to die out of nowhere. Definitely different from the clean theory taught in class.
+Most days were spent building custom PCs, cleaning out dusty old laptops, installing RAM and SSDs, swapping out cracked screens and broken keyboards, and troubleshooting all sorts of random problems. Nothing too glamorous — just hands-on, elbow-deep work trying to figure out why a machine wouldn't boot or why a laptop decided to die out of nowhere. Definitely different from the clean theory taught in class.
 
 Had to resign earlier than planned after landing the internship, but still walked away with a lot. Those two months built real instincts with hardware, made it easier to catch the little things that actually make machines tick, and added way more confidence when dealing with tech outside of just software.
 
@@ -94,7 +94,7 @@ Ended up going full-time as a technician, getting hands-on with all kinds of pho
 
 Also spent a lot of time talking to customers — diagnosing their device problems, explaining what needed fixing, and giving them the best repair options without all the tech mumbo jumbo. Managed the parts inventory too, making sure the shop always had enough components ready for the usual break-fix jobs.
 
-Learned real fast that no two devices break the same way, and sometimes repairs meant getting creative. Got way better at handling delicate parts, troubleshooting weird problems, and keeping calm when things didn’t go as planned.
+Learned real fast that no two devices break the same way, and sometimes repairs meant getting creative. Got way better at handling delicate parts, troubleshooting weird problems, and keeping calm when things didn't go as planned.
 
 What started off as a simple cashier job turned into a legit skill set — hands-on technical work, customer communication, and problem-solving, all rolled into one.`,
         images: [teenfix1, teenfix2],
@@ -128,7 +128,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
     return (
         <div className="min-h-screen bg-[var(--background-color)] text-[var(--text-color)]">
             <main className="max-w-5xl mx-auto px-6 py-12 md:py-24 md:px-12">
-                <Link href="/#work" className="inline-flex items-center mb-10 text-sm md:text-base font-medium px-4 py-2 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
+                <Link href="/" className="inline-flex items-center mb-10 text-sm md:text-base font-medium px-4 py-2 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
                     <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
