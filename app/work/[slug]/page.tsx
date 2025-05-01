@@ -70,7 +70,6 @@ Short stint — but a seriously meaningful one.`,
         ],
         detailedDescription: `Worked at GSC for almost five months as a steward, a role that initially seemed straightforward but quickly became an intense lesson in customer service and conflict management. The main tasks included managing ticketing, checking customers, and making sure everything ran smoothly. But the job involved much more than that. There were the difficult customers — angry parents arguing about underage kids trying to sneak into 18+ shows, dumb types demanding refunds for shows they missed, and customers upset over service issues that were often beyond control.
 
-One particularly chaotic moment was when the fire alarm went off mid-show, leading to mass panic in the cinema. Turned out it was just a malfunction, but the experience emphasized how critical it is to stay composed when things go sideways.
 
 Though it started simply as a way to earn extra cash, it ended up being an invaluable learning experience. The role pushed communication skills to the next level, helped manage stressful situations, and forced an introvert to adapt and engage with all kinds of people. Explaining policies clearly, diffusing tense moments, and staying professional under pressure were skills learned on the job.
 
