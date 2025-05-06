@@ -12,8 +12,8 @@ import teenfix1 from '../../public/teenfix/teenfix1.webp';
 import teenfix2 from '../../public/teenfix/teenfix2.webp';
 import daboss1 from '../../public/daboss/daboss1.webp';
 import daboss2 from '../../public/daboss/daboss2.webp';
-import inari1 from '../../public/assets/inari1.webp';
-import inari2 from '../../public/assets/inari2.webp';
+import inari1 from '../../public/inari/inari1.webp';
+import inari2 from '../../public/inari/inari2.webp';
 
 const Work = () => {
     const [activeTab, setActiveTab] = useState(0);
