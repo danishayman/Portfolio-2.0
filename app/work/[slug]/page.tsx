@@ -8,8 +8,8 @@ import { notFound, useRouter } from 'next/navigation';
 import Footer from '../../component/Footer';
 
 // Import images
-import gsc1 from '../../../public/assets/gsc1.webp';
-import gsc2 from '../../../public/assets/gsc2.webp';
+import gsc1 from '../../../public/gsc/gsc1.webp';
+import gsc2 from '../../../public/gsc/gsc2.webp';
 import teenfix1 from '../../../public/teenfix/teenfix1.webp';
 import teenfix2 from '../../../public/teenfix/teenfix2.webp';
 import daboss1 from '../../../public/assets/daboss1.webp';
