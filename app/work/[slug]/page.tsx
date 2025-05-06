@@ -11,6 +11,7 @@ import Footer from '../../component/Footer';
 const gscImages = [
     '/gsc/gsc1.webp',
     '/gsc/gsc2.webp',
+    '/gsc/gsc3.jpg',
 ];
 
 const teenfixImages = [
@@ -23,11 +24,21 @@ const teenfixImages = [
     '/teenfix/teenfix7.jpg',
     '/teenfix/teenfix8.jpg',
     '/teenfix/teenfix9.jpg',
+    '/teenfix/teenfix10.jpg',
+    '/teenfix/teenfix11.jpg',
+    '/teenfix/teenfix12.jpg',
 ];
 
 const dabossImages = [
     '/daboss/daboss1.webp',
     '/daboss/daboss2.webp',
+    '/daboss/daboss3.jpg',
+    '/daboss/daboss4.jpg',
+    '/daboss/daboss5.jpg',
+    '/daboss/daboss6.jpg',
+    '/daboss/daboss7.jpg',
+    '/daboss/daboss8.jpg',
+    '/daboss/daboss9.jpg',
 ];
 
 const inariImages = [
