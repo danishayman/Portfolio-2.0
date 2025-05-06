@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Home, Briefcase, Laptop, GraduationCap, Code, Mail } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useTheme } from '../common/ThemeContext';
 
 function Navigation() {
@@ -9,6 +11,7 @@ function Navigation() {
   const scrollLock = useRef(false);
   const mobileNavRef = useRef(null);
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   const navItems = [
     { id: 'hero', label: 'HOME', mobileLabel: 'HOME', icon: <Home size={18} /> },
@@ -28,6 +31,15 @@ function Navigation() {
     if (fallbackNav) {
       fallbackNav.style.display = 'none';
     }
+
+    // Set initial active section based on hash
+    const hash = window.location.hash.replace('#', '');
+    if (hash && navItems.some(item => item.id === hash)) {
+      setActiveSection(hash);
+      setTimeout(() => {
+        scrollToSection(hash, false);
+      }, 500);
+    }
   }, []);
 
   // Simplified scroll handler with intersection observer
@@ -45,9 +57,22 @@ function Navigation() {
       const topSection = visibleSections.reduce((prev, current) => 
         prev!.getBoundingClientRect().top < current!.getBoundingClientRect().top ? prev : current
       );
-      setActiveSection(topSection!.id);
+      
+      const newActiveSection = topSection!.id;
+      if (newActiveSection !== activeSection) {
+        setActiveSection(newActiveSection);
+        
+        // Update URL hash without scroll
+        if (typeof window !== 'undefined' && !scrollLock.current) {
+          window.history.replaceState(
+            null, 
+            '', 
+            newActiveSection === 'hero' ? window.location.pathname : `#${newActiveSection}`
+          );
+        }
+      }
     }
-  }, [navItems]);
+  }, [navItems, activeSection]);
 
   // Debounced scroll handler
   const handleScroll = useCallback(() => {
@@ -57,12 +82,21 @@ function Navigation() {
   }, [updateActiveSection]);
 
   // Improved scroll-to-section with momentum handling
-  const scrollToSection = useCallback((id: string) => {
+  const scrollToSection = useCallback((id: string, updateHash: boolean = true) => {
     const element = document.getElementById(id);
     if (!element) return;
 
     scrollLock.current = true;
     setActiveSection(id);
+    
+    // Update URL hash if needed
+    if (updateHash) {
+      if (id === 'hero') {
+        window.history.pushState(null, '', window.location.pathname);
+      } else {
+        window.history.pushState(null, '', `#${id}`);
+      }
+    }
     
     // If clicking on the HOME/hero item, scroll to the very top of the page
     if (id === 'hero') {
@@ -175,12 +209,23 @@ function Navigation() {
 
     window.addEventListener('scroll', handleScroll, passiveOptions);
 
+    // Handle direct hash changes in URL
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && navItems.some(item => item.id === hash)) {
+        scrollToSection(hash, false);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
     return () => {
       observer.disconnect();
       resizeObserver.disconnect();
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [handleScroll, navItems, updateActiveSection]);
+  }, [handleScroll, navItems, updateActiveSection, scrollToSection]);
 
   return (
     <>
@@ -189,15 +234,19 @@ function Navigation() {
         <div className="h-[50px] max-w-[1200px] mx-auto px-8 py-4 flex justify-center items-center relative">
           <div className="flex gap-8">
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
+                href={`#${item.id}`}
                 className={`bg-transparent border-none text-[var(--text-color)] text-sm md:text-base font-bold cursor-pointer py-2 px-4 rounded-md transition-all duration-300 relative font-mono
                 ${activeSection === item.id ? 'opacity-100 after:w-full' : 'opacity-70 hover:opacity-100 hover:after:w-full after:w-0'} 
                 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:bg-[var(--text-color)] after:transition-all after:duration-300 after:-translate-x-1/2`}
-                onClick={() => scrollToSection(item.id)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -210,7 +259,7 @@ function Navigation() {
       >
         <div className="flex justify-between items-start w-full">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.id}
               href={`#${item.id}`}
               className="bg-transparent border-none text-[var(--text-color)] py-1 px-0 m-0 flex flex-col items-center justify-center flex-1 relative"
@@ -219,7 +268,7 @@ function Navigation() {
               <div className="w-7 h-7 flex items-center justify-center rounded-md">
                 {item.icon}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </nav>
@@ -233,19 +282,23 @@ function Navigation() {
         >
           <div className="flex justify-between items-start w-full">
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
+                href={`#${item.id}`}
                 className={`bg-transparent border-none text-[var(--text-color)] cursor-pointer py-1 px-0 m-0 flex flex-col items-center justify-center flex-1 transition-all duration-300 touch-manipulation select-none relative
                   ${activeSection === item.id ? 'opacity-100' : 'opacity-70'} 
                   before:content-[''] before:absolute before:-top-[10px] before:-left-[5px] before:-right-[5px] before:-bottom-[10px] before:z-[-1]`}
-                onClick={() => scrollToSection(item.id)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.id);
+                }}
                 aria-label={item.label}
               >
                 <div className={`w-7 h-7 flex items-center justify-center rounded-md transition-all duration-300
                   ${activeSection === item.id ? 'bg-[var(--background-color)] border border-[var(--text-color)] shadow-[2px_2px_var(--box-shadow-color)] -translate-y-[3px]' : ''}`}>
                   {item.icon}
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
         </nav>

@@ -103,9 +103,9 @@ const Hero: React.FC = () => {
                 <h2 className="text-xl md:text-2xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
 
                 <span className="flex gap-6 justify-center">
-                    <a href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">
+                    <Link href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">
                         <Image src={emailIcon} alt="Email icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
-                    </a>
+                    </Link>
                     <Link href="https://github.com/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
                         <Image src={githubIcon} alt="Github icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
                     </Link>

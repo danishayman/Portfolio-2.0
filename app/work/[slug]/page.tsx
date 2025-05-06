@@ -138,14 +138,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
 
     const handleBackClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        router.push('/');
-        // Add a small delay to ensure navigation completes before scrolling
-        setTimeout(() => {
-            const workSection = document.getElementById('work');
-            if (workSection) {
-                workSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }, 100);
+        router.push('/#work');
     };
 
     useEffect(() => {

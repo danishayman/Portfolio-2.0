@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import Link from 'next/link';
 
 interface ProjectCardProps {
     src: string;
@@ -9,7 +10,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ src, link, h3, p }) => {
     return (
-        <a 
+        <Link 
             href={link} 
             target="_blank" 
             rel="noopener noreferrer"
@@ -22,7 +23,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ src, link, h3, p }) => {
             />
             <h3 className="my-[15px] mt-[15px] mb-[10px] min-h-[48px] w-[230px] flex items-center justify-center text-center text-balance text-xl md:text-2xl font-bold">{h3}</h3>
             <p className="m-0 pt-2 min-h-[24px] w-[230px] flex items-center justify-center text-[1rem] font-medium">{p}</p>
-        </a>
+        </Link>
     );
 };
 

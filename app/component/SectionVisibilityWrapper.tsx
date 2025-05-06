@@ -27,6 +27,11 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
       setShouldShow(window.location.hash !== '' || window.scrollY > (window.innerHeight * 0.5));
     }
   }, []);
+
+  // Handle hash change
+  const handleHashChange = useCallback(() => {
+    setShouldShow(true);
+  }, []);
   
   // Force show sections when navigation link is clicked
   const handleShowSections = useCallback(() => {
@@ -37,13 +42,17 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
     // Set mounted to true
     setMounted(true);
     
-    // Initial check
-    checkVisibility();
+    // Initial check - immediate check for hash on load
+    if (typeof window !== 'undefined' && window.location.hash) {
+      setShouldShow(true);
+    } else {
+      checkVisibility();
+    }
     
     // Set up event listeners
     window.addEventListener('resize', checkVisibility);
     window.addEventListener('scroll', checkVisibility);
-    window.addEventListener('hashchange', checkVisibility);
+    window.addEventListener('hashchange', handleHashChange);
     window.addEventListener('wheel', checkVisibility); // Add wheel event to detect mouse scrolling
     window.addEventListener('touchmove', checkVisibility); // Add touch events for mobile
     
@@ -54,12 +63,12 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
     return () => {
       window.removeEventListener('resize', checkVisibility);
       window.removeEventListener('scroll', checkVisibility);
-      window.removeEventListener('hashchange', checkVisibility);
+      window.removeEventListener('hashchange', handleHashChange);
       window.removeEventListener('wheel', checkVisibility);
       window.removeEventListener('touchmove', checkVisibility);
       window.removeEventListener('showSections', handleShowSections);
     };
-  }, [checkVisibility, handleShowSections]);
+  }, [checkVisibility, handleShowSections, handleHashChange]);
   
   // On server or before mounting, return all children visible
   if (!mounted) {
