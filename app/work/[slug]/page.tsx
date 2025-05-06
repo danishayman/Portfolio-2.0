@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from '../../common/ThemeContext';
-import { notFound } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import Footer from '../../component/Footer';
 
 // Import images
@@ -105,6 +105,19 @@ What started off as a simple cashier job turned into a legit skill set — hands
 export default function WorkDetailPage({ params }: { params: { slug: string } }) {
     const { theme } = useTheme();
     const [workData, setWorkData] = useState<any>(null);
+    const router = useRouter();
+
+    const handleBackClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        router.push('/');
+        // Add a small delay to ensure navigation completes before scrolling
+        setTimeout(() => {
+            const workSection = document.getElementById('work');
+            if (workSection) {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    };
 
     useEffect(() => {
         const work = workExperienceData.find(w => w.slug === params.slug);
@@ -127,12 +140,12 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
     return (
         <div className="min-h-screen bg-[var(--background-color)] text-[var(--text-color)]">
             <main className="max-w-5xl mx-auto px-6 py-12 md:py-24 md:px-12">
-                <Link href="/" className="inline-flex items-center mb-10 text-sm md:text-base font-medium px-4 py-2 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
+                <button onClick={handleBackClick} className="inline-flex items-center mb-10 text-sm md:text-base font-medium px-4 py-2 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
                     <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
                     Back to Portfolio
-                </Link>
+                </button>
 
                 <div className="flex flex-col mb-12">
                     <div className="mb-12">
@@ -144,24 +157,11 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
                             <p className="whitespace-pre-line text-base leading-relaxed">{workData.detailedDescription}</p>
                         </div>
 
-                        <div className="mb-8">
-                            <h3 className="text-xl font-medium mb-4">Skills & Technologies</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {workData.skills.map((skill: string, index: number) => (
-                                    <span
-                                        key={index}
-                                        className="px-3 py-1 text-sm rounded-full border-2 border-[var(--text-color)] bg-[var(--background-color)]"
-                                    >
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {workData.images.map((image: any, index: number) => (
-                            <div key={index} className="w-full aspect-video relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]">
+                            <div key={index} className="w-full aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]">
                                 <Image
                                     src={image}
                                     alt={`${workData.role} ${index + 1}`}
