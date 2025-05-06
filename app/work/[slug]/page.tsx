@@ -22,6 +22,7 @@ const teenfixImages = [
     '/teenfix/teenfix6.jpg',
     '/teenfix/teenfix7.jpg',
     '/teenfix/teenfix8.jpg',
+    '/teenfix/teenfix9.jpg',
 ];
 
 const dabossImages = [
@@ -176,7 +177,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
 
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {workData.images.map((image: any, index: number) => (
                             <div key={index} className="w-full aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]">
                                 <Image
@@ -184,7 +185,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
                                     alt={`${workData.role} ${index + 1}`}
                                     className="object-cover"
                                     fill
-                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
                                     priority={true}
                                 />
                             </div>
