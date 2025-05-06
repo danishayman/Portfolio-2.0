@@ -10,8 +10,17 @@ import Footer from '../../component/Footer';
 // Import images
 import gsc1 from '../../../public/gsc/gsc1.webp';
 import gsc2 from '../../../public/gsc/gsc2.webp';
-import teenfix1 from '../../../public/teenfix/teenfix1.webp';
-import teenfix2 from '../../../public/teenfix/teenfix2.webp';
+const teenfixImages = [
+    '/teenfix/teenfix1.webp',
+    '/teenfix/teenfix2.webp',
+    '/teenfix/teenfix3.jpg',
+    '/teenfix/teenfix4.jpg',
+    '/teenfix/teenfix5.jpg',
+    '/teenfix/teenfix6.jpg',
+    '/teenfix/teenfix7.jpg',
+    '/teenfix/teenfix8.jpg',
+];
+
 import daboss2 from '../../../public/daboss/daboss2.webp';
 import daboss1 from '../../../public/daboss/daboss1.webp';
 import inari1 from '../../../public/inari/inari1.webp';
@@ -96,7 +105,7 @@ Also spent a lot of time talking to customers — diagnosing their device proble
 Learned real fast that no two devices break the same way, and sometimes repairs meant getting creative. Got way better at handling delicate parts, troubleshooting weird problems, and keeping calm when things didn't go as planned.
 
 What started off as a simple cashier job turned into a legit skill set — hands-on technical work, customer communication, and problem-solving, all rolled into one.`,
-        images: [teenfix1, teenfix2],
+        images: teenfixImages,
         slug: "teenfix-studio",
         skills: ["Mobile Device Repair", "Customer Communication", "Inventory Management", "Technical Troubleshooting", "Quality Control"]
     }
