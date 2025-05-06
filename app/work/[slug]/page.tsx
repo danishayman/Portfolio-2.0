@@ -7,9 +7,12 @@ import { useTheme } from '../../common/ThemeContext';
 import { notFound, useRouter } from 'next/navigation';
 import Footer from '../../component/Footer';
 
-// Import images
-import gsc1 from '../../../public/gsc/gsc1.webp';
-import gsc2 from '../../../public/gsc/gsc2.webp';
+// Image path arrays
+const gscImages = [
+    '/gsc/gsc1.webp',
+    '/gsc/gsc2.webp',
+];
+
 const teenfixImages = [
     '/teenfix/teenfix1.webp',
     '/teenfix/teenfix2.webp',
@@ -21,10 +24,15 @@ const teenfixImages = [
     '/teenfix/teenfix8.jpg',
 ];
 
-import daboss2 from '../../../public/daboss/daboss2.webp';
-import daboss1 from '../../../public/daboss/daboss1.webp';
-import inari1 from '../../../public/inari/inari1.webp';
-import inari2 from '../../../public/inari/inari2.webp';
+const dabossImages = [
+    '/daboss/daboss1.webp',
+    '/daboss/daboss2.webp',
+];
+
+const inariImages = [
+    '/inari/inari1.webp',
+    '/inari/inari2.webp',
+];
 
 // Work experience data
 const workExperienceData = [
@@ -44,7 +52,7 @@ Turns out, knowing how to code isn't even half the battle — the real challenge
 So far, it's been way less about following a clear plan and way more about learning how to survive when there isn't one — easily one of the biggest jumps in both skill and mindset so far.
 
 `,
-        images: [inari1, inari2],
+        images: inariImages,
         slug: "inari-amertron-berhad",
         skills: ["ASP.NET", "C#", "SQL", "Git", "Agile"]
     },
@@ -64,7 +72,7 @@ Most days were spent building custom PCs, cleaning out dusty old laptops, instal
 Had to resign earlier than planned after landing the internship, but still walked away with a lot. Those two months built real instincts with hardware, made it easier to catch the little things that actually make machines tick, and added way more confidence when dealing with tech outside of just software.
 
 Short stint — but a seriously meaningful one.`,
-        images: [daboss1, daboss2],
+        images: dabossImages,
         slug: "pc-daboss",
         skills: ["Hardware Repair", "Software Troubleshooting", "Customer Service", "Windows OS", "Networking", "Data Recovery"]
     },
@@ -83,7 +91,7 @@ Short stint — but a seriously meaningful one.`,
 Though it started simply as a way to earn extra cash, it ended up being an invaluable learning experience. The role pushed communication skills to the next level, helped manage stressful situations, and forced an introvert to adapt and engage with all kinds of people. Explaining policies clearly, diffusing tense moments, and staying professional under pressure were skills learned on the job.
 
 Balancing late-night shifts with university work was tough, and by mid-semester, it became clear that it was too much to juggle. So, decided to resign during the break. Even though it was a challenging experience, working at GSC taught a lot about handling pressure, managing customer relationships, and working as part of a team. Beyond the tough moments, there were plenty of memories that made it all worth it — the dumb, hilarious things done with the team during opening and closing shifts, sneaking quick peeks at newly released movies before the crowds came in, and the sense of camaraderie that made even the long nights feel lighter. It was a memorable chapter, and despite the tough moments, it was an experience that helped me grow both professionally and personally.`,
-        images: [gsc1, gsc2],
+        images: gscImages,
         slug: "gsc",
         skills: ["Customer Service", "Team Collaboration", "Problem Solving", "Digital Projection Systems", "Safety Compliance"]
     },
