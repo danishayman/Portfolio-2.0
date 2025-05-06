@@ -5,8 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import heroImg from '../../public/assets/hero.webp';
-import lelouchImg from '../../public/assets/lelouch.webp';
+import heroImg from '../../public/assets/lelouch.webp';
+import backImg from '../../public/assets/back.png';
 import sun from '../../public/assets/sun.svg';
 import moon from '../../public/assets/moon.svg';
 import emailLight from '../../public/assets/email-light.svg';
@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
     useEffect(() => {
         // Preload images when the component mounts
         const imagesToPreload = [
-            heroImg.src, lelouchImg.src, sun.src, moon.src, 
+            heroImg.src, backImg.src, sun.src, moon.src, 
             emailLight.src, githubLight.src, linkedinLight.src,
             emailDark.src, githubDark.src, linkedinDark.src
         ];
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
                         </div>
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden rotate-y-180">
                             <Image
-                                src={lelouchImg}
+                                src={backImg}
                                 alt="Alternative profile picture"
                                 className="w-full h-full object-cover pointer-events-none"
                             />
