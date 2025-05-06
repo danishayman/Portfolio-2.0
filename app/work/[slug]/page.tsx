@@ -12,6 +12,9 @@ const gscImages = [
     '/gsc/gsc1.webp',
     '/gsc/gsc2.webp',
     '/gsc/gsc3.jpg',
+    '/gsc/gsc4.jpg',
+    '/gsc/gsc5.jpg',
+    '/gsc/gsc6.jpg',
 ];
 
 const teenfixImages = [
@@ -44,6 +47,10 @@ const dabossImages = [
 const inariImages = [
     '/inari/inari1.webp',
     '/inari/inari2.webp',
+    '/inari/inari3.jpg',
+    '/inari/inari4.jpg',
+    '/inari/inari5.jpg',
+    '/inari/inari6.jpg',
 ];
 
 // Work experience data
