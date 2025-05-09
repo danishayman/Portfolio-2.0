@@ -41,7 +41,7 @@ export default function Yapping() {
                 <Link 
                   href={`/yapping/${post.slug}`} 
                   key={post.slug}
-                  className="p-4 rounded-lg cursor-pointer transition-all duration-400 text-left border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[5px_5px_var(--box-shadow-color)] hover:translate-x-2.5 w-full max-w-xl mx-auto"
+                  className="p-4 rounded-lg cursor-pointer transition-all duration-400 text-left border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[5px_5px_var(--box-shadow-color)] hover:translate-x-2.5 w-full max-w-sm"
                 >
                   <h3 className="text-xl md:text-lg font-semibold">{post.title}</h3>
                   <p className="text-xs md:text-sm opacity-80">{post.date}</p>
