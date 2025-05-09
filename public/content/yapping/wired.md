@@ -1,7 +1,6 @@
 ---
-title: "Circuit Diary"
+title: "Wired"
 date: "9 May 2025"
-preview: "Saja test"
 ---
 
 Electronics has always just been a casual hobby — not some deep passion, just something fun to mess around with. It started with taking things apart. Old phones, dead speakers, broken gadgets — anything lying around that wasn’t being used anymore. Sometimes it was just curiosity, wanting to see what was inside. Other times it was about figuring out why something stopped working.

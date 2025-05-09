@@ -183,7 +183,16 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
                         <p className="text-sm md:text-base opacity-70 mb-8">{workData.duration}</p>
 
                         <div className="prose prose-lg dark:prose-invert max-w-none mb-8">
-                            <p className="whitespace-pre-line text-base leading-relaxed">{workData.detailedDescription}</p>
+                            <p className="whitespace-pre-line mb-8" 
+                               style={{
+                                 color: 'currentColor',
+                                 opacity: 1,
+                                 fontWeight: 500,
+                                 textShadow: 'none',
+                                 filter: 'none'
+                               }}>
+                                {workData.detailedDescription}
+                            </p>
                         </div>
 
                     </div>
