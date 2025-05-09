@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Home, Briefcase, Laptop, GraduationCap, Code, Mail, MessageSquare } from 'lucide-react';
+import { Home, Briefcase, Laptop, GraduationCap, Code, Mail, MessageSquareMore } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTheme } from '../common/ThemeContext';
@@ -19,7 +19,7 @@ function Navigation() {
     { id: 'skills', label: 'SKILLS', mobileLabel: 'SKILLS', icon: <Code size={18} /> },
     { id: 'projects', label: 'PROJECTS', mobileLabel: 'PROJ', icon: <Laptop size={18} /> },
     { id: 'work', label: 'EXPERIENCE', mobileLabel: 'WORK', icon: <Briefcase size={18} /> },
-    { id: 'yapping', label: 'YAPPING', mobileLabel: 'BLOG', icon: <MessageSquare size={18} /> },
+    { id: 'yapping', label: 'YAPPING', mobileLabel: 'BLOG', icon: <MessageSquareMore size={18} /> },
   ];
 
   // Mark component as mounted on initial render
