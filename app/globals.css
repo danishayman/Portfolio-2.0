@@ -367,3 +367,43 @@ h1, h2, button {
     padding-bottom: 2.5rem;
   }
 }
+
+/* Blog content styling */
+.markdown-content {
+  color: #000000;
+}
+
+[data-theme='dark'] .markdown-content {
+  color: #ffffff;
+}
+
+.markdown-content p {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  opacity: 1 !important;
+  color: inherit;
+}
+
+/* Blog title styling */
+.prose h1 {
+  color: #000 !important;
+}
+
+body[data-theme='dark'] .prose h1 {
+  color: #fff !important;
+}
+
+/* Additional overrides for blurry text */
+.prose p {
+  color: #000 !important;
+  opacity: 1 !important;
+  font-weight: 500;
+  text-shadow: none;
+  filter: none;
+}
+
+body[data-theme='dark'] .prose p {
+  color: #fff !important;
+}

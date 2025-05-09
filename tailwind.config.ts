@@ -51,9 +51,25 @@ const config: Config = {
                 fadeIn: 'fadeIn 0.5s ease-out',
                 fadeInUp: 'fadeInUp 0.6s ease forwards',
             },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        'p': {
+                            marginTop: '1.5rem',
+                            marginBottom: '1.5rem',
+                            fontWeight: '400',
+                            letterSpacing: '0.01em',
+                            lineHeight: '1.8',
+                            color: '#000000',
+                        },
+                    },
+                },
+            },
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
 };
 
 export default config;

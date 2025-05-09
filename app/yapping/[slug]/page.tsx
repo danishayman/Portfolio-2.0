@@ -59,12 +59,30 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           Back to Portfolio
         </button>
 
-        <article className="prose prose-lg dark:prose-invert max-w-none">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">{post.title}</h1>
-          <p className="text-sm opacity-70 mb-8">{post.date}</p>
+        <article className="prose prose-lg dark:prose-invert max-w-none text-black dark:text-white">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 text-black dark:text-white">{post.title}</h1>
+          <p className="text-sm opacity-70 mb-8 text-black dark:text-white">{post.date}</p>
           
           <div className="markdown-content">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <ReactMarkdown components={{
+              p: ({node, children, ...props}) => {
+                return (
+                  <p 
+                    className="mb-8" 
+                    style={{
+                      color: 'currentColor',
+                      opacity: 1,
+                      fontWeight: 500,
+                      textShadow: 'none',
+                      filter: 'none'
+                    }} 
+                    {...props}
+                  >
+                    {children}
+                  </p>
+                )
+              }
+            }}>{post.content}</ReactMarkdown>
           </div>
         </article>
       </main>
