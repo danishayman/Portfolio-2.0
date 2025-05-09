@@ -6,11 +6,14 @@ import { notFound, useRouter } from 'next/navigation';
 import Footer from '../../component/Footer';
 import { BlogPost } from '../types';
 import ReactMarkdown from 'react-markdown';
+import Image from 'next/image';
+import { useTheme } from '../../common/ThemeContext';
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const [post, setPost] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const { theme } = useTheme();
 
   useEffect(() => {
     // Fetch the blog post data from the API
@@ -84,6 +87,41 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               }
             }}>{post.content}</ReactMarkdown>
           </div>
+          
+          {params.slug === 'wired' && (
+            <div className="mt-12 mb-8">
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
+                {[1, 2, 3, 4].map((num) => (
+                  <div 
+                    key={num} 
+                    className={`w-full aspect-square relative rounded-lg border-0 overflow-hidden ${
+                      theme === 'dark' 
+                        ? 'shadow-[5px_5px_rgba(255,255,255,0.4)]' 
+                        : 'shadow-[5px_5px_rgba(0,0,0,0.5)]'
+                    }`}
+                  >
+                    <Image
+                      src={`/wired/wired${num}.jpg`}
+                      alt={`Wired Project Image ${num}`}
+                      width={500}
+                      height={500}
+                      className="w-full h-full object-cover block"
+                      style={{ 
+                        display: 'block', 
+                        margin: 0, 
+                        padding: 0,
+                        borderWidth: '2px',
+                        borderStyle: 'solid',
+                        borderColor: theme === 'dark' ? 'white' : '#222',
+                        borderRadius: '0.5rem'
+                      }}
+                      priority={num <= 2}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </article>
       </main>
 
