@@ -20,7 +20,6 @@ function Navigation() {
     { id: 'projects', label: 'PROJECTS', mobileLabel: 'PROJ', icon: <Laptop size={18} /> },
     { id: 'work', label: 'EXPERIENCE', mobileLabel: 'WORK', icon: <Briefcase size={18} /> },
     { id: 'yapping', label: 'YAPPING', mobileLabel: 'BLOG', icon: <MessageSquare size={18} /> },
-    { id: 'contact', label: 'CONTACT', mobileLabel: 'CONTACT', icon: <Mail size={18} /> },
   ];
 
   // Mark component as mounted on initial render

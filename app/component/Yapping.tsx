@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { MessageSquare } from 'lucide-react';
 import { BlogPost } from '../yapping/types';
 
 export default function Yapping() {
@@ -26,41 +25,31 @@ export default function Yapping() {
   return (
     <section id="yapping" className="min-h-screen py-20 relative">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="section-header mb-12 flex items-center">
-          <MessageSquare className="mr-2" size={24} />
-          <h1 className="text-3xl font-bold">mainly yapping</h1>
+        <div className="section-header">
+          <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">YAPPING</h1>
         </div>
 
-        {isLoading ? (
-          <div className="flex justify-center py-12">
-            <p>Loading posts...</p>
-          </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 gap-8">
+        <div className="mt-8">
+          
+          {isLoading ? (
+            <div className="py-4">
+              <p>Loading posts...</p>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2">
               {posts.slice(0, 3).map((post) => (
                 <Link 
                   href={`/yapping/${post.slug}`} 
                   key={post.slug} 
-                  className="block p-6 border-2 border-[var(--text-color)] rounded-lg shadow-[5px_5px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm"
+                  className="p-4 rounded-lg cursor-pointer transition-all duration-400 text-left border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[5px_5px_var(--box-shadow-color)] hover:translate-x-2.5"
                 >
-                  <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-                  <p className="text-sm opacity-70 mb-3">{post.date}</p>
-                  <p className="text-base">{post.preview}</p>
+                  <h3 className="text-xl md:text-lg font-semibold">{post.title}</h3>
+                  <p className="text-xs md:text-sm opacity-80">{post.date}</p>
                 </Link>
               ))}
             </div>
-
-            <div className="mt-10 text-center">
-              <Link 
-                href="/yapping" 
-                className="inline-flex items-center px-6 py-3 border-2 border-[var(--text-color)] rounded-lg shadow-[5px_5px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm font-medium"
-              >
-                View All Posts
-              </Link>
-            </div>
-          </>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );

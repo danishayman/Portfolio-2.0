@@ -24,7 +24,6 @@ export default function Home() {
         <Projects />
         <Work />
         <Yapping />
-        <Contact />
         <Footer />
       </SectionVisibilityWrapper>
     </main>
