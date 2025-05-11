@@ -110,7 +110,7 @@ const Work = () => {
                             <h3 className="text-base md:text-lg font-medium">
                                 {workExperience[activeTab].role}
                             </h3>
-                            <p className="text-xs md:text-sm text-gray-500">{workExperience[activeTab].company}</p>
+                            <p className="text-xs md:text-sm text-[var(--text-color)] opacity-70">{workExperience[activeTab].company}</p>
                         </div>
                         <div className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}>
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,13 +125,13 @@ const Work = () => {
                                 index !== activeTab && (
                                     <div
                                         key={index}
-                                        className="px-5 py-3 cursor-pointer transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800 border-b border-[var(--border-color)] last:border-b-0"
+                                        className="px-5 py-3 cursor-pointer transition-colors duration-300 hover:bg-[var(--background-color)] hover:opacity-80 border-b border-[var(--border-color)] last:border-b-0"
                                         onClick={() => handleTabChange(index)}
                                     >
                                         <h3 className="text-base md:text-lg font-medium">
                                             {work.role}
                                         </h3>
-                                        <p className="text-xs md:text-sm text-gray-500">{work.company}</p>
+                                        <p className="text-xs md:text-sm text-[var(--text-color)] opacity-70">{work.company}</p>
                                     </div>
                                 )
                             ))}
