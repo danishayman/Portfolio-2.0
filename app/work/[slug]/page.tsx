@@ -53,6 +53,9 @@ const inariImages = [
     '/inari/inari6.jpg',
 ];
 
+// Create a flat array of all images for preloading
+const allWorkImages = [...gscImages, ...teenfixImages, ...dabossImages, ...inariImages];
+
 // Work experience data
 const workExperienceData = [
     {
@@ -206,13 +209,28 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
                                     className="object-cover"
                                     fill
                                     sizes="(max-width: 768px) 100vw, 33vw"
-                                    priority={true}
+                                    priority={index < 6} // Prioritize first 6 images
+                                    loading="eager"
                                 />
                             </div>
                         ))}
                     </div>
                 </div>
             </main>
+
+            {/* Hidden preload section for all possible images */}
+            <div className="hidden">
+                {allWorkImages.map((image, index) => (
+                    <Image 
+                        key={`preload-${index}`}
+                        src={image}
+                        alt="Preload image"
+                        width={1}
+                        height={1}
+                        priority={true}
+                    />
+                ))}
+            </div>
 
             <Footer />
         </div>
