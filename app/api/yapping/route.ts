@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getBlogPosts, getBlogPostBySlug } from '../../utils/mdUtils';
+import { getBlogPosts, getBlogPostBySlug } from '../../yapping/data';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

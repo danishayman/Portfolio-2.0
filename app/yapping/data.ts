@@ -2,9 +2,11 @@ import { BlogPost } from './types';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { cache } from 'react';
 
 // Function to get all blog posts from markdown files
-export function getBlogPosts(): BlogPost[] {
+// Using react cache to memoize the result for server components
+export const getBlogPosts = cache((): BlogPost[] => {
   // Path to the markdown files
   const contentDirectory = path.join(process.cwd(), 'public/content/yapping');
   
@@ -36,6 +38,12 @@ export function getBlogPosts(): BlogPost[] {
   
   // Sort posts by date (newest first)
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+});
+
+// Get a single blog post by slug
+export function getBlogPostBySlug(slug: string): BlogPost | undefined {
+  const posts = getBlogPosts();
+  return posts.find(post => post.slug === slug);
 }
 
 // Client-side cache of blog posts
