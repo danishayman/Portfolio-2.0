@@ -18,7 +18,6 @@ import inari2 from '../../public/inari/inari2.webp';
 const Work = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [imagesLoaded, setImagesLoaded] = useState<Record<string, boolean>>({});
-    const [allImagesLoaded, setAllImagesLoaded] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     
@@ -75,44 +74,34 @@ const Work = () => {
         },
     ];
 
-    // Image preloading
+    // Preload all images on component mount
     useEffect(() => {
-        const loadImages = async () => {
-            // Start loading all images immediately
-            const allImagePromises = workExperience.flatMap((work, workIndex) => 
-                work.images.map(imageSrc => {
-                    return new Promise<void>((resolve) => {
-                        if (typeof window !== 'undefined') {
-                            const img = new window.Image();
-                            img.onload = () => {
-                                // Mark individual image as loaded
-                                setImagesLoaded(prev => ({
-                                    ...prev,
-                                    [`${workIndex}-${imageSrc.src}`]: true
-                                }));
-                                resolve();
-                            };
-                            img.onerror = () => resolve(); // Still resolve even on error
-                            img.src = imageSrc.src;
-                        } else {
-                            resolve();
-                        }
-                    });
-                })
-            );
-
-            // Wait for all images to load
-            await Promise.all(allImagePromises);
-            setAllImagesLoaded(true);
-        };
-
-        loadImages();
+        // Preload all images at once to have them in browser cache
+        workExperience.forEach((work, workIndex) => {
+            work.images.forEach((imageSrc, imageIndex) => {
+                const img = new window.Image();
+                img.onload = () => {
+                    setImagesLoaded(prev => ({
+                        ...prev,
+                        [`${workIndex}-${imageIndex}`]: true
+                    }));
+                };
+                img.src = imageSrc.src;
+            });
+        });
     }, []);
 
-    // Handle tab change
+    // Handle tab change - prefetch next tab's images
     const handleTabChange = (index: number) => {
         setActiveTab(index);
         setDropdownOpen(false);
+    };
+
+    // Check if current tab's images are loaded
+    const areCurrentTabImagesLoaded = (tabIndex: number) => {
+        return workExperience[tabIndex].images.every((_, imageIndex) => 
+            imagesLoaded[`${tabIndex}-${imageIndex}`]
+        );
     };
 
     // Close dropdown when clicking outside
@@ -185,6 +174,16 @@ const Work = () => {
                                     ? 'border-[var(--text-color)] bg-[var(--background-color)] shadow-[5px_5px_var(--box-shadow-color)] translate-x-2.5' 
                                     : 'border-transparent hover:border-[var(--border-color)] hover:bg-[var(--background-color)] hover:translate-x-2.5'}`}
                             onClick={() => handleTabChange(index)}
+                            onMouseEnter={() => {
+                                // Prefetch images on hover
+                                work.images.forEach((img, imgIndex) => {
+                                    const imageKey = `${index}-${imgIndex}`;
+                                    if (!imagesLoaded[imageKey]) {
+                                        const preloadImg = new window.Image();
+                                        preloadImg.src = img.src;
+                                    }
+                                });
+                            }}
                         >
                             <h3 className="text-xl md:text-lg font-semibold">{work.role}</h3>
                             <p className="text-xs md:text-sm opacity-80">{work.company}</p>
@@ -200,24 +199,27 @@ const Work = () => {
                     </div>
                     
                     <div className="grid grid-cols-2 gap-3 md:gap-4 mb-2 md:mb-8">
-                        {workExperience[activeTab].images.map((image, index) => (
-                            <div key={index} className="aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden">
-                                {!allImagesLoaded ? (
-                                    <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 animate-pulse">
-                                        <p className="text-xs md:text-sm opacity-70">Loading...</p>
-                                    </div>
-                                ) : (
-                                    <Image
-                                        src={workExperience[activeTab].images[index]}
-                                        alt={`${workExperience[activeTab].role} ${index + 1}`}
-                                        className="object-cover transition-all duration-400"
-                                        fill
-                                        sizes="(max-width: 800px) 45vw, 300px"
-                                        priority={true}
-                                    />
-                                )}
-                            </div>
-                        ))}
+                        {workExperience[activeTab].images.map((image, index) => {
+                            const imageKey = `${activeTab}-${index}`;
+                            return (
+                                <div key={index} className="aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden">
+                                    {!imagesLoaded[imageKey] ? (
+                                        <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 animate-pulse">
+                                            <p className="text-xs md:text-sm opacity-70">Loading...</p>
+                                        </div>
+                                    ) : (
+                                        <Image
+                                            src={image}
+                                            alt={`${workExperience[activeTab].role} ${index + 1}`}
+                                            className="object-cover transition-all duration-400"
+                                            fill
+                                            sizes="(max-width: 800px) 45vw, 300px"
+                                            priority={true}
+                                        />
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
                     
                     <ul className="font-mono text-sm md:text-base flex flex-col gap-4 mt-4">
