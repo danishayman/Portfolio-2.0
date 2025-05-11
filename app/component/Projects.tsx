@@ -69,7 +69,7 @@ const Projects = () => {
 
                 <ProjectCard
                     src="/assets/tensorflow.webp"
-                    link="https://github.com/danishayman/Low-Level-Tensorflow/blob/main/CPC251_Assignment1_GroupNo.ipynb"
+                    link="https://github.com/danishayman/Low-Level-Tensorflow/blob/main/Low_Level_TF.ipynb"
                     h3="Low Level Tensorflow"
                     p="Neural Network Model"
                 />
@@ -90,7 +90,7 @@ const Projects = () => {
 
                 <ProjectCard
                     src="/assets/cervical.webp"
-                    link="https://github.com/danishayman/Cervical-Cancer-Predictive-Model/blob/main/Project%20Cancer.ipynb"
+                    link="https://github.com/danishayman/Cervical-Cancer-Predictive-Model"
                     h3="Cervical Cancer Prediction"
                     p="Machine Learning Model"
                 />
