@@ -32,7 +32,7 @@ export default function Yapping() {
         <div className="mt-8">
           
           {isLoading ? (
-            <div className="py-4">
+            <div className="py-4 text-center">
               <p>Loading posts...</p>
             </div>
           ) : (

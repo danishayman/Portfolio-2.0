@@ -1,5 +1,5 @@
 ---
-title: "Wired"
+title: "Ohm Sweet Ohm"
 date: "9 May 2025"
 ---
 
