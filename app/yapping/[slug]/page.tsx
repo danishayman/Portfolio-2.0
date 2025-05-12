@@ -65,8 +65,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                       style={{ 
                         display: 'block', 
                         margin: 0, 
-                        padding: 0,
-                        borderRadius: '0.5rem'
+                        padding: 0
                       }}
                       priority={num <= 2}
                     />
@@ -93,8 +92,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                       style={{ 
                         display: 'block', 
                         margin: 0, 
-                        padding: 0,
-                        borderRadius: '0.5rem'
+                        padding: 0
                       }}
                       priority={num <= 2}
                     />
