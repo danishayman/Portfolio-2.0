@@ -141,6 +141,14 @@ const Skills: React.FC = () => {
                     </div>
                 ))}
             </div>
+
+            <style jsx>{`
+                .skills-list:hover > div:not(:hover) {
+                    opacity: 1 !important;
+                    filter: none !important;
+                    transform: none !important;
+                }
+            `}</style>
         </section>
     );
 };
