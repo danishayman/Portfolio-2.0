@@ -93,7 +93,7 @@ const Skills: React.FC = () => {
                 ].map((skill, index) => (
                     <div 
                         key={index} 
-                        className="hover:bg-[var(--background-color)] hover:-translate-y-[2px] hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] transition-all duration-400 rounded-lg"
+                        className="border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[4px_4px_var(--box-shadow-color)] hover:translate-x-1 transition-all duration-400 rounded-lg"
                     >
                         <SkillList src={skill.icon} skill={skill.name} />
                     </div>
@@ -115,7 +115,7 @@ const Skills: React.FC = () => {
                 ].map((skill, index) => (
                     <div 
                         key={index} 
-                        className="hover:bg-[var(--background-color)] hover:-translate-y-[2px] hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] transition-all duration-400 rounded-lg"
+                        className="border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[4px_4px_var(--box-shadow-color)] hover:translate-x-1 transition-all duration-400 rounded-lg"
                     >
                         <SkillList src={skill.icon} skill={skill.name} />
                     </div>
@@ -135,7 +135,7 @@ const Skills: React.FC = () => {
                 ].map((skill, index) => (
                     <div 
                         key={index} 
-                        className="hover:bg-[var(--background-color)] hover:-translate-y-[2px] hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] transition-all duration-400 rounded-lg"
+                        className="border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[4px_4px_var(--box-shadow-color)] hover:translate-x-1 transition-all duration-400 rounded-lg"
                     >
                         <SkillList src={skill.icon} skill={skill.name} />
                     </div>
