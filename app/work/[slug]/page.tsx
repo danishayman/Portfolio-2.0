@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, use } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from '../../common/ThemeContext';
@@ -151,6 +151,8 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
     const [isDragging, setIsDragging] = useState(false);
     const [dragStartX, setDragStartX] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
+    const unwrappedParams = use(params as any) as { slug: string };
+    const slug = unwrappedParams.slug;
 
     const handleBackClick = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -158,14 +160,14 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
     };
 
     useEffect(() => {
-        const work = workExperienceData.find(w => w.slug === params.slug);
+        const work = workExperienceData.find(w => w.slug === slug);
 
         if (work) {
             setWorkData(work);
         } else {
             notFound();
         }
-    }, [params.slug]);
+    }, [slug]);
 
     const nextImage = () => {
         if (!workData) return;
