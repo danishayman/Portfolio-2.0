@@ -15,7 +15,7 @@
     "fs-extra": "^11.3.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.487.0",
-    "next": "^14.0.0",
+    "next": "^15.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",

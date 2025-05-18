@@ -44,7 +44,7 @@ export default function RootLayout({
       <meta name="apple-mobile-web-app-title" content="<Zag/>" />
         <meta name="google-site-verification" content="bZyz4TL7ElDmE33G3CMvYh_GIj6Vah461AEhU8Uz224" />
       </head>
-      <body className={robotoMono.className}>
+      <body className={`${robotoMono.variable}`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>
