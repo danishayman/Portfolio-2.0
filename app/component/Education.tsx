@@ -45,7 +45,7 @@ const Education: React.FC = () => {
                     >
                         <div className="education-dot absolute left-[-5px] top-0 w-3 h-3 rounded-full bg-current transition-all duration-400 md:left-[calc(1rem-5px)] xl:left-[calc(2rem-5px)]"></div>
 
-                        <div className="education-content flex flex-col gap-1 md:gap-2 p-3 md:p-4 rounded-lg transition-all duration-400">
+                        <div className="education-content flex flex-col gap-1 md:gap-2 p-3 md:p-4 rounded-lg border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[5px_5px_var(--box-shadow-color)] transition-all duration-400">
                             <h3 className="text-xl md:text-2xl font-bold transition-transform duration-400">
                                 {edu.institution}
                             </h3>
@@ -77,6 +77,13 @@ const Education: React.FC = () => {
                     </div>
                 ))}
             </div>
+            
+            <style jsx>{`
+                .education-timeline > div:hover .education-content {
+                    transform: translateX(5px);
+                    box-shadow: 5px 5px var(--box-shadow-color);
+                }
+            `}</style>
         </section>
     );
 };
