@@ -4,9 +4,14 @@ import Footer from '../../component/Footer';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { getBlogPostBySlug } from '../data';
+import { use } from 'react';
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getBlogPostBySlug(params.slug);
+  // Unwrap the params to correctly handle the dynamic parameter
+  const unwrappedParams = use(params as any) as { slug: string };
+  const slug = unwrappedParams.slug;
+  
+  const post = getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -47,35 +52,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               }
             }}>{post.content}</ReactMarkdown>
           </div>
-          
-          {params.slug === 'wired' && (
-            <div className="mt-12 mb-8">
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
-                {[1, 2, 3, 4].map((num) => (
-                  <div 
-                    key={num} 
-                    className="w-full aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]"
-                  >
-                    <Image
-                      src={`/wired/wired${num}.jpg`}
-                      alt={`Wired Project Image ${num}`}
-                      width={500}
-                      height={500}
-                      className="w-full h-full object-cover block"
-                      style={{ 
-                        display: 'block', 
-                        margin: 0, 
-                        padding: 0
-                      }}
-                      priority={num <= 2}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-          
-          {params.slug === 'ohm-sweet-ohm' && (
+          {slug === 'ohm-sweet-ohm' && (
             <div className="mt-12 mb-8">
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 {[1, 2, 3, 4].map((num) => (
