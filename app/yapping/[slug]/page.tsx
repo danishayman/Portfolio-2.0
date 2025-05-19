@@ -7,13 +7,11 @@ import { getBlogPostBySlug } from '../data';
 import { use } from 'react';
 
 interface BlogPostParams {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }> | { slug: string };
 }
 
 export default function BlogPostPage({ params }: BlogPostParams) {
-  const slug = params.slug;
+  const slug = use(params as Promise<{ slug: string }>).slug;
   
   const post = getBlogPostBySlug(slug);
 

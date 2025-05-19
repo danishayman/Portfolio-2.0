@@ -141,13 +141,12 @@ What started off as a simple cashier job turned into a legit skill set — hands
     }
 ];
 
-interface WorkDetailParams {
-  params: {
-    slug: string;
-  };
-}
-
-export default function WorkDetailPage({ params }: WorkDetailParams) {
+// For client components in Next.js 15, we need to properly type the parameters
+export default function WorkDetailPage({ 
+  params 
+}: {
+  params: Promise<{ slug: string }> | { slug: string }
+}) {
     const { theme } = useTheme();
     const [workData, setWorkData] = useState<any>(null);
     const router = useRouter();
@@ -157,7 +156,7 @@ export default function WorkDetailPage({ params }: WorkDetailParams) {
     const [isDragging, setIsDragging] = useState(false);
     const [dragStartX, setDragStartX] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
-    const slug = params.slug;
+    const slug = use(params as Promise<{ slug: string }>).slug;
 
     const handleBackClick = (e: React.MouseEvent) => {
         e.preventDefault();
