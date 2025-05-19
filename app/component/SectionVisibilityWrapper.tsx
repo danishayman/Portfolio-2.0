@@ -12,7 +12,7 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
   const [mounted, setMounted] = useState(false);
   
   const checkVisibility = useCallback(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || !mounted) return;
     
     // Mobile: Always show
     // Desktop: Only show when a section is specifically navigated to
@@ -26,7 +26,7 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
       // Use a smaller threshold to make sure the user can start scrolling sooner
       setShouldShow(window.location.hash !== '' || window.scrollY > (window.innerHeight * 0.5));
     }
-  }, []);
+  }, [mounted]);
 
   // Handle hash change
   const handleHashChange = useCallback(() => {
@@ -42,31 +42,39 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
     // Set mounted to true
     setMounted(true);
     
+    // Wait for component to be mounted before checking visibility
+    if (typeof window === 'undefined') return;
+    
     // Initial check - immediate check for hash on load
-    if (typeof window !== 'undefined' && window.location.hash) {
+    if (window.location.hash) {
       setShouldShow(true);
     } else {
       checkVisibility();
     }
     
     // Set up event listeners
-    window.addEventListener('resize', checkVisibility);
-    window.addEventListener('scroll', checkVisibility);
-    window.addEventListener('hashchange', handleHashChange);
-    window.addEventListener('wheel', checkVisibility); // Add wheel event to detect mouse scrolling
-    window.addEventListener('touchmove', checkVisibility); // Add touch events for mobile
+    const addEventListeners = () => {
+      window.addEventListener('resize', checkVisibility);
+      window.addEventListener('scroll', checkVisibility);
+      window.addEventListener('hashchange', handleHashChange);
+      window.addEventListener('wheel', checkVisibility);
+      window.addEventListener('touchmove', checkVisibility);
+      window.addEventListener('showSections', handleShowSections);
+    };
     
-    // Listen for the custom event from navigation
-    window.addEventListener('showSections', handleShowSections);
+    // Add event listeners safely
+    addEventListeners();
     
     // Clean up
     return () => {
-      window.removeEventListener('resize', checkVisibility);
-      window.removeEventListener('scroll', checkVisibility);
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('wheel', checkVisibility);
-      window.removeEventListener('touchmove', checkVisibility);
-      window.removeEventListener('showSections', handleShowSections);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', checkVisibility);
+        window.removeEventListener('scroll', checkVisibility);
+        window.removeEventListener('hashchange', handleHashChange);
+        window.removeEventListener('wheel', checkVisibility);
+        window.removeEventListener('touchmove', checkVisibility);
+        window.removeEventListener('showSections', handleShowSections);
+      }
     };
   }, [checkVisibility, handleShowSections, handleHashChange]);
   
@@ -81,7 +89,6 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
       style={{ 
         opacity: shouldShow ? 1 : 0,
         transition: 'opacity 500ms',
-        // Use the precomputed isMobile state instead of accessing window directly
         visibility: shouldShow || isMobile ? 'visible' : 'hidden',
         position: 'relative'
       }}

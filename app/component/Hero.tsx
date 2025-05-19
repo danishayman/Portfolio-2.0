@@ -19,6 +19,7 @@ import linkedinDark from '../../public/assets/linkedin-dark.svg';
 const Hero: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
     const [isFlippable, setIsFlippable] = useState(true);
+    const [mounted, setMounted] = useState(false);
 
     // Determine which icons to use based on theme
     const themeIcon = theme === 'light' ? sun : moon;
@@ -28,6 +29,11 @@ const Hero: React.FC = () => {
 
     // Preload images
     useEffect(() => {
+        setMounted(true);
+        
+        // Only run client-side
+        if (typeof window === 'undefined') return;
+        
         // Preload images when the component mounts
         const imagesToPreload = [
             heroImg.src, backImg.src, sun.src, moon.src, 
@@ -36,8 +42,9 @@ const Hero: React.FC = () => {
         ];
         
         imagesToPreload.forEach((imgSrc) => {
-            const image = new window.Image();
-            image.src = imgSrc;
+            // Use the global window.Image constructor instead of Image
+            const imgElement = new window.Image();
+            imgElement.src = imgSrc;
         });
     }, []);
 

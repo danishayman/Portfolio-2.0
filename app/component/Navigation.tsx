@@ -24,6 +24,8 @@ function Navigation() {
 
   // Mark component as mounted on initial render
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     setMounted(true);
     
     // Remove the no-js fallback nav when JS loads
@@ -183,6 +185,8 @@ function Navigation() {
 
   // Setup event listeners and observers
   useEffect(() => {
+    if (typeof window === 'undefined' || !mounted) return;
+    
     const passiveOptions = { passive: true };
     
     // Use IntersectionObserver for better performance
@@ -225,7 +229,7 @@ function Navigation() {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, [handleScroll, navItems, updateActiveSection, scrollToSection]);
+  }, [handleScroll, navItems, updateActiveSection, scrollToSection, mounted]);
 
   return (
     <>

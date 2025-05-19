@@ -19,6 +19,31 @@ export const useTheme = (): ThemeContextType => {
     return context;
 };
 
+// Helper function to safely check if we can use localStorage
+const isBrowser = () => typeof window !== 'undefined';
+
+// Helper function to safely access localStorage
+const getLocalStorage = (key: string, defaultValue: any = null) => {
+    if (!isBrowser()) return defaultValue;
+    try {
+        const value = localStorage.getItem(key);
+        return value !== null ? value : defaultValue;
+    } catch (error) {
+        console.error('Error accessing localStorage:', error);
+        return defaultValue;
+    }
+};
+
+// Helper function to safely set localStorage
+const setLocalStorage = (key: string, value: string) => {
+    if (!isBrowser()) return;
+    try {
+        localStorage.setItem(key, value);
+    } catch (error) {
+        console.error('Error setting localStorage:', error);
+    }
+};
+
 interface ThemeProviderProps {
     children: ReactNode;
 }
@@ -30,14 +55,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     useEffect(() => {
         setMounted(true);
         // Handle client-side only
-        const savedTheme = localStorage.getItem('theme') as Theme | null;
+        const savedTheme = getLocalStorage('theme') as Theme | null;
         setTheme(savedTheme || 'light');
     }, []);
 
     useEffect(() => {
         if (mounted) {
             document.body.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
+            setLocalStorage('theme', theme);
         }
     }, [theme, mounted]);
 
