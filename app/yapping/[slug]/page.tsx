@@ -6,10 +6,14 @@ import Image from 'next/image';
 import { getBlogPostBySlug } from '../data';
 import { use } from 'react';
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  // Unwrap the params to correctly handle the dynamic parameter
-  const unwrappedParams = use(params as any) as { slug: string };
-  const slug = unwrappedParams.slug;
+interface BlogPostParams {
+  params: {
+    slug: string;
+  };
+}
+
+export default function BlogPostPage({ params }: BlogPostParams) {
+  const slug = params.slug;
   
   const post = getBlogPostBySlug(slug);
 
