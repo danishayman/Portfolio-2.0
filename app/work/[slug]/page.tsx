@@ -145,7 +145,7 @@ What started off as a simple cashier job turned into a legit skill set — hands
 export default function WorkDetailPage({ 
   params 
 }: {
-  params: Promise<{ slug: string }> | { slug: string }
+  params: Promise<{ slug: string }> 
 }) {
     const { theme } = useTheme();
     const [workData, setWorkData] = useState<any>(null);
@@ -156,7 +156,7 @@ export default function WorkDetailPage({
     const [isDragging, setIsDragging] = useState(false);
     const [dragStartX, setDragStartX] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
-    const slug = use(params as Promise<{ slug: string }>).slug;
+    const slug = use(params).slug;
 
     const handleBackClick = (e: React.MouseEvent) => {
         e.preventDefault();
