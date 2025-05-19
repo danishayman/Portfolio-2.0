@@ -151,8 +151,7 @@ export default function WorkDetailPage({ params }: { params: { slug: string } })
     const [isDragging, setIsDragging] = useState(false);
     const [dragStartX, setDragStartX] = useState(0);
     const carouselRef = useRef<HTMLDivElement>(null);
-    const unwrappedParams = use(params as any) as { slug: string };
-    const slug = unwrappedParams.slug;
+    const slug = params.slug;
 
     const handleBackClick = (e: React.MouseEvent) => {
         e.preventDefault();
