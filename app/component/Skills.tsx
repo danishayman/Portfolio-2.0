@@ -130,7 +130,6 @@ const Skills: React.FC = () => {
                     { icon: icons.tensorflow, name: "TensorFlow" },
                     { icon: icons.numpy, name: "NumPy" },
                     { icon: icons.git, name: "Git" },
-                    { icon: icons.npm, name: "npm" },
                     { icon: icons.scikitLearn, name: "Scikit-learn" }
                 ].map((skill, index) => (
                     <div 
