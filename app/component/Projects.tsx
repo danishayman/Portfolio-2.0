@@ -11,7 +11,17 @@ const Projects = () => {
                 <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">PROJECTS</h1>
             </div>
 
+
             <div className="flex flex-col items-center gap-4 pt-4 md:pt-5 lg:pt-8 md:flex-row md:flex-wrap md:justify-center md:gap-6 lg:gap-8">
+                
+                <ProjectCard
+                    src="/assets/EHS.png"
+                    link="https://github.com/danishayman/EHS_PORTAL"
+                    h3="Environment, Health & Safety Portal"
+                    p="ASP.NET Application"
+                />
+                
+                
                 <ProjectCard
                     src="/assets/homestay.webp"
                     link="https://tuahcemerlang.vercel.app/"
