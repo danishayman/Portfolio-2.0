@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from '../common/ThemeContext';
+import { useRouter } from 'next/navigation';
 
 // Import images
 import gsc1 from '../../public/gsc/gsc1.webp';
@@ -18,7 +19,9 @@ import inari2 from '../../public/inari/inari2.webp';
 const Work = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [isNavigating, setIsNavigating] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
     
     const { theme } = useTheme();
 
@@ -77,6 +80,12 @@ const Work = () => {
     const handleTabChange = (index: number) => {
         setActiveTab(index);
         setDropdownOpen(false);
+    };
+
+    const handleYappingClick = (e: React.MouseEvent, slug: string) => {
+        e.preventDefault();
+        setIsNavigating(true);
+        router.push(`/work/${slug}`);
     };
 
     // Close dropdown when clicking outside
@@ -195,11 +204,18 @@ const Work = () => {
                     </ul>
                     
                     <div className="mt-6 text-center">
-                        <Link href={`/work/${workExperience[activeTab].slug}`}>
-                            <button className="px-4 py-2 bg-[var(--background-color)] border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] rounded-lg font-medium transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
-                                Yapping
-                            </button>
-                        </Link>
+                        <button 
+                            onClick={(e) => handleYappingClick(e, workExperience[activeTab].slug)}
+                            className="px-4 py-2 bg-[var(--background-color)] border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] rounded-lg font-medium transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm relative"
+                            disabled={isNavigating}
+                        >
+                            {isNavigating ? (
+                                <div className="flex items-center justify-center gap-2">
+                                    <div className="w-4 h-4 border-2 border-[var(--text-color)] border-t-transparent rounded-full animate-spin"></div>
+                                    <span>Loading...</span>
+                                </div>
+                            ) : "Yapping"}
+                        </button>
                     </div>
                 </div>
             </div>

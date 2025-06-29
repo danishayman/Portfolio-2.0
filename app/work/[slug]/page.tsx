@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useTheme } from '../../common/ThemeContext';
 import { notFound, useRouter } from 'next/navigation';
 import Footer from '../../component/Footer';
+import Loading from '../../component/Loading';
 
 // Image path arrays
 const gscImages = [
@@ -149,6 +150,7 @@ export default function WorkDetailPage({
 }) {
     const { theme } = useTheme();
     const [workData, setWorkData] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(0);
@@ -167,7 +169,27 @@ export default function WorkDetailPage({
         const work = workExperienceData.find(w => w.slug === slug);
 
         if (work) {
-            setWorkData(work);
+            // Start preloading images
+            const preloadImages = work.images.map((src) => {
+                return new Promise<void>((resolve) => {
+                    const img = new window.Image();
+                    img.src = src;
+                    img.onload = () => resolve();
+                    img.onerror = () => resolve(); // Continue even if image fails to load
+                });
+            });
+
+            // Wait for images to preload
+            Promise.all(preloadImages)
+                .then(() => {
+                    setWorkData(work);
+                    setLoading(false);
+                })
+                .catch(() => {
+                    // In case of errors, still show the content
+                    setWorkData(work);
+                    setLoading(false);
+                });
         } else {
             notFound();
         }
@@ -249,10 +271,14 @@ export default function WorkDetailPage({
         setCurrentImageIndex(index);
     };
 
+    if (loading) {
+        return <Loading fullScreen={true} />;
+    }
+
     if (!workData) {
         return (
             <div className="min-h-screen flex items-center justify-center">
-                <p>Loading...</p>
+                <p>Work experience not found</p>
             </div>
         );
     }
