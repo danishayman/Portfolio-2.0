@@ -30,7 +30,7 @@ export default function BlogPostPage({ params }: BlogPostParams) {
         </Link>
 
         <article className="prose prose-lg dark:prose-invert max-w-none text-[var(--text-color)]">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[var(--text-color)]">{post.title}</h1>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-[var(--text-color)]">{post.title}</h2>
           <p className="text-sm opacity-70 mb-8 text-[var(--text-color)]">{post.date}</p>
           
           <div className="markdown-content">

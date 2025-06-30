@@ -33,7 +33,7 @@ const Education: React.FC = () => {
     return (
         <section id="education" className="min-h-[650px] md:min-h-[750px] flex flex-col items-center py-16 px-8 md:py-24 md:px-16 xl:px-24 gap-10">
             <div className="section-header">
-                <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">EDUCATION</h1>
+                <h2 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">EDUCATION</h2>
             </div>
 
             <div className="education-timeline relative flex flex-col gap-6 md:gap-8 w-full max-w-[600px] hover:cursor-default">

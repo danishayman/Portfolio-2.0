@@ -8,7 +8,7 @@ export default function Yapping() {
     <section id="yapping" className="min-h-screen py-20 relative">
       <div className="max-w-5xl mx-auto px-6">
         <div className="section-header">
-          <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">YAPPING</h1>
+          <h2 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">YAPPING</h2>
         </div>
 
         <div className="mt-8">

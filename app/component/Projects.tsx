@@ -8,7 +8,7 @@ const Projects = () => {
     return (
         <section id="projects" className="py-16 md:py-24 min-h-[650px] flex flex-col items-center p-6 md:p-8 lg:p-16">
             <div className="section-header">
-                <h1 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">PROJECTS</h1>
+                <h2 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">PROJECTS</h2>
             </div>
 
 

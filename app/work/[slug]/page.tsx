@@ -295,7 +295,7 @@ export default function WorkDetailPage({
 
                 <div className="flex flex-col mb-12">
                     <div className="mb-12">
-                        <h1 className="text-3xl md:text-4xl font-bold mb-2">{workData.role}</h1>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-2">{workData.role}</h2>
                         <h2 className="text-xl md:text-2xl opacity-80 mb-2">{workData.company}</h2>
                         <p className="text-sm md:text-base opacity-70 mb-8">{workData.duration}</p>
 
