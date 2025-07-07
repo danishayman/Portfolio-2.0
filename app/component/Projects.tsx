@@ -30,7 +30,7 @@ const Projects = () => {
                 
                 
                 <ProjectCard
-                    src="/assets/homestay.webp"
+                    src="/assets/homestay.png"
                     link="https://tuahcemerlang.vercel.app/"
                     h3={
                         <>
