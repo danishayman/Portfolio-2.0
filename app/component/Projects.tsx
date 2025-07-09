@@ -99,7 +99,7 @@ const Projects = () => {
                 />
 
                 <ProjectCard
-                    src="/assets/creditcard.webp"
+                    src="/assets/creditcard.png"
                     link="https://github.com/danishayman/Credit-Card-Fraud-Detection/blob/main/FraudDetection.ipynb"
                     h3="Credit Card Fraud Detection"
                     p="Machine Learning Model"
