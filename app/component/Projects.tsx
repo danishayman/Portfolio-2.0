@@ -78,7 +78,7 @@ const Projects = () => {
                 />
 
                 <ProjectCard
-                    src="/assets/drink.webp"
+                    src="/assets/drink.png"
                     link="https://github.com/danishayman/drink-your-water-discord-bot"
                     h3="Drink Your Water"
                     p="Discord Bot"
