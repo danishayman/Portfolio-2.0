@@ -10,15 +10,15 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
   const [shouldShow, setShouldShow] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
-  
+
   const checkVisibility = useCallback(() => {
     if (typeof window === 'undefined' || !mounted) return;
-    
+
     // Mobile: Always show
     // Desktop: Only show when a section is specifically navigated to
     const isSmallScreen = window.innerWidth < 768;
     setIsMobile(isSmallScreen);
-    
+
     if (isSmallScreen) {
       setShouldShow(true);
     } else {
@@ -32,26 +32,26 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
   const handleHashChange = useCallback(() => {
     setShouldShow(true);
   }, []);
-  
+
   // Force show sections when navigation link is clicked
   const handleShowSections = useCallback(() => {
     setShouldShow(true);
   }, []);
-  
+
   useEffect(() => {
     // Set mounted to true
     setMounted(true);
-    
+
     // Wait for component to be mounted before checking visibility
     if (typeof window === 'undefined') return;
-    
+
     // Initial check - immediate check for hash on load
     if (window.location.hash) {
       setShouldShow(true);
     } else {
       checkVisibility();
     }
-    
+
     // Set up event listeners
     const addEventListeners = () => {
       window.addEventListener('resize', checkVisibility);
@@ -61,10 +61,10 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
       window.addEventListener('touchmove', checkVisibility);
       window.addEventListener('showSections', handleShowSections);
     };
-    
+
     // Add event listeners safely
     addEventListeners();
-    
+
     // Clean up
     return () => {
       if (typeof window !== 'undefined') {
@@ -77,16 +77,16 @@ export default function SectionVisibilityWrapper({ children }: SectionVisibility
       }
     };
   }, [checkVisibility, handleShowSections, handleHashChange]);
-  
+
   // On server or before mounting, return all children visible
   if (!mounted) {
     return <div>{children}</div>;
   }
-  
+
   // After mounting, use the computed visibility
   return (
-    <div 
-      style={{ 
+    <div
+      style={{
         opacity: shouldShow ? 1 : 0,
         transition: 'opacity 500ms',
         visibility: shouldShow || isMobile ? 'visible' : 'hidden',

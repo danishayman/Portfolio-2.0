@@ -25,9 +25,9 @@ function Navigation() {
   // Mark component as mounted on initial render
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    
+
     setMounted(true);
-    
+
     // Remove the no-js fallback nav when JS loads
     const fallbackNav = document.getElementById('fallback-nav');
     if (fallbackNav) {
@@ -56,19 +56,19 @@ function Navigation() {
     });
 
     if (visibleSections.length > 0) {
-      const topSection = visibleSections.reduce((prev, current) => 
+      const topSection = visibleSections.reduce((prev, current) =>
         prev!.getBoundingClientRect().top < current!.getBoundingClientRect().top ? prev : current
       );
-      
+
       const newActiveSection = topSection!.id;
       if (newActiveSection !== activeSection) {
         setActiveSection(newActiveSection);
-        
+
         // Update URL hash without scroll
         if (typeof window !== 'undefined' && !scrollLock.current) {
           window.history.replaceState(
-            null, 
-            '', 
+            null,
+            '',
             newActiveSection === 'hero' ? window.location.pathname : `#${newActiveSection}`
           );
         }
@@ -90,7 +90,7 @@ function Navigation() {
 
     scrollLock.current = true;
     setActiveSection(id);
-    
+
     // Update URL hash if needed
     if (updateHash) {
       if (id === 'hero') {
@@ -99,14 +99,14 @@ function Navigation() {
         window.history.pushState(null, '', `#${id}`);
       }
     }
-    
+
     // If clicking on the HOME/hero item, scroll to the very top of the page
     if (id === 'hero') {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
-      
+
       // Handle momentum scroll on iOS
       let lastScrollPosition = window.scrollY;
       const momentumCheck = setInterval(() => {
@@ -123,33 +123,33 @@ function Navigation() {
         scrollLock.current = false;
         clearInterval(momentumCheck);
       }, 2000);
-      
+
       return;
     }
-    
+
     // Find the section-header div or h1 element within the section
     const sectionHeader = element.querySelector('.section-header, h1');
-    
+
     const isMobile = window.innerWidth <= 768;
-    
+
     // Fixed position from top where we want section headers to appear
     // For desktop and mobile, we use different consistent heights
     const FIXED_HEADER_POSITION = isMobile ? 80 : 120; // pixels from top
-    
+
     // Calculate nav height for offset calculation
-    const navHeight = isMobile 
+    const navHeight = isMobile
       ? (mobileNavRef.current ? (mobileNavRef.current as HTMLElement).offsetHeight + 20 : 20)
       : 50; // Desktop nav height
-    
+
     // For desktop, trigger a custom event to show sections when navigating to non-hero sections
     if (!isMobile && id !== 'hero') {
       // Create and dispatch a custom event to signal that sections should be shown
       const showSectionsEvent = new CustomEvent('showSections');
       window.dispatchEvent(showSectionsEvent);
     }
-    
+
     let scrollPosition;
-    
+
     if (sectionHeader) {
       // Calculate position to place the header exactly at our fixed position
       const headerRect = sectionHeader.getBoundingClientRect();
@@ -159,7 +159,7 @@ function Navigation() {
       const sectionTop = element.getBoundingClientRect().top + window.scrollY;
       scrollPosition = sectionTop - FIXED_HEADER_POSITION;
     }
-    
+
     window.scrollTo({
       top: scrollPosition,
       behavior: 'smooth'
@@ -186,9 +186,9 @@ function Navigation() {
   // Setup event listeners and observers
   useEffect(() => {
     if (typeof window === 'undefined' || !mounted) return;
-    
+
     const passiveOptions = { passive: true };
-    
+
     // Use IntersectionObserver for better performance
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -257,7 +257,7 @@ function Navigation() {
       </nav>
 
       {/* No-JS fallback mobile navigation - will be hidden once JS loads */}
-      <nav 
+      <nav
         id="fallback-nav"
         className="fixed bottom-3 left-3 right-3 z-[9999] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-2 max-w-[400px] mx-auto block md:hidden"
       >
@@ -279,10 +279,10 @@ function Navigation() {
 
       {/* JS Mobile Navigation */}
       {mounted && (
-        <nav 
+        <nav
           ref={mobileNavRef}
           className="fixed bottom-3 left-3 right-3 z-[1000] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] shadow-[4px_4px_var(--box-shadow-color)] rounded-xl p-2 max-w-[400px] mx-auto -webkit-tap-highlight-color-transparent touch-auto will-change-transform block md:hidden mobile-nav-animation"
-          style={{zIndex: 9999}} // Ensure highest z-index
+          style={{ zIndex: 9999 }} // Ensure highest z-index
         >
           <div className="flex justify-between items-start w-full">
             {navItems.map((item) => (

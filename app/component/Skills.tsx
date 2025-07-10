@@ -91,8 +91,8 @@ const Skills: React.FC = () => {
                     { icon: icons.next, name: "Next.js" },
                     { icon: icons.tailwind, name: "Tailwind CSS" }
                 ].map((skill, index) => (
-                    <div 
-                        key={index} 
+                    <div
+                        key={index}
                         className="border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[4px_4px_var(--box-shadow-color)] hover:translate-x-1 transition-all duration-400 rounded-lg"
                     >
                         <SkillList src={skill.icon} skill={skill.name} />
@@ -113,8 +113,8 @@ const Skills: React.FC = () => {
                     { icon: icons.csharp, name: "C#" },
                     { icon: icons.typescript, name: "TypeScript" }
                 ].map((skill, index) => (
-                    <div 
-                        key={index} 
+                    <div
+                        key={index}
                         className="border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[4px_4px_var(--box-shadow-color)] hover:translate-x-1 transition-all duration-400 rounded-lg"
                     >
                         <SkillList src={skill.icon} skill={skill.name} />
@@ -132,8 +132,8 @@ const Skills: React.FC = () => {
                     { icon: icons.git, name: "Git" },
                     { icon: icons.scikitLearn, name: "Scikit-learn" }
                 ].map((skill, index) => (
-                    <div 
-                        key={index} 
+                    <div
+                        key={index}
                         className="border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[4px_4px_var(--box-shadow-color)] hover:translate-x-1 transition-all duration-400 rounded-lg"
                     >
                         <SkillList src={skill.icon} skill={skill.name} />

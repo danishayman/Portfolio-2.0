@@ -77,7 +77,7 @@ const Education: React.FC = () => {
                     </div>
                 ))}
             </div>
-            
+
             <style jsx>{`
                 .education-timeline > div:hover .education-content {
                     transform: translateX(5px);

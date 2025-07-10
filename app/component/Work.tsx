@@ -22,7 +22,7 @@ const Work = () => {
     const [isNavigating, setIsNavigating] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
-    
+
     const { theme } = useTheme();
 
     const workExperience = [
@@ -95,7 +95,7 @@ const Work = () => {
                 setDropdownOpen(false);
             }
         };
-        
+
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
@@ -111,7 +111,7 @@ const Work = () => {
             <div className="flex flex-col w-full max-w-[1000px] gap-4 md:flex-row md:gap-12">
                 {/* Mobile Dropdown */}
                 <div className="relative md:hidden w-full" ref={dropdownRef}>
-                    <div 
+                    <div
                         className="flex justify-between items-center px-5 py-3 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] bg-[var(--background-color)] cursor-pointer transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm"
                         onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
@@ -123,11 +123,11 @@ const Work = () => {
                         </div>
                         <div className={`transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`}>
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </div>
                     </div>
-                    
+
                     {dropdownOpen && (
                         <div className="absolute top-[calc(100%+5px)] left-0 w-full bg-[var(--background-color)] border-2 border-[var(--text-color)] rounded-lg shadow-md overflow-hidden z-10 animate-[dropdownFadeIn_0.3s_ease-out]">
                             {workExperience.map((work, index) => (
@@ -154,8 +154,8 @@ const Work = () => {
                         <div
                             key={index}
                             className={`p-4 rounded-lg cursor-pointer transition-all duration-400 text-left border-2 
-                                ${activeTab === index 
-                                    ? 'border-[var(--text-color)] bg-[var(--background-color)] shadow-[5px_5px_var(--box-shadow-color)] translate-x-2.5' 
+                                ${activeTab === index
+                                    ? 'border-[var(--text-color)] bg-[var(--background-color)] shadow-[5px_5px_var(--box-shadow-color)] translate-x-2.5'
                                     : 'border-transparent hover:border-[var(--border-color)] hover:bg-[var(--background-color)] hover:translate-x-2.5'}`}
                             onClick={() => handleTabChange(index)}
                         >
@@ -171,13 +171,13 @@ const Work = () => {
                         <p className="text-sm md:text-base opacity-90 mb-1">{workExperience[activeTab].company}</p>
                         <p className="text-xs md:text-sm opacity-70">{workExperience[activeTab].duration}</p>
                     </div>
-                    
+
                     <div className="grid grid-cols-2 gap-3 md:gap-4 mb-2 md:mb-8">
                         {/* We render ALL images but only display the active ones */}
                         {workExperience.map((work, workIndex) => (
                             work.images.map((image, imgIndex) => (
-                                <div 
-                                    key={`${workIndex}-${imgIndex}`} 
+                                <div
+                                    key={`${workIndex}-${imgIndex}`}
                                     className={`aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden transition-opacity duration-300 ${workIndex === activeTab ? 'block' : 'hidden'}`}
                                 >
                                     <Image
@@ -193,7 +193,7 @@ const Work = () => {
                             ))
                         ))}
                     </div>
-                    
+
                     <ul className="font-mono text-sm md:text-base flex flex-col gap-4 mt-4">
                         {workExperience[activeTab].description.map((item, index) => (
                             <li key={index} className="relative pl-6 leading-tight">
@@ -202,9 +202,9 @@ const Work = () => {
                             </li>
                         ))}
                     </ul>
-                    
+
                     <div className="mt-6 text-center">
-                        <button 
+                        <button
                             onClick={(e) => handleYappingClick(e, workExperience[activeTab].slug)}
                             className="px-4 py-2 bg-[var(--background-color)] border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] rounded-lg font-medium transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm relative"
                             disabled={isNavigating}
@@ -224,7 +224,7 @@ const Work = () => {
             <div className="hidden">
                 {workExperience.map((work, workIndex) => (
                     work.images.map((image, imgIndex) => (
-                        <Image 
+                        <Image
                             key={`preload-${workIndex}-${imgIndex}`}
                             src={image}
                             alt="Preload"

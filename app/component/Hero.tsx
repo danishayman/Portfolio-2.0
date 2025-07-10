@@ -30,17 +30,17 @@ const Hero: React.FC = () => {
     // Preload images
     useEffect(() => {
         setMounted(true);
-        
+
         // Only run client-side
         if (typeof window === 'undefined') return;
-        
+
         // Preload images when the component mounts
         const imagesToPreload = [
-            heroImg.src, backImg.src, sun.src, moon.src, 
+            heroImg.src, backImg.src, sun.src, moon.src,
             emailLight.src, githubLight.src, linkedinLight.src,
             emailDark.src, githubDark.src, linkedinDark.src
         ];
-        
+
         imagesToPreload.forEach((imgSrc) => {
             // Use the global window.Image constructor instead of Image
             const imgElement = new window.Image();
@@ -84,8 +84,8 @@ const Hero: React.FC = () => {
                             />
                         </div>
                     </div>
-                    
-                    <div 
+
+                    <div
                         className="z-10 absolute top-0 right-0 translate-x-[190%] -translate-y-[10%]"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}

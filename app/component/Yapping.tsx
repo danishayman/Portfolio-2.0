@@ -15,8 +15,8 @@ export default function Yapping() {
           <div className="flex flex-col gap-4 items-center">
             <div className="flex flex-col gap-5 items-center">
               {posts.slice(0, 3).map((post) => (
-                <Link 
-                  href={`/yapping/${post.slug}`} 
+                <Link
+                  href={`/yapping/${post.slug}`}
                   key={post.slug}
                   className="text-lg font-medium hover:underline"
                 >

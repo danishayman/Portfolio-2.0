@@ -10,7 +10,7 @@ export default function Projects() {
 
 
             <div className="flex flex-col items-center gap-4 pt-4 md:pt-5 lg:pt-8 md:flex-row md:flex-wrap md:justify-center md:gap-6 lg:gap-8">
-                
+
                 <ProjectCard
                     src="/assets/sgl.png"
                     link="https://spudin-game-list.vercel.app/"
@@ -24,8 +24,8 @@ export default function Projects() {
                     h3="Environment, Health & Safety Portal"
                     p="ASP.NET Application"
                 />
-                
-                
+
+
                 <ProjectCard
                     src="/assets/homestay.png"
                     link="https://tuahcemerlang.vercel.app/"
