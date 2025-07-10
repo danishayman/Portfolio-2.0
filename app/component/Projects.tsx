@@ -1,8 +1,7 @@
-import React from 'react';
 import ProjectCard from '../common/ProjectCard';
 
 // Use your existing assets from the public folder
-const Projects = () => {
+export default function Projects() {
     return (
         <section id="projects" className="py-16 md:py-24 min-h-[650px] flex flex-col items-center p-6 md:p-8 lg:p-16">
             <div className="section-header">
@@ -112,6 +111,4 @@ const Projects = () => {
             </div>
         </section>
     );
-};
-
-export default Projects; 
+} 

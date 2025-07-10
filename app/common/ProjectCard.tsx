@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Link from 'next/link';
 
 interface ProjectCardProps {
@@ -8,7 +8,7 @@ interface ProjectCardProps {
     p: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ src, link, h3, p }) => {
+export default function ProjectCard({ src, link, h3, p }: ProjectCardProps) {
     return (
         <Link 
             href={link} 
@@ -25,6 +25,4 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ src, link, h3, p }) => {
             <p className="m-0 pt-2 min-h-[24px] w-[230px] flex items-center justify-center text-[1rem] font-medium">{p}</p>
         </Link>
     );
-};
-
-export default ProjectCard;
+}
