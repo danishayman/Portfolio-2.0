@@ -62,7 +62,7 @@ const Projects = () => {
                 />
 
                 <ProjectCard
-                    src="/assets/speaker.webp"
+                    src="/assets/speaker.png"
                     link="https://github.com/danishayman/Speaker-Change-Detection/blob/main/Speaker-Change-Detection.ipynb"
                     h3="Speaker Change Detection"
                     p="Neural Network Model"
