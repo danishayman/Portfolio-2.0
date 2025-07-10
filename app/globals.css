@@ -407,3 +407,12 @@ body[data-theme='dark'] .prose h1 {
 body[data-theme='dark'] .prose p {
   color: #fff !important;
 }
+
+/* Footer text styling */
+.footer-text {
+  color: #6b7280; /* text-gray-500 equivalent for light mode */
+}
+
+body[data-theme='dark'] .footer-text {
+  color: #d1d5db; /* text-gray-300 equivalent for dark mode */
+}

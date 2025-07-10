@@ -1,9 +1,4 @@
-"use client";
-
-import { useTheme } from "../common/ThemeContext";
-
 const Footer = () => {
-    const { theme } = useTheme();
     const currentYear = new Date().getFullYear();
 
     return (
@@ -11,7 +6,7 @@ const Footer = () => {
             id="footer"
             className="py-6 text-center font-mono"
         >
-            <p className={`text-sm md:text-xm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className="text-sm md:text-xm footer-text">
                 &copy; {currentYear} danishayman.<br />
                 All rights reserved.
             </p>
