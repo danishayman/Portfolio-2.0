@@ -43,7 +43,7 @@ const Projects = () => {
                 />
 
                 <ProjectCard
-                    src="/assets/extinguisher.webp"
+                    src="/assets/FETS.png"
                     link="https://github.com/danishayman/FireExtinguisherTrackingSystem"
                     h3="Fire Extinguisher Tracking System"
                     p="ASP.NET Application"
