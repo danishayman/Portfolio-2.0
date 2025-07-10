@@ -104,7 +104,7 @@ const Projects = () => {
                 />
 
                 <ProjectCard
-                    src="/assets/cervical.webp"
+                    src="/assets/cancer.png"
                     link="https://github.com/danishayman/Cervical-Cancer-Predictive-Model"
                     h3="Cervical Cancer Prediction"
                     p="Machine Learning Model"
