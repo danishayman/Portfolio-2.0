@@ -71,7 +71,7 @@ const Projects = () => {
                 />
 
                 <ProjectCard
-                    src="/assets/law.webp"
+                    src="/assets/law.png"
                     link="https://github.com/danishayman/Law-Firm-Management"
                     h3="Law Firm Management"
                     p="JavaFx Application"
