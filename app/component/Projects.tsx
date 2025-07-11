@@ -47,14 +47,14 @@ export default function Projects() {
                 />
 
                 <ProjectCard
-                    src="/assets/bird.webp"
+                    src="/assets/bird.png"
                     link="https://github.com/danishayman/Flappy-Bird-AI"
                     h3="Flappy Bird AI"
                     p="Neural Network Model"
                 />
 
                 <ProjectCard
-                    src="/assets/teapot.webp"
+                    src="/assets/teapot.png"
                     link="https://danishayman.github.io/3D-Objects-Playground/"
                     h3="3D Objects Playground"
                     p="WebGL Application"
@@ -89,7 +89,7 @@ export default function Projects() {
                 />
 
                 <ProjectCard
-                    src="/assets/gasket.webp"
+                    src="/assets/gasket.png"
                     link="https://danishayman.github.io/3D-Sierpinski-Gasket/"
                     h3="3D Sierpinski Gasket"
                     p="WebGL Application"
