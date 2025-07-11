@@ -38,8 +38,6 @@ import aspnetIconLight from '../../public/assets/aspnet-light.svg';
 import aspnetIconDark from '../../public/assets/aspnet-dark.svg';
 import rIconLight from '../../public/assets/r-light.svg';
 import rIconDark from '../../public/assets/r-dark.svg';
-import npmIconLight from '../../public/assets/npm-light.svg';
-import npmIconDark from '../../public/assets/npm-dark.svg';
 import nextjsIconLight from '../../public/assets/next-light.svg';
 import nextjsIconDark from '../../public/assets/next-dark.svg';
 import tailwindIconLight from '../../public/assets/tailwind-light.svg';
@@ -69,7 +67,6 @@ const Skills: React.FC = () => {
         csharp: theme === 'light' ? csharpIconLight : csharpIconDark,
         aspnet: theme === 'light' ? aspnetIconLight : aspnetIconDark,
         r: theme === 'light' ? rIconLight : rIconDark,
-        npm: theme === 'light' ? npmIconLight : npmIconDark,
         next: theme === 'light' ? nextjsIconLight : nextjsIconDark,
         tailwind: theme === 'light' ? tailwindIconLight : tailwindIconDark,
         typescript: theme === 'light' ? typescriptIconLight : typescriptIconDark,
