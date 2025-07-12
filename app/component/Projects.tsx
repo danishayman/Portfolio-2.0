@@ -82,7 +82,7 @@ export default function Projects() {
                 />
 
                 <ProjectCard
-                    src="/assets/tensorflow.webp"
+                    src="/assets/tensorflow.png"
                     link="https://github.com/danishayman/Low-Level-Tensorflow/blob/main/Low_Level_TF.ipynb"
                     h3="Low Level Tensorflow"
                     p="Neural Network Model"
