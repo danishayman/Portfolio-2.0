@@ -19,7 +19,7 @@ export default function Projects() {
                 />
 
                 <ProjectCard
-                    src="/projects/EHS.webp"
+                    src="/projects/ehs.webp"
                     link="https://github.com/danishayman/EHS_PORTAL"
                     h3="Environment, Health & Safety Portal"
                     p="ASP.NET Application"
@@ -40,7 +40,7 @@ export default function Projects() {
                 />
 
                 <ProjectCard
-                    src="/projects/FETS.webp"
+                    src="/projects/fets.webp"
                     link="https://github.com/danishayman/FireExtinguisherTrackingSystem"
                     h3="Fire Extinguisher Tracking System"
                     p="ASP.NET Application"
