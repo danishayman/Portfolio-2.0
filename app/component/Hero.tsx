@@ -72,15 +72,22 @@ const Hero: React.FC = () => {
                             <Image
                                 src={heroImg}
                                 alt="Profile picture"
+                                width={400}
+                                height={400}
                                 className="w-full h-full object-cover pointer-events-none"
                                 priority
+                                fetchPriority="high"
                             />
                         </div>
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden rotate-y-180">
                             <Image
                                 src={backImg}
                                 alt="Alternative profile picture"
+                                width={400}
+                                height={400}
                                 className="w-full h-full object-cover pointer-events-none"
+                                priority
+                                fetchPriority="high"
                             />
                         </div>
                     </div>
