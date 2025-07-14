@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import heroImg from '../../public/assets/lelouch.webp';
-import backImg from '../../public/assets/back.png';
+import backImg from '../../public/assets/back.webp';
 import sun from '../../public/assets/sun.svg';
 import moon from '../../public/assets/moon.svg';
 import emailLight from '../../public/assets/email-light.svg';
