@@ -5,16 +5,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import heroImg from '../../public/assets/lelouch.webp';
-import backImg from '../../public/assets/back.webp';
-import sun from '../../public/assets/sun.svg';
-import moon from '../../public/assets/moon.svg';
-import emailLight from '../../public/assets/email-light.svg';
-import githubLight from '../../public/assets/github-light.svg';
-import linkedinLight from '../../public/assets/linkedin-light.svg';
-import emailDark from '../../public/assets/email-dark.svg';
-import githubDark from '../../public/assets/github-dark.svg';
-import linkedinDark from '../../public/assets/linkedin-dark.svg';
+import heroImg from '../../public/hero/lelouch.webp';
+import backImg from '../../public/hero/back.webp';
+import sun from '../../public/hero/sun.svg';
+import moon from '../../public/hero/moon.svg';
+import emailLight from '../../public/hero/email-light.svg';
+import githubLight from '../../public/hero/github-light.svg';
+import linkedinLight from '../../public/hero/linkedin-light.svg';
+import emailDark from '../../public/hero/email-dark.svg';
+import githubDark from '../../public/hero/github-dark.svg';
+import linkedinDark from '../../public/hero/linkedin-dark.svg';
 
 const Hero: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
