@@ -77,6 +77,13 @@ export default function Projects() {
                 />
 
                 <ProjectCard
+                    src="/projects/rainmeter.webp"
+                    link=""
+                    h3="Code Geass Rainmeter Skin"
+                    p="My Rainmeter Setup"
+                />
+
+                <ProjectCard
                     src="/projects/law.webp"
                     link="https://github.com/danishayman/Law-Firm-Management"
                     h3="Law Firm Management"
