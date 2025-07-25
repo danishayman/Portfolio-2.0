@@ -11,6 +11,15 @@ export default function Projects() {
 
             <div className="flex flex-col items-center gap-4 pt-4 md:pt-5 lg:pt-8 md:flex-row md:flex-wrap md:justify-center md:gap-6 lg:gap-8">
 
+
+
+                <ProjectCard
+                    src="/projects/ronaldo.webp"
+                    link="https://github.com/danishayman/Ronaldo-Bot"
+                    h3="CR7 Hydration Discord Bot"
+                    p="“No Coke, Water!”"
+                />
+
                 <ProjectCard
                     src="/projects/sgl.webp"
                     link="https://spudin-game-list.vercel.app/"
@@ -72,13 +81,6 @@ export default function Projects() {
                     link="https://github.com/danishayman/Law-Firm-Management"
                     h3="Law Firm Management"
                     p="JavaFx Application"
-                />
-
-                <ProjectCard
-                    src="/projects/drink.webp"
-                    link="https://github.com/danishayman/drink-your-water-discord-bot"
-                    h3="Drink Your Water"
-                    p="Discord Bot"
                 />
 
                 <ProjectCard
