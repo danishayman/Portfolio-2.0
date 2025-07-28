@@ -15,7 +15,7 @@ export default function Projects() {
 
                 <ProjectCard
                     src="/projects/ronaldo.webp"
-                    link="https://github.com/danishayman/Ronaldo-Bot"
+                    link="https://ronaldo-bot.vercel.app/"
                     h3="CR7 Hydration Discord Bot"
                     p="“No Coke, Water!”"
                 />
