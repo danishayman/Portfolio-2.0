@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
                         onMouseLeave={handleMouseLeave}
                     >
                         <Image
-                            className="w-7 h-7 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400"
+                            className="w-8 h-8 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400"
                             src={themeIcon}
                             alt="Colour mode icon"
                             onClick={handleThemeToggle}
