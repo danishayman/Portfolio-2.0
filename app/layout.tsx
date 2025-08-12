@@ -72,6 +72,20 @@ export const metadata: Metadata = {
       }
     ],
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon1.png', type: 'image/png', sizes: '32x32' },
+      { url: '/publicmy-favicon/web-app-manifest-192x192.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/publicmy-favicon/web-app-manifest-192x192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'mask-icon', url: '/icon0.svg', color: '#000000' },
+    ],
+  },
   twitter: {
     card: 'summary_large_image',
     title: 'Danish Aiman | AI & ML Developer',
@@ -104,7 +118,15 @@ export default function RootLayout({
     <html lang="en" className={`${robotoMono.variable} ${rubik.variable}`}>
       <head>
         <meta name="apple-mobile-web-app-title" content="Danish Aiman" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
         <meta name="google-site-verification" content="bZyz4TL7ElDmE33G3CMvYh_GIj6Vah461AEhU8Uz224" />
+        <link rel="apple-touch-icon" sizes="192x192" href="/publicmy-favicon/web-app-manifest-192x192.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/publicmy-favicon/web-app-manifest-192x192.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body className={robotoMono.variable} suppressHydrationWarning>
         <PersonStructuredData />

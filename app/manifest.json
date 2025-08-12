@@ -7,13 +7,25 @@
       "src": "/publicmy-favicon/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "maskable any"
     },
     {
       "src": "/publicmy-favicon/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/publicmy-favicon/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/publicmy-favicon/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "theme_color": "#000000",
@@ -22,5 +34,34 @@
   "start_url": "/",
   "scope": "/",
   "orientation": "portrait-primary",
-  "categories": ["portfolio", "technology", "developer"]
+  "categories": ["portfolio", "technology", "developer"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "id": "/",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "shortcuts": [
+    {
+      "name": "View Work Experience",
+      "short_name": "Work",
+      "description": "View my professional work experience",
+      "url": "/#work",
+      "icons": [{ "src": "/publicmy-favicon/web-app-manifest-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Read Blog Posts",
+      "short_name": "Blog",
+      "description": "Read my thoughts and technical blog posts",
+      "url": "/#yapping",
+      "icons": [{ "src": "/publicmy-favicon/web-app-manifest-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "View Projects",
+      "short_name": "Projects",
+      "description": "Explore my technical projects and portfolio",
+      "url": "/#projects",
+      "icons": [{ "src": "/publicmy-favicon/web-app-manifest-192x192.png", "sizes": "192x192" }]
+    }
+  ]
 }
