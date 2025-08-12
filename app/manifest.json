@@ -1,15 +1,16 @@
 {
-  "name": "Zagreus",
-  "short_name": "Zagreus",
+  "name": "Danish Aiman Portfolio",
+  "short_name": "Danish Aiman",
+  "description": "Portfolio of Danish Aiman - Developer specializing in AI and Machine Learning",
   "icons": [
     {
-      "src": "/my-favicon/web-app-manifest-192x192.png",
+      "src": "/publicmy-favicon/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/my-favicon/web-app-manifest-512x512.png",
+      "src": "/publicmy-favicon/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -17,5 +18,9 @@
   ],
   "theme_color": "#000000",
   "background_color": "#000000",
-  "display": "standalone"
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "technology", "developer"]
 }

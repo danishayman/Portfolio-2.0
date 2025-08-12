@@ -4,11 +4,19 @@ import { notFound } from 'next/navigation';
 import Footer from '../../component/Footer';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
-import { getBlogPostBySlug } from '../data';
+import { getBlogPostBySlug, getBlogPosts } from '../data';
 import { BlogPostStructuredData } from '../../components/StructuredData';
 
 interface BlogPostParams {
   params: Promise<{ slug: string }>;
+}
+
+// Generate static params for all blog posts at build time
+export function generateStaticParams() {
+  const posts = getBlogPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 // Generate metadata for blog posts

@@ -4,8 +4,15 @@ import { Suspense } from 'react';
 import Footer from '../../component/Footer';
 import Loading from '../../component/Loading';
 import WorkDetailClient from './WorkDetailClient';
-import { getWorkDataBySlug } from '../workData';
+import { getWorkDataBySlug, workExperienceData } from '../workData';
 import { WorkExperienceStructuredData } from '../../components/StructuredData';
+
+// Generate static params for all work pages at build time
+export function generateStaticParams() {
+  return workExperienceData.map((work) => ({
+    slug: work.slug,
+  }));
+}
 
 // Generate metadata for the work detail page
 export async function generateMetadata({ 
