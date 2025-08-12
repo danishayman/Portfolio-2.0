@@ -1,6 +1,9 @@
 ---
 title: "Ohm Sweet Ohm"
 date: "9 May 2025"
+preview: "Electronics has always been a casual hobby for me - taking apart gadgets, building DIY speakers, and learning through hands-on experimentation."
+tags: ["electronics", "hobby", "DIY", "learning"]
+author: "Danish Aiman"
 ---
 
 Electronics has always just been a casual hobby — not some deep passion, just something fun to mess around with. It started with taking things apart. Old phones, dead speakers, broken gadgets — anything lying around that wasn’t being used anymore. Sometimes it was just curiosity, wanting to see what was inside. Other times it was about figuring out why something stopped working.

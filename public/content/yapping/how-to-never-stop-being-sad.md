@@ -1,6 +1,9 @@
 ---
 title: "how to never stop being sad"
 date: "24 July 2025"
+preview: "A raw, introspective guide on processing loss, loneliness, and the complex emotions that come with caring too deeply."
+tags: ["emotional", "introspective", "poetry", "feelings"]
+author: "Danish Aiman"
 ---
 
 repeat to yourself that theyre not really gone. time has proven that fooling yourself into believing a lie is the most effective way to deal with things you have no control over.

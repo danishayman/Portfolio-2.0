@@ -32,7 +32,9 @@ export const getBlogPosts = cache((): BlogPost[] => {
       slug,
       date: data.date,
       content,
-      preview: data.preview
+      preview: data.preview,
+      tags: data.tags,
+      author: data.author
     } as BlogPost;
   });
   

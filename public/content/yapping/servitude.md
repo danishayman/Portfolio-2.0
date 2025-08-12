@@ -1,6 +1,9 @@
 ---
 title: "Servitude"
 date: "1 July 2025"
+preview: "A philosophical exploration of freedom, submission, and the many forms of servitude we encounter - both religious and secular."
+tags: ["philosophy", "religion", "freedom", "reflection"]
+author: "Danish Aiman"
 ---
 
 Ever since I was a child, I was told that we were born into servitude. That we are, by nature and design, nothing more than servants of the Almighty - a subjects in a kingdom we did not choose, bound by laws we must not question.
