@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 import { cache } from 'react';
 
 // Function to get all blog posts from markdown files
-// Using react cache to memoize the result for server components
+// Using react cache to memorize the result for server components
 export const getBlogPosts = cache((): BlogPost[] => {
   // Path to the markdown files
   const contentDirectory = path.join(process.cwd(), 'public/content/yapping');
