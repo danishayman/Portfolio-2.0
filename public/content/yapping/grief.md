@@ -1,7 +1,0 @@
----
-title: "grief"
-date: "24 July 2025"
-preview: "grief"
-tags: ["emotional", "introspective", "poetry", "feelings"]
-author: "Danish Aiman"
----
