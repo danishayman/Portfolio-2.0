@@ -5,7 +5,7 @@ export default function Yapping() {
   const posts = getBlogPosts();
 
   return (
-    <section id="yapping" className="min-h-screen py-20 relative">
+    <section id="yapping" className="min-h-[120vh] py-20 relative">
       <div className="max-w-5xl mx-auto px-6">
         <div className="section-header">
           <h2 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">YAPPING</h2>
@@ -14,7 +14,7 @@ export default function Yapping() {
         <div className="mt-8">
           <div className="flex flex-col gap-4 items-center">
             <div className="flex flex-col gap-5 items-center">
-              {posts.slice(0, 3).map((post) => (
+              {posts.map((post) => (
                 <Link
                   href={`/yapping/${post.slug}`}
                   key={post.slug}
