@@ -3,73 +3,33 @@
 import { useTheme } from '../common/ThemeContext';
 import SkillList from '../common/SkillList';
 
-// Import all skill icons
-import htmlIconDark from '../../public/skills/html-dark.svg';
-import htmlIconLight from '../../public/skills/html-light.svg';
-import cssIconDark from '../../public/skills/css-dark.svg';
-import cssIconLight from '../../public/skills/css-light.svg';
-import javascriptIconDark from '../../public/skills/javascript-dark.svg';
-import javascriptIconLight from '../../public/skills/javascript-light.svg';
-import pythonIconDark from '../../public/skills/python-dark.svg';
-import pythonIconLight from '../../public/skills/python-light.svg';
-import javaIconDark from '../../public/skills/java-dark.svg';
-import javaIconLight from '../../public/skills/java-light.svg';
-import cppIconDark from '../../public/skills/cpp-dark.svg';
-import cppIconLight from '../../public/skills/cpp-light.svg';
-import sqlIconDark from '../../public/skills/sql-dark.svg';
-import sqlIconLight from '../../public/skills/sql-light.svg';
-import pandasIconDark from '../../public/skills/pandas-dark.svg';
-import pandasIconLight from '../../public/skills/pandas-light.svg';
-import numpyIconDark from '../../public/skills/numpy-dark.svg';
-import numpyIconLight from '../../public/skills/numpy-light.svg';
-import gitIconDark from '../../public/skills/git-dark.svg';
-import gitIconLight from '../../public/skills/git-light.svg';
-import tensorflowIconDark from '../../public/skills/tensorflow-dark.svg';
-import tensorflowIconLight from '../../public/skills/tensorflow-light.svg';
-import scikitLearnIconDark from '../../public/skills/scikit-learn-dark.svg';
-import scikitLearnIconLight from '../../public/skills/scikit-learn-light.svg';
-import reactIconDark from '../../public/skills/react-dark.svg';
-import reactIconLight from '../../public/skills/react-light.svg';
-import nodeIconDark from '../../public/skills/node-dark.svg';
-import nodeIconLight from '../../public/skills/node-light.svg';
-import csharpIconDark from '../../public/skills/csharp-dark.svg';
-import csharpIconLight from '../../public/skills/csharp-light.svg';
-import aspnetIconLight from '../../public/skills/aspnet-light.svg';
-import aspnetIconDark from '../../public/skills/aspnet-dark.svg';
-import rIconLight from '../../public/skills/r-light.svg';
-import rIconDark from '../../public/skills/r-dark.svg';
-import nextjsIconLight from '../../public/skills/next-light.svg';
-import nextjsIconDark from '../../public/skills/next-dark.svg';
-import tailwindIconLight from '../../public/skills/tailwind-light.svg';
-import tailwindIconDark from '../../public/skills/tailwind-dark.svg';
-import typescriptIconLight from '../../public/skills/typescript-light.svg';
-import typescriptIconDark from '../../public/skills/typescript-dark.svg';
+// Static file URLs for skill icons
 
 const Skills: React.FC = () => {
     const { theme } = useTheme();
 
-    // Theme-based icon selection for each skill
+    // Theme-based icon selection for each skill using static URLs
     const icons = {
-        html: theme === 'light' ? htmlIconLight : htmlIconDark,
-        css: theme === 'light' ? cssIconLight : cssIconDark,
-        javascript: theme === 'light' ? javascriptIconLight : javascriptIconDark,
-        python: theme === 'light' ? pythonIconLight : pythonIconDark,
-        java: theme === 'light' ? javaIconLight : javaIconDark,
-        cpp: theme === 'light' ? cppIconLight : cppIconDark,
-        sql: theme === 'light' ? sqlIconLight : sqlIconDark,
-        pandas: theme === 'light' ? pandasIconLight : pandasIconDark,
-        numpy: theme === 'light' ? numpyIconLight : numpyIconDark,
-        git: theme === 'light' ? gitIconLight : gitIconDark,
-        tensorflow: theme === 'light' ? tensorflowIconLight : tensorflowIconDark,
-        scikitLearn: theme === 'light' ? scikitLearnIconLight : scikitLearnIconDark,
-        react: theme === 'light' ? reactIconLight : reactIconDark,
-        node: theme === 'light' ? nodeIconLight : nodeIconDark,
-        csharp: theme === 'light' ? csharpIconLight : csharpIconDark,
-        aspnet: theme === 'light' ? aspnetIconLight : aspnetIconDark,
-        r: theme === 'light' ? rIconLight : rIconDark,
-        next: theme === 'light' ? nextjsIconLight : nextjsIconDark,
-        tailwind: theme === 'light' ? tailwindIconLight : tailwindIconDark,
-        typescript: theme === 'light' ? typescriptIconLight : typescriptIconDark,
+        html: theme === 'light' ? '/skills/html-light.svg' : '/skills/html-dark.svg',
+        css: theme === 'light' ? '/skills/css-light.svg' : '/skills/css-dark.svg',
+        javascript: theme === 'light' ? '/skills/javascript-light.svg' : '/skills/javascript-dark.svg',
+        python: theme === 'light' ? '/skills/python-light.svg' : '/skills/python-dark.svg',
+        java: theme === 'light' ? '/skills/java-light.svg' : '/skills/java-dark.svg',
+        cpp: theme === 'light' ? '/skills/cpp-light.svg' : '/skills/cpp-dark.svg',
+        sql: theme === 'light' ? '/skills/sql-light.svg' : '/skills/sql-dark.svg',
+        pandas: theme === 'light' ? '/skills/pandas-light.svg' : '/skills/pandas-dark.svg',
+        numpy: theme === 'light' ? '/skills/numpy-light.svg' : '/skills/numpy-dark.svg',
+        git: theme === 'light' ? '/skills/git-light.svg' : '/skills/git-dark.svg',
+        tensorflow: theme === 'light' ? '/skills/tensorflow-light.svg' : '/skills/tensorflow-dark.svg',
+        scikitLearn: theme === 'light' ? '/skills/scikit-learn-light.svg' : '/skills/scikit-learn-dark.svg',
+        react: theme === 'light' ? '/skills/react-light.svg' : '/skills/react-dark.svg',
+        node: theme === 'light' ? '/skills/node-light.svg' : '/skills/node-dark.svg',
+        csharp: theme === 'light' ? '/skills/csharp-light.svg' : '/skills/csharp-dark.svg',
+        aspnet: theme === 'light' ? '/skills/aspnet-light.svg' : '/skills/aspnet-dark.svg',
+        r: theme === 'light' ? '/skills/r-light.svg' : '/skills/r-dark.svg',
+        next: theme === 'light' ? '/skills/next-light.svg' : '/skills/next-dark.svg',
+        tailwind: theme === 'light' ? '/skills/tailwind-light.svg' : '/skills/tailwind-dark.svg',
+        typescript: theme === 'light' ? '/skills/typescript-light.svg' : '/skills/typescript-dark.svg',
     };
 
     return (

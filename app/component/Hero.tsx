@@ -5,27 +5,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import heroImg from '../../public/hero/lelouch.webp';
-import backImg from '../../public/hero/back.webp';
-import sun from '../../public/hero/sun.svg';
-import moon from '../../public/hero/moon.svg';
-import emailLight from '../../public/hero/email-light.svg';
-import githubLight from '../../public/hero/github-light.svg';
-import linkedinLight from '../../public/hero/linkedin-light.svg';
-import emailDark from '../../public/hero/email-dark.svg';
-import githubDark from '../../public/hero/github-dark.svg';
-import linkedinDark from '../../public/hero/linkedin-dark.svg';
+// Static file URLs for hero images and icons
 
 const Hero: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
     const [isFlippable, setIsFlippable] = useState(true);
     const [mounted, setMounted] = useState(false);
 
-    // Determine which icons to use based on theme
-    const themeIcon = theme === 'light' ? sun : moon;
-    const githubIcon = theme === 'light' ? githubLight : githubDark;
-    const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark;
-    const emailIcon = theme === 'light' ? emailLight : emailDark;
+    // Determine which icons to use based on theme using static URLs
+    const themeIcon = theme === 'light' ? '/hero/sun.svg' : '/hero/moon.svg';
+    const githubIcon = theme === 'light' ? '/hero/github-light.svg' : '/hero/github-dark.svg';
+    const linkedinIcon = theme === 'light' ? '/hero/linkedin-light.svg' : '/hero/linkedin-dark.svg';
+    const emailIcon = theme === 'light' ? '/hero/email-light.svg' : '/hero/email-dark.svg';
 
     // Preload images
     useEffect(() => {
@@ -36,9 +27,9 @@ const Hero: React.FC = () => {
 
         // Preload images when the component mounts
         const imagesToPreload = [
-            heroImg.src, backImg.src, sun.src, moon.src,
-            emailLight.src, githubLight.src, linkedinLight.src,
-            emailDark.src, githubDark.src, linkedinDark.src
+            '/hero/lelouch.webp', '/hero/back.webp', '/hero/sun.svg', '/hero/moon.svg',
+            '/hero/email-light.svg', '/hero/github-light.svg', '/hero/linkedin-light.svg',
+            '/hero/email-dark.svg', '/hero/github-dark.svg', '/hero/linkedin-dark.svg'
         ];
 
         imagesToPreload.forEach((imgSrc) => {
@@ -70,7 +61,7 @@ const Hero: React.FC = () => {
                     <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 flip-img">
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
-                                src={heroImg}
+                                src="/hero/lelouch.webp"
                                 alt="Profile picture"
                                 width={400}
                                 height={400}
@@ -81,7 +72,7 @@ const Hero: React.FC = () => {
                         </div>
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden rotate-y-180">
                             <Image
-                                src={backImg}
+                                src="/hero/back.webp"
                                 alt="Alternative profile picture"
                                 width={400}
                                 height={400}
@@ -101,6 +92,8 @@ const Hero: React.FC = () => {
                             className="w-8 h-8 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400"
                             src={themeIcon}
                             alt="Colour mode icon"
+                            width={32}
+                            height={32}
                             onClick={handleThemeToggle}
                         />
                     </div>
