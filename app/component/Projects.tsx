@@ -13,18 +13,19 @@ export default function Projects() {
 
 
 
-                <ProjectCard
-                    src="/projects/ronaldo.webp"
-                    link="https://ronaldo-bot.vercel.app/"
-                    h3="CR7 Hydration Discord Bot"
-                    p="“No Coke, Water!”"
-                />
 
                 <ProjectCard
                     src="/projects/sgl.webp"
                     link="https://spudin-game-list.vercel.app/"
                     h3="Spudin Game List"
                     p="Game Rating Platform"
+                />
+
+                <ProjectCard
+                    src="/projects/ronaldo.webp"
+                    link="https://ronaldo-bot.vercel.app/"
+                    h3="CR7 Hydration Discord Bot"
+                    p="“No Coke, Water!”"
                 />
 
                 <ProjectCard
