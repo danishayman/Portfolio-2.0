@@ -65,6 +65,7 @@ const Hero: React.FC = () => {
                                 alt="Profile picture"
                                 width={400}
                                 height={400}
+                                sizes="(max-width: 768px) 200px, (max-width: 1280px) 350px, 400px"
                                 className="w-full h-full object-cover pointer-events-none"
                                 priority
                                 fetchPriority="high"
@@ -76,6 +77,7 @@ const Hero: React.FC = () => {
                                 alt="Alternative profile picture"
                                 width={400}
                                 height={400}
+                                sizes="(max-width: 768px) 200px, (max-width: 1280px) 350px, 400px"
                                 className="w-full h-full object-cover pointer-events-none"
                                 priority
                                 fetchPriority="high"
@@ -94,6 +96,7 @@ const Hero: React.FC = () => {
                             alt="Colour mode icon"
                             width={32}
                             height={32}
+                            sizes="32px"
                             onClick={handleThemeToggle}
                         />
                     </div>
@@ -111,13 +114,13 @@ const Hero: React.FC = () => {
 
                 <span className="flex gap-6 justify-center">
                     <Link href="mailto:danishaiman3b@gmail.com" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={emailIcon} alt="Email icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
+                        <Image src={emailIcon} alt="Email icon" width={35} height={35} sizes="(max-width: 768px) 30px, 35px" className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
                     </Link>
                     <Link href="https://github.com/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={githubIcon} alt="Github icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
+                        <Image src={githubIcon} alt="Github icon" width={35} height={35} sizes="(max-width: 768px) 30px, 35px" className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
                     </Link>
                     <Link href="https://www.linkedin.com/in/danishayman/" target="_blank" rel="noopener noreferrer" className="-webkit-tap-highlight-color-transparent">
-                        <Image src={linkedinIcon} alt="LinkedIn icon" width={30} height={30} className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
+                        <Image src={linkedinIcon} alt="LinkedIn icon" width={35} height={35} sizes="(max-width: 768px) 30px, 35px" className="w-[30px] h-[30px] md:w-[35px] md:h-[35px] transition-transform duration-300 hover:scale-105" />
                     </Link>
                 </span>
 
