@@ -5,7 +5,23 @@ const config: Config = {
         './app/**/*.{js,ts,jsx,tsx,mdx}',
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
+        './public/**/*.{html,md}',
     ],
+    // Optimize for production builds
+    future: {
+        hoverOnlyWhenSupported: true,
+    },
+    corePlugins: {
+        // Disable unused features to reduce bundle size
+        touchAction: false,
+        ringOffsetWidth: false,
+        ringOffsetColor: false,
+        scrollSnapType: false,
+        scrollSnapAlign: false,
+        scrollSnapStop: false,
+        scrollMargin: false,
+        scrollPadding: false,
+    },
     theme: {
         extend: {
             fontFamily: {

@@ -1,16 +1,19 @@
 import './globals.css';
 import { ThemeProvider } from './common/ThemeContext';
 import { PersonStructuredData, WebsiteStructuredData } from './components/StructuredData';
+import CSSLoader from './components/CSSLoader';
 import type { Metadata } from 'next';
 import { Roboto_Mono, Rubik } from 'next/font/google';
 
-// Initialize the fonts
+// Initialize the fonts with optimized loading
 const robotoMono = Roboto_Mono({
   subsets: ['latin'],
   weight: ['300'],
   variable: '--font-roboto-mono',
   display: 'swap',
-  adjustFontFallback: false,
+  adjustFontFallback: true,
+  fallback: ['Courier New', 'monospace'],
+  preload: true,
 });
 
 const rubik = Rubik({
@@ -18,7 +21,9 @@ const rubik = Rubik({
   weight: ['400', '500', '600', '700', '900'],
   variable: '--font-rubik',
   display: 'swap',
-  adjustFontFallback: false,
+  adjustFontFallback: true,
+  fallback: ['Arial', 'sans-serif'],
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -127,8 +132,102 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="192x192" href="/publicmy-favicon/web-app-manifest-192x192.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/publicmy-favicon/web-app-manifest-192x192.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        
+        {/* Critical CSS for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              --bt-color: #007bff;
+              --btn-text-color: #ffffff;
+              --background-color: #ffffff;
+              --text-color: currentColor;
+              --project-card-bg: #ffffff;
+              --border-color: currentColor;
+              --box-shadow-color: #888;
+            }
+            [data-theme='dark'] {
+              --bt-color: #ffffff;
+              --btn-text-color: #222;
+              --background-color: #222;
+              --project-card-bg: #fff;
+              --border-color: currentColor;
+              --box-shadow-color: #ffffff66;
+            }
+            body {
+              font-family: var(--font-roboto-mono), monospace;
+              min-height: 100%;
+              overflow-y: auto;
+              margin: 0;
+              padding: 0;
+            }
+            html {
+              height: 100%;
+              overflow-y: auto;
+            }
+            body[data-theme='light'] {
+              background-color: white;
+              color: #222;
+            }
+            body[data-theme='dark'] {
+              background-color: #222;
+              color: #fff;
+            }
+            h1, h2, button {
+              font-family: var(--font-rubik), sans-serif;
+            }
+            section {
+              position: relative;
+              width: 100%;
+            }
+            .backface-hidden {
+              backface-visibility: hidden;
+              -webkit-backface-visibility: hidden;
+            }
+            .perspective-1000 {
+              perspective: 1000px;
+            }
+            .transform-style-preserve-3d {
+              transform-style: preserve-3d;
+              -webkit-transform-style: preserve-3d;
+            }
+            .rotate-y-180 {
+              transform: rotateY(180deg);
+              -webkit-transform: rotateY(180deg);
+            }
+            .flip-img {
+              box-shadow: 0 0 0 0 transparent;
+              transition: box-shadow 700ms ease, transform 600ms ease;
+            }
+            .flip-container:hover .flip-img {
+              transform: rotateY(180deg);
+              -webkit-transform: rotateY(180deg);
+              box-shadow: 0 0 15px 5px var(--bt-color);
+            }
+          `
+        }} />
+        
+        {/* Preload critical CSS */}
+        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
+        <link rel="stylesheet" href="/_next/static/css/app/layout.css" media="print" />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              var links = document.querySelectorAll('link[rel="stylesheet"][media="print"]');
+              links.forEach(function(link) {
+                link.addEventListener('load', function() {
+                  this.media = 'all';
+                });
+                // Fallback for already loaded sheets
+                if (link.sheet) {
+                  link.media = 'all';
+                }
+              });
+            })();
+          `
+        }} />
       </head>
       <body className={robotoMono.variable} suppressHydrationWarning>
+        <CSSLoader />
         <PersonStructuredData />
         <WebsiteStructuredData />
         <ThemeProvider>

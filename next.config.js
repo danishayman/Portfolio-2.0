@@ -19,6 +19,7 @@ const nextConfig = {
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['react-markdown', 'lucide-react'],
+    esmExternals: true,
   },
   // Turbopack configuration (now stable)
   turbopack: {
@@ -41,8 +42,18 @@ const nextConfig = {
             name: 'vendors',
             chunks: 'all',
           },
+          styles: {
+            name: 'styles',
+            test: /\.(css|scss|sass)$/,
+            chunks: 'all',
+            enforce: true,
+          },
         },
       };
+      
+      // Add CSS optimization
+      config.optimization.usedExports = true;
+      config.optimization.sideEffects = false;
     }
     return config;
   },
