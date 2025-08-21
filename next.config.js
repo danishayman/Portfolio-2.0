@@ -2,8 +2,10 @@
 const nextConfig = {
   /* config options here */
   eslint: {
-    // Disabling eslintrc as we're using the new flat config
-    ignoreDuringBuilds: true,
+    // Enable linting during builds for better code quality
+    ignoreDuringBuilds: false,
+    // Specify directories to lint
+    dirs: ['app', 'components', 'lib', 'utils'],
   },
   // Optimize images for better performance
   images: {
