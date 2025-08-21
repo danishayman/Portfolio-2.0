@@ -1,13 +1,12 @@
 'use client';
 
-import { useTheme } from '../common/ThemeContext';
+
 
 interface LoadingProps {
   fullScreen?: boolean;
 }
 
 const Loading: React.FC<LoadingProps> = ({ fullScreen = false }) => {
-  const { theme } = useTheme();
 
   const containerClass = fullScreen
     ? "fixed inset-0 z-[1001] flex items-center justify-center bg-[var(--background-color)] bg-opacity-90"

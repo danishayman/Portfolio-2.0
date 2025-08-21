@@ -4,17 +4,6 @@ import { useEffect } from 'react';
 
 export default function CSSLoader() {
   useEffect(() => {
-    // Load non-critical CSS asynchronously
-    const loadCSS = (href: string) => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = href;
-      link.media = 'print';
-      link.onload = () => {
-        link.media = 'all';
-      };
-      document.head.appendChild(link);
-    };
 
     // Preload critical resources
     const preloadResource = (href: string, as: string) => {
@@ -43,7 +32,7 @@ export default function CSSLoader() {
             }
           }
         }
-      } catch (e) {
+      } catch {
         // Ignore cross-origin stylesheet errors
       }
     }

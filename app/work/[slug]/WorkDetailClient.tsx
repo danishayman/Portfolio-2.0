@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import { useTheme } from '../../common/ThemeContext';
+
 import { useRouter } from 'next/navigation';
 import { WorkExperience, allWorkImages } from '../workData';
 
@@ -11,7 +11,6 @@ interface WorkDetailClientProps {
 }
 
 export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
-    const { theme } = useTheme();
     const router = useRouter();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(0);

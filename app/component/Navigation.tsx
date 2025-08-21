@@ -1,17 +1,15 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Home, Briefcase, Laptop, GraduationCap, Code, Mail, MessageSquareMore } from 'lucide-react';
+import { Home, Briefcase, Laptop, GraduationCap, Code, MessageSquareMore } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useTheme } from '../common/ThemeContext';
+
 
 function Navigation() {
   const [activeSection, setActiveSection] = useState('hero');
   const scrollLock = useRef(false);
   const mobileNavRef = useRef(null);
   const [mounted, setMounted] = useState(false);
-  const router = useRouter();
 
   const navItems = [
     { id: 'hero', label: 'HOME', mobileLabel: 'HOME', icon: <Home size={18} /> },
@@ -136,10 +134,7 @@ function Navigation() {
     // For desktop and mobile, we use different consistent heights
     const FIXED_HEADER_POSITION = isMobile ? 80 : 120; // pixels from top
 
-    // Calculate nav height for offset calculation
-    const navHeight = isMobile
-      ? (mobileNavRef.current ? (mobileNavRef.current as HTMLElement).offsetHeight + 20 : 20)
-      : 50; // Desktop nav height
+
 
     // For desktop, trigger a custom event to show sections when navigating to non-hero sections
     if (!isMobile && id !== 'hero') {

@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useTheme } from '../common/ThemeContext';
+
+
 import { useRouter } from 'next/navigation';
 
 // Import images
@@ -23,7 +23,7 @@ const Work = () => {
     const dropdownRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
 
-    const { theme } = useTheme();
+
 
     const workExperience = [
         {

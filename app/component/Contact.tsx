@@ -1,26 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { useTheme } from "../common/ThemeContext";
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
-
     const { theme } = useTheme();
-
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
 
     // Determine border color based on theme
     const borderColorClass = theme === 'dark' ? 'border-white' : 'border-gray-400';

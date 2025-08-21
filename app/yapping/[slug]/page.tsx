@@ -110,7 +110,7 @@ export default async function BlogPostPage({ params }: BlogPostParams) {
           
           <div className="markdown-content">
             <ReactMarkdown components={{
-              p: ({node, children, ...props}) => {
+              p: ({children, ...props}) => {
                 return (
                   <p 
                     className="mb-8" 

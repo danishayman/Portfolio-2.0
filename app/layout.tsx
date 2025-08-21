@@ -205,26 +205,6 @@ export default function RootLayout({
             }
           `
         }} />
-        
-        {/* Preload critical CSS */}
-        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
-        <link rel="stylesheet" href="/_next/static/css/app/layout.css" media="print" />
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            (function() {
-              var links = document.querySelectorAll('link[rel="stylesheet"][media="print"]');
-              links.forEach(function(link) {
-                link.addEventListener('load', function() {
-                  this.media = 'all';
-                });
-                // Fallback for already loaded sheets
-                if (link.sheet) {
-                  link.media = 'all';
-                }
-              });
-            })();
-          `
-        }} />
       </head>
       <body className={robotoMono.variable} suppressHydrationWarning>
         <CSSLoader />

@@ -19,16 +19,30 @@ export default [
       parser: tsParser,
       ecmaVersion: 2020,
       sourceType: "module",
-      ecmaFeatures: {
-        jsx: true
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        }
       }
     },
     rules: {
-      // Add Next.js rules
+      // Next.js core rules
       "@next/next/no-html-link-for-pages": "error",
       "@next/next/no-img-element": "warn",
+      "@next/next/no-css-tags": "error",
+      "@next/next/no-sync-scripts": "error",
+      "@next/next/no-head-element": "error",
+      "@next/next/no-head-import-in-document": "error",
+      "@next/next/no-unwanted-polyfillio": "error",
+      "@next/next/no-before-interactive-script-outside-document": "error",
+      "@next/next/no-typos": "error",
+      "@next/next/no-duplicate-head": "error",
       
-      // Add any other rules you want
+      // Core Web Vitals
+      "@next/next/no-page-custom-font": "warn",
+      
+      // TypeScript rules
+      "@typescript-eslint/no-unused-vars": "warn",
     }
   }
 ];

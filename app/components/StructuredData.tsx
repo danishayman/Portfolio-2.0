@@ -163,7 +163,6 @@ export function WorkExperienceStructuredData({
   role,
   company,
   startDate,
-  endDate,
   description,
   skills = [],
   slug

@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 const Hero: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
     const [isFlippable, setIsFlippable] = useState(true);
-    const [mounted, setMounted] = useState(false);
+
 
     // Determine which icons to use based on theme using static URLs
     const themeIcon = theme === 'light' ? '/hero/sun.svg' : '/hero/moon.svg';
@@ -20,8 +20,6 @@ const Hero: React.FC = () => {
 
     // Preload images
     useEffect(() => {
-        setMounted(true);
-
         // Only run client-side
         if (typeof window === 'undefined') return;
 

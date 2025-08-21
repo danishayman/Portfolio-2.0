@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       if (isNaN(lastModified.getTime())) {
         lastModified = new Date();
       }
-    } catch (error) {
+    } catch {
       lastModified = new Date();
     }
     
