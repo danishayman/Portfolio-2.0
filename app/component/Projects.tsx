@@ -16,7 +16,7 @@ export default function Projects() {
 
                 <ProjectCard
                     src="/projects/sgl.webp"
-                    link="https://spudin-game-list.vercel.app/"
+                    link="https://www.spudingamelist.my/"
                     h3="Spudin Game List"
                     p="Game Rating Platform"
                 />
