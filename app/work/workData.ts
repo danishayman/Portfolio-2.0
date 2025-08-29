@@ -69,13 +69,11 @@ export const workExperienceData: WorkExperience[] = [
             "Fixed bugs and optimized performance with cross-functional teams.",
             "Conducted code reviews and testing for quality assurance.",
         ],
-        detailedDescription: `Internship at Inari Technology has been a real eye-opener into how messy and hands-on real-world work can get. Got thrown into an active project right away, which meant having to figure things out quick, fix problems as they came, and constantly bounce between teams to keep things moving.
+        detailedDescription: `A 24-week journey that turned out to be more about adaptability and problem-solving than just building systems. The internship started with taking over unfinished projects and quickly grew into handling live deployments, dealing with sudden changes, and finding workarounds when things didn’t go as planned.
 
-Turns out, knowing how to code isn't even half the battle — the real challenge is dealing with changes, deadlines, and random problems popping up out of nowhere. Staying calm under pressure, managing time better, and thinking beyond just "making it work" became part of the daily routine.
+It was an experience filled with shifting requirements, unexpected bugs, and plenty of “figure it out now” moments. But through that came growth — learning to stay calm under pressure, manage time better, and see the bigger picture beyond just the task in front. On top of that, the people in the department made the journey even better — supportive, approachable, and always ready to share guidance, which made even the most stressful weeks easier to handle.
 
-So far, it's been way less about following a clear plan and way more about learning how to survive when there isn't one — easily one of the biggest jumps in both skill and mindset so far.
-
-`,
+Looking back, the real takeaway wasn’t just about finishing projects, but about learning how to navigate uncertainty, adapt quickly, and still deliver. It was challenging, but easily one of the most rewarding experiences so far.`,
         images: inariImages,
         slug: "inari-amertron-berhad",
         skills: ["ASP.NET", "C#", "SQL", "Git", "Agile"]
