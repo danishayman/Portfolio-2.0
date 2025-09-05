@@ -11,8 +11,12 @@ export default function Projects() {
 
             <div className="flex flex-col items-center gap-4 pt-4 md:pt-5 lg:pt-8 md:flex-row md:flex-wrap md:justify-center md:gap-6 lg:gap-8">
 
-
-
+                <ProjectCard
+                    src="/projects/cooking.webp"
+                    link="https://www.resepika.my/"
+                    h3="Cooking Recipe List"
+                    p="KA's Cooking Recipes"
+                />
 
                 <ProjectCard
                     src="/projects/sgl.webp"
