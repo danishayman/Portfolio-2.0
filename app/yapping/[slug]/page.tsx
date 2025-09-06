@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: BlogPostParams) {
           const imageSrc = images[0].src.startsWith('public/') ? `/${images[0].src.replace('public/', '')}` : images[0].src;
           elements.push(
             <div key={key++} className="my-8 w-full mx-auto" style={{ maxWidth: '850px' }}>
-              <div className="w-full relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]" style={{ height: '425px' }}>
+              <div className="w-full relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)] aspect-[2/1]">
                 <Image
                   src={imageSrc}
                   alt={images[0].alt}
