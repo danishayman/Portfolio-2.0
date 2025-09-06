@@ -2,7 +2,7 @@
 title: "Fantastic Mr. Fox"
 date: "16 August 2025"
 preview: "Fantastic Mr. Fox"
-tags: [""]
+tags: ["movie", "fantastic mr fox", "wes anderson"]
 author: "Danish Aiman"
 ---
 I think I have this thing where I need everybody to think I'm the greatest. The quote unquote, "Fantastic Mr. Fox."
