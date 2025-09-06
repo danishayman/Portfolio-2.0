@@ -5,6 +5,8 @@ preview: "The View From Halfway Down"
 tags: [""]
 author: "Danish Aiman"
 ---
+
+![The View From Halfway Down](public/the-view-from-halfway-down/the-view-from-halfway-down1.jpg)
 The weak breeze whispers nothing, 
 
 The water screams sublime.
