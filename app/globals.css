@@ -18,7 +18,7 @@
   --background-color: #222; /* Dark hover background */
   --project-card-bg: #fff; /* Dark mode project card background */
   --border-color: currentColor; /* Border color for dark mode */
-  --box-shadow-color: #ffffff66; /* Box shadow color for dark mode */
+  --box-shadow-color: #ffffff; /* Box shadow color for dark mode */
 }
 
 body {
