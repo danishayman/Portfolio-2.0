@@ -54,6 +54,13 @@ export const inariImages = [
     '/inari/inari4.jpg',
     '/inari/inari5.jpg',
     '/inari/inari6.jpg',
+    '/inari/inari7.jpg',
+    '/inari/inari8.jpg',
+    '/inari/inari9.jpg',
+    '/inari/inari10.jpg',
+    '/inari/inari11.jpg',
+    '/inari/inari12.jpg',
+    
 ];
 
 // Create a flat array of all images for preloading

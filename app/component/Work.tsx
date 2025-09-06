@@ -13,8 +13,8 @@ import teenfix1 from '../../public/teenfix/teenfix1.webp';
 import teenfix2 from '../../public/teenfix/teenfix2.webp';
 import daboss1 from '../../public/daboss/daboss1.webp';
 import daboss2 from '../../public/daboss/daboss2.webp';
-import inari1 from '../../public/inari/inari1.webp';
-import inari2 from '../../public/inari/inari2.webp';
+import inari7 from '../../public/inari/inari7.jpg';
+import inari3 from '../../public/inari/inari3.jpg';
 
 const Work = () => {
     const [activeTab, setActiveTab] = useState(0);
@@ -35,7 +35,7 @@ const Work = () => {
                 "Fixed bugs and optimized performance with cross-functional teams.",
                 "Conducted code reviews and testing for quality assurance.",
             ],
-            images: [inari1, inari2],
+            images: [inari3, inari7],
             slug: "inari-amertron-berhad"
         },
         {
