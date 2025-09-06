@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Footer from '../../component/Footer';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
+import React from 'react';
 import { getBlogPostBySlug, getBlogPosts } from '../data';
 import { BlogPostStructuredData } from '../../components/StructuredData';
 
@@ -66,7 +67,7 @@ export async function generateMetadata({
       card: 'summary',
       title: post.title,
       description: description,
-      creator: '@danishaiman', // Add your Twitter handle if you have one
+      creator: '@zagreusaiman', // Add your Twitter handle if you have one
     },
     alternates: {
       canonical: `/yapping/${slug}`,
@@ -84,6 +85,138 @@ export default async function BlogPostPage({ params }: BlogPostParams) {
   }
 
   const description = post.preview || post.content.substring(0, 160).replace(/\n/g, ' ').trim() + '...';
+
+  // Custom component to render markdown with grouped images
+  const CustomMarkdown = ({ content }: { content: string }) => {
+    const lines = content.split('\n');
+    const elements: React.ReactNode[] = [];
+    let i = 0;
+    let key = 0;
+
+    while (i < lines.length) {
+      const line = lines[i].trim();
+      
+      // Check if current line is an image
+      const imageMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+      if (imageMatch) {
+        const images: Array<{alt: string, src: string}> = [{
+          alt: imageMatch[1] || 'Blog image',
+          src: imageMatch[2]
+        }];
+        
+        let j = i + 1;
+        // Look for consecutive images (allowing empty lines between them)
+        while (j < lines.length) {
+          const nextLine = lines[j].trim();
+          if (nextLine === '') {
+            j++;
+            continue;
+          }
+          const nextImageMatch = nextLine.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+          if (nextImageMatch) {
+            images.push({
+              alt: nextImageMatch[1] || 'Blog image',
+              src: nextImageMatch[2]
+            });
+            j++;
+          } else {
+            break;
+          }
+        }
+        
+        // Render images - single or grouped
+        if (images.length === 1) {
+          // Single image - 850x300
+          const imageSrc = images[0].src.startsWith('public/') ? `/${images[0].src.replace('public/', '')}` : images[0].src;
+          elements.push(
+            <div key={key++} className="my-8 w-full max-w-4xl mx-auto">
+              <div className="w-full relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]" style={{ height: '300px' }}>
+                <Image
+                  src={imageSrc}
+                  alt={images[0].alt}
+                  width={850}
+                  height={300}
+                  className="w-full h-full object-cover block"
+                  style={{ 
+                    display: 'block', 
+                    margin: 0, 
+                    padding: 0
+                  }}
+                />
+              </div>
+            </div>
+          );
+        } else {
+          // Multiple images - render in grid
+          elements.push(
+            <div key={key++} className="my-8 grid grid-cols-2 gap-3 md:gap-4 max-w-2xl mx-auto">
+              {images.map((image, index) => {
+                const imageSrc = image.src.startsWith('public/') ? `/${image.src.replace('public/', '')}` : image.src;
+                return (
+                  <div key={index} className="w-full aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]">
+                    <Image
+                      src={imageSrc}
+                      alt={image.alt}
+                      width={500}
+                      height={500}
+                      className="w-full h-full object-cover block"
+                      style={{ 
+                        display: 'block', 
+                        margin: 0, 
+                        padding: 0
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+        
+        i = j;
+      } else if (line !== '') {
+        // Non-image content - accumulate lines until next image or end
+        const textLines: string[] = [];
+        while (i < lines.length && !lines[i].trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/)) {
+          textLines.push(lines[i]);
+          i++;
+        }
+        
+        if (textLines.length > 0) {
+          const textContent = textLines.join('\n').trim();
+          if (textContent) {
+            elements.push(
+              <div key={key++}>
+                <ReactMarkdown components={{
+                  p: ({children, ...props}) => (
+                    <p 
+                      className="mb-8" 
+                      style={{
+                        color: 'var(--text-color)',
+                        opacity: 1,
+                        fontWeight: 500,
+                        textShadow: 'none',
+                        filter: 'none'
+                      }} 
+                      {...props}
+                    >
+                      {children}
+                    </p>
+                  )
+                }}>
+                  {textContent}
+                </ReactMarkdown>
+              </div>
+            );
+          }
+        }
+      } else {
+        i++;
+      }
+    }
+
+    return <>{elements}</>;
+  };
 
   return (
     <>
@@ -109,52 +242,8 @@ export default async function BlogPostPage({ params }: BlogPostParams) {
           <p className="text-sm opacity-70 mb-8 text-[var(--text-color)]">{post.date}</p>
           
           <div className="markdown-content">
-            <ReactMarkdown components={{
-              p: ({children, ...props}) => {
-                return (
-                  <p 
-                    className="mb-8" 
-                    style={{
-                      color: 'var(--text-color)',
-                      opacity: 1,
-                      fontWeight: 500,
-                      textShadow: 'none',
-                      filter: 'none'
-                    }} 
-                    {...props}
-                  >
-                    {children}
-                  </p>
-                )
-              }
-            }}>{post.content}</ReactMarkdown>
+            <CustomMarkdown content={post.content} />
           </div>
-          {slug === 'ohm-sweet-ohm' && (
-            <div className="mt-12 mb-8">
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
-                {[1, 2, 3, 4].map((num) => (
-                  <div 
-                    key={num} 
-                    className="w-full aspect-square relative rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)]"
-                  >
-                    <Image
-                      src={`/ohm-sweet-ohm/ohm-sweet-ohm${num}.jpg`}
-                      alt={`Ohm Sweet Ohm Project Image ${num}`}
-                      width={500}
-                      height={500}
-                      className="w-full h-full object-cover block"
-                      style={{ 
-                        display: 'block', 
-                        margin: 0, 
-                        padding: 0
-                      }}
-                      priority={num <= 2}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </article>
         </main>
 
