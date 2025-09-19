@@ -14,23 +14,25 @@ Most of the parts were hunted down on Facebook Marketplace. Second-hand deals ar
 
 This “toaster” of a PC now serves as the daily driver for both programming and gaming. Small, portable, and still packing enough heat to toast bread if left running long enough.
 
+[Full PCPartPicker List](https://pcpartpicker.com/b/Y7Rv6h)
+
 **Parts List:**
 
-- CPU: AMD Ryzen 5 5600 3.5 GHz 6-Core Processor
+- **CPU**: AMD Ryzen 5 5600 3.5 GHz 6-Core Processor
 
-- CPU Cooler: Deepcool AK620 68.99 CFM CPU Cooler
+- **CPU Cooler**: Deepcool AK620 68.99 CFM CPU Cooler
 
-- Memory: Corsair Vengeance RGB Pro SL 32 GB (2 x 16 GB) DDR4-3600 CL18
+- **Memory**: Corsair Vengeance RGB Pro SL 32 GB (2 x 16 GB) DDR4-3600 CL18
 
-- Storage: Samsung 980 Pro 1 TB M.2-2280 PCIe 4.0 NVME SSD
+- **Storage**: Samsung 980 Pro 1 TB M.2-2280 PCIe 4.0 NVME SSD
 
-- GPU: Gigabyte WINDFORCE GeForce RTX 2070 8 GB
+- **GPU**: Gigabyte WINDFORCE GeForce RTX 2070 8 GB
 
-- Motherboard: JGINYUE B450I-PLUS/ARGB
+- **Motherboard**: JGINYUE B450I-PLUS/ARGB
 
-- Case: Deepcool CH160 Mini ITX
+- **Case**: Deepcool CH160 Mini ITX
 
-- PSU: Cooler Master V850 SFX GOLD 850 W 80+ Gold Fully Modular
+- **PSU**: Cooler Master V850 SFX GOLD 850 W 80+ Gold Fully Modular
 
 ![Toaster Rig](public/toaster-rig/toaster-rig2.jpg)
 
