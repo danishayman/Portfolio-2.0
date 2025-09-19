@@ -8,7 +8,7 @@ author: "Danish Aiman"
 
 So here it is — the first ever ITX build. The goal was something small enough to hand carry between hostel and home, without sacrificing raw power just because of the compact size. Basically: tiny footprint, no compromises.
 
-![Toaster Rig](public/toaster-rig/toaster1.jpg)
+![Toaster Rig](public/toaster-rig/toaster.jpg)
 
 Most of the parts were hunted down on Facebook Marketplace. Second-hand deals are always a gamble, but the chase made the whole process more fun. Each component felt like a puzzle piece, and piecing them together was extra satisfying knowing the budget didn’t blow up in the process.
 
