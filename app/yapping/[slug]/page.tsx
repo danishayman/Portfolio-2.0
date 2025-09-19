@@ -206,13 +206,84 @@ export default async function BlogPostPage({ params }: BlogPostParams) {
                   strong: ({children, ...props}) => (
                     <strong 
                       style={{
-                        color: 'inherit',
-                        fontWeight: 'bold'
+                        color: 'var(--text-color)',
+                        fontWeight: 'bold',
+                        opacity: 1
                       }} 
                       {...props}
                     >
                       {children}
                     </strong>
+                  ),
+                  ul: ({children, ...props}) => (
+                    <ul 
+                      style={{
+                        color: 'var(--text-color)',
+                        opacity: 1
+                      }} 
+                      {...props}
+                    >
+                      {children}
+                    </ul>
+                  ),
+                  li: ({children, ...props}) => (
+                    <li 
+                      style={{
+                        color: 'var(--text-color)',
+                        opacity: 1,
+                        marginBottom: '0.5rem'
+                      }} 
+                      {...props}
+                    >
+                      {children}
+                    </li>
+                  ),
+                  h1: ({children, ...props}) => (
+                    <h1 
+                      style={{
+                        color: 'var(--text-color)',
+                        opacity: 1,
+                        fontWeight: 'bold'
+                      }} 
+                      {...props}
+                    >
+                      {children}
+                    </h1>
+                  ),
+                  h2: ({children, ...props}) => (
+                    <h2 
+                      style={{
+                        color: 'var(--text-color)',
+                        opacity: 1,
+                        fontWeight: 'bold'
+                      }} 
+                      {...props}
+                    >
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({children, ...props}) => (
+                    <h3 
+                      style={{
+                        color: 'var(--text-color)',
+                        opacity: 1,
+                        fontWeight: 'bold'
+                      }} 
+                      {...props}
+                    >
+                      {children}
+                    </h3>
+                  ),
+                  a: ({children, ...props}) => (
+                    <a 
+                      style={{
+                        color: '#222222',
+                        textDecoration: 'underline'
+                      }} 
+                      {...props}
+                    >
+                      {children}
+                    </a>
                   )
                 }}>
                   {textContent}
