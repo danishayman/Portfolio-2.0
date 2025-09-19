@@ -202,6 +202,17 @@ export default async function BlogPostPage({ params }: BlogPostParams) {
                     >
                       {children}
                     </p>
+                  ),
+                  strong: ({children, ...props}) => (
+                    <strong 
+                      style={{
+                        color: 'inherit',
+                        fontWeight: 'bold'
+                      }} 
+                      {...props}
+                    >
+                      {children}
+                    </strong>
                   )
                 }}>
                   {textContent}
