@@ -42,7 +42,7 @@ export default function Projects() {
 
                 <ProjectCard
                     src="/projects/homestay.webp"
-                    link="https://www.tuahcemerlang.my/"
+                    link="https://tuahsuci.vercel.app/"
                     h3={
                         <>
                             Tuah Cemerlang
