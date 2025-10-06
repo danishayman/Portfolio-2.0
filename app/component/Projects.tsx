@@ -13,6 +13,12 @@ export default function Projects() {
 
 
                 <ProjectCard
+                    src="/projects/awards.webp"
+                    link="https://bobo-game-awards.vercel.app/"
+                    h3="Bobo Game Awards"
+                    p="Game Awards Platform"
+                />
+                <ProjectCard
                     src="/projects/cooking.webp"
                     link="https://www.resepika.my/"
                     h3="Cooking Recipe List"
@@ -96,12 +102,7 @@ export default function Projects() {
                     h3="Credit Card Fraud Detection"
                     p="Machine Learning Model"
                 />
-                <ProjectCard
-                    src="/projects/cancer.webp"
-                    link="https://github.com/danishayman/Cervical-Cancer-Predictive-Model"
-                    h3="Cervical Cancer Prediction"
-                    p="Machine Learning Model"
-                />
+
             </div>
         </section>
     );
