@@ -1,5 +1,5 @@
 ---
-title: "Ohm Sweet Ohm"
+title: ""
 date: "9 May 2025"
 preview: "Electronics has always been a casual hobby for me - taking apart gadgets, building DIY speakers, and learning through hands-on experimentation."
 tags: ["electronics", "hobby", "DIY", "learning"]
