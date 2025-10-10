@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Toaster Rig"
 date: "19 September 2025"
 preview: "Toaster Rig"
 tags: ["Gaming", "Toaster", "DIY", "PC"]
