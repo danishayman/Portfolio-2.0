@@ -15,7 +15,7 @@ export default function Projects() {
                 <ProjectCard
                     src="/projects/chesayang.webp"
                     link="https://resepi-chesayang.vercel.app/"
-                    h3="Resepi Che Sayang Kitchen "
+                    h3="Resepi Che Sayang Kitchen"
                     p="Data Scraping Project"
                 />
 
