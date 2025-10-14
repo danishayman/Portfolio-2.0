@@ -13,6 +13,13 @@ export default function Projects() {
 
 
                 <ProjectCard
+                    src="/projects/chesayang.webp"
+                    link="https://resepi-chesayang.vercel.app/"
+                    h3="Resepi Che Sayang Kitchen "
+                    p="Data Scraping Project"
+                />
+
+                <ProjectCard
                     src="/projects/awards.webp"
                     link="https://bobo-game-awards.vercel.app/"
                     h3="Bobo Game Awards"
