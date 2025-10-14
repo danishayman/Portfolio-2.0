@@ -26,10 +26,10 @@ export default function Projects() {
                     p="Game Awards Platform"
                 />
                 <ProjectCard
-                    src="/projects/cooking.webp"
+                    src="/projects/khairulaming.webp"
                     link="https://www.resepika.my/"
-                    h3="Cooking Recipe List"
-                    p="KA's Cooking Recipes"
+                    h3="Resepi Khairul Aming"
+                    p="Data Scraping Project"
                 />
                 <ProjectCard
                     src="/projects/sgl.webp"
