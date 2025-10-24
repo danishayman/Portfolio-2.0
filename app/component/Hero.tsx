@@ -103,9 +103,9 @@ const Hero: React.FC = () => {
 
             <div className="flex flex-col gap-5 items-center">
                 <h1 className="text-[2rem] md:text-[3rem] font-rubik font-black tracking-wider leading-[1.1]">
-                    DANISH
+                    FREAK
                     <br />
-                    AIMAN
+                    
                 </h1>
 
                 <h2 className="text-xl md:text-2xl font-mono tracking-wider uppercase font-normal">Computer Science Student</h2>
@@ -123,8 +123,7 @@ const Hero: React.FC = () => {
                 </span>
 
                 <p className="max-w-[30ch] text-center font-mono text-lg md:text-xl">
-                    A developer majoring in Intelligent Computing. SUPER into Machine
-                    Learning and Artificial Intelligence.
+                    A burned out fucking disappointment. 
                 </p>
 
                 <Link
