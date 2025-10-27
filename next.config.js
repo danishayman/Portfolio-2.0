@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
-  eslint: {
-    // Enable linting during builds for better code quality
-    ignoreDuringBuilds: false,
-    // Specify directories to lint
-    dirs: ['app', 'components', 'lib', 'utils'],
-  },
   // Optimize images for better performance
   images: {
     formats: ['image/webp', 'image/avif'],
