@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-
+import { useTheme } from '../../common/ThemeContext';
 import { useRouter } from 'next/navigation';
 import { WorkExperience, allWorkImages } from '../workData';
 
@@ -12,7 +12,11 @@ interface WorkDetailClientProps {
 
 export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
     const router = useRouter();
+    const { theme, toggleTheme } = useTheme();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    // Determine which icon to use based on theme
+    const themeIcon = theme === 'light' ? '/hero/sun.svg' : '/hero/moon.svg';
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
@@ -118,12 +122,26 @@ export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
     return (
         <div className="min-h-screen bg-[var(--background-color)] text-[var(--text-color)]">
             <main className="max-w-5xl mx-auto px-6 py-12 md:py-24 md:px-12">
-                <button onClick={handleBackClick} className="inline-flex items-center mb-10 text-sm md:text-base font-medium px-4 py-2 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
-                    <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
-                    Back to Portfolio
-                </button>
+                <div className="flex justify-between items-center mb-10">
+                    <button onClick={handleBackClick} className="inline-flex items-center text-sm md:text-base font-medium px-4 py-2 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
+                        <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        Back to Portfolio
+                    </button>
+                    <button
+                        onClick={toggleTheme}
+                        aria-label="Toggle theme"
+                    >
+                        <Image
+                            className="w-8 h-8 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400"
+                            src={themeIcon}
+                            alt="Theme toggle icon"
+                            width={32}
+                            height={32}
+                        />
+                    </button>
+                </div>
 
                 <div className="flex flex-col mb-12">
                     <div className="mb-12">
