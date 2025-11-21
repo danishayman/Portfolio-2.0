@@ -14,7 +14,7 @@ Most of the parts were hunted down on Facebook Marketplace. Second-hand deals ar
 
 This “toaster” of a PC now serves as the daily driver for both programming and gaming. Small, portable, and still packing enough heat to toast bread if left running long enough.
 
-[Full PCPartPicker List](https://pcpartpicker.com/b/Y7Rv6h)
+🔴 [Full PCPartPicker List](https://pcpartpicker.com/b/Y7Rv6h) 🔴
 
 **Parts List:**
 
