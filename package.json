@@ -15,7 +15,7 @@
     "fs-extra": "^11.3.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.487.0",
-    "next": "16.0.0",
+    "next": "16.0.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-markdown": "^10.1.0"
@@ -23,17 +23,17 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20.0.0",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
     "autoprefixer": "^10.4.16",
     "eslint": "^9.0.0",
-    "eslint-config-next": "16.0.0",
+    "eslint-config-next": "16.0.4",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.0"
   },
   "overrides": {
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2"
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3"
   }
 }
