@@ -60,7 +60,7 @@ export default function Projects() {
                     link="https://tuahsuci.vercel.app/"
                     h3={
                         <>
-                            Tuah Cemerlang
+                            Tuah Suci
                             <br />
                             Homestay
                         </>
