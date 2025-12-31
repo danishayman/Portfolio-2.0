@@ -38,7 +38,7 @@ While me at the head watched as they ate and smiled,
 
 because most people don't have any friends.
 
-And I have 22, each of them who knows what ive been through.
+And I have 22, each of them who knows what I've been through.
 
 Walk when I walk, run when I run.
 
