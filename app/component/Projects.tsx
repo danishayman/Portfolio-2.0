@@ -14,7 +14,7 @@ export default function Projects() {
                 <ProjectCard
                     src="/projects/f22.webp"
                     link="https://f22-raptor.vercel.app/"
-                    h3="F-22 Raptor"
+                    h3="Lockheed Martin F-22 Raptor"
                     p="DIY RC Plane"
                 />
 
