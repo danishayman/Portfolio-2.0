@@ -55,8 +55,8 @@ const Hero: React.FC = () => {
     return (
         <section id="hero" className="flex flex-col justify-center gap-5 text-center py-16 md:py-24 min-h-[550px] md:min-h-screen select-none md:flex-row-reverse md:items-center md:justify-evenly">
             <div className="relative">
-                <div className={`relative inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] ${isFlippable ? 'flip-container' : ''}`}>
-                    <div className="relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 flip-img">
+                <div className={`relative inline-block perspective-1000 w-[200px] h-[200px] mx-auto md:w-[350px] md:h-[350px] xl:w-[400px] xl:h-[400px] ${isFlippable ? (theme === 'dark' ? 'flip-container-dark' : 'flip-container') : ''}`}>
+                    <div className={`relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 flip-img ${theme === 'dark' ? 'rotate-y-180' : ''}`}>
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
                                 src="/hero/lelouch.webp"

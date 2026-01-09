@@ -107,6 +107,13 @@ h1, h2, button {
   box-shadow: 0 0 15px 5px var(--bt-color);
 }
 
+/* Dark mode: flip back to front on hover (reverse direction) */
+.flip-container-dark:hover .flip-img {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  box-shadow: 0 0 15px 5px var(--bt-color);
+}
+
 .filter-drop-shadow {
   filter: drop-shadow(0 0 5px var(--bt-color));
 }
