@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
                     <div className={`relative w-full h-full transform-style-preserve-3d rounded-full transition-transform duration-600 flip-img ${theme === 'dark' ? 'rotate-y-180' : ''}`}>
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden">
                             <Image
-                                src="/hero/lelouch.webp"
+                                src="/hero/back.webp"
                                 alt="Profile picture"
                                 width={400}
                                 height={400}
@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
                         </div>
                         <div className="absolute w-full h-full backface-hidden rounded-full overflow-hidden rotate-y-180">
                             <Image
-                                src="/hero/back.webp"
+                                src="/hero/lelouch.webp"
                                 alt="Alternative profile picture"
                                 width={400}
                                 height={400}
