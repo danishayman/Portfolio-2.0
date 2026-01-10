@@ -32,7 +32,7 @@ And 18 was making big mistakes.
 
 3 just kinda sat there, played with the food on his plate.
 
-22 came in late, with a heartbreak for one who never fell.
+22 came in late with a heartbreak.
 
 While me at the head watched as they ate and smiled,
 
