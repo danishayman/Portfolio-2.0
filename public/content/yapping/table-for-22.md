@@ -1,7 +1,7 @@
 ---
 title: "Table for 22"
 date: "31 December 2025"
-preview: "Penguin In My Kitchen"
+preview: "Table for 22"
 tags: ["New Year", "birthday"]
 author: "Danish Aiman"
 ---
