@@ -81,11 +81,11 @@ export const metadata: Metadata = {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
       { url: '/icon1.png', type: 'image/png', sizes: '32x32' },
-      { url: '/publicmy-favicon/web-app-manifest-192x192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/my-favicon/web-app-manifest-192x192.png', type: 'image/png', sizes: '192x192' },
     ],
     apple: [
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-      { url: '/publicmy-favicon/web-app-manifest-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/my-favicon/web-app-manifest-192x192.png', sizes: '192x192', type: 'image/png' },
     ],
     other: [
       { rel: 'mask-icon', url: '/icon0.svg', color: '#000000' },
@@ -129,8 +129,8 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="google-site-verification" content="bZyz4TL7ElDmE33G3CMvYh_GIj6Vah461AEhU8Uz224" />
-        <link rel="apple-touch-icon" sizes="192x192" href="/publicmy-favicon/web-app-manifest-192x192.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/publicmy-favicon/web-app-manifest-192x192.png" />
+        <link rel="apple-touch-icon" sizes="192x192" href="/my-favicon/web-app-manifest-192x192.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/my-favicon/web-app-manifest-192x192.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
         
         {/* Critical CSS for above-the-fold content */}
