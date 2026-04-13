@@ -13,7 +13,7 @@ export default function Projects() {
                 
                 <ProjectCard
                     src="/projects/usm.webp"
-                    link="https://usm-week.netlify.app/"
+                    link="https://usm.danishaiman.com"
                     h3="USM T&L Week"
                     p="USM Academic Calendar"
                 />
