@@ -127,7 +127,7 @@ const Hero: React.FC = () => {
                 </p>
 
                 <Link
-                    href="https://drive.google.com/file/d/1Uz1dJESduMjoMbH7kDpx8a4J5JpCZflt/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1vwFhiewsvyZ7e0sXVrLK0pkF2H0CcMup/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="-webkit-tap-highlight-color-transparent w-fit self-center"
