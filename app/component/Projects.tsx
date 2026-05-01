@@ -16,7 +16,7 @@ export default function Projects() {
                     src="/projects/water.webp"
                     link="https://wmw-usm.netlify.app"
                     h3="Wheres My Water?"
-                    p="USM Water Cooler Finder"
+                    p="USM Water Filter Finder"
                 />
 
                 <ProjectCard
