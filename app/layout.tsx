@@ -28,7 +28,7 @@ const rubik = Rubik({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Danish Aiman | Developer',
+    default: 'danishayman',
     template: '%s | Danish Aiman'
   },
   description: 'Computer Science student specializing in AI and Machine Learning. Experienced in web development, software engineering, and technical problem-solving. View my portfolio of projects and work experience.',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Danish Aiman | AI & ML Developer',
+    title: 'danishayman',
     description: 'Computer Science student specializing in AI and Machine Learning. Experienced in web development and software engineering.',
     url: 'https://danishaiman.com',
     siteName: 'Danish Aiman Portfolio',
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Danish Aiman | AI & ML Developer',
+    title: 'danishayman',
     description: 'Computer Science student specializing in AI and Machine Learning.',
     images: ['/hero/screenshot.png'],
   },
