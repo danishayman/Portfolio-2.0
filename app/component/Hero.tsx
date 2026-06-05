@@ -127,7 +127,7 @@ const Hero: React.FC = () => {
                 </p>
 
                 <Link
-                    href="https://drive.google.com/file/d/1vwFhiewsvyZ7e0sXVrLK0pkF2H0CcMup/view?usp=sharing"
+                    href="/RESUME_DANISH_AIMAN.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="-webkit-tap-highlight-color-transparent w-fit self-center"
