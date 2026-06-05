@@ -6,6 +6,7 @@ interface Education {
     degree: string;
     duration: string;
     achievements: string[];
+    locationUrl: string;
 }
 
 const Education: React.FC = () => {
@@ -15,18 +16,22 @@ const Education: React.FC = () => {
             degree: "Bachelor of Computer Science (Honours)\n(Intelligent Computing)",
             duration: "Oct 2022 - Present",
             achievements: ["Current CGPA: 3.42"],
+            locationUrl: "https://maps.app.goo.gl/owBxR3XgcNFUQSZu7",
         },
         {
             institution: "Penang Matriculation College",
             degree: "Physical Science",
             duration: "July 2021 - July 2022",
-            achievements: ["Graduated with grade 3.92"],
+            achievements: ["CGPA: 3.92"],
+            locationUrl: "https://maps.app.goo.gl/ZeaWPBFXrKfcamNp7",
+            
         },
         {
             institution: "SMK Bukit Jambul, High Performance School",
             degree: "Science Stream",
             duration: "Jan 2015 - Dec 2020",
             achievements: ["SPM: 3A+ 4A"],
+            locationUrl: "https://maps.app.goo.gl/QERhYno7k1tQ9oTq6",
         },
     ];
 
@@ -45,7 +50,13 @@ const Education: React.FC = () => {
                     >
                         <div className="education-dot absolute left-[-5px] top-0 w-3 h-3 rounded-full bg-current transition-all duration-400 md:left-[calc(1rem-5px)] xl:left-[calc(2rem-5px)]"></div>
 
-                        <div className="education-content flex flex-col gap-1 md:gap-2 p-3 md:p-4 rounded-lg border-2 border-transparent hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[5px_5px_var(--box-shadow-color)] transition-all duration-400">
+                        <a
+                            href={edu.locationUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Open ${edu.institution} on Google Maps`}
+                            className="education-content flex flex-col gap-1 md:gap-2 p-3 md:p-4 rounded-lg border-2 border-transparent text-inherit no-underline hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[5px_5px_var(--box-shadow-color)] focus-visible:border-[var(--text-color)] focus-visible:bg-[var(--background-color)] focus-visible:shadow-[5px_5px_var(--box-shadow-color)] focus-visible:outline-none transition-all duration-400 cursor-pointer"
+                        >
                             <h3 className="text-xl md:text-2xl font-bold transition-transform duration-400">
                                 {edu.institution}
                             </h3>
@@ -73,7 +84,7 @@ const Education: React.FC = () => {
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                        </a>
                     </div>
                 ))}
             </div>
