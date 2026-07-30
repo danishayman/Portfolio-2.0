@@ -1,5 +1,5 @@
 ---
-title: "how to never stop being sad"
+title: ""
 date: "24 July 2025"
 preview: "A raw, introspective guide on processing loss, loneliness, and the complex emotions that come with caring too deeply."
 tags: ["emotional", "introspective", "poetry", "feelings"]

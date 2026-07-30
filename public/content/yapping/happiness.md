@@ -1,5 +1,5 @@
 ---
-title: "happiness"
+title: ""
 date: "15 August 2025"
 preview: "happiness"
 tags: ["grief", "happiness", "sadness"]
