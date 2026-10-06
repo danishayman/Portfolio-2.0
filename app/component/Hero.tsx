@@ -127,7 +127,7 @@ const Hero: React.FC = () => {
                 </p>
 
                 <Link
-                    href="/RESUME_DANISH_AIMAN.pdf"
+                    href="/RESUME_DANISH_AIMAN_AI_ML.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="-webkit-tap-highlight-color-transparent w-fit self-center"
