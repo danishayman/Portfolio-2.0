@@ -39,7 +39,7 @@ const educationData: Education[] = [
         institution: "Universiti Sains Malaysia",
         degree: "Bachelor of Computer Science (Honours)\n(Intelligent Computing)",
         duration: "Oct 2022 - Oct 2026",
-        achievements: ["Current CGPA: 3.42"],
+        achievements: ["CGPA: 3.48"],
         locationUrl: "https://maps.app.goo.gl/owBxR3XgcNFUQSZu7",
     },
 ];

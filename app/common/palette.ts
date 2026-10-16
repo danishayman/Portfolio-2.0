@@ -28,4 +28,16 @@ export const NAV_HOVER_BG = [
     'hover:bg-nb-purple',
 ];
 
-export const pad2 = (n: number) => String(n).padStart(2, '0');
+// 6-colour cycle for the project grid, ordered so look-alike hues (yellow/orange,
+// pink/purple) never sit side by side. The grid is 2–4 columns wide, which never
+// divides 6, so no card shares a colour with its neighbour above, below or beside.
+export const PROJECT_BG = [
+    'bg-nb-yellow',
+    'bg-nb-purple',
+    'bg-nb-sky',
+    'bg-nb-orange',
+    'bg-nb-green',
+    'bg-nb-pink',
+];
+
+export const pad2 =(n: number) => String(n).padStart(2, '0');

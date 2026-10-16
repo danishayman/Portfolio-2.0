@@ -68,7 +68,8 @@ const Hero: React.FC = () => {
                 </div>
             </div>
 
-            <div className="order-first md:order-0 justify-self-center w-full max-w-[320px] md:max-w-[440px] bg-nb-card border-[3px] border-nb-ink shadow-hard-12">
+            {/* Smaller on phones so the name peeks above the fold */}
+            <div className="order-first md:order-0 justify-self-center w-full max-w-[260px] sm:max-w-[320px] md:max-w-[440px] bg-nb-card border-[3px] border-nb-ink shadow-hard-8 md:shadow-hard-12">
                 <div className="bg-nb-panel text-white px-3.5 py-3 flex justify-between items-center">
                     <span className="font-pixel text-[10px]">PLAYER 1</span>
                     <span className="flex gap-1.5">
@@ -79,7 +80,12 @@ const Hero: React.FC = () => {
                 </div>
 
                 <div className="p-[18px] bg-nb-pink border-b-[3px] border-nb-ink">
-                    <div className="group relative aspect-square border-[3px] border-nb-on bg-white nb-grid-sm overflow-hidden">
+                    {/* Focusable so a tap swaps to HD on touch screens, where hover never fires */}
+                    <div
+                        tabIndex={0}
+                        aria-label="Portrait, tap or hover for the HD photo"
+                        className="group relative aspect-square border-[3px] border-nb-on bg-white nb-grid-sm overflow-hidden outline-none [-webkit-tap-highlight-color:transparent]"
+                    >
                         <Image
                             src="/hero/pixel-me.png"
                             alt="Danish Aiman, pixel art"
@@ -94,13 +100,14 @@ const Hero: React.FC = () => {
                             fill
                             priority
                             sizes="(max-width: 480px) 90vw, 400px"
-                            className="object-cover block opacity-0 transition-opacity duration-[400ms] ease-[steps(8)] group-hover:opacity-100"
+                            className="object-cover block opacity-0 transition-opacity duration-[400ms] ease-[steps(8)] group-hover:opacity-100 group-focus:opacity-100"
                         />
                         <span className="absolute left-2.5 top-2.5 font-pixel text-[8px] bg-nb-yellow text-nb-on border-2 border-nb-on px-[7px] py-[5px] pointer-events-none whitespace-nowrap">
                             LV.<PlayerLevel serverNow={serverNow} /> DANISH
                         </span>
                         <span className="absolute left-2.5 bottom-2.5 font-pixel text-[8px] bg-nb-on text-white px-2 py-1.5 pointer-events-none whitespace-nowrap">
-                            HOVER → HD
+                            <span className="pointer-coarse:hidden">HOVER</span>
+                            <span className="hidden pointer-coarse:inline">TAP</span> → HD
                         </span>
                     </div>
                 </div>

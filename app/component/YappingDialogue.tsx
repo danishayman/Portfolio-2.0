@@ -38,18 +38,27 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
   return (
     <div className="flex flex-wrap gap-7 items-stretch">
       <div className="flex-[999_1_520px] max-w-full flex flex-col">
-        <div className="self-start ml-5 relative z-1 bg-nb-yellow text-nb-on border-[3px] border-b-0 border-nb-ink px-3.5 py-2.5 font-pixel text-[11px]">
-          DANISH
-        </div>
-        <div className="flex-1 bg-nb-panel p-1.5 shadow-[10px_10px_0_#007bff]">
-          <div className="h-full border-[3px] border-white p-[22px] flex gap-[22px] items-start flex-wrap">
-            <div className="relative flex-[0_0_120px] w-[120px] h-[120px] border-[3px] border-white bg-nb-pink overflow-hidden">
+        <div className="flex-1 bg-nb-panel p-1.5 shadow-[6px_6px_0_#007bff] sm:shadow-[10px_10px_0_#007bff]">
+          <div className="h-full border-[3px] border-white p-4 sm:p-[22px] flex gap-4 sm:gap-[22px] items-start flex-wrap">
+            {/* Focusable so a tap swaps to HD on touch screens, where hover never fires */}
+            <div
+              tabIndex={0}
+              aria-label="Portrait, tap or hover for the HD photo"
+              className="group relative flex-[0_0_88px] w-[88px] h-[88px] sm:flex-[0_0_120px] sm:w-[120px] sm:h-[120px] border-[3px] border-white bg-nb-pink overflow-hidden outline-none [-webkit-tap-highlight-color:transparent]"
+            >
               <Image
                 src="/hero/pixel-me.png"
                 alt="Danish, pixel art"
                 fill
                 unoptimized
-                className="object-cover object-[50%_30%] scale-[1.7] origin-[50%_42%] [image-rendering:pixelated]"
+                className="object-cover scale-[1.5] origin-[50%_53%] [image-rendering:pixelated]"
+              />
+              <Image
+                src="/hero/hd-me.png"
+                alt="Danish"
+                fill
+                sizes="120px"
+                className="object-cover scale-[1.5] origin-[50%_53%] opacity-0 transition-opacity duration-[400ms] ease-[steps(8)] group-hover:opacity-100 group-focus:opacity-100"
               />
             </div>
 
@@ -66,17 +75,17 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
                 <span aria-hidden="true">“{post.line.slice(0, chars)}”</span>
                 <span className={`inline-block ml-2 text-nb-yellow ${done ? 'animate-blink' : ''}`} aria-hidden="true">▼</span>
               </p>
-              <div className="mt-auto flex justify-end gap-3 flex-wrap">
+              <div className="mt-auto flex flex-wrap justify-end gap-3">
                 <Link
                   href={`/yapping/${post.slug}`}
-                  className="font-pixel text-[10px] bg-white text-nb-on px-3.5 py-3 border-[3px] border-white shadow-[4px_4px_0_#FF5C8A] whitespace-nowrap hover:bg-nb-yellow hover:border-nb-yellow"
+                  className="flex-1 sm:flex-none text-center font-pixel text-[10px] bg-white text-nb-on px-3 sm:px-3.5 py-3 border-[3px] border-white shadow-[4px_4px_0_#FF5C8A] whitespace-nowrap hover:bg-nb-yellow hover:border-nb-yellow"
                 >
                   Ⓐ READ MORE
                 </Link>
                 <button
                   type="button"
                   onClick={() => setCurrent((c) => (c + 1) % posts.length)}
-                  className="font-pixel text-[10px] bg-transparent text-white px-3.5 py-3 border-[3px] border-white cursor-pointer whitespace-nowrap hover:bg-white hover:text-nb-on"
+                  className="flex-1 sm:flex-none font-pixel text-[10px] bg-transparent text-white px-3 sm:px-3.5 py-3 border-[3px] border-white cursor-pointer whitespace-nowrap hover:bg-white hover:text-nb-on"
                 >
                   Ⓑ NEXT ▼
                 </button>

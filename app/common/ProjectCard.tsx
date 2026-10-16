@@ -11,28 +11,28 @@ interface ProjectCardProps {
 }
 
 const cardClass =
-    'flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-6 text-nb-ink transition-[translate,rotate,scale,box-shadow] duration-120 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:rotate-[-0.6deg] hover:shadow-hard-9';
+    'flex flex-col min-w-0 bg-nb-card border-[3px] border-nb-ink shadow-hard-4 sm:shadow-hard-6 text-nb-ink transition-[translate,rotate,scale,box-shadow] duration-120 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:rotate-[-0.6deg] hover:shadow-hard-9';
 
 export default function ProjectCard({ src, link, h3, p, num, color }: ProjectCardProps) {
     const body = (
         <>
-            <div className={`relative ${color} p-4 border-b-[3px] border-nb-ink`}>
-                <span className="absolute top-0 left-0 font-pixel text-[8px] bg-nb-panel text-white px-[7px] py-1.5">#{num}</span>
-                <div className="relative aspect-square bg-white border-2 border-nb-on p-3.5">
+            <div className={`relative ${color} p-2.5 sm:p-4 border-b-[3px] border-nb-ink`}>
+                <span className="absolute top-0 left-0 z-1 font-pixel text-[7px] sm:text-[8px] bg-nb-panel text-white px-[5px] py-1 sm:px-[7px] sm:py-1.5">#{num}</span>
+                <div className="relative aspect-square bg-white border-2 border-nb-on p-2 sm:p-3.5">
                     <div className="relative w-full h-full">
                         <Image
                             src={src}
                             alt={h3}
                             fill
-                            sizes="(max-width: 640px) 80vw, 250px"
+                            sizes="(max-width: 640px) 45vw, 250px"
                             className="object-contain"
                         />
                     </div>
                 </div>
             </div>
-            <div className="px-4 pt-3.5 pb-4 flex flex-col gap-2.5 flex-1">
-                <h3 className="font-rubik font-bold text-lg leading-[1.2] text-balance">{h3}</h3>
-                <span className="mt-auto self-start text-[11px] font-bold uppercase tracking-[0.04em] border-2 border-nb-ink px-2 py-1">
+            <div className="px-2.5 pt-2.5 pb-3 sm:px-4 sm:pt-3.5 sm:pb-4 flex flex-col gap-2 sm:gap-2.5 flex-1">
+                <h3 className="font-rubik font-bold text-sm sm:text-lg leading-[1.2] text-balance break-words">{h3}</h3>
+                <span className="mt-auto self-start text-[9px] sm:text-[11px] leading-tight font-bold uppercase tracking-[0.04em] border-2 border-nb-ink px-1.5 py-1 sm:px-2">
                     {p}
                 </span>
             </div>

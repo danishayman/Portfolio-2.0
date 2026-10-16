@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import ProjectCard from '../common/ProjectCard';
 import SectionHeader from '../common/SectionHeader';
-import { ACCENT_BG, pad2 } from '../common/palette';
+import { PROJECT_BG, pad2 } from '../common/palette';
 
 const projects = [
     { src: "/projects/water.webp", link: "https://wmw-usm.netlify.app", h3: "Wheres My Water?", p: "USM Water Filter Finder" },
@@ -37,13 +37,14 @@ export default function Projects() {
         <section id="projects" className="max-w-[1200px] mx-auto px-6 py-[72px]">
             <SectionHeader stage="STAGE 1-3" title="PROJECTS" meta={`${projects.length} ITEMS IN INVENTORY`} />
 
-            <div className="max-w-[280px] mx-auto md:max-w-none grid grid-cols-[repeat(auto-fill,minmax(min(100%,250px),1fr))] gap-7">
+            {/* Two-up inventory grid on phones, auto-filling columns from sm up */}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-[repeat(auto-fill,minmax(min(100%,250px),1fr))] sm:gap-7">
                 {shown.map((project, i) => (
                     <ProjectCard
                         key={project.src}
                         {...project}
                         num={pad2(i + 1)}
-                        color={ACCENT_BG[i % ACCENT_BG.length]}
+                        color={PROJECT_BG[i % PROJECT_BG.length]}
                     />
                 ))}
             </div>
