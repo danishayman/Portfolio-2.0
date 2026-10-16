@@ -6,7 +6,8 @@ import { ACCENT_BG, pad2 } from '../common/palette';
 
 interface Education {
     institution: string;
-    degree: string;
+    // Primary school has no stream, so it's optional
+    degree?: string;
     duration: string;
     achievements: string[];
     locationUrl: string;
@@ -16,7 +17,6 @@ interface Education {
 const educationData: Education[] = [
     {
         institution: "SK Bayan Lepas",
-        degree: "Science Stream",
         duration: "Jan 2010 - Dec 2015",
         achievements: ["UPSR: 5A"],
         locationUrl: "https://maps.app.goo.gl/hiYd2eQftj89ybqk9",
@@ -309,7 +309,7 @@ const Education: React.FC = () => {
                                         </div>
                                         <div className="px-3 py-3 sm:px-[18px] sm:py-5 flex flex-col gap-1.5 sm:gap-3 flex-1">
                                             <h3 className="font-rubik font-bold text-base sm:text-[22px] leading-[1.2] text-balance">{edu.institution}</h3>
-                                            <p className="text-xs sm:text-sm leading-normal whitespace-pre-line">{edu.degree}</p>
+                                            {edu.degree && <p className="text-xs sm:text-sm leading-normal whitespace-pre-line">{edu.degree}</p>}
                                             <div className="mt-auto pt-1.5 sm:pt-2 flex flex-wrap justify-between items-center gap-2">
                                                 {edu.achievements.map((a) => (
                                                     <span key={a} className="font-pixel text-[9px] sm:text-[10px] leading-normal bg-nb-panel text-nb-yellow px-2 py-1.5 sm:px-2.5 sm:py-2">
