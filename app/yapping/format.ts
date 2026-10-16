@@ -16,8 +16,3 @@ export function shortDate(iso: string): string {
   const [year, month, day] = iso.split('-').map(Number);
   return `${day} ${MONTHS[month - 1].slice(0, 3)} ${year}`;
 }
-
-// "New Year" -> "new-year", the form used in /yapping?tag=...
-export function tagSlug(tag: string): string {
-  return tag.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}

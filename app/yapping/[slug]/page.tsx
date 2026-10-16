@@ -24,7 +24,6 @@ export default async function BlogPostPage({ params }: BlogPostParams) {
         description={description}
         datePublished={post.date}
         slug={slug}
-        tags={post.tags}
         author={post.author}
       />
       <BlogPost post={post} slug={slug} />

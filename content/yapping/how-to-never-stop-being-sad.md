@@ -2,7 +2,6 @@
 title: "how to never stop being sad"
 date: "2025-07-24"
 preview: "A raw, introspective guide on processing loss, loneliness, and the complex emotions that come with caring too deeply."
-tags: ["emotional", "introspective", "poetry", "feelings"]
 author: "Danish Aiman"
 ---
 

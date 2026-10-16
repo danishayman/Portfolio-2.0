@@ -1,5 +1,4 @@
-import { BlogPost, Tag } from './types';
-import { tagSlug } from './format';
+import { BlogPost } from './types';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -22,9 +21,6 @@ function parsePost(filename: string): BlogPost {
   if (typeof data.date !== 'string' || !ISO_DATE.test(data.date) || isNaN(Date.parse(data.date))) {
     problems.push(`date must be a quoted YYYY-MM-DD string, got ${JSON.stringify(data.date)}`);
   }
-  if (data.tags !== undefined && !(Array.isArray(data.tags) && data.tags.every((t) => typeof t === 'string'))) {
-    problems.push('tags must be a list of strings');
-  }
   if (problems.length) throw new Error(`${file}: ${problems.join('; ')}`);
 
   return {
@@ -33,7 +29,6 @@ function parsePost(filename: string): BlogPost {
     date: data.date,
     content,
     preview: data.preview,
-    tags: data.tags ?? [],
     author: data.author,
   };
 }
@@ -61,19 +56,4 @@ export const getBlogPosts = cache((): BlogPost[] => {
 // Get a single blog post by slug
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return getBlogPosts().find((post) => post.slug === slug);
-}
-
-// Every tag with its post count, most used first. Tags that differ only in case or
-// spacing ("DIY" / "diy") merge, keeping the first spelling seen.
-export function getAllTags(): Tag[] {
-  const tags = new Map<string, Tag>();
-  for (const post of getBlogPosts()) {
-    for (const label of post.tags) {
-      const slug = tagSlug(label);
-      const tag = tags.get(slug);
-      if (tag) tag.count++;
-      else tags.set(slug, { slug, label, count: 1 });
-    }
-  }
-  return [...tags.values()].sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }

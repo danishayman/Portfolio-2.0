@@ -5,17 +5,8 @@ export interface BlogPost {
   date: string;
   content: string;
   preview: string;
-  tags: string[];
   author?: string;
 }
 
-// What lists need: everything but the body, so archive pages don't ship full posts to the browser
+// What lists need: everything but the body
 export type PostSummary = Omit<BlogPost, 'content' | 'author'>;
-
-export interface Tag {
-  // URL form, e.g. "new-year"
-  slug: string;
-  // As written in the frontmatter, e.g. "New Year"
-  label: string;
-  count: number;
-}

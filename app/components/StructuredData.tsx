@@ -101,14 +101,12 @@ export function BlogPostStructuredData({
   description, 
   datePublished, 
   slug, 
-  tags = [],
   author = 'Danish Aiman' 
 }: {
   title: string;
   description: string;
   datePublished: string;
   slug: string;
-  tags?: string[];
   author?: string;
 }) {
   const jsonLd = {
@@ -135,7 +133,6 @@ export function BlogPostStructuredData({
       name: 'Danish Aiman Blog',
       url: 'https://danishaiman.com/yapping'
     },
-    keywords: tags.join(', '),
     inLanguage: 'en-US'
   };
 

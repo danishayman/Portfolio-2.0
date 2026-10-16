@@ -1,12 +1,11 @@
 // Server component: the markdown renders to HTML at build time, so react-markdown never ships to the browser
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
 import Footer from '../../components/Footer';
 import DetailTopBar from '../../common/DetailTopBar';
 import type { BlogPost as BlogPostData } from '../types';
-import { formatDate, tagSlug } from '../format';
+import { formatDate } from '../format';
 
 interface BlogPostProps {
   post: BlogPostData;
@@ -135,20 +134,6 @@ export default function BlogPost({ post, slug }: BlogPostProps) {
           <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,40px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_#FFD23F] dark:[text-shadow:4px_4px_0_#007bff]">
             {title}
           </h1>
-          {post.tags && post.tags.length > 0 && (
-            <ul className="list-none p-0 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <li key={tag}>
-                  <Link
-                    href={`/yapping?tag=${tagSlug(tag)}`}
-                    className="block text-[11px] font-bold uppercase tracking-[0.04em] bg-nb-card border-2 border-nb-ink px-2 py-1 hover:bg-nb-yellow hover:text-nb-on"
-                  >
-                    #{tag}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
         </header>
 
         <article className="flex flex-col">

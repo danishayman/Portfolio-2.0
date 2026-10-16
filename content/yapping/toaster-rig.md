@@ -2,7 +2,6 @@
 title: "Toaster Rig"
 date: "2025-09-19"
 preview: "TODO: one sentence on what this post is about (120-160 characters, used by Google and link previews)"
-tags: ["Gaming", "Toaster", "DIY", "PC"]
 author: "Danish Aiman"
 ---
 

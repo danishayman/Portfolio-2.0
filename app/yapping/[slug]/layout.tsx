@@ -43,7 +43,6 @@ export async function generateMetadata({
     'Danish Aiman',
     'thoughts',
     'writing',
-    ...(post.tags || [])
   ].join(', ');
 
   return {
@@ -62,7 +61,6 @@ export async function generateMetadata({
       locale: 'en_US',
       publishedTime: new Date(post.date).toISOString(),
       authors: [post.author || 'Danish Aiman'],
-      tags: post.tags,
       images: [image],
     },
     twitter: {
