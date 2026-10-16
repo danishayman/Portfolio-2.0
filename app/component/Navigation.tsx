@@ -52,7 +52,7 @@ function Navigation() {
   return (
     <>
       {/* Desktop: sticky top bar */}
-      <nav className="hidden md:block sticky top-0 z-[1000] bg-nb-bg border-b-[3px] border-nb-ink select-none">
+      <nav className="hidden md:block sticky top-0 z-1000 bg-nb-bg border-b-[3px] border-nb-ink select-none">
         <div className="max-w-[1200px] mx-auto px-6 py-3 flex items-center gap-6 justify-between">
           <a href="#hero" className="flex items-center gap-2.5 shrink-0" onClick={showSections}>
             <span className="w-8 h-8 bg-nb-blue text-white border-[3px] border-nb-ink grid place-items-center font-pixel text-xs shadow-hard-3">
@@ -90,7 +90,7 @@ function Navigation() {
       {/* Mobile: floating icon bar at the bottom, as in the previous layout */}
       <nav
         aria-label="Sections"
-        className="md:hidden fixed bottom-3 left-3 right-3 z-[1000] max-w-[400px] mx-auto bg-nb-card border-[3px] border-nb-ink shadow-hard-4 p-2 select-none"
+        className="md:hidden fixed bottom-3 left-3 right-3 z-1000 max-w-[400px] mx-auto bg-nb-card border-[3px] border-nb-ink shadow-hard-4 p-2 select-none"
       >
         <div className="flex justify-between items-center">
           {navItems.map((item, i) => {
@@ -105,9 +105,9 @@ function Navigation() {
                 className="flex-1 flex justify-center py-1 [-webkit-tap-highlight-color:transparent]"
               >
                 <span
-                  className={`w-9 h-9 grid place-items-center border-2 transition-[transform,box-shadow] duration-100 ${
+                  className={`w-9 h-9 grid place-items-center border-2 transition-[translate,rotate,scale,box-shadow] duration-100 ${
                     active
-                      ? `${NAV_BG[i % NAV_BG.length]} text-nb-on border-nb-ink shadow-hard-3 -translate-y-[3px]`
+                      ? `${NAV_BG[i % NAV_BG.length]} text-nb-on border-nb-ink shadow-hard-3 translate-y-[-3px]`
                       : 'border-transparent text-nb-ink'
                   }`}
                 >

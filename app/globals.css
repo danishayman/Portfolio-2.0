@@ -1,6 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../tailwind.config.mts';
+@plugin '@tailwindcss/typography';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* v4 preflight dropped the pointer cursor on buttons; keep the v3 behaviour */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 :root {
   --bt-color: #007bff; /* Default button color for light mode */
@@ -21,40 +46,46 @@
   --box-shadow-color: #ffffff; /* Box shadow color for dark mode */
 }
 
-body {
-  font-family: var(--font-roboto-mono), monospace;
-  /* No overflow here: it would make <body> a scroll container and break the sticky nav */
-  min-height: 100%;
-}
+/*
+  Element defaults live in the base layer so utilities (e.g. font-pixel on a
+  heading) still win. Unlayered CSS beats every v4 layer regardless of specificity.
+*/
+@layer base {
+  body {
+    font-family: var(--font-roboto-mono), monospace;
+    /* No overflow here: it would make <body> a scroll container and break the sticky nav */
+    min-height: 100%;
+  }
 
-html {
-  height: 100%;
-  overflow-y: auto;
-}
+  html {
+    height: 100%;
+    overflow-y: auto;
+  }
 
-/* Fix for iOS Safari scrolling */
-html, body {
-  -webkit-overflow-scrolling: touch;
-}
+  /* Fix for iOS Safari scrolling */
+  html, body {
+    -webkit-overflow-scrolling: touch;
+  }
 
-body[data-theme='light'] {
-  background-color: white;
-  color: #222; /* Slightly darker than pure black for better readability */
-}
+  body[data-theme='light'] {
+    background-color: white;
+    color: #222; /* Slightly darker than pure black for better readability */
+  }
 
-body[data-theme='dark'] {
-  background-color: #222; /* Dark theme background color */
-  color: #fff;
-}
+  body[data-theme='dark'] {
+    background-color: #222; /* Dark theme background color */
+    color: #fff;
+  }
 
-/* Make sure sections don't create scrolling issues */
-section {
-  position: relative;
-  width: 100%;
-}
+  /* Make sure sections don't create scrolling issues */
+  section {
+    position: relative;
+    width: 100%;
+  }
 
-h1, h2, button {
-  font-family: var(--font-rubik), sans-serif;
+  h1, h2, button {
+    font-family: var(--font-rubik), sans-serif;
+  }
 }
 
 /* Neo-brutalist 8-bit tokens (home page) */
@@ -104,53 +135,4 @@ html {
     linear-gradient(var(--nb-grid-strong) 1px, transparent 1px),
     linear-gradient(90deg, var(--nb-grid-strong) 1px, transparent 1px);
   background-size: 20px 20px;
-}
-
-/* Blog content styling */
-.markdown-content {
-  color: #000000;
-}
-
-[data-theme='dark'] .markdown-content {
-  color: #ffffff;
-}
-
-.markdown-content p {
-  margin-bottom: 2rem;
-  line-height: 1.8;
-  letter-spacing: 0.01em;
-  font-weight: 400;
-  opacity: 1 !important;
-  color: inherit;
-}
-
-/* Blog title styling */
-.prose h1 {
-  color: #000 !important;
-}
-
-body[data-theme='dark'] .prose h1 {
-  color: #fff !important;
-}
-
-/* Additional overrides for blurry text */
-.prose p {
-  color: #000 !important;
-  opacity: 1 !important;
-  font-weight: 500;
-  text-shadow: none;
-  filter: none;
-}
-
-body[data-theme='dark'] .prose p {
-  color: #fff !important;
-}
-
-/* Footer text styling */
-.footer-text {
-  color: #6b7280; /* text-gray-500 equivalent for light mode */
-}
-
-body[data-theme='dark'] .footer-text {
-  color: #d1d5db; /* text-gray-300 equivalent for dark mode */
 }

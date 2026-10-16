@@ -145,6 +145,7 @@ export default function RootLayout({
         {/* Critical CSS for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
+            @layer theme, base, components, utilities;
             :root {
               --bt-color: #007bff;
               --btn-text-color: #ffffff;
@@ -162,30 +163,33 @@ export default function RootLayout({
               --border-color: currentColor;
               --box-shadow-color: #ffffff66;
             }
-            body {
-              font-family: var(--font-roboto-mono), monospace;
-              min-height: 100%;
-              margin: 0;
-              padding: 0;
-            }
-            html {
-              height: 100%;
-              overflow-y: auto;
-            }
-            body[data-theme='light'] {
-              background-color: white;
-              color: #222;
-            }
-            body[data-theme='dark'] {
-              background-color: #222;
-              color: #fff;
-            }
-            h1, h2, button {
-              font-family: var(--font-rubik), sans-serif;
-            }
-            section {
-              position: relative;
-              width: 100%;
+            /* Base layer so Tailwind utilities (e.g. font-pixel) still override these */
+            @layer base {
+              body {
+                font-family: var(--font-roboto-mono), monospace;
+                min-height: 100%;
+                margin: 0;
+                padding: 0;
+              }
+              html {
+                height: 100%;
+                overflow-y: auto;
+              }
+              body[data-theme='light'] {
+                background-color: white;
+                color: #222;
+              }
+              body[data-theme='dark'] {
+                background-color: #222;
+                color: #fff;
+              }
+              h1, h2, button {
+                font-family: var(--font-rubik), sans-serif;
+              }
+              section {
+                position: relative;
+                width: 100%;
+              }
             }
           `
         }} />

@@ -38,7 +38,7 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
   return (
     <div className="flex flex-wrap gap-7 items-stretch">
       <div className="flex-[999_1_520px] max-w-full flex flex-col">
-        <div className="self-start ml-5 relative z-[1] bg-nb-yellow text-nb-on border-[3px] border-b-0 border-nb-ink px-3.5 py-2.5 font-pixel text-[11px]">
+        <div className="self-start ml-5 relative z-1 bg-nb-yellow text-nb-on border-[3px] border-b-0 border-nb-ink px-3.5 py-2.5 font-pixel text-[11px]">
           DANISH
         </div>
         <div className="flex-1 bg-nb-panel p-1.5 shadow-[10px_10px_0_#007bff]">
@@ -61,7 +61,7 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
                 </span>
               </div>
               <h3 className="font-pixel font-normal text-[clamp(16px,2.2vw,22px)] leading-[1.4] text-nb-yellow">{post.label}</h3>
-              <p className="font-pixel text-xs leading-[2] text-white text-pretty">
+              <p className="font-pixel text-xs leading-loose text-white text-pretty">
                 <span className="sr-only">{post.line}</span>
                 <span aria-hidden="true">“{post.line.slice(0, chars)}”</span>
                 <span className={`inline-block ml-2 text-nb-yellow ${done ? 'animate-blink' : ''}`} aria-hidden="true">▼</span>
@@ -99,7 +99,7 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
                 type="button"
                 onClick={() => setCurrent(i)}
                 aria-pressed={active}
-                className={`grid grid-cols-[18px_minmax(0,1fr)] gap-2.5 items-center text-left px-2.5 py-3 border-2 cursor-pointer font-pixel text-[10px] leading-[1.5] ${NAV_HOVER_BG[i % NAV_HOVER_BG.length]} hover:border-nb-ink hover:text-nb-on ${
+                className={`grid grid-cols-[18px_minmax(0,1fr)] gap-2.5 items-center text-left px-2.5 py-3 border-2 cursor-pointer font-pixel text-[10px] leading-normal ${NAV_HOVER_BG[i % NAV_HOVER_BG.length]} hover:border-nb-ink hover:text-nb-on ${
                   active
                     ? `${NAV_BG[i % NAV_BG.length]} border-nb-ink text-nb-on`
                     : 'bg-transparent border-transparent text-nb-ink'

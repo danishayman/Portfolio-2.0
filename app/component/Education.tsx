@@ -63,7 +63,7 @@ const Education: React.FC = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={`Open ${edu.institution} on Google Maps`}
-                                className="flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-6 text-nb-ink transition-[transform,box-shadow] duration-[120ms] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-hard-9"
+                                className="flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-6 text-nb-ink transition-[translate,rotate,scale,box-shadow] duration-120 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-hard-9"
                             >
                                 <div className={`${accent} text-nb-on border-b-[3px] border-nb-ink px-4 py-3 flex flex-wrap justify-between items-center gap-x-3 gap-y-2`}>
                                     <span className="font-pixel text-[10px] whitespace-nowrap">FILE {num}</span>
@@ -71,7 +71,7 @@ const Education: React.FC = () => {
                                 </div>
                                 <div className="px-[18px] py-5 flex flex-col gap-3 flex-1">
                                     <h3 className="font-rubik font-bold text-[22px] leading-[1.2] text-balance">{edu.institution}</h3>
-                                    <p className="text-sm leading-[1.5] whitespace-pre-line">{edu.degree}</p>
+                                    <p className="text-sm leading-normal whitespace-pre-line">{edu.degree}</p>
                                     <div className="mt-auto pt-2 flex flex-wrap justify-between items-center gap-2">
                                         {edu.achievements.map((a) => (
                                             <span key={a} className="font-pixel text-[9px] bg-nb-panel text-nb-yellow px-2.5 py-2 whitespace-nowrap">

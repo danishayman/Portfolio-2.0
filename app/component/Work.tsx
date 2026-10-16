@@ -142,9 +142,9 @@ const Work = () => {
                                 type="button"
                                 onClick={() => selectJob(i)}
                                 aria-pressed={active}
-                                className={`text-left flex gap-3.5 items-center p-3.5 border-[3px] border-nb-ink cursor-pointer font-mono transition-[transform,box-shadow] duration-[120ms] ${
+                                className={`text-left flex gap-3.5 items-center p-3.5 border-[3px] border-nb-ink cursor-pointer font-mono transition-[translate,rotate,scale,box-shadow] duration-120 ${
                                     active
-                                        ? 'bg-nb-blue text-white shadow-hard-6 -translate-x-[3px] -translate-y-[3px]'
+                                        ? 'bg-nb-blue text-white shadow-hard-6 translate-x-[-3px] translate-y-[-3px]'
                                         : 'bg-nb-card text-nb-ink shadow-hard-3'
                                 }`}
                             >
@@ -193,7 +193,7 @@ const Work = () => {
 
                         <ul className="list-none p-0 flex flex-col gap-3">
                             {job.description.map((item) => (
-                                <li key={item} className="flex gap-3 text-[15px] leading-[1.5]">
+                                <li key={item} className="flex gap-3 text-[15px] leading-normal">
                                     <span className="w-2.5 h-2.5 bg-nb-pink border-2 border-nb-ink shrink-0 mt-1.5" />
                                     <span>{item}</span>
                                 </li>

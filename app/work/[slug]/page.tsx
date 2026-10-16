@@ -95,7 +95,7 @@ export default async function WorkDetailPage({
       <Suspense fallback={<Loading fullScreen={true} />}>
         <WorkDetailClient workData={workData} />
       </Suspense>
-      <Footer />
+      <Footer topHref="#top" />
     </>
   );
 } 

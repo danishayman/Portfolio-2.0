@@ -55,7 +55,7 @@ const Skills: React.FC = () => {
                     >
                         <div className="flex flex-col items-center text-center sm:items-start sm:text-left gap-2.5">
                             <span className={`w-7 h-7 ${ACCENT_BG[i % ACCENT_BG.length]} border-[3px] border-nb-ink`} />
-                            <span className="font-pixel text-[11px] leading-[1.5]">{group.label}</span>
+                            <span className="font-pixel text-[11px] leading-normal">{group.label}</span>
                             <span className="text-xs text-nb-muted">{group.items.length} skills</span>
                         </div>
                         <div className="flex flex-wrap justify-center sm:justify-start gap-3">

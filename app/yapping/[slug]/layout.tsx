@@ -29,8 +29,10 @@ export async function generateMetadata({
   }
 
   const description = post.preview || post.content.substring(0, 160).replace(/\n/g, ' ').trim() + '...';
+  // Untitled posts fall back to their slug, as on the page itself
+  const title = post.title || slug.replace(/-/g, ' ');
   const keywords = [
-    post.title,
+    title,
     'blog',
     'Danish Aiman',
     'thoughts',
@@ -39,14 +41,14 @@ export async function generateMetadata({
   ].join(', ');
 
   return {
-    title: `${post.title} | Danish Aiman Blog`,
+    title: `${title} | Danish Aiman Blog`,
     description: description,
     keywords: keywords,
     authors: [{ name: post.author || 'Danish Aiman' }],
     creator: 'Danish Aiman',
     publisher: 'Danish Aiman',
     openGraph: {
-      title: post.title,
+      title,
       description: description,
       url: `https://danishaiman.com/yapping/${slug}`,
       siteName: 'Danish Aiman Portfolio',
@@ -58,7 +60,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary',
-      title: post.title,
+      title,
       description: description,
       creator: '@zagreusaiman',
     },

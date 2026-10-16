@@ -34,8 +34,8 @@ const Contact = () => {
                         placeholder="Name"
                         required
                         className={`h-[50px] px-4 w-full rounded-[20px] border ${borderColorClass} 
-                                bg-[var(--background-color)] text-[var(--text-color)]
-                                focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
+                                bg-(--background-color) text-(--text-color)
+                                focus:outline-hidden focus:ring-2 focus:ring-(--text-color) focus:border-transparent
                                 transition-all duration-300`}
                     />
                 </div>
@@ -49,8 +49,8 @@ const Contact = () => {
                         placeholder="Email"
                         required
                         className={`h-[50px] px-4 w-full rounded-[20px] border ${borderColorClass} 
-                                bg-[var(--background-color)] text-[var(--text-color)]
-                                focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
+                                bg-(--background-color) text-(--text-color)
+                                focus:outline-hidden focus:ring-2 focus:ring-(--text-color) focus:border-transparent
                                 transition-all duration-300`}
                     />
                 </div>
@@ -63,18 +63,18 @@ const Contact = () => {
                         placeholder="Message"
                         required
                         className={`h-[250px] p-4 w-full rounded-[20px] border ${borderColorClass} 
-                                bg-[var(--background-color)] text-[var(--text-color)] resize-none
-                                focus:outline-none focus:ring-2 focus:ring-[var(--text-color)] focus:border-transparent
+                                bg-(--background-color) text-(--text-color) resize-none
+                                focus:outline-hidden focus:ring-2 focus:ring-(--text-color) focus:border-transparent
                                 transition-all duration-300`}
                     ></textarea>
                 </div>
 
                 <button
                     type="submit"
-                    className="bg-[var(--bt-color)] text-[var(--btn-text-color)] 
+                    className="bg-(--bt-color) text-(--btn-text-color) 
                                 rounded-[20px] w-[126px] h-[50px] text-base md:text-lg 
-                                font-bold font-rubik shadow-[0_4px_4px_rgba(0,0,0,0.25)] 
-                                hover:scale-105 active:translate-y-0.5 active:shadow-[0_2px_2px_rgba(0,0,0,0.25)]
+                                font-bold font-rubik shadow-md 
+                                hover:scale-105 active:translate-y-0.5 active:shadow-sm
                                 transition-all duration-200 mx-auto"
                 >
                     Submit

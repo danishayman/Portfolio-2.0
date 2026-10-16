@@ -1,4 +1,5 @@
-export default function Footer() {
+// topHref: where CONTINUE? jumps; detail pages have no #hero, so they pass '#top'
+export default function Footer({ topHref = '#hero' }: { topHref?: string }) {
     const currentYear = new Date().getFullYear();
 
     return (
@@ -10,7 +11,7 @@ export default function Footer() {
                     <span className="text-[13px] text-nb-silver">&copy; {currentYear} danishayman. All rights reserved.</span>
                 </div>
                 <a
-                    href="#hero"
+                    href={topHref}
                     className="font-pixel text-[10px] bg-white text-nb-on px-4 py-3.5 border-[3px] border-white shadow-[4px_4px_0_#007bff] hover:bg-nb-yellow"
                 >
                     CONTINUE? ▲

@@ -53,7 +53,7 @@ export default function Projects() {
                     <button
                         type="button"
                         onClick={() => setShowAll((v) => !v)}
-                        className="font-pixel text-[11px] bg-nb-yellow text-nb-on px-5 py-4 border-[3px] border-nb-ink shadow-hard-6 cursor-pointer transition-[transform,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-8 active:translate-x-1.5 active:translate-y-1.5 active:shadow-hard-0"
+                        className="font-pixel text-[11px] bg-nb-yellow text-nb-on px-5 py-4 border-[3px] border-nb-ink shadow-hard-6 cursor-pointer transition-[translate,rotate,scale,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-8 active:translate-x-1.5 active:translate-y-1.5 active:shadow-hard-0"
                     >
                         {showAll ? '▲ SHOW LESS' : `▼ LOAD ${hidden} MORE`}
                     </button>

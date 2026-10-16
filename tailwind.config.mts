@@ -9,21 +9,8 @@ const config: Config = {
     ],
     // ThemeProvider sets data-theme on <body>
     darkMode: ['selector', '[data-theme="dark"]'],
-    // Optimize for production builds
-    future: {
-        hoverOnlyWhenSupported: true,
-    },
-    corePlugins: {
-        // Disable unused features to reduce bundle size
-        touchAction: false,
-        ringOffsetWidth: false,
-        ringOffsetColor: false,
-        scrollSnapType: false,
-        scrollSnapAlign: false,
-        scrollSnapStop: false,
-        scrollMargin: false,
-        scrollPadding: false,
-    },
+    // v4 only emits utilities that are used, and hover already only applies on
+    // hover-capable devices, so the old corePlugins/future flags aren't needed
     theme: {
         extend: {
             fontFamily: {
@@ -118,9 +105,7 @@ const config: Config = {
             },
         },
     },
-    plugins: [
-        require('@tailwindcss/typography'),
-    ],
+    // @tailwindcss/typography is loaded with @plugin in app/globals.css
 };
 
 export default config;

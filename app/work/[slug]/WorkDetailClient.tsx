@@ -1,262 +1,181 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useTheme } from '../../common/ThemeContext';
-import { useRouter } from 'next/navigation';
-import { WorkExperience, allWorkImages } from '../workData';
+import DetailTopBar from '../../common/DetailTopBar';
+import { ACCENT_BG, pad2 } from '../../common/palette';
+import { WorkExperience, allWorkImages, workExperienceData } from '../workData';
 
 interface WorkDetailClientProps {
     workData: WorkExperience;
 }
 
-export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
-    const router = useRouter();
-    const { theme, toggleTheme } = useTheme();
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const SWIPE_THRESHOLD = 50;
 
-    // Determine which icon to use based on theme
-    const themeIcon = theme === 'light' ? '/hero/sun.svg' : '/hero/moon.svg';
+const arrowClass =
+    'w-10 h-10 grid place-items-center bg-nb-card text-nb-ink border-[3px] border-nb-ink shadow-hard-3 font-pixel text-xs transition-[translate,rotate,scale,box-shadow] duration-100 hover:bg-nb-yellow hover:text-nb-on hover:-translate-x-px hover:-translate-y-px hover:shadow-hard-4 active:translate-x-[3px] active:translate-y-[3px] active:shadow-hard-0';
+
+export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
     const [dragStartX, setDragStartX] = useState(0);
-    const carouselRef = useRef<HTMLDivElement>(null);
 
-    const handleBackClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        router.push('/#work');
-    };
+    const total = workData.images.length;
+    // Same LV numbering as the home page: oldest job is LV.01
+    const level = pad2(workExperienceData.length - workExperienceData.findIndex((w) => w.slug === workData.slug));
 
     useEffect(() => {
-        // Start preloading images
-        const preloadImages = workData.images.map((src) => {
-            return new Promise<void>((resolve) => {
-                const img = new window.Image();
-                img.src = src;
-                img.onload = () => resolve();
-                img.onerror = () => resolve(); // Continue even if image fails to load
-            });
-        });
-
-        // Wait for images to preload
-        Promise.all(preloadImages).catch(() => {
-            // In case of errors, still continue
+        // Warm the cache so flipping through the gallery doesn't flash
+        workData.images.forEach((src) => {
+            const img = new window.Image();
+            img.src = src;
         });
     }, [workData.images]);
 
-    const nextImage = () => {
-        setCurrentImageIndex((prev) => 
-            prev === workData.images.length - 1 ? 0 : prev + 1
-        );
+    const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % total);
+    const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + total) % total);
+
+    const swipe = (distance: number) => {
+        if (distance > SWIPE_THRESHOLD) nextImage();
+        else if (distance < -SWIPE_THRESHOLD) prevImage();
     };
 
-    const prevImage = () => {
-        setCurrentImageIndex((prev) => 
-            prev === 0 ? workData.images.length - 1 : prev - 1
-        );
-    };
-
-    // Handle touch events for mobile swipe
-    const handleTouchStart = (e: React.TouchEvent) => {
-        setTouchStart(e.targetTouches[0].clientX);
-    };
-    
-    const handleTouchMove = (e: React.TouchEvent) => {
-        setTouchEnd(e.targetTouches[0].clientX);
-    };
-    
+    // Mobile swipe
     const handleTouchEnd = () => {
-        if (!touchStart || !touchEnd) return;
-        const distance = touchStart - touchEnd;
-        const isLeftSwipe = distance > 50;
-        const isRightSwipe = distance < -50;
-        
-        if (isLeftSwipe) {
-            nextImage();
-        } else if (isRightSwipe) {
-            prevImage();
-        }
-        
+        if (touchStart && touchEnd) swipe(touchStart - touchEnd);
         setTouchStart(0);
         setTouchEnd(0);
     };
 
-    // Desktop mouse-based swipe
-    const handleMouseDown = (e: React.MouseEvent) => {
-        setIsDragging(true);
-        setDragStartX(e.clientX);
-    };
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!isDragging) return;
-        // Prevent text selection during drag
-        e.preventDefault();
-    };
-
+    // Desktop drag
     const handleMouseUp = (e: React.MouseEvent) => {
         if (!isDragging) return;
-        
-        const distance = dragStartX - e.clientX;
-        const isLeftSwipe = distance > 50;
-        const isRightSwipe = distance < -50;
-        
-        if (isLeftSwipe) {
-            nextImage();
-        } else if (isRightSwipe) {
-            prevImage();
-        }
-        
+        swipe(dragStartX - e.clientX);
         setIsDragging(false);
-    };
-
-    const handleMouseLeave = () => {
-        setIsDragging(false);
-    };
-
-    // Function to handle dot indicator clicks
-    const goToImage = (index: number) => {
-        setCurrentImageIndex(index);
     };
 
     return (
-        <div className="min-h-screen bg-[var(--background-color)] text-[var(--text-color)]">
-            <main className="max-w-5xl mx-auto px-6 py-12 md:py-24 md:px-12">
-                <div className="flex justify-between items-center mb-10">
-                    <button onClick={handleBackClick} className="inline-flex items-center text-sm md:text-base font-medium px-4 py-2 rounded-lg border-2 border-[var(--text-color)] shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm">
-                        <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                        </svg>
-                        Back to Portfolio
-                    </button>
-                    <button
-                        onClick={toggleTheme}
-                        aria-label="Toggle theme"
-                    >
-                        <Image
-                            className="w-8 h-8 rounded-full cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_5px_var(--bt-color)] transition-all duration-400"
-                            src={themeIcon}
-                            alt="Theme toggle icon"
-                            width={32}
-                            height={32}
-                        />
-                    </button>
-                </div>
+        <div className="nb-grid bg-nb-bg text-nb-ink min-h-screen">
+            <DetailTopBar backHref="/#work" backLabel="EXPERIENCE" />
 
-                <div className="flex flex-col mb-12">
-                    <div className="mb-12">
-                        <h1 className="text-3xl md:text-4xl font-bold mb-2">{workData.role}</h1>
-                        <h2 className="text-xl md:text-2xl opacity-80 mb-2">{workData.company}</h2>
-                        <p className="text-sm md:text-base opacity-70 mb-8">{workData.duration}</p>
-
-                        <div className="prose prose-lg dark:prose-invert max-w-none mb-8">
-                            <p className="whitespace-pre-line mb-8"
-                                style={{
-                                    color: 'currentColor',
-                                    opacity: 1,
-                                    fontWeight: 500,
-                                    textShadow: 'none',
-                                    filter: 'none'
-                                }}>
-                                {workData.detailedDescription}
-                            </p>
-                        </div>
+            <main className="max-w-[1200px] mx-auto px-6 pt-12 pb-20 md:pt-[72px] md:pb-24">
+                {/* Header */}
+                <header className="flex flex-col gap-5 border-b-[3px] border-nb-ink pb-8 mb-10">
+                    <div className="flex gap-2.5 flex-wrap">
+                        <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">QUEST LOG · LV.{level}</span>
+                        <span className="font-pixel text-[10px] bg-nb-card border-2 border-nb-ink px-2.5 py-1.5">{workData.duration.toUpperCase()}</span>
                     </div>
+                    <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,44px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_#FFD23F]">
+                        {workData.role.toUpperCase()}
+                    </h1>
+                    <p className="text-[17px] font-medium text-nb-blue">@ {workData.company}</p>
+                </header>
 
-                    {/* Image Carousel */}
-                    <div className="mb-12">
-                        <div 
-                            ref={carouselRef}
-                            className="relative w-full mx-auto aspect-square mb-4 rounded-lg border-2 border-[var(--text-color)] overflow-hidden shadow-[5px_5px_var(--box-shadow-color)] md:max-w-md lg:max-w-lg cursor-grab active:cursor-grabbing select-none"
-                            onTouchStart={handleTouchStart}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={handleTouchEnd}
-                            onMouseDown={handleMouseDown}
-                            onMouseMove={handleMouseMove}
-                            onMouseUp={handleMouseUp}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            {workData.images.map((image: string, index: number) => (
-                                <div 
-                                    key={index} 
-                                    className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${
-                                        index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-                                    }`}
+                <div className="flex flex-wrap gap-8 items-start">
+                    {/* Story */}
+                    <article className="flex-[999_1_480px] max-w-full bg-nb-card border-[3px] border-nb-ink shadow-hard-8">
+                        <div className="bg-nb-panel text-white px-[18px] py-3 flex justify-between gap-3 flex-wrap">
+                            <span className="font-pixel text-[10px] text-nb-yellow">THE STORY</span>
+                            <span className="font-pixel text-[10px] text-nb-silver">{workData.company.toUpperCase()}</span>
+                        </div>
+                        <p className="p-[26px] whitespace-pre-line text-base leading-[1.8] text-pretty">{workData.detailedDescription}</p>
+                    </article>
+
+                    {/* Gallery + skills */}
+                    <div className="flex-[1_1_340px] max-w-full flex flex-col gap-8 md:sticky md:top-[96px]">
+                        <div className="bg-nb-card border-[3px] border-nb-ink shadow-hard-8">
+                            <div className="bg-nb-panel text-white px-[18px] py-3 flex justify-between gap-3">
+                                <span className="font-pixel text-[10px] text-nb-yellow">GALLERY</span>
+                                <span className="font-pixel text-[10px]">
+                                    {pad2(currentImageIndex + 1)}/{pad2(total)}
+                                </span>
+                            </div>
+
+                            <div className="p-4 bg-nb-pink border-b-[3px] border-nb-ink">
+                                <div
+                                    className="relative aspect-square border-[3px] border-nb-on bg-white overflow-hidden cursor-grab active:cursor-grabbing select-none"
+                                    onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientX)}
+                                    onTouchMove={(e) => setTouchEnd(e.targetTouches[0].clientX)}
+                                    onTouchEnd={handleTouchEnd}
+                                    onMouseDown={(e) => {
+                                        setIsDragging(true);
+                                        setDragStartX(e.clientX);
+                                    }}
+                                    // Prevent text selection during drag
+                                    onMouseMove={(e) => isDragging && e.preventDefault()}
+                                    onMouseUp={handleMouseUp}
+                                    onMouseLeave={() => setIsDragging(false)}
                                 >
-                                    <Image
-                                        src={image}
-                                        alt={`${workData.role} at ${workData.company} - Image ${index + 1}`}
-                                        className="object-cover pointer-events-none"
-                                        fill
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                        priority={index === currentImageIndex}
-                                        draggable="false"
-                                    />
+                                    {workData.images.map((image, index) => (
+                                        <div
+                                            key={image}
+                                            className={`absolute inset-0 transition-opacity duration-300 ease-[steps(6)] ${
+                                                index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                                            }`}
+                                        >
+                                            <Image
+                                                src={image}
+                                                alt={`${workData.role} at ${workData.company} - Image ${index + 1}`}
+                                                className="object-cover pointer-events-none"
+                                                fill
+                                                sizes="(max-width: 800px) 90vw, 420px"
+                                                priority={index === 0}
+                                                draggable={false}
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
-                            
-                            {/* Navigation Arrows */}
-                            <button 
-                                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 z-20 cursor-pointer"
-                                onClick={prevImage}
-                                aria-label="Previous image"
-                            >
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15 19L8 12L15 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                            </button>
-                            <button 
-                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full p-2 z-20 cursor-pointer"
-                                onClick={nextImage}
-                                aria-label="Next image"
-                            >
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 5L16 12L9 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                </svg>
-                            </button>
+                            </div>
+
+                            <div className="px-4 py-3.5 flex items-center justify-between gap-3">
+                                <button type="button" onClick={prevImage} aria-label="Previous image" className={arrowClass}>
+                                    ◀
+                                </button>
+
+                                <div className="flex flex-wrap justify-center gap-1.5">
+                                    {workData.images.map((image, index) => (
+                                        <button
+                                            key={image}
+                                            type="button"
+                                            onClick={() => setCurrentImageIndex(index)}
+                                            aria-label={`Go to image ${index + 1}`}
+                                            aria-current={index === currentImageIndex ? 'true' : undefined}
+                                            className={`w-3 h-3 border-2 border-nb-ink ${
+                                                index === currentImageIndex ? 'bg-nb-yellow' : 'bg-nb-heart hover:bg-nb-sky'
+                                            }`}
+                                        />
+                                    ))}
+                                </div>
+
+                                <button type="button" onClick={nextImage} aria-label="Next image" className={arrowClass}>
+                                    ▶
+                                </button>
+                            </div>
                         </div>
-                        
-                        {/* Swipe instruction - moved below the carousel */}
-                        <div className="flex items-center justify-center mb-4 text-[var(--text-color)] font-medium text-sm md:text-base max-w-md mx-auto">
-                            <svg className="w-4 h-4 md:w-5 md:h-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 5L7 12L14 19M21 12H7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                            Swipe or drag to navigate
-                            <svg className="w-4 h-4 md:w-5 md:h-5 ml-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 19L17 12L10 5M3 12H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </div>
-                        
-                        {/* Enhanced Dot indicators */}
-                        <div className="flex justify-center space-x-3 mb-2 max-w-md mx-auto">
-                            {workData.images.map((_: any, index: number) => (
-                                <button
-                                    key={index}
-                                    onClick={() => goToImage(index)}
-                                    className={`h-3 w-3 rounded-full transition-colors border border-[var(--text-color)] ${
-                                        index === currentImageIndex 
-                                            ? "bg-[var(--text-color)]" 
-                                            : "bg-transparent hover:bg-[var(--text-color)]/30"
-                                    }`}
-                                    aria-label={`Go to image ${index + 1}`}
-                                />
-                            ))}
+
+                        <div className="flex flex-col gap-4">
+                            <span className="font-pixel text-[10px]">SKILLS UNLOCKED</span>
+                            <ul className="list-none p-0 flex flex-wrap gap-2.5">
+                                {workData.skills.map((skill, i) => (
+                                    <li
+                                        key={skill}
+                                        className={`${ACCENT_BG[i % ACCENT_BG.length]} text-nb-on text-[13px] font-bold border-2 border-nb-ink shadow-hard-3 px-3 py-1.5`}
+                                    >
+                                        {skill}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </main>
 
-            {/* Hidden preload section for all possible images */}
+            {/* Hidden preload for every work image, so other quests open instantly */}
             <div className="hidden">
-                {allWorkImages.map((image, index) => (
-                    <Image
-                        key={`preload-${index}`}
-                        src={image}
-                        alt="Preload image"
-                        width={1}
-                        height={1}
-                        priority={true}
-                    />
+                {allWorkImages.map((image) => (
+                    <Image key={`preload-${image}`} src={image} alt="" width={1} height={1} priority />
                 ))}
             </div>
         </div>

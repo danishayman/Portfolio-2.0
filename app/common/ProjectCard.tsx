@@ -11,7 +11,7 @@ interface ProjectCardProps {
 }
 
 const cardClass =
-    'flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-6 text-nb-ink transition-[transform,box-shadow] duration-[120ms] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:-rotate-[0.6deg] hover:shadow-hard-9';
+    'flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-6 text-nb-ink transition-[translate,rotate,scale,box-shadow] duration-120 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:rotate-[-0.6deg] hover:shadow-hard-9';
 
 export default function ProjectCard({ src, link, h3, p, num, color }: ProjectCardProps) {
     const body = (
