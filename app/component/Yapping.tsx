@@ -39,7 +39,7 @@ export default function Yapping() {
   }));
 
   return (
-    <section id="yapping" className="max-w-[1200px] mx-auto px-6 pt-[72px] pb-24">
+    <section id="yapping" className="max-w-[1200px] mx-auto px-6 pt-12 pb-16 sm:pt-[72px] sm:pb-24">
       <SectionHeader stage="STAGE 1-5" title="YAPPING" meta={`${posts.length} DIALOGUES`} />
       {posts.length > 0 && <YappingDialogue posts={posts} />}
     </section>

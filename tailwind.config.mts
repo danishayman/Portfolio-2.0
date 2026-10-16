@@ -36,6 +36,7 @@ const config: Config = {
                     green: '#2ED47A',
                     orange: '#FF9F43',
                     purple: '#B892FF',
+                    red: '#E5383B',
                     silver: '#d1d5db',
                 },
             },

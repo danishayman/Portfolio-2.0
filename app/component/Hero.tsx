@@ -4,9 +4,9 @@ import { PlayerExp, PlayerLevel } from '../common/PlayerStats';
 import ThemeToggle from '../common/ThemeToggle';
 
 const socials = [
-    { href: 'mailto:danishaiman3b@gmail.com', label: 'Email', icon: '/hero/email-light.svg', external: false },
-    { href: 'https://github.com/danishayman/', label: 'GitHub', icon: '/hero/github-light.svg', external: true },
-    { href: 'https://www.linkedin.com/in/danishayman/', label: 'LinkedIn', icon: '/hero/linkedin-light.svg', external: true },
+    { href: 'mailto:danishaiman3b@gmail.com', label: 'Email', icon: 'email', external: false },
+    { href: 'https://github.com/danishayman/', label: 'GitHub', icon: 'github', external: true },
+    { href: 'https://www.linkedin.com/in/danishayman/', label: 'LinkedIn', icon: 'linkedin', external: true },
 ];
 
 const Hero: React.FC = () => {
@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
                 </h1>
 
                 <div className="bg-nb-card px-4 py-3 md:px-[22px] md:py-5 max-w-[520px] mx-1 md:mt-1 md:mb-2.5 shadow-[0_-4px_0_var(--nb-ink),0_4px_0_var(--nb-ink),-4px_0_0_var(--nb-ink),4px_0_0_var(--nb-ink),10px_10px_0_var(--nb-ink)]">
-                    <p className="hidden md:block font-pixel text-[10px] text-nb-blue mb-3">COMPUTER SCIENCE STUDENT</p>
+                    <p className="hidden md:block font-pixel text-[10px] text-nb-blue dark:text-nb-yellow mb-3">COMPUTER SCIENCE STUDENT</p>
                     <p className="text-sm md:text-[17px] leading-normal md:leading-[1.6] text-pretty">
                         A developer majoring in Intelligent Computing. SUPER into Machine Learning &amp; Artificial Intelligence.
                     </p>
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
                         href="/RESUME_DANISH_AIMAN_AI_ML.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-pixel text-[10px] md:text-xs bg-nb-blue text-white h-11 md:h-auto px-3.5 md:px-[22px] md:py-[18px] border-[3px] border-nb-ink shadow-hard-4 md:shadow-hard-6 flex gap-2 md:gap-3 items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-8 active:translate-x-1.5 active:translate-y-1.5 active:shadow-hard-0"
+                        className="font-pixel text-[10px] md:text-xs bg-nb-blue text-white dark:bg-nb-purple dark:text-nb-on h-11 md:h-auto px-3.5 md:px-[22px] md:py-[18px] border-[3px] border-nb-ink shadow-hard-4 md:shadow-hard-6 flex gap-2 md:gap-3 items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-8 active:translate-x-1.5 active:translate-y-1.5 active:shadow-hard-0"
                     >
                         <span>▶</span>
                         <span>RÉSUMÉ</span>
@@ -53,9 +53,11 @@ const Hero: React.FC = () => {
                                 href={s.href}
                                 aria-label={s.label}
                                 {...(s.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                                className="w-11 h-11 md:w-14 md:h-14 bg-white border-[3px] border-nb-ink shadow-hard-4 grid place-items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:bg-nb-yellow hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6 active:translate-x-1 active:translate-y-1 active:shadow-hard-0"
+                                className="group w-11 h-11 md:w-14 md:h-14 bg-white dark:bg-nb-panel border-[3px] border-nb-ink shadow-hard-4 grid place-items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:bg-nb-yellow hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6 active:translate-x-1 active:translate-y-1 active:shadow-hard-0"
                             >
-                                <Image src={s.icon} alt={s.label} width={26} height={26} className="w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />
+                                {/* Black icon on the white box; dark mode swaps to the white icon, except on the yellow hover */}
+                                <Image src={`/hero/${s.icon}-light.svg`} alt={s.label} width={26} height={26} className="w-[22px] h-[22px] md:w-[26px] md:h-[26px] dark:hidden dark:group-hover:block" />
+                                <Image src={`/hero/${s.icon}-dark.svg`} alt="" width={26} height={26} className="hidden dark:block dark:group-hover:hidden w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />
                             </a>
                         ))}
                     </div>
@@ -106,10 +108,11 @@ const Hero: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Labels share the top line; each value centers in the space below */}
                 <div className="grid grid-cols-3">
-                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 border-r-[3px] border-nb-ink flex flex-col items-center justify-center text-center gap-2 md:gap-3">
+                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 border-r-[3px] border-nb-ink flex flex-col items-center text-center gap-2 md:gap-3">
                         <span className="font-pixel text-[9px] md:text-xs text-nb-muted">LIVES</span>
-                        <span className="flex flex-col md:flex-row gap-1.5 md:gap-1 items-center">
+                        <span className="flex-1 flex flex-col md:flex-row gap-1.5 md:gap-1 items-center justify-center">
                             <span className="flex gap-0.5 md:gap-1">
                                 <PixelHeart full />
                                 <PixelHeart full={false} />
@@ -118,15 +121,17 @@ const Hero: React.FC = () => {
                             <span className="font-pixel text-[9px] md:text-xs md:ml-0.5">x1</span>
                         </span>
                     </div>
-                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 border-r-[3px] border-nb-ink flex flex-col items-center justify-center text-center gap-2 md:gap-3">
+                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 border-r-[3px] border-nb-ink flex flex-col items-center text-center gap-2 md:gap-3">
                         <span className="font-pixel text-[9px] md:text-xs text-nb-muted">LEVEL</span>
-                        <span className="font-pixel text-lg md:text-2xl leading-none text-nb-blue">
+                        <span className="flex-1 flex items-center font-pixel text-lg md:text-2xl leading-none text-nb-blue">
                             <PlayerLevel serverNow={serverNow} />
                         </span>
                     </div>
-                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 flex flex-col items-center justify-center text-center gap-2 md:gap-3">
+                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 flex flex-col items-center text-center gap-2 md:gap-3">
                         <span className="font-pixel text-[9px] md:text-xs text-nb-muted">EXP</span>
-                        <PlayerExp serverNow={serverNow} />
+                        <span className="flex-1 self-stretch flex flex-col items-center justify-center gap-2 md:gap-3">
+                            <PlayerExp serverNow={serverNow} />
+                        </span>
                     </div>
                 </div>
             </div>

@@ -3,12 +3,15 @@
 const HEART_OUTLINE =
     'M1 0h2v1h1v1h1V1h1V0h2v1h1v3H8v1H7v1H6v1H5v1H4V7H3V6H2V5H1V4H0V1h1z';
 const HEART_FILL = 'M1 1h2v1h1v1h1V2h1V1h2v3H7v1H6v1H5v1H4V6H3V5H2V4H1z';
+// Bold 2px-wide X across the whole heart, marking a lost life
+const HEART_CROSS = Array.from({ length: 8 }, (_, i) => `M${i} ${i}h2v1h-2zM${7 - i} ${i}h2v1h-2z`).join('');
 
 export function PixelHeart({ full }: { full: boolean }) {
     return (
         <svg width="18" height="16" viewBox="0 0 9 8" className="block" shapeRendering="crispEdges" aria-hidden="true">
             <path d={HEART_OUTLINE} className="fill-nb-ink" />
             <path d={HEART_FILL} className={full ? 'fill-nb-pink' : 'fill-nb-heart'} />
+            {!full && <path d={HEART_CROSS} className="fill-nb-red" />}
         </svg>
     );
 }

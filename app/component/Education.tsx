@@ -232,7 +232,7 @@ const Education: React.FC = () => {
     const current = educationData.length - 1;
 
     return (
-        <section id="education" className="max-w-[1200px] mx-auto px-6 py-[72px]">
+        <section id="education" className="max-w-[1200px] mx-auto px-6 py-12 sm:py-[72px]">
             <SectionHeader
                 stage="STAGE 1-1"
                 title="EDUCATION"
@@ -249,8 +249,8 @@ const Education: React.FC = () => {
                     </span>
                 </div>
 
-                <div className="nb-grid px-3 py-12 sm:px-4 md:px-8 md:py-16">
-                    <ol ref={listRef} className="relative max-w-[1080px] mx-auto flex flex-col gap-12 md:gap-16">
+                <div className="nb-grid px-3 pt-12 pb-8 sm:px-4 sm:py-12 md:px-8 md:py-16">
+                    <ol ref={listRef} className="relative max-w-[1080px] mx-auto flex flex-col gap-7 sm:gap-12 md:gap-16">
                         {/* Road: a paved path joining every level */}
                         {trail && (
                             <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none" aria-hidden="true">
@@ -280,7 +280,7 @@ const Education: React.FC = () => {
                                                 <Sprite
                                                     rows={PLAYER}
                                                     px={4}
-                                                    className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 motion-safe:animate-hop"
+                                                    className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 w-6 h-[33px] sm:w-8 sm:h-11 motion-safe:animate-hop"
                                                 />
                                             ) : (
                                                 <span className="absolute -top-2.5 -right-2.5 w-5 h-5 bg-nb-green border-2 border-nb-ink grid place-items-center text-[9px] leading-none">
@@ -295,22 +295,23 @@ const Education: React.FC = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         aria-label={`Open ${edu.institution} on Google Maps`}
-                                        className="flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-6 text-nb-ink transition-[translate,rotate,scale,box-shadow] duration-120 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-hard-9"
+                                        className="flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-4 sm:shadow-hard-6 text-nb-ink transition-[translate,rotate,scale,box-shadow] duration-120 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-hard-9"
                                     >
-                                        <div className={`${accent} text-nb-on border-b-[3px] border-nb-ink px-3 sm:px-4 py-3 flex flex-wrap justify-between items-center gap-x-3 gap-y-2`}>
-                                            {/* Two nowrap halves so a narrow card breaks at the dot, not mid-label */}
+                                        <div className={`${accent} text-nb-on border-b-[3px] border-nb-ink px-3 sm:px-4 py-2 sm:py-3 flex flex-wrap justify-between items-center gap-x-3 gap-y-2`}>
+                                            {/* Two nowrap halves so a narrow card breaks at the dot, not mid-label.
+                                                Phones drop the status: the node's check mark or player already shows it. */}
                                             <span className="font-pixel text-[9px] sm:text-[10px] flex flex-wrap gap-x-[1ch] gap-y-1.5">
-                                                <span className="whitespace-nowrap">LV {num} ·</span>
-                                                <span className="whitespace-nowrap">{here ? '▶ YOU ARE HERE' : '✓ CLEARED'}</span>
+                                                <span className="whitespace-nowrap">LV {num}<span className="hidden sm:inline"> ·</span></span>
+                                                <span className="hidden sm:inline whitespace-nowrap">{here ? '▶ YOU ARE HERE' : '✓ CLEARED'}</span>
                                             </span>
-                                            <span className="text-xs font-bold whitespace-nowrap">{edu.duration}</span>
+                                            <span className="text-[11px] sm:text-xs font-bold whitespace-nowrap">{edu.duration}</span>
                                         </div>
-                                        <div className="px-3.5 py-4 sm:px-[18px] sm:py-5 flex flex-col gap-3 flex-1">
-                                            <h3 className="font-rubik font-bold text-lg sm:text-[22px] leading-[1.2] text-balance">{edu.institution}</h3>
-                                            <p className="text-sm leading-normal whitespace-pre-line">{edu.degree}</p>
-                                            <div className="mt-auto pt-2 flex flex-wrap justify-between items-center gap-2">
+                                        <div className="px-3 py-3 sm:px-[18px] sm:py-5 flex flex-col gap-1.5 sm:gap-3 flex-1">
+                                            <h3 className="font-rubik font-bold text-base sm:text-[22px] leading-[1.2] text-balance">{edu.institution}</h3>
+                                            <p className="text-xs sm:text-sm leading-normal whitespace-pre-line">{edu.degree}</p>
+                                            <div className="mt-auto pt-1.5 sm:pt-2 flex flex-wrap justify-between items-center gap-2">
                                                 {edu.achievements.map((a) => (
-                                                    <span key={a} className="font-pixel text-[9px] leading-normal bg-nb-panel text-nb-yellow px-2.5 py-2">
+                                                    <span key={a} className="font-pixel text-[8px] sm:text-[9px] leading-normal bg-nb-panel text-nb-yellow px-2 py-1.5 sm:px-2.5 sm:py-2">
                                                         ★ {a}
                                                     </span>
                                                 ))}
@@ -333,7 +334,7 @@ const Education: React.FC = () => {
                         >
                             <div className="h-11 sm:h-12 md:h-16 flex items-center">
                                 <span className="font-pixel text-[8px] sm:text-[9px] md:text-[10px] leading-normal bg-nb-card border-[3px] border-nb-ink px-3 py-2">
-                                    PLAYER 1 SPAWNED · 2015
+                                    PLAYER 0 SPAWNED · 2015
                                 </span>
                             </div>
                         </MapRow>
