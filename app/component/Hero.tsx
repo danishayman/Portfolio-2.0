@@ -15,63 +15,63 @@ const Hero: React.FC = () => {
     return (
         <section
             id="hero"
-            className="max-w-[1200px] mx-auto px-6 py-16 md:pt-[72px] md:pb-24 flex flex-col gap-10 md:grid md:grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] md:gap-14 items-center min-h-[550px] md:min-h-[calc(100vh-62px)]"
+            className="relative max-w-[1200px] mx-auto px-6 pt-4 pb-24 md:pt-[72px] md:pb-24 flex flex-col justify-center gap-[clamp(12px,2.2svh,24px)] md:grid md:grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] md:gap-14 items-center min-h-svh md:min-h-[calc(100vh-62px)]"
         >
             {/* Mobile has no top bar, so the theme toggle sits in the hero corner */}
             <ThemeToggle className="md:hidden absolute top-4 right-6 z-10" />
 
-            {/* Mobile keeps the previous order: photo, name, socials, bio, résumé */}
-            <div className="flex flex-col gap-7 items-center text-center md:items-start md:text-left">
-                <div className="flex gap-2.5 flex-wrap justify-center">
-                    <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">PLAYER 1</span>
+            {/* On phones everything from the photo down to the résumé fits one screen above the bottom nav */}
+            <div className="flex flex-col gap-[clamp(12px,2.2svh,24px)] md:gap-7 items-center text-center md:items-start md:text-left">
+                {/* Dropped on short phones (e.g. iPhone SE); the card header already says PLAYER 0 */}
+                <div className="flex gap-2.5 flex-wrap justify-center max-md:[@media(max-height:720px)]:hidden">
+                    <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">PLAYER 0</span>
                     <span className="font-pixel text-[10px] bg-nb-card border-2 border-nb-ink px-2.5 py-1.5">CS STUDENT · USM</span>
                 </div>
 
-                <h1 className="order-1 md:order-0 font-pixel font-normal text-[clamp(40px,6.4vw,80px)] leading-[1.2] tracking-[-0.02em] [text-shadow:6px_6px_0_#FFD23F]">
+                <h1 className="font-pixel font-normal text-[34px] md:text-[clamp(40px,6.4vw,80px)] leading-[1.2] tracking-[-0.02em] [text-shadow:4px_4px_0_#FFD23F] md:[text-shadow:6px_6px_0_#FFD23F]">
                     DANISH
                     <br />
                     AIMAN
                 </h1>
 
-                <div className="order-3 md:order-0 bg-nb-card px-[22px] py-5 max-w-[520px] mx-1 mt-1 mb-2.5 shadow-[0_-4px_0_var(--nb-ink),0_4px_0_var(--nb-ink),-4px_0_0_var(--nb-ink),4px_0_0_var(--nb-ink),10px_10px_0_var(--nb-ink)]">
-                    <p className="font-pixel text-[10px] text-nb-blue mb-3">COMPUTER SCIENCE STUDENT</p>
-                    <p className="text-[17px] leading-[1.6] text-pretty">
+                <div className="bg-nb-card px-4 py-3 md:px-[22px] md:py-5 max-w-[520px] mx-1 md:mt-1 md:mb-2.5 shadow-[0_-4px_0_var(--nb-ink),0_4px_0_var(--nb-ink),-4px_0_0_var(--nb-ink),4px_0_0_var(--nb-ink),10px_10px_0_var(--nb-ink)]">
+                    <p className="hidden md:block font-pixel text-[10px] text-nb-blue mb-3">COMPUTER SCIENCE STUDENT</p>
+                    <p className="text-sm md:text-[17px] leading-normal md:leading-[1.6] text-pretty">
                         A developer majoring in Intelligent Computing. SUPER into Machine Learning &amp; Artificial Intelligence.
-                        <span className="inline-block w-2.5 h-[18px] bg-nb-blue ml-1.5 align-[-3px] animate-blink" aria-hidden="true" />
                     </p>
                 </div>
 
-                <div className="contents md:flex md:gap-4 md:flex-wrap md:items-center">
+                <div className="flex gap-2.5 md:gap-4 md:flex-wrap items-center">
                     <a
                         href="/RESUME_DANISH_AIMAN_AI_ML.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="order-4 md:order-0 font-pixel text-xs bg-nb-blue text-white px-[22px] py-[18px] border-[3px] border-nb-ink shadow-hard-6 flex gap-3 items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-8 active:translate-x-1.5 active:translate-y-1.5 active:shadow-hard-0"
+                        className="font-pixel text-[10px] md:text-xs bg-nb-blue text-white h-11 md:h-auto px-3.5 md:px-[22px] md:py-[18px] border-[3px] border-nb-ink shadow-hard-4 md:shadow-hard-6 flex gap-2 md:gap-3 items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-8 active:translate-x-1.5 active:translate-y-1.5 active:shadow-hard-0"
                     >
                         <span>▶</span>
                         <span>RÉSUMÉ</span>
                     </a>
 
-                    <div className="order-2 md:order-0 flex gap-3">
+                    <div className="flex gap-2.5 md:gap-3">
                         {socials.map((s) => (
                             <a
                                 key={s.label}
                                 href={s.href}
                                 aria-label={s.label}
                                 {...(s.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                                className="w-14 h-14 bg-white border-[3px] border-nb-ink shadow-hard-4 grid place-items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:bg-nb-yellow hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6 active:translate-x-1 active:translate-y-1 active:shadow-hard-0"
+                                className="w-11 h-11 md:w-14 md:h-14 bg-white border-[3px] border-nb-ink shadow-hard-4 grid place-items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:bg-nb-yellow hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6 active:translate-x-1 active:translate-y-1 active:shadow-hard-0"
                             >
-                                <Image src={s.icon} alt={s.label} width={26} height={26} className="w-[26px] h-[26px]" />
+                                <Image src={s.icon} alt={s.label} width={26} height={26} className="w-[22px] h-[22px] md:w-[26px] md:h-[26px]" />
                             </a>
                         ))}
                     </div>
                 </div>
             </div>
 
-            {/* Smaller on phones so the name peeks above the fold */}
-            <div className="order-first md:order-0 justify-self-center w-full max-w-[260px] sm:max-w-[320px] md:max-w-[440px] bg-nb-card border-[3px] border-nb-ink shadow-hard-8 md:shadow-hard-12">
-                <div className="bg-nb-panel text-white px-3.5 py-3 flex justify-between items-center">
-                    <span className="font-pixel text-[10px]">PLAYER 1</span>
+            {/* On phones the card shrinks with screen height so the résumé button stays above the fold */}
+            <div className="order-first md:order-0 justify-self-center w-[clamp(150px,calc(100svh_-_540px),min(260px,calc(100vw_-_140px)))] md:w-full md:max-w-[440px] bg-nb-card border-[3px] border-nb-ink shadow-hard-6 md:shadow-hard-12">
+                <div className="bg-nb-panel text-white px-3 py-2 md:px-3.5 md:py-3 flex justify-between items-center">
+                    <span className="font-pixel text-[10px] whitespace-nowrap">PLAYER 0</span>
                     <span className="flex gap-1.5">
                         <span className="w-2.5 h-2.5 bg-nb-pink" />
                         <span className="w-2.5 h-2.5 bg-nb-yellow" />
@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
                     </span>
                 </div>
 
-                <div className="p-[18px] bg-nb-pink border-b-[3px] border-nb-ink">
+                <div className="p-2.5 md:p-[18px] bg-nb-pink border-b-[3px] border-nb-ink">
                     {/* Focusable so a tap swaps to HD on touch screens, where hover never fires */}
                     <div
                         tabIndex={0}
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-3">
-                    <div className="px-3 py-3.5 border-r-[3px] border-nb-ink flex flex-col gap-2.5">
+                    <div className="px-2 py-2 md:px-3 md:py-3.5 border-r-[3px] border-nb-ink flex flex-col gap-1.5 md:gap-2.5">
                         <span className="font-pixel text-[8px] text-nb-muted">LIVES</span>
                         <span className="flex gap-1 items-center">
                             <PixelHeart full />
@@ -122,13 +122,13 @@ const Hero: React.FC = () => {
                             <span className="font-pixel text-[10px] ml-1">x1</span>
                         </span>
                     </div>
-                    <div className="px-3 py-3.5 border-r-[3px] border-nb-ink flex flex-col gap-2.5">
+                    <div className="px-2 py-2 md:px-3 md:py-3.5 border-r-[3px] border-nb-ink flex flex-col gap-1.5 md:gap-2.5">
                         <span className="font-pixel text-[8px] text-nb-muted">LEVEL</span>
                         <span className="font-pixel text-base text-nb-blue">
                             <PlayerLevel serverNow={serverNow} />
                         </span>
                     </div>
-                    <div className="px-3 py-3.5 flex flex-col gap-2.5">
+                    <div className="px-2 py-2 md:px-3 md:py-3.5 flex flex-col gap-1.5 md:gap-2.5">
                         <span className="font-pixel text-[8px] text-nb-muted">EXP</span>
                         <PlayerExp serverNow={serverNow} />
                     </div>
