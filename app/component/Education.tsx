@@ -1,5 +1,5 @@
-'use client';
-
+import SectionHeader from '../common/SectionHeader';
+import { ACCENT_BG, pad2 } from '../common/palette';
 
 interface Education {
     institution: string;
@@ -9,94 +9,85 @@ interface Education {
     locationUrl: string;
 }
 
+const educationData: Education[] = [
+    {
+        institution: "Universiti Sains Malaysia",
+        degree: "Bachelor of Computer Science (Honours)\n(Intelligent Computing)",
+        duration: "Oct 2022 - Present",
+        achievements: ["Current CGPA: 3.42"],
+        locationUrl: "https://maps.app.goo.gl/owBxR3XgcNFUQSZu7",
+    },
+    {
+        institution: "Penang Matriculation College",
+        degree: "Physical Science",
+        duration: "July 2021 - July 2022",
+        achievements: ["CGPA: 3.92"],
+        locationUrl: "https://maps.app.goo.gl/ZeaWPBFXrKfcamNp7",
+    },
+    {
+        institution: "SMK Bukit Jambul, High Performance School",
+        degree: "Science Stream",
+        duration: "Jan 2015 - Dec 2020",
+        achievements: ["SPM: 3A+ 4A"],
+        locationUrl: "https://maps.app.goo.gl/QERhYno7k1tQ9oTq6",
+    },
+];
+
 const Education: React.FC = () => {
-    const educationData: Education[] = [
-        {
-            institution: "Universiti Sains Malaysia",
-            degree: "Bachelor of Computer Science (Honours)\n(Intelligent Computing)",
-            duration: "Oct 2022 - Present",
-            achievements: ["Current CGPA: 3.42"],
-            locationUrl: "https://maps.app.goo.gl/owBxR3XgcNFUQSZu7",
-        },
-        {
-            institution: "Penang Matriculation College",
-            degree: "Physical Science",
-            duration: "July 2021 - July 2022",
-            achievements: ["CGPA: 3.92"],
-            locationUrl: "https://maps.app.goo.gl/ZeaWPBFXrKfcamNp7",
-            
-        },
-        {
-            institution: "SMK Bukit Jambul, High Performance School",
-            degree: "Science Stream",
-            duration: "Jan 2015 - Dec 2020",
-            achievements: ["SPM: 3A+ 4A"],
-            locationUrl: "https://maps.app.goo.gl/QERhYno7k1tQ9oTq6",
-        },
-    ];
-
     return (
-        <section id="education" className="min-h-[650px] md:min-h-[750px] flex flex-col items-center py-16 px-8 md:py-24 md:px-16 xl:px-24 gap-10">
-            <div className="section-header">
-                <h2 className="text-4xl md:text-5xl font-rubik font-black tracking-normal">EDUCATION</h2>
+        <section id="education" className="max-w-[1200px] mx-auto px-6 py-[72px]">
+            <SectionHeader stage="STAGE 1-1" title="EDUCATION" meta={`${educationData.length} SAVE FILES`} />
+
+            <div className="relative max-w-[860px] mx-auto flex flex-col gap-10 pl-16">
+                {/* Dashed pixel timeline */}
+                <div className="absolute left-[19px] top-2 bottom-2 w-2.5 bg-[repeating-linear-gradient(180deg,var(--nb-ink)_0_10px,transparent_10px_16px)]" />
+
+                {educationData.map((edu, i) => {
+                    const num = pad2(educationData.length - i);
+                    const accent = ACCENT_BG[i % ACCENT_BG.length];
+                    const year = edu.duration.match(/\d{4}/)?.[0];
+
+                    return (
+                        <div key={edu.institution} className="relative">
+                            <div className={`absolute -left-16 top-1.5 w-12 h-12 ${accent} text-nb-on border-[3px] border-nb-ink shadow-hard-4 grid place-items-center font-pixel text-xs`}>
+                                {num}
+                            </div>
+
+                            <div className="flex items-center gap-3 mb-3 flex-wrap">
+                                <span className="font-pixel text-sm bg-nb-panel text-white px-2.5 py-2 whitespace-nowrap">{year}</span>
+                                <span className="font-pixel text-[9px] whitespace-nowrap">{i === 0 ? '▶ IN PROGRESS' : '✓ CLEARED'}</span>
+                            </div>
+
+                            <a
+                                href={edu.locationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`Open ${edu.institution} on Google Maps`}
+                                className="flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-6 text-nb-ink transition-[transform,box-shadow] duration-[120ms] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-hard-9"
+                            >
+                                <div className={`${accent} text-nb-on border-b-[3px] border-nb-ink px-4 py-3 flex flex-wrap justify-between items-center gap-x-3 gap-y-2`}>
+                                    <span className="font-pixel text-[10px] whitespace-nowrap">FILE {num}</span>
+                                    <span className="text-xs font-bold whitespace-nowrap">{edu.duration}</span>
+                                </div>
+                                <div className="px-[18px] py-5 flex flex-col gap-3 flex-1">
+                                    <h3 className="font-rubik font-bold text-[22px] leading-[1.2] text-balance">{edu.institution}</h3>
+                                    <p className="text-sm leading-[1.5] whitespace-pre-line">{edu.degree}</p>
+                                    <div className="mt-auto pt-2 flex flex-wrap justify-between items-center gap-2">
+                                        {edu.achievements.map((a) => (
+                                            <span key={a} className="font-pixel text-[9px] bg-nb-panel text-nb-yellow px-2.5 py-2 whitespace-nowrap">
+                                                ★ {a}
+                                            </span>
+                                        ))}
+                                        <span className="text-xs font-bold whitespace-nowrap">MAP ↗</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    );
+                })}
             </div>
-
-            <div className="education-timeline relative flex flex-col gap-6 md:gap-8 w-full max-w-[600px] hover:cursor-default">
-                {educationData.map((edu, index) => (
-                    <div
-                        key={index}
-                        className="education-item relative pl-8 pb-4 transition-all duration-400 hover:translate-x-[10px] opacity-0 animate-[fadeInUp_0.6s_ease_forwards]"
-                        style={{ animationDelay: `${0.1 + index * 0.3}s` }}
-                    >
-                        <div className="education-dot absolute left-[-5px] top-0 w-3 h-3 rounded-full bg-current transition-all duration-400 md:left-[calc(1rem-5px)] xl:left-[calc(2rem-5px)]"></div>
-
-                        <a
-                            href={edu.locationUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Open ${edu.institution} on Google Maps`}
-                            className="education-content flex flex-col gap-1 md:gap-2 p-3 md:p-4 rounded-lg border-2 border-transparent text-inherit no-underline hover:border-[var(--text-color)] hover:bg-[var(--background-color)] hover:shadow-[5px_5px_var(--box-shadow-color)] focus-visible:border-[var(--text-color)] focus-visible:bg-[var(--background-color)] focus-visible:shadow-[5px_5px_var(--box-shadow-color)] focus-visible:outline-none transition-all duration-400 cursor-pointer"
-                        >
-                            <h3 className="text-xl md:text-2xl font-bold transition-transform duration-400">
-                                {edu.institution}
-                            </h3>
-
-                            <p className="education-degree text-sm md:text-base lg:text-base">
-                                {edu.degree.split('\n').map((line, i) => (
-                                    <span key={i}>
-                                        {line}
-                                        {i < edu.degree.split('\n').length - 1 && <br />}
-                                    </span>
-                                ))}
-                            </p>
-
-                            <p className="education-duration text-xs md:text-sm transition-opacity duration-400">
-                                {edu.duration}
-                            </p>
-
-                            <ul className="education-achievements list-none p-0 mt-1 md:mt-2 font-mono">
-                                {edu.achievements.map((achievement, achIndex) => (
-                                    <li
-                                        key={achIndex}
-                                        className="opacity-90 text-xs md:text-sm mb-1 transition-all duration-400 origin-left"
-                                    >
-                                        ✓ {achievement}
-                                    </li>
-                                ))}
-                            </ul>
-                        </a>
-                    </div>
-                ))}
-            </div>
-
-            <style jsx>{`
-                .education-timeline > div:hover .education-content {
-                    transform: translateX(5px);
-                    box-shadow: 5px 5px var(--box-shadow-color);
-                }
-            `}</style>
         </section>
     );
 };
 
-export default Education; 
+export default Education;

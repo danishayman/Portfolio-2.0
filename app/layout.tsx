@@ -3,12 +3,12 @@ import { ThemeProvider } from './common/ThemeContext';
 import { PersonStructuredData, WebsiteStructuredData } from './components/StructuredData';
 import CSSLoader from './components/CSSLoader';
 import type { Metadata } from 'next';
-import { Roboto_Mono, Rubik } from 'next/font/google';
+import { Press_Start_2P, Roboto_Mono, Rubik } from 'next/font/google';
 
 // Initialize the fonts with optimized loading
 const robotoMono = Roboto_Mono({
   subsets: ['latin'],
-  weight: ['300'],
+  weight: ['300', '400', '500', '700'],
   variable: '--font-roboto-mono',
   display: 'swap',
   adjustFontFallback: true,
@@ -23,6 +23,15 @@ const rubik = Rubik({
   display: 'swap',
   adjustFontFallback: true,
   fallback: ['Arial', 'sans-serif'],
+  preload: true,
+});
+
+const pressStart = Press_Start_2P({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-pixel',
+  display: 'swap',
+  fallback: ['Courier New', 'monospace'],
   preload: true,
 });
 
@@ -120,7 +129,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${robotoMono.variable} ${rubik.variable}`}>
+    <html lang="en" className={`${robotoMono.variable} ${rubik.variable} ${pressStart.variable}`}>
       <head>
         <meta name="apple-mobile-web-app-title" content="Danish Aiman" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -156,7 +165,6 @@ export default function RootLayout({
             body {
               font-family: var(--font-roboto-mono), monospace;
               min-height: 100%;
-              overflow-y: auto;
               margin: 0;
               padding: 0;
             }
@@ -178,30 +186,6 @@ export default function RootLayout({
             section {
               position: relative;
               width: 100%;
-            }
-            .backface-hidden {
-              backface-visibility: hidden;
-              -webkit-backface-visibility: hidden;
-            }
-            .perspective-1000 {
-              perspective: 1000px;
-            }
-            .transform-style-preserve-3d {
-              transform-style: preserve-3d;
-              -webkit-transform-style: preserve-3d;
-            }
-            .rotate-y-180 {
-              transform: rotateY(180deg);
-              -webkit-transform: rotateY(180deg);
-            }
-            .flip-img {
-              box-shadow: 0 0 0 0 transparent;
-              transition: box-shadow 700ms ease, transform 600ms ease;
-            }
-            .flip-container:hover .flip-img {
-              transform: rotateY(180deg);
-              -webkit-transform: rotateY(180deg);
-              box-shadow: 0 0 15px 5px var(--bt-color);
             }
           `
         }} />

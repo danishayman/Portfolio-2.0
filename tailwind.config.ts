@@ -7,6 +7,8 @@ const config: Config = {
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './public/**/*.{html,md}',
     ],
+    // ThemeProvider sets data-theme on <body>
+    darkMode: ['selector', '[data-theme="dark"]'],
     // Optimize for production builds
     future: {
         hoverOnlyWhenSupported: true,
@@ -27,16 +29,44 @@ const config: Config = {
             fontFamily: {
                 mono: ['var(--font-roboto-mono)', 'monospace'],
                 rubik: ['var(--font-rubik)', 'sans-serif'],
+                pixel: ['var(--font-pixel)', 'monospace'],
             },
             colors: {
                 'theme': 'var(--bt-color)',
                 'btn-text': 'var(--btn-text-color)',
                 'project-card-bg': 'var(--project-card-bg, rgba(0, 0, 0, 0.03))',
+                // Neo-brutalist 8-bit palette (themeable tokens live in globals.css)
+                nb: {
+                    bg: 'var(--nb-bg)',
+                    card: 'var(--nb-card)',
+                    ink: 'var(--nb-ink)',
+                    muted: 'var(--nb-muted)',
+                    heart: 'var(--nb-heart)',
+                    panel: 'var(--nb-panel)',
+                    on: '#121212',
+                    blue: '#007bff',
+                    yellow: '#FFD23F',
+                    sky: '#7FB8FF',
+                    pink: '#FF5C8A',
+                    green: '#2ED47A',
+                    orange: '#FF9F43',
+                    purple: '#B892FF',
+                    silver: '#d1d5db',
+                },
             },
             boxShadow: {
                 'theme': '0 0 15px 5px var(--bt-color)',
                 'md': '0 4px 4px rgba(0, 0, 0, 0.25)',
                 'sm': '0 2px 2px rgba(0, 0, 0, 0.25)',
+                // Hard offset shadows
+                'hard-0': '0 0 0 var(--nb-ink)',
+                'hard-3': '3px 3px 0 var(--nb-ink)',
+                'hard-4': '4px 4px 0 var(--nb-ink)',
+                'hard-5': '5px 5px 0 var(--nb-ink)',
+                'hard-6': '6px 6px 0 var(--nb-ink)',
+                'hard-8': '8px 8px 0 var(--nb-ink)',
+                'hard-9': '9px 9px 0 var(--nb-ink)',
+                'hard-12': '12px 12px 0 var(--nb-ink)',
             },
             scale: {
                 '115': '1.15',
@@ -61,8 +91,13 @@ const config: Config = {
                     '0%': { opacity: '0', transform: 'translateY(10px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
+                blink: {
+                    '0%, 49%': { opacity: '1' },
+                    '50%, 100%': { opacity: '0' },
+                },
             },
             animation: {
+                blink: 'blink 1s steps(1) infinite',
                 dropdownFadeIn: 'dropdownFadeIn 0.3s ease-out',
                 fadeIn: 'fadeIn 0.5s ease-out',
                 fadeInUp: 'fadeInUp 0.6s ease forwards',

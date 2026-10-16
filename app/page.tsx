@@ -13,7 +13,7 @@ import SectionVisibilityWrapper from './component/SectionVisibilityWrapper';
 
 export default function Home() {
   return (
-    <main className="pb-20 md:pb-0">
+    <main className="nb-grid bg-nb-bg text-nb-ink min-h-screen">
       <Navigation />
       <Hero />
       <SpeedInsights />

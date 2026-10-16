@@ -2,14 +2,20 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <section
-            id="footer"
-            className="py-6 text-center font-mono"
-        >
-            <p className="text-sm md:text-xm footer-text">
-                &copy; {currentYear} danishayman.<br />
-                All rights reserved.
-            </p>
-        </section>
+        <footer className="bg-nb-panel text-white border-t-[3px] border-nb-ink">
+            {/* Extra bottom padding on mobile clears the floating nav bar */}
+            <div className="max-w-[1200px] mx-auto px-6 pt-14 pb-28 md:pb-14 flex flex-col md:flex-row flex-wrap gap-6 justify-between items-center text-center md:text-left">
+                <div className="flex flex-col gap-3.5">
+                    <span className="font-pixel text-[clamp(16px,2.6vw,24px)] text-nb-yellow leading-[1.4]">THANKS FOR PLAYING</span>
+                    <span className="text-[13px] text-nb-silver">&copy; {currentYear} danishayman. All rights reserved.</span>
+                </div>
+                <a
+                    href="#hero"
+                    className="font-pixel text-[10px] bg-white text-nb-on px-4 py-3.5 border-[3px] border-white shadow-[4px_4px_0_#007bff] hover:bg-nb-yellow"
+                >
+                    CONTINUE? ▲
+                </a>
+            </div>
+        </footer>
     );
-} 
+}

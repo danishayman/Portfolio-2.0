@@ -23,9 +23,8 @@
 
 body {
   font-family: var(--font-roboto-mono), monospace;
-  /* Ensure body allows proper scrolling */
+  /* No overflow here: it would make <body> a scroll container and break the sticky nav */
   min-height: 100%;
-  overflow-y: auto;
 }
 
 html {
@@ -58,321 +57,53 @@ h1, h2, button {
   font-family: var(--font-rubik), sans-serif;
 }
 
-/* Enhanced mobile nav animation */
-@keyframes navFadeIn {
-  0% { 
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% { 
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Neo-brutalist 8-bit tokens (home page) */
+:root {
+  --nb-bg: #F4EEE2;
+  --nb-card: #FFFFFF;
+  --nb-ink: #121212;
+  --nb-grid: rgba(18, 18, 18, 0.06);
+  --nb-grid-strong: rgba(18, 18, 18, 0.07);
+  --nb-muted: #555555;
+  --nb-heart: #E6E0D4;
+  --nb-panel: #121212;
 }
 
-.mobile-nav-animation {
-  animation: navFadeIn 0.5s ease-out forwards;
+[data-theme='dark'] {
+  --nb-bg: #16161A;
+  --nb-card: #222226;
+  --nb-ink: #F4EEE2;
+  --nb-grid: rgba(244, 238, 226, 0.06);
+  --nb-muted: #A8A29A;
+  --nb-heart: #3A3A40;
+  --nb-panel: #000000;
 }
 
-/* Custom utility classes for the flip card */
-.backface-hidden {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-style-preserve-3d {
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-}
-
-.rotate-y-180 {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-}
-
-/* Glow animation for flip card */
-.flip-img {
-  box-shadow: 0 0 0 0 transparent;
-  transition: box-shadow 700ms ease, transform 600ms ease;
-}
-
-/* Hover effects for flip card */
-.flip-container:hover .flip-img {
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
-  box-shadow: 0 0 15px 5px var(--bt-color);
-}
-
-/* Dark mode: flip back to front on hover (reverse direction) */
-.flip-container-dark:hover .flip-img {
-  transform: rotateY(0deg);
-  -webkit-transform: rotateY(0deg);
-  box-shadow: 0 0 15px 5px var(--bt-color);
-}
-
-.filter-drop-shadow {
-  filter: drop-shadow(0 0 5px var(--bt-color));
-}
-
-@keyframes dropdownFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* No top bar below md (800px); the nav floats at the bottom instead */
+@media (max-width: 799px) {
+  html {
+    scroll-padding-top: 16px;
   }
 }
 
-/* Animation for education timeline */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.nb-grid {
+  background-image:
+    linear-gradient(var(--nb-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--nb-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-/* Education Timeline Styling - Exact match to old portfolio */
-.education-timeline {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%;
-  max-width: 600px;
-}
-
-.education-timeline:hover {
-  cursor: default;
-}
-
-.education-timeline::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background-color: currentColor;
-  opacity: 0.2;
-  transition: opacity 0.4s ease;
-}
-
-.education-timeline:hover::before {
-  opacity: 0.4;
-}
-
-.education-item {
-  position: relative;
-  padding-left: 2rem;
-  padding-bottom: 1rem;
-  transition: all 0.4s ease;
-}
-
-.education-item:hover {
-  transform: translateX(10px);
-}
-
-.education-dot {
-  position: absolute;
-  left: -5px;
-  top: 0;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: currentColor;
-  transition: all 0.4s ease;
-}
-
-.education-item:hover .education-dot {
-  transform: scale(1.5);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-}
-
-.education-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-radius: 8px;
-  transition: all 0.4s ease;
-}
-
-.education-item:hover .education-content {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.education-content h3 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  transition: transform 0.4s ease;
-}
-
-.education-item:hover .education-content h3 {
-  transform: translateY(-2px);
-}
-
-.education-degree {
-  color: var(--text-color);
-  opacity: 0.8;
-  transition: opacity 0.4s ease;
-}
-
-.education-item:hover .education-degree {
-  opacity: 1;
-}
-
-.education-duration {
-  color: var(--text-color);
-  opacity: 0.6;
-  font-size: 0.9rem;
-  transition: opacity 0.4s ease;
-}
-
-.education-item:hover .education-duration {
-  opacity: 0.8;
-}
-
-.education-achievements {
-  list-style: none;
-  padding: 0;
-  margin-top: 0.5rem;
-  font-family: var(--font-roboto-mono), monospace;
-}
-
-.education-achievements li {
-  color: var(--text-color);
-  opacity: 0.9;
-  font-size: 0.95rem;
-  margin-bottom: 0.25rem;
-  transition: all 0.4s ease;
-  transform-origin: left;
-}
-
-.education-item:hover .education-achievements li {
-  opacity: 1;
-  transform: scale(1.02);
-}
-
-/* Animation delays for fade in */
-.education-item:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.education-item:nth-child(2) {
-  animation-delay: 0.4s;
-}
-
-.education-item:nth-child(3) {
-  animation-delay: 0.7s;
-}
-
-.education-item:nth-child(4) {
-  animation-delay: 1s;
-}
-
-.education-item:nth-child(5) {
-  animation-delay: 1.3s;
-}
-
-@media (min-width: 800px) {
-  .education-item {
-    padding-left: 3rem;
-  }
-
-  .education-timeline::before {
-    left: 1rem;
-  }
-
-  .education-dot {
-    left: calc(1rem - 5px);
-  }
-}
-
-@media (min-width: 1400px) {
-  .education-item {
-    padding-left: 4rem;
-  }
-
-  .education-timeline::before {
-    left: 2rem;
-  }
-
-  .education-dot {
-    left: calc(2rem - 5px);
-  }
-}
-
-/* Skills component animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Skills section staggered animations */
-.skills-list > div {
-  animation: fadeIn 0.5s ease-out backwards;
-}
-
-.skills-list > div:nth-child(1) { animation-delay: 0.1s; }
-.skills-list > div:nth-child(2) { animation-delay: 0.2s; }
-.skills-list > div:nth-child(3) { animation-delay: 0.3s; }
-.skills-list > div:nth-child(4) { animation-delay: 0.4s; }
-.skills-list > div:nth-child(5) { animation-delay: 0.5s; }
-.skills-list > div:nth-child(6) { animation-delay: 0.6s; }
-.skills-list > div:nth-child(7) { animation-delay: 0.7s; }
-.skills-list > div:nth-child(8) { animation-delay: 0.8s; }
-
-/* Skills section hover effects */
-.skills-list:hover > div:not(:hover) {
-  opacity: 0.6;
-  transform: scale(1);
-}
-
-/* Additional animation for each skill span */
-.skills-list > div {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-/* Section headers standardization */
-.section-header {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
-  position: relative;
-  margin-top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.section-header h1 {
-  margin: 0;
-  position: relative;
-}
-
-@media (min-width: 768px) {
-  .section-header {
-    padding-top: 4rem;
-    padding-bottom: 2.5rem;
-  }
+/* Always-light grid inside the hero portrait frame */
+.nb-grid-sm {
+  background-image:
+    linear-gradient(var(--nb-grid-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--nb-grid-strong) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 /* Blog content styling */
