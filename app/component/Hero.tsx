@@ -22,13 +22,7 @@ const Hero: React.FC = () => {
 
             {/* On phones everything from the photo down to the résumé fits one screen above the bottom nav */}
             <div className="flex flex-col gap-[clamp(12px,2.2svh,24px)] md:gap-7 items-center text-center md:items-start md:text-left">
-                {/* Dropped on short phones (e.g. iPhone SE); the card header already says PLAYER 0 */}
-                <div className="flex gap-2.5 flex-wrap justify-center max-md:[@media(max-height:720px)]:hidden">
-                    <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">PLAYER 0</span>
-                    <span className="font-pixel text-[10px] bg-nb-card border-2 border-nb-ink px-2.5 py-1.5">CS STUDENT · USM</span>
-                </div>
-
-                <h1 className="font-pixel font-normal text-[34px] md:text-[clamp(40px,6.4vw,80px)] leading-[1.2] tracking-[-0.02em] [text-shadow:4px_4px_0_#FFD23F] md:[text-shadow:6px_6px_0_#FFD23F]">
+                <h1 className="font-pixel font-normal text-[34px] md:text-[clamp(40px,6.4vw,80px)] leading-[1.2] tracking-[-0.02em] [--name-shadow:#FFD23F] dark:[--name-shadow:#007bff] [text-shadow:4px_4px_0_var(--name-shadow)] md:[text-shadow:6px_6px_0_var(--name-shadow)]">
                     DANISH
                     <br />
                     AIMAN
@@ -68,8 +62,8 @@ const Hero: React.FC = () => {
                 </div>
             </div>
 
-            {/* On phones the card shrinks with screen height so the résumé button stays above the fold */}
-            <div className="order-first md:order-0 justify-self-center w-[clamp(150px,calc(100svh_-_540px),min(260px,calc(100vw_-_140px)))] md:w-full md:max-w-[440px] bg-nb-card border-[3px] border-nb-ink shadow-hard-6 md:shadow-hard-12">
+            {/* On short phones only the photo shrinks, so the stats keep their width and the résumé stays above the fold */}
+            <div className="order-first md:order-0 justify-self-center w-[min(260px,calc(100vw_-_140px))] md:w-full md:max-w-[440px] bg-nb-card border-[3px] border-nb-ink shadow-hard-6 md:shadow-hard-12">
                 <div className="bg-nb-panel text-white px-3 py-2 md:px-3.5 md:py-3 flex justify-between items-center">
                     <span className="font-pixel text-[10px] whitespace-nowrap">PLAYER 0</span>
                     <span className="flex gap-1.5">
@@ -84,7 +78,7 @@ const Hero: React.FC = () => {
                     <div
                         tabIndex={0}
                         aria-label="Portrait, tap or hover for the HD photo"
-                        className="group relative aspect-square border-[3px] border-nb-on bg-white nb-grid-sm overflow-hidden outline-none [-webkit-tap-highlight-color:transparent]"
+                        className="group relative mx-auto w-[clamp(110px,calc(100svh_-_555px),100%)] md:w-full aspect-square border-[3px] border-nb-on bg-white nb-grid-sm overflow-hidden outline-none [-webkit-tap-highlight-color:transparent]"
                     >
                         <Image
                             src="/hero/pixel-me.png"
@@ -113,23 +107,25 @@ const Hero: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-3">
-                    <div className="px-2 py-2 md:px-3 md:py-3.5 border-r-[3px] border-nb-ink flex flex-col gap-1.5 md:gap-2.5">
-                        <span className="font-pixel text-[8px] text-nb-muted">LIVES</span>
-                        <span className="flex gap-1 items-center">
-                            <PixelHeart full />
-                            <PixelHeart full={false} />
-                            <PixelHeart full={false} />
-                            <span className="font-pixel text-[10px] ml-1">x1</span>
+                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 border-r-[3px] border-nb-ink flex flex-col items-center justify-center text-center gap-2 md:gap-3">
+                        <span className="font-pixel text-[9px] md:text-xs text-nb-muted">LIVES</span>
+                        <span className="flex flex-col md:flex-row gap-1.5 md:gap-1 items-center">
+                            <span className="flex gap-0.5 md:gap-1">
+                                <PixelHeart full />
+                                <PixelHeart full={false} />
+                                <PixelHeart full={false} />
+                            </span>
+                            <span className="font-pixel text-[9px] md:text-xs md:ml-0.5">x1</span>
                         </span>
                     </div>
-                    <div className="px-2 py-2 md:px-3 md:py-3.5 border-r-[3px] border-nb-ink flex flex-col gap-1.5 md:gap-2.5">
-                        <span className="font-pixel text-[8px] text-nb-muted">LEVEL</span>
-                        <span className="font-pixel text-base text-nb-blue">
+                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 border-r-[3px] border-nb-ink flex flex-col items-center justify-center text-center gap-2 md:gap-3">
+                        <span className="font-pixel text-[9px] md:text-xs text-nb-muted">LEVEL</span>
+                        <span className="font-pixel text-lg md:text-2xl leading-none text-nb-blue">
                             <PlayerLevel serverNow={serverNow} />
                         </span>
                     </div>
-                    <div className="px-2 py-2 md:px-3 md:py-3.5 flex flex-col gap-1.5 md:gap-2.5">
-                        <span className="font-pixel text-[8px] text-nb-muted">EXP</span>
+                    <div className="px-1.5 py-2.5 md:px-3 md:py-4 flex flex-col items-center justify-center text-center gap-2 md:gap-3">
+                        <span className="font-pixel text-[9px] md:text-xs text-nb-muted">EXP</span>
                         <PlayerExp serverNow={serverNow} />
                     </div>
                 </div>

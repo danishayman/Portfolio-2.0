@@ -44,21 +44,22 @@ const totalSkills = skillGroups.reduce((n, g) => n + g.items.length, 0);
 
 const Skills: React.FC = () => {
     return (
-        <section id="skills" className="max-w-[1200px] mx-auto px-6 py-[72px]">
+        <section id="skills" className="max-w-[1200px] mx-auto px-6 py-12 sm:py-[72px]">
             <SectionHeader stage="STAGE 1-2" title="SKILLS" meta={`${totalSkills} ABILITIES UNLOCKED`} />
 
-            <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-5 sm:gap-7">
                 {skillGroups.map((group, i) => (
                     <div
                         key={group.label}
-                        className="grid grid-cols-1 sm:grid-cols-[minmax(0,200px)_minmax(0,1fr)] gap-5 items-start bg-nb-card border-[3px] border-nb-ink shadow-hard-6 p-5"
+                        className="grid grid-cols-1 sm:grid-cols-[minmax(0,200px)_minmax(0,1fr)] gap-3.5 sm:gap-5 items-start bg-nb-card border-[3px] border-nb-ink shadow-hard-4 sm:shadow-hard-6 p-4 sm:p-5"
                     >
-                        <div className="flex flex-col items-center text-center sm:items-start sm:text-left gap-2.5">
-                            <span className={`w-7 h-7 ${ACCENT_BG[i % ACCENT_BG.length]} border-[3px] border-nb-ink`} />
+                        {/* Phones get a one-line header so each group card stays short */}
+                        <div className="flex items-center gap-2.5 sm:flex-col sm:items-start">
+                            <span className={`w-4 h-4 border-2 sm:w-7 sm:h-7 sm:border-[3px] ${ACCENT_BG[i % ACCENT_BG.length]} border-nb-ink`} />
                             <span className="font-pixel text-[11px] leading-normal">{group.label}</span>
-                            <span className="text-xs text-nb-muted">{group.items.length} skills</span>
+                            <span className="ml-auto sm:ml-0 text-xs text-nb-muted">{group.items.length} skills</span>
                         </div>
-                        <div className="flex flex-wrap justify-center sm:justify-start gap-3">
+                        <div className="flex flex-wrap gap-2 sm:gap-3">
                             {group.items.map((skill) => (
                                 <SkillList
                                     key={skill.name}
