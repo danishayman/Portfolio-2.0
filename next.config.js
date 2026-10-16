@@ -78,7 +78,7 @@ const nextConfig = {
       },
       {
         // public/ files keep their names when replaced, so cache for a week rather than "immutable"
-        source: '/(.*\\.(?:ico|png|jpg|jpeg|gif|webp|svg|pdf)$)',
+        source: '/(.*\\.(?:ico|png|jpg|jpeg|gif|webp|avif|svg|pdf)$)',
         headers: [
           {
             key: 'Cache-Control',

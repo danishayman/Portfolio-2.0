@@ -49,11 +49,10 @@ export default function YappingDialogue({ posts, total }: { posts: DialoguePost[
               className="group relative w-14 h-14 sm:flex-[0_0_120px] sm:w-[120px] sm:h-[120px] border-2 sm:border-[3px] border-white bg-nb-pink overflow-hidden outline-none [-webkit-tap-highlight-color:transparent]"
             >
               <Image
-                src="/hero/pixel-me.png"
+                src="/hero/pixel-me.avif"
                 alt="Danish, pixel art"
                 fill
-                quality={90}
-                sizes="180px"
+                unoptimized
                 className="object-cover scale-[1.5] origin-[50%_53%] [image-rendering:pixelated]"
               />
               <Image

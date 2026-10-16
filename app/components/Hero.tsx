@@ -82,14 +82,15 @@ const Hero: React.FC = () => {
                         aria-label="Portrait, tap or hover for the HD photo"
                         className="group relative mx-auto w-[clamp(110px,calc(100svh_-_555px),100%)] md:w-full aspect-square border-[3px] border-nb-on bg-white nb-grid-sm overflow-hidden outline-none [-webkit-tap-highlight-color:transparent]"
                     >
-                        {/* The LCP image: optimized to WebP/AVIF at display size (a 1024px PNG otherwise) */}
+                        {/* The LCP image: a ready-made 800px AVIF (16 KB), so it never waits on the image
+                            optimizer converting the 1024px PNG. Regenerate it if pixel-me.png changes. */}
                         <Image
-                            src="/hero/pixel-me.png"
+                            src="/hero/pixel-me.avif"
                             alt="Danish Aiman, pixel art"
                             fill
                             preload
-                            quality={90}
-                            sizes="(min-width: 800px) 400px, 260px"
+                            fetchPriority="high"
+                            unoptimized
                             className="object-cover block [image-rendering:pixelated]"
                         />
                         {/* Only shown on hover/tap, so it loads after the page instead of competing with the LCP */}
@@ -97,6 +98,7 @@ const Hero: React.FC = () => {
                             src="/hero/hd-me.png"
                             alt="Danish Aiman"
                             fill
+                            fetchPriority="low"
                             sizes="(min-width: 800px) 400px, 260px"
                             className="object-cover block opacity-0 transition-opacity duration-[400ms] ease-[steps(8)] group-hover:opacity-100 group-focus:opacity-100"
                         />
