@@ -70,7 +70,7 @@ export const workExperienceData: WorkExperience[] = [
     {
         role: "Software Engineer Intern",
         company: "Inari Amertron Berhad",
-        duration: "February 2025 - Present",
+        duration: "March 2025 - October 2025",
         description: [
             "Developed and maintained internal software for efficiency and accuracy.",
             "Fixed bugs and optimized performance with cross-functional teams.",
