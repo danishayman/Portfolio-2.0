@@ -1,7 +1,7 @@
 ---
 title: "happiness"
 date: "2025-08-15"
-preview: "TODO: one sentence on what this post is about (120-160 characters, used by Google and link previews)"
+preview: "A poem about grief and chasing happiness."
 author: "Danish Aiman"
 ---
 so why am i so unhappy?

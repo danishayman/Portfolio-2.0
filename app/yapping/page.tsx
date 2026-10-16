@@ -42,7 +42,6 @@ export default function YappingArchivePage() {
                     <h1 className="font-pixel font-normal text-[clamp(28px,6vw,52px)] leading-[1.2] [text-shadow:4px_4px_0_#FFD23F] dark:[text-shadow:4px_4px_0_#007bff]">
                         YAPPING
                     </h1>
-                    <p className="text-base leading-[1.7] text-pretty max-w-[560px]">{description}</p>
                 </header>
 
                 <Archive posts={posts} />

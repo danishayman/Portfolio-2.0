@@ -1,7 +1,7 @@
 ---
 title: "Toaster Rig"
 date: "2025-09-19"
-preview: "TODO: one sentence on what this post is about (120-160 characters, used by Google and link previews)"
+preview: "My first mini-ITX PC build, made from second-hand parts."
 author: "Danish Aiman"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Table for 22"
 date: "2025-12-31"
-preview: "TODO: one sentence on what this post is about (120-160 characters, used by Google and link previews)"
+preview: "A birthday poem: dinner with every past version of me."
 author: "Danish Aiman"
 ---
 I had dinner with myself 22 times last night.
