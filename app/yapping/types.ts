@@ -8,5 +8,5 @@ export interface BlogPost {
   author?: string;
 }
 
-// What lists need: everything but the body
-export type PostSummary = Omit<BlogPost, 'content' | 'author'>;
+// What the archive list shows
+export type PostSummary = Pick<BlogPost, 'slug' | 'title' | 'date'>;

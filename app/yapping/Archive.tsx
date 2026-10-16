@@ -34,7 +34,6 @@ export default function Archive({ posts }: { posts: PostSummary[] }) {
                                     <h3 className="font-rubik font-bold text-lg sm:text-xl leading-[1.25] text-balance group-hover:underline decoration-[3px] underline-offset-4">
                                         {post.title}
                                     </h3>
-                                    <p className="text-sm leading-relaxed text-nb-muted text-pretty">{post.preview}</p>
                                 </Link>
                             </li>
                         ))}

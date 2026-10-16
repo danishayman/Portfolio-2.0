@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export default function YappingArchivePage() {
-    const posts: PostSummary[] = getBlogPosts().map(({ slug, title, date, preview }) => ({ slug, title, date, preview }));
+    const posts: PostSummary[] = getBlogPosts().map(({ slug, title, date }) => ({ slug, title, date }));
 
     return (
         <div className="nb-grid bg-nb-bg text-nb-ink min-h-screen">
