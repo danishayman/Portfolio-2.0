@@ -9,7 +9,6 @@ import Yapping from './component/Yapping';
 
 import Footer from './component/Footer';
 import Navigation from './component/Navigation';
-import SectionVisibilityWrapper from './component/SectionVisibilityWrapper';
 
 export default function Home() {
   return (
@@ -18,14 +17,12 @@ export default function Home() {
       <Hero />
       <SpeedInsights />
       <Analytics />
-      <SectionVisibilityWrapper>
-        <Education />
-        <Skills />
-        <Projects />
-        <Work />
-        <Yapping />
-        <Footer />
-      </SectionVisibilityWrapper>
+      <Education />
+      <Skills />
+      <Projects />
+      <Work />
+      <Yapping />
+      <Footer />
     </main>
   );
 }

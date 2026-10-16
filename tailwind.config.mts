@@ -84,15 +84,10 @@ const config: Config = {
                     '0%, 49%': { translate: '-50% 0' },
                     '50%, 100%': { translate: '-50% -4px' },
                 },
-                // Dashes crawling along an SVG stroke
-                march: {
-                    to: { strokeDashoffset: '-18' },
-                },
             },
             animation: {
                 blink: 'blink 1s steps(1) infinite',
                 hop: 'hop 0.8s linear infinite',
-                march: 'march 0.9s linear infinite',
                 dropdownFadeIn: 'dropdownFadeIn 0.3s ease-out',
                 fadeIn: 'fadeIn 0.5s ease-out',
                 fadeInUp: 'fadeInUp 0.6s ease forwards',

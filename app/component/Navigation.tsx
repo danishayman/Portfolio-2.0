@@ -47,15 +47,12 @@ function Navigation() {
     };
   }, []);
 
-  // Sections below the hero stay hidden on desktop until navigated to
-  const showSections = () => window.dispatchEvent(new CustomEvent('showSections'));
-
   return (
     <>
       {/* Desktop: sticky top bar */}
       <nav className="hidden md:block sticky top-0 z-1000 bg-nb-bg border-b-[3px] border-nb-ink select-none">
         <div className="max-w-[1200px] mx-auto px-6 py-3 flex items-center gap-6 justify-between">
-          <a href="#hero" className="flex items-center gap-2.5 shrink-0" onClick={showSections}>
+          <a href="#hero" className="flex items-center gap-2.5 shrink-0">
             <span className="w-8 h-8 bg-black border-[3px] border-nb-ink overflow-hidden shadow-hard-3">
               <Image
                 src="/my-favicon/web-app-manifest-192x192.png"
@@ -76,7 +73,6 @@ function Navigation() {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    onClick={showSections}
                     aria-current={active ? 'true' : undefined}
                     className={`font-pixel text-[10px] px-3 py-2.5 whitespace-nowrap border-[3px] ${NAV_HOVER_BG[i % NAV_HOVER_BG.length]} hover:text-nb-on hover:border-nb-ink hover:shadow-hard-3 hover:-translate-x-px hover:-translate-y-px ${
                       active
