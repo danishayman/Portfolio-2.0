@@ -10,6 +10,9 @@ const __dirname = dirname(__filename);
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
+    ignores: [".next/**", "design-handoff/**", "node_modules/**", "next-env.d.ts"]
+  },
+  {
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
       "@typescript-eslint": tsPlugin,

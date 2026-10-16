@@ -1,8 +1,9 @@
 import './globals.css';
 import { ThemeProvider } from './common/ThemeContext';
 import { PersonStructuredData, WebsiteStructuredData } from './components/StructuredData';
-import CSSLoader from './components/CSSLoader';
-import type { Metadata } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
+import type { Metadata, Viewport } from 'next';
 import { Press_Start_2P, Roboto_Mono, Rubik } from 'next/font/google';
 
 // Initialize the fonts with optimized loading
@@ -34,6 +35,10 @@ const pressStart = Press_Start_2P({
   fallback: ['Courier New', 'monospace'],
   preload: true,
 });
+
+export const viewport: Viewport = {
+  themeColor: '#000000',
+};
 
 export const metadata: Metadata = {
   title: {
@@ -121,7 +126,15 @@ export const metadata: Metadata = {
     google: 'bZyz4TL7ElDmE33G3CMvYh_GIj6Vah461AEhU8Uz224',
   },
   category: 'technology',
+  appleWebApp: {
+    title: 'Danish Aiman',
+    capable: true,
+    statusBarStyle: 'black-translucent',
+  },
 };
+
+// Runs before first paint so a saved dark theme never flashes light first
+const themeScript = `try{document.body.setAttribute('data-theme',localStorage.getItem('theme')==='dark'?'dark':'light')}catch(e){}`;
 
 export default function RootLayout({
   children,
@@ -130,60 +143,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${robotoMono.variable} ${rubik.variable} ${pressStart.variable}`}>
-      <head>
-        <meta name="apple-mobile-web-app-title" content="Danish Aiman" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="google-site-verification" content="bZyz4TL7ElDmE33G3CMvYh_GIj6Vah461AEhU8Uz224" />
-        <link rel="apple-touch-icon" sizes="192x192" href="/my-favicon/web-app-manifest-192x192.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/my-favicon/web-app-manifest-192x192.png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        
-        {/* Critical CSS for above-the-fold content */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            @layer theme, base, components, utilities;
-            /* Base layer so Tailwind utilities (e.g. font-pixel) still override these */
-            @layer base {
-              body {
-                font-family: var(--font-roboto-mono), monospace;
-                min-height: 100%;
-                margin: 0;
-                padding: 0;
-              }
-              html {
-                height: 100%;
-                overflow-y: auto;
-              }
-              body[data-theme='light'] {
-                background-color: white;
-                color: #222;
-              }
-              body[data-theme='dark'] {
-                background-color: #222;
-                color: #fff;
-              }
-              h1, h2, button {
-                font-family: var(--font-rubik), sans-serif;
-              }
-              section {
-                position: relative;
-                width: 100%;
-              }
-            }
-          `
-        }} />
-      </head>
-      <body className={robotoMono.variable} suppressHydrationWarning>
-        <CSSLoader />
+      <body suppressHydrationWarning>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <PersonStructuredData />
         <WebsiteStructuredData />
         <ThemeProvider>
           {children}
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

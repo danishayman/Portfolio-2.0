@@ -46,28 +46,4 @@ export const getBlogPosts = cache((): BlogPost[] => {
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   const posts = getBlogPosts();
   return posts.find(post => post.slug === slug);
-}
-
-// Client-side cache of blog posts
-export const blogPosts: BlogPost[] = [];
-
-// This is used only on the client side
-export function loadBlogPosts() {
-  if (typeof window === 'undefined') return;
-  
-  // Dynamically fetch the posts from the server
-  fetch('/api/yapping')
-    .then(res => res.json())
-    .then(data => {
-      blogPosts.length = 0; // Clear the array
-      blogPosts.push(...data); // Add all posts
-    })
-    .catch(err => {
-      console.error('Error loading blog posts:', err);
-    });
-}
-
-// Initialize on the server side
-if (typeof window === 'undefined') {
-  loadBlogPosts();
 } 

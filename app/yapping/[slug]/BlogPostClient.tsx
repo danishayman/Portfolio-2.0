@@ -1,5 +1,4 @@
-'use client';
-
+// Server component: the markdown renders to HTML at build time, so react-markdown never ships to the browser
 import Image from 'next/image';
 import React from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';

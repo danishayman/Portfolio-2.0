@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
 import Footer from '../../component/Footer';
-import Loading from '../../component/Loading';
 import WorkDetailClient from './WorkDetailClient';
 import { getWorkDataBySlug, workExperienceData } from '../workData';
 import { WorkExperienceStructuredData } from '../../components/StructuredData';
@@ -25,7 +23,7 @@ export async function generateMetadata({
   
   if (!workData) {
     return {
-      title: 'Work Experience Not Found | Danish Aiman',
+      title: 'Work Experience Not Found',
       description: 'The requested work experience page could not be found.',
       robots: { index: false, follow: false }
     };
@@ -34,7 +32,7 @@ export async function generateMetadata({
   const description = workData.description.slice(0, 2).join(' ');
   
   return {
-    title: `${workData.role} at ${workData.company} | Danish Aiman`,
+    title: `${workData.role} at ${workData.company}`,
     description: description,
     keywords: `${workData.skills.join(', ')}, Danish Aiman, work experience, ${workData.company}, ${workData.role}`,
     authors: [{ name: 'Danish Aiman' }],
@@ -75,11 +73,11 @@ export default async function WorkDetailPage({
   const { slug } = await params;
   const workData = getWorkDataBySlug(slug);
 
-    if (!workData) {
+  if (!workData) {
     notFound();
-    }
+  }
 
-      const description = workData.description.slice(0, 2).join(' ');
+  const description = workData.description.slice(0, 2).join(' ');
   
   return (
     <>
@@ -92,9 +90,7 @@ export default async function WorkDetailPage({
         skills={workData.skills}
         slug={slug}
       />
-      <Suspense fallback={<Loading fullScreen={true} />}>
-        <WorkDetailClient workData={workData} />
-      </Suspense>
+      <WorkDetailClient workData={workData} />
       <Footer topHref="#top" />
     </>
   );

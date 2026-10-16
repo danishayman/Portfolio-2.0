@@ -51,14 +51,15 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
                 src="/hero/pixel-me.png"
                 alt="Danish, pixel art"
                 fill
-                unoptimized
+                quality={90}
+                sizes="180px"
                 className="object-cover scale-[1.5] origin-[50%_53%] [image-rendering:pixelated]"
               />
               <Image
                 src="/hero/hd-me.png"
                 alt="Danish"
                 fill
-                sizes="120px"
+                sizes="180px"
                 className="object-cover scale-[1.5] origin-[50%_53%] opacity-0 transition-opacity duration-[400ms] ease-[steps(8)] group-hover:opacity-100 group-focus:opacity-100"
               />
             </div>

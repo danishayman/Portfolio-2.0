@@ -1,57 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  // Optimize images for better performance
   images: {
-    formats: ['image/webp', 'image/avif'],
-    minimumCacheTTL: 60,
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // AVIF first: ~20% smaller than WebP; browsers without it fall back to WebP
+    formats: ['image/avif', 'image/webp'],
+    // Next 16 only allows listed qualities; 90 keeps the pixel art crisp
+    qualities: [75, 90],
+    // Optimized images are cached for 31 days instead of re-encoding often
+    minimumCacheTTL: 2678400,
   },
-  // Enable compression
-  compress: true,
-  // Generate static exports for better SEO
-  trailingSlash: false,
-  // Performance optimizations
   experimental: {
     optimizePackageImports: ['react-markdown', 'lucide-react'],
-    esmExternals: true,
-  },
-  // Turbopack configuration (now stable)
-  turbopack: {
-    rules: {
-      '*.svg': {
-        loaders: ['@svgr/webpack'],
-        as: '*.js',
-      },
-    },
-  },
-  // Webpack optimizations
-  webpack: (config, { dev, isServer }) => {
-    // Optimize for production
-    if (!dev && !isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-          styles: {
-            name: 'styles',
-            test: /\.(css|scss|sass)$/,
-            chunks: 'all',
-            enforce: true,
-          },
-        },
-      };
-      
-      // Add CSS optimization
-      config.optimization.usedExports = true;
-      config.optimization.sideEffects = false;
-    }
-    return config;
   },
   // Headers for security and performance
   async headers() {
@@ -68,12 +26,8 @@ const nextConfig = {
             value: 'DENY',
           },
           {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
+            value: 'strict-origin-when-cross-origin',
           },
           {
             key: 'Permissions-Policy',
@@ -81,7 +35,7 @@ const nextConfig = {
           },
           {
             key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains',
+            value: 'max-age=63072000; includeSubDomains',
           },
         ],
       },
@@ -104,11 +58,12 @@ const nextConfig = {
         ],
       },
       {
-        source: '/(.*\\.(?:ico|png|jpg|jpeg|gif|webp|svg)$)',
+        // public/ files keep their names when replaced, so cache for a week rather than "immutable"
+        source: '/(.*\\.(?:ico|png|jpg|jpeg|gif|webp|svg|pdf)$)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=604800, stale-while-revalidate=86400',
           },
         ],
       },
@@ -125,4 +80,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; 
+module.exports = nextConfig;

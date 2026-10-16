@@ -296,7 +296,6 @@ const Education: React.FC = () => {
                                         href={edu.locationUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        aria-label={`Open ${edu.institution} on Google Maps`}
                                         className="flex flex-col bg-nb-card border-[3px] border-nb-ink shadow-hard-4 sm:shadow-hard-6 text-nb-ink transition-[translate,rotate,scale,box-shadow] duration-120 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-hard-9"
                                     >
                                         <div className={`${accent} text-nb-on border-b-[3px] border-nb-ink px-3 sm:px-4 py-2 sm:py-3 flex flex-wrap justify-between items-center gap-x-3 gap-y-2`}>
@@ -317,7 +316,7 @@ const Education: React.FC = () => {
                                                         ★ {a}
                                                     </span>
                                                 ))}
-                                                <span className="text-xs font-bold whitespace-nowrap">MAP ↗</span>
+                                                <span className="text-xs font-bold whitespace-nowrap">MAP ↗<span className="sr-only"> (opens Google Maps)</span></span>
                                             </div>
                                         </div>
                                     </a>

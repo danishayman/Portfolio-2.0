@@ -22,9 +22,8 @@ export function PersonStructuredData() {
     url: 'https://danishaiman.com',
     image: 'https://danishaiman.com/hero/lelouch.webp',
     sameAs: [
-      // Add your actual social media URLs here
-      'https://github.com/danishaiman',
-      'https://linkedin.com/in/danishaiman',
+      'https://github.com/danishayman',
+      'https://www.linkedin.com/in/danishayman',
     ],
     knowsAbout: [
       'Artificial Intelligence',
@@ -43,8 +42,8 @@ export function PersonStructuredData() {
     ],
     alumniOf: {
       '@type': 'EducationalOrganization',
-      name: 'University of Malaya', // Update with your actual university
-      url: 'https://www.um.edu.my/'
+      name: 'Universiti Sains Malaysia',
+      url: 'https://www.usm.my/'
     },
     hasOccupation: [
       {
@@ -89,14 +88,6 @@ export function WebsiteStructuredData() {
     },
     inLanguage: 'en-US',
     copyrightYear: new Date().getFullYear(),
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: 'https://danishaiman.com/yapping/{search_term_string}'
-      },
-      'query-input': 'required name=search_term_string'
-    }
   };
 
   return (
@@ -189,17 +180,8 @@ export function WorkExperienceStructuredData({
     url: `https://danishaiman.com/work/${slug}`,
     keywords: skills.join(', '),
     about: {
-      '@type': 'JobPosting',
-      title: role,
-      hiringOrganization: {
-        '@type': 'Organization',
-        name: company
-      },
-      employmentType: 'INTERN',
-      skills: skills.map(skill => ({
-        '@type': 'DefinedTerm',
-        name: skill
-      }))
+      '@type': 'Organization',
+      name: company
     },
     inLanguage: 'en-US'
   };

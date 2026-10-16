@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import DetailTopBar from '../../common/DetailTopBar';
 import { ACCENT_BG, pad2 } from '../../common/palette';
-import { WorkExperience, allWorkImages, workExperienceData } from '../workData';
+import { WorkExperience, workExperienceData } from '../workData';
 
 interface WorkDetailClientProps {
     workData: WorkExperience;
@@ -25,14 +25,6 @@ export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
     const total = workData.images.length;
     // Same LV numbering as the home page: oldest job is LV.01
     const level = pad2(workExperienceData.length - workExperienceData.findIndex((w) => w.slug === workData.slug));
-
-    useEffect(() => {
-        // Warm the cache so flipping through the gallery doesn't flash
-        workData.images.forEach((src) => {
-            const img = new window.Image();
-            img.src = src;
-        });
-    }, [workData.images]);
 
     const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % total);
     const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + total) % total);
@@ -121,7 +113,10 @@ export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
                                                 className="object-cover pointer-events-none"
                                                 fill
                                                 sizes="(max-width: 800px) 90vw, 420px"
-                                                priority={index === 0}
+                                                // The story text is the LCP (the gallery sits below it on phones), so
+                                                // photos never preload; the hidden ones load last
+                                                loading={index === 0 ? 'eager' : 'lazy'}
+                                                fetchPriority={index === 0 ? 'auto' : 'low'}
                                                 draggable={false}
                                             />
                                         </div>
@@ -134,7 +129,7 @@ export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
                                     ◀
                                 </button>
 
-                                <div className="flex flex-wrap justify-center gap-1.5">
+                                <div className="flex flex-wrap justify-center">
                                     {workData.images.map((image, index) => (
                                         <button
                                             key={image}
@@ -142,10 +137,15 @@ export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
                                             onClick={() => setCurrentImageIndex(index)}
                                             aria-label={`Go to image ${index + 1}`}
                                             aria-current={index === currentImageIndex ? 'true' : undefined}
-                                            className={`w-3 h-3 border-2 border-nb-ink ${
-                                                index === currentImageIndex ? 'bg-nb-yellow' : 'bg-nb-heart hover:bg-nb-sky'
-                                            }`}
-                                        />
+                                            className="group p-1.5"
+                                        >
+                                            {/* 12px square inside a 24px tap target */}
+                                            <span
+                                                className={`block w-3 h-3 border-2 border-nb-ink ${
+                                                    index === currentImageIndex ? 'bg-nb-yellow' : 'bg-nb-heart group-hover:bg-nb-sky'
+                                                }`}
+                                            />
+                                        </button>
                                     ))}
                                 </div>
 
@@ -171,13 +171,6 @@ export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
                     </div>
                 </div>
             </main>
-
-            {/* Hidden preload for every work image, so other quests open instantly */}
-            <div className="hidden">
-                {allWorkImages.map((image) => (
-                    <Image key={`preload-${image}`} src={image} alt="" width={1} height={1} priority />
-                ))}
-            </div>
         </div>
     );
 }

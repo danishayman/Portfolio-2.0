@@ -63,9 +63,6 @@ export const inariImages = [
     
 ];
 
-// Create a flat array of all images for preloading
-export const allWorkImages = [...gscImages, ...teenfixImages, ...dabossImages, ...inariImages];
-
 export const workExperienceData: WorkExperience[] = [
     {
         role: "Software Engineer Intern",

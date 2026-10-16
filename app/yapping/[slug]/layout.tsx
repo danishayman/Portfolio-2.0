@@ -22,7 +22,7 @@ export async function generateMetadata({
   
   if (!post) {
     return {
-      title: 'Blog Post Not Found | Danish Aiman',
+      title: 'Blog Post Not Found',
       description: 'The requested blog post could not be found.',
       robots: { index: false, follow: false }
     };
@@ -41,7 +41,7 @@ export async function generateMetadata({
   ].join(', ');
 
   return {
-    title: `${title} | Danish Aiman Blog`,
+    title: `${title} | Blog`,
     description: description,
     keywords: keywords,
     authors: [{ name: post.author || 'Danish Aiman' }],

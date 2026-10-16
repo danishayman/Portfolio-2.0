@@ -82,20 +82,22 @@ const Hero: React.FC = () => {
                         aria-label="Portrait, tap or hover for the HD photo"
                         className="group relative mx-auto w-[clamp(110px,calc(100svh_-_555px),100%)] md:w-full aspect-square border-[3px] border-nb-on bg-white nb-grid-sm overflow-hidden outline-none [-webkit-tap-highlight-color:transparent]"
                     >
+                        {/* The LCP image: optimized to WebP/AVIF at display size (a 1024px PNG otherwise) */}
                         <Image
                             src="/hero/pixel-me.png"
                             alt="Danish Aiman, pixel art"
                             fill
-                            unoptimized
-                            priority
+                            preload
+                            quality={90}
+                            sizes="(min-width: 800px) 400px, 260px"
                             className="object-cover block [image-rendering:pixelated]"
                         />
+                        {/* Only shown on hover/tap, so it loads after the page instead of competing with the LCP */}
                         <Image
                             src="/hero/hd-me.png"
                             alt="Danish Aiman"
                             fill
-                            priority
-                            sizes="(max-width: 480px) 90vw, 400px"
+                            sizes="(min-width: 800px) 400px, 260px"
                             className="object-cover block opacity-0 transition-opacity duration-[400ms] ease-[steps(8)] group-hover:opacity-100 group-focus:opacity-100"
                         />
                         <span className="absolute left-2.5 top-2.5 font-pixel text-[8px] bg-nb-yellow text-nb-on border-2 border-nb-on px-[7px] py-[5px] pointer-events-none whitespace-nowrap">
