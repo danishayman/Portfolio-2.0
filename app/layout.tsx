@@ -44,10 +44,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'danishayman',
+    default: 'Danish Aiman',
     template: '%s | Danish Aiman'
   },
-  description: 'Computer Science student specializing in AI and Machine Learning. Experienced in web development, software engineering, and technical problem-solving. View my portfolio of projects and work experience.',
+  description: 'Computer Science student at USM specializing in AI and Machine Learning. Explore my projects, work experience and writing.',
   keywords: [
     'Danish Aiman',
     'AI Developer', 
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'danishayman',
+    title: 'Danish Aiman',
     description: 'Computer Science student specializing in AI and Machine Learning. Experienced in web development and software engineering.',
     url: 'https://danishaiman.com',
     siteName: 'Danish Aiman Portfolio',
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'danishayman',
+    title: 'Danish Aiman',
     description: 'Computer Science student specializing in AI and Machine Learning.',
     images: ['/opengraph-image'],
   },
