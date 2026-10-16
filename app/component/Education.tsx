@@ -46,9 +46,11 @@ const educationData: Education[] = [
 
 /* ---------- 8-bit sprites ---------- */
 
-// One character per pixel; '.' is transparent
+// One character per pixel; '.' is transparent. 'k' follows the theme ink so it shows against
+// the map; 'o' stays dark in both themes for outlines and details drawn over light fills.
 const PIXEL_FILL: Record<string, string> = {
     k: 'fill-nb-ink',
+    o: 'fill-nb-on',
     w: 'fill-white',
     g: 'fill-nb-green',
     s: 'fill-nb-sky',
@@ -86,26 +88,26 @@ const CASTLE = [
     '......k......',
     'k.k.k.k.k.k.k',
     'kkkkkkkkkkkkk',
-    'keeeeeeeeeeek',
-    'keekeeeeekeek',
-    'keeeeeeeeeeek',
-    'keeeekkkeeeek',
-    'keeeekkkeeeek',
-    'keeeekkkeeeek',
-    'kkkkkkkkkkkkk',
+    'oeeeeeeeeeeeo',
+    'oeeoeeeeeoeeo',
+    'oeeeeeeeeeeeo',
+    'oeeeeoooeeeeo',
+    'oeeeeoooeeeeo',
+    'oeeeeoooeeeeo',
+    'ooooooooooooo',
 ];
 
 const PLAYER = [
-    '..kkkk..',
-    '.kppppk.',
+    '..oooo..',
+    '.oppppo.',
     'kkkkkkkk',
-    '.kwwwwk.',
-    '.kwkwkk.',
-    '.kwwwwk.',
-    '..kkkk..',
-    '.kssssk.',
-    'kssssssk',
-    '.kssssk.',
+    '.owwwwo.',
+    '.owowoo.',
+    '.owwwwo.',
+    '..oooo..',
+    '.osssso.',
+    'osssssso',
+    '.osssso.',
     '.kk..kk.',
 ];
 
