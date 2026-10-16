@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
 
@@ -20,8 +21,14 @@ export default function DetailTopBar({ backHref, backLabel }: DetailTopBarProps)
                 </Link>
 
                 <Link href="/" className="hidden sm:flex items-center gap-2.5 shrink-0">
-                    <span className="w-8 h-8 bg-nb-blue text-white border-[3px] border-nb-ink grid place-items-center font-pixel text-xs shadow-hard-3">
-                        D
+                    <span className="w-8 h-8 bg-black border-[3px] border-nb-ink overflow-hidden shadow-hard-3">
+                        <Image
+                            src="/my-favicon/web-app-manifest-192x192.png"
+                            alt="Logo"
+                            width={32}
+                            height={32}
+                            className="w-full h-full scale-[1.6]"
+                        />
                     </span>
                     <span className="font-pixel text-xs text-nb-ink">danishayman.exe</span>
                 </Link>

@@ -146,23 +146,6 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{
           __html: `
             @layer theme, base, components, utilities;
-            :root {
-              --bt-color: #007bff;
-              --btn-text-color: #ffffff;
-              --background-color: #ffffff;
-              --text-color: currentColor;
-              --project-card-bg: #ffffff;
-              --border-color: currentColor;
-              --box-shadow-color: #888;
-            }
-            [data-theme='dark'] {
-              --bt-color: #ffffff;
-              --btn-text-color: #222;
-              --background-color: #222;
-              --project-card-bg: #fff;
-              --border-color: currentColor;
-              --box-shadow-color: #ffffff66;
-            }
             /* Base layer so Tailwind utilities (e.g. font-pixel) still override these */
             @layer base {
               body {

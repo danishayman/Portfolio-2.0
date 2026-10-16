@@ -19,9 +19,6 @@ const config: Config = {
                 pixel: ['var(--font-pixel)', 'monospace'],
             },
             colors: {
-                'theme': 'var(--bt-color)',
-                'btn-text': 'var(--btn-text-color)',
-                'project-card-bg': 'var(--project-card-bg, rgba(0, 0, 0, 0.03))',
                 // Neo-brutalist 8-bit palette (themeable tokens live in globals.css)
                 nb: {
                     bg: 'var(--nb-bg)',
@@ -30,6 +27,7 @@ const config: Config = {
                     muted: 'var(--nb-muted)',
                     heart: 'var(--nb-heart)',
                     panel: 'var(--nb-panel)',
+                    map: 'var(--nb-map)',
                     on: '#121212',
                     blue: '#007bff',
                     yellow: '#FFD23F',
@@ -42,7 +40,6 @@ const config: Config = {
                 },
             },
             boxShadow: {
-                'theme': '0 0 15px 5px var(--bt-color)',
                 'md': '0 4px 4px rgba(0, 0, 0, 0.25)',
                 'sm': '0 2px 2px rgba(0, 0, 0, 0.25)',
                 // Hard offset shadows
@@ -82,9 +79,20 @@ const config: Config = {
                     '0%, 49%': { opacity: '1' },
                     '50%, 100%': { opacity: '0' },
                 },
+                // Two-frame 8-bit bounce
+                hop: {
+                    '0%, 49%': { translate: '-50% 0' },
+                    '50%, 100%': { translate: '-50% -4px' },
+                },
+                // Dashes crawling along an SVG stroke
+                march: {
+                    to: { strokeDashoffset: '-18' },
+                },
             },
             animation: {
                 blink: 'blink 1s steps(1) infinite',
+                hop: 'hop 0.8s linear infinite',
+                march: 'march 0.9s linear infinite',
                 dropdownFadeIn: 'dropdownFadeIn 0.3s ease-out',
                 fadeIn: 'fadeIn 0.5s ease-out',
                 fadeInUp: 'fadeInUp 0.6s ease forwards',

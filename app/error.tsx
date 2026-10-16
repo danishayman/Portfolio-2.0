@@ -2,7 +2,11 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import DetailTopBar from './common/DetailTopBar';
 import Footer from './component/Footer';
+
+const buttonMotion =
+  'transition-[translate,rotate,scale,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6 active:translate-x-1 active:translate-y-1 active:shadow-hard-0';
 
 export default function Error({
   error,
@@ -17,57 +21,66 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-(--background-color) text-(--text-color) flex flex-col">
-      <main className="flex-1 flex items-center justify-center px-6 py-12">
-        <div className="max-w-md mx-auto text-center">
-          <div className="mb-8">
-            {/* Error Visual */}
-            <div className="text-6xl mb-4">⚠️</div>
-            <h1 className="text-2xl md:text-3xl font-bold mb-4">Something went wrong!</h1>
-            <p className="text-base opacity-80 mb-8">
-              An unexpected error occurred while loading this page. This has been logged and we'll look into it.
-            </p>
-          </div>
+    <>
+      <div className="nb-grid bg-nb-bg text-nb-ink min-h-screen flex flex-col">
+        <DetailTopBar backHref="/" backLabel="HOME" />
 
-          {/* Action Buttons */}
-          <div className="space-y-4 mb-8">
-            <button
-              onClick={reset}
-              className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-medium rounded-lg border-2 border-(--text-color) shadow-[3px_3px_var(--box-shadow-color)] transition-all duration-300 hover:translate-y-0.5 hover:shadow-sm"
-            >
-              <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-              </svg>
-              Try Again
-            </button>
-            
-            <Link 
-              href="/"
-              className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-lg border border-(--text-color) opacity-80 hover:opacity-100 transition-opacity"
-            >
-              <svg className="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-              </svg>
-              Return to Homepage
-            </Link>
-          </div>
+        <main className="flex-1 flex items-center justify-center px-6 py-16 md:py-24">
+          <div className="w-full max-w-[560px] flex flex-col items-center gap-10 text-center">
+            <div className="flex flex-col items-center gap-5">
+              <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">SYSTEM ERROR</span>
+              <h1 className="font-pixel font-normal text-[clamp(32px,8vw,64px)] leading-[1.2] [text-shadow:5px_5px_0_#FF5C8A]">
+                GAME
+                <br />
+                OVER
+              </h1>
+            </div>
 
-          {/* Error Details (Development) */}
-          {process.env.NODE_ENV === 'development' && (
-            <details className="text-left text-xs opacity-60 bg-red-50 dark:bg-red-900/20 p-4 rounded-sm border">
-              <summary className="cursor-pointer font-medium mb-2">Error Details (Development)</summary>
-              <pre className="whitespace-pre-wrap wrap-break-word">
-                {error.message}
-                {error.stack && `\n\nStack:\n${error.stack}`}
-              </pre>
-            </details>
-          )}
-        </div>
-      </main>
-      
-      <Footer />
-    </div>
+            <div className="w-full bg-nb-card border-[3px] border-nb-ink shadow-hard-8 text-left">
+              <div className="bg-nb-panel text-white px-[18px] py-3 flex justify-between gap-3 flex-wrap">
+                <span className="font-pixel text-[10px] text-nb-pink">SOMETHING BROKE</span>
+                <span className="font-pixel text-[10px] text-nb-silver">{error.digest ? `#${error.digest}` : 'ERR 500'}</span>
+              </div>
+              <p className="p-[22px] text-base leading-[1.7] text-pretty">
+                An unexpected error occurred while loading this page. It has been logged and I&apos;ll look into it.
+              </p>
+            </div>
+
+            <div className="w-full flex flex-col sm:flex-row gap-4">
+              <button
+                type="button"
+                onClick={reset}
+                className={`flex-1 font-pixel text-xs bg-nb-blue text-white px-[22px] py-[18px] border-[3px] border-nb-ink shadow-hard-4 flex gap-3 items-center justify-center ${buttonMotion}`}
+              >
+                <span>▶</span>
+                <span>CONTINUE?</span>
+              </button>
+
+              <Link
+                href="/"
+                className={`flex-1 font-pixel text-xs bg-nb-yellow text-nb-on px-[22px] py-[18px] border-[3px] border-nb-ink shadow-hard-4 flex items-center justify-center ${buttonMotion}`}
+              >
+                QUIT TO HOME
+              </Link>
+            </div>
+
+            {/* Error Details (Development) */}
+            {process.env.NODE_ENV === 'development' && (
+              <details className="w-full text-left bg-nb-card border-[3px] border-nb-ink shadow-hard-4">
+                <summary className="cursor-pointer font-pixel text-[10px] px-4 py-3 bg-nb-pink text-nb-on">
+                  DEBUG LOG (DEV ONLY)
+                </summary>
+                <pre className="p-4 text-xs leading-normal whitespace-pre-wrap wrap-break-word border-t-[3px] border-nb-ink">
+                  {error.message}
+                  {error.stack && `\n\nStack:\n${error.stack}`}
+                </pre>
+              </details>
+            )}
+          </div>
+        </main>
+      </div>
+
+      <Footer topHref="#top" />
+    </>
   );
 }
-
-//PMQ 3150

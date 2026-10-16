@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Home, Briefcase, Laptop, GraduationCap, Code, MessageSquareMore } from 'lucide-react';
 import { NAV_BG, NAV_HOVER_BG } from '../common/palette';
 import ThemeToggle from '../common/ThemeToggle';
@@ -55,8 +56,14 @@ function Navigation() {
       <nav className="hidden md:block sticky top-0 z-1000 bg-nb-bg border-b-[3px] border-nb-ink select-none">
         <div className="max-w-[1200px] mx-auto px-6 py-3 flex items-center gap-6 justify-between">
           <a href="#hero" className="flex items-center gap-2.5 shrink-0" onClick={showSections}>
-            <span className="w-8 h-8 bg-nb-blue text-white border-[3px] border-nb-ink grid place-items-center font-pixel text-xs shadow-hard-3">
-              D
+            <span className="w-8 h-8 bg-black border-[3px] border-nb-ink overflow-hidden shadow-hard-3">
+              <Image
+                src="/my-favicon/web-app-manifest-192x192.png"
+                alt="Logo"
+                width={32}
+                height={32}
+                className="w-full h-full scale-[1.6]"
+              />
             </span>
             <span className="font-pixel text-xs text-nb-ink">danishayman.exe</span>
           </a>
