@@ -1,10 +1,12 @@
 // Server component: the markdown renders to HTML at build time, so react-markdown never ships to the browser
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
 import Footer from '../../components/Footer';
 import DetailTopBar from '../../common/DetailTopBar';
 import type { BlogPost as BlogPostData } from '../types';
+import { formatDate, tagSlug } from '../format';
 
 interface BlogPostProps {
   post: BlogPostData;
@@ -122,13 +124,13 @@ export default function BlogPost({ post, slug }: BlogPostProps) {
 
   return (
     <div className="nb-grid bg-nb-bg text-nb-ink min-h-screen">
-      <DetailTopBar backHref="/#yapping" backLabel="YAPPING" />
+      <DetailTopBar backHref="/yapping" backLabel="YAPPING" />
 
       <main className="max-w-[860px] mx-auto px-6 pt-12 pb-20 md:pt-[72px] md:pb-24">
         <header className="flex flex-col gap-5 border-b-[3px] border-nb-ink pb-8 mb-12">
           <div className="flex gap-2.5 flex-wrap items-center">
             <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">DIALOGUE</span>
-            <span className="font-pixel text-[10px] text-nb-on bg-nb-sky border-2 border-nb-ink px-2.5 py-1.5">{post.date.toUpperCase()}</span>
+            <span className="font-pixel text-[10px] text-nb-on bg-nb-sky border-2 border-nb-ink px-2.5 py-1.5">{formatDate(post.date).toUpperCase()}</span>
           </div>
           <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,40px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_#FFD23F] dark:[text-shadow:4px_4px_0_#007bff]">
             {title}
@@ -136,8 +138,13 @@ export default function BlogPost({ post, slug }: BlogPostProps) {
           {post.tags && post.tags.length > 0 && (
             <ul className="list-none p-0 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
-                <li key={tag} className="text-[11px] font-bold uppercase tracking-[0.04em] bg-nb-card border-2 border-nb-ink px-2 py-1">
-                  #{tag}
+                <li key={tag}>
+                  <Link
+                    href={`/yapping?tag=${tagSlug(tag)}`}
+                    className="block text-[11px] font-bold uppercase tracking-[0.04em] bg-nb-card border-2 border-nb-ink px-2 py-1 hover:bg-nb-yellow hover:text-nb-on"
+                  >
+                    #{tag}
+                  </Link>
                 </li>
               ))}
             </ul>

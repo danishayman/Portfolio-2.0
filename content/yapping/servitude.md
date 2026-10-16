@@ -1,6 +1,6 @@
 ---
 title: "Servitude"
-date: "1 July 2025"
+date: "2025-07-01"
 preview: "A philosophical exploration of freedom, submission, and the many forms of servitude we encounter - both religious and secular."
 tags: ["philosophy", "religion", "freedom", "reflection"]
 author: "Danish Aiman"

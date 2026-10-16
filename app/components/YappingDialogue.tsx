@@ -14,7 +14,8 @@ export interface DialoguePost {
 
 const TYPE_SPEED_MS = 28;
 
-export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
+// posts: the latest few shown here; total: every post, for the link to the archive
+export default function YappingDialogue({ posts, total }: { posts: DialoguePost[]; total: number }) {
   const [current, setCurrent] = useState(0);
   const [chars, setChars] = useState(0);
   const post = posts[current];
@@ -123,6 +124,13 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
               </button>
             );
           })}
+          <Link
+            href="/yapping"
+            className="mt-auto grid grid-cols-[18px_minmax(0,1fr)] gap-2 sm:gap-2.5 items-center px-2 py-2 sm:px-2.5 sm:py-3 border-2 border-dashed border-nb-ink font-pixel text-[10px] leading-normal text-nb-ink hover:bg-nb-yellow hover:text-nb-on hover:border-solid"
+          >
+            <span aria-hidden="true">▶</span>
+            <span>VIEW ALL {total} DIALOGUES</span>
+          </Link>
         </div>
       </div>
     </div>

@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 1,
     },
+    {
+      url: `${baseUrl}/yapping`,
+      lastModified: posts[0] ? new Date(posts[0].date) : new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
   ];
 
   // Add blog posts

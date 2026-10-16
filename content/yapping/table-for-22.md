@@ -1,7 +1,7 @@
 ---
 title: "Table for 22"
-date: "31 December 2025"
-preview: "Table for 22"
+date: "2025-12-31"
+preview: "TODO: one sentence on what this post is about (120-160 characters, used by Google and link previews)"
 tags: ["New Year", "birthday"]
 author: "Danish Aiman"
 ---

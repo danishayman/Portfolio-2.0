@@ -1,7 +1,7 @@
 ---
-title: ""
-date: "15 August 2025"
-preview: "happiness"
+title: "happiness"
+date: "2025-08-15"
+preview: "TODO: one sentence on what this post is about (120-160 characters, used by Google and link previews)"
 tags: ["grief", "happiness", "sadness"]
 author: "Danish Aiman"
 ---
