@@ -1,3 +1,19 @@
+// Everything is self-hosted (fonts, images, Vercel Analytics under /_vercel). Next inlines its
+// hydration data as <script> tags, so scripts need 'unsafe-inline' unless pages use nonces,
+// which would force dynamic rendering. Production only: the dev server relies on eval.
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+].join('; ');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -37,6 +53,9 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains',
           },
+          ...(process.env.NODE_ENV === 'production'
+            ? [{ key: 'Content-Security-Policy', value: contentSecurityPolicy }]
+            : []),
         ],
       },
       {

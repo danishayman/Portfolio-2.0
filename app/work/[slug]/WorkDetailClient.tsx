@@ -59,10 +59,10 @@ export default function WorkDetailClient({ workData }: WorkDetailClientProps) {
                         <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">QUEST LOG · LV.{level}</span>
                         <span className="font-pixel text-[10px] bg-nb-card border-2 border-nb-ink px-2.5 py-1.5">{workData.duration.toUpperCase()}</span>
                     </div>
-                    <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,44px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_#FFD23F]">
+                    <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,44px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_#FFD23F] dark:[text-shadow:4px_4px_0_#007bff]">
                         {workData.role.toUpperCase()}
                     </h1>
-                    <p className="text-[17px] font-medium text-nb-blue">@ {workData.company}</p>
+                    <p className="text-[17px] font-medium text-nb-blue-ink">@ {workData.company}</p>
                 </header>
 
                 <div className="flex flex-wrap gap-8 items-start">

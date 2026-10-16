@@ -67,8 +67,8 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
             <div className="contents sm:flex sm:flex-[1_1_260px] sm:min-w-0 sm:flex-col sm:gap-4 sm:min-h-[200px]">
               <div className="min-w-0 flex flex-col gap-2 sm:gap-4">
                 <div className="flex gap-2 sm:gap-2.5 items-center flex-wrap">
-                  <span className="font-pixel text-[8px] sm:text-[9px] text-nb-on bg-nb-sky px-1.5 py-1 sm:px-2 sm:py-1.5 whitespace-nowrap">{post.date}</span>
-                  <span className="font-pixel text-[8px] sm:text-[9px] text-nb-silver whitespace-nowrap">
+                  <span className="font-pixel text-[9px] sm:text-[10px] text-nb-on bg-nb-sky px-1.5 py-1 sm:px-2 sm:py-1.5 whitespace-nowrap">{post.date}</span>
+                  <span className="font-pixel text-[9px] sm:text-[10px] text-nb-silver whitespace-nowrap">
                     DIALOGUE {current + 1}/{posts.length}
                   </span>
                 </div>
@@ -100,7 +100,7 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
       </div>
 
       <div className="flex-[1_1_280px] max-w-full flex flex-col">
-        <div className="self-start ml-5 bg-nb-card border-[3px] border-b-0 border-nb-ink px-3 py-2 sm:px-3.5 sm:py-2.5 font-pixel text-[9px] sm:text-[11px]">
+        <div className="self-start ml-5 bg-nb-card border-[3px] border-b-0 border-nb-ink px-3 py-2 sm:px-3.5 sm:py-2.5 font-pixel text-[10px] sm:text-[11px]">
           CHOOSE A TOPIC
         </div>
         <div className="flex-1 bg-nb-card border-[3px] border-nb-ink shadow-hard-4 sm:shadow-hard-8 p-2 sm:p-2.5 flex flex-col gap-0.5 sm:gap-1">
@@ -112,7 +112,7 @@ export default function YappingDialogue({ posts }: { posts: DialoguePost[] }) {
                 type="button"
                 onClick={() => setCurrent(i)}
                 aria-pressed={active}
-                className={`grid grid-cols-[18px_minmax(0,1fr)] gap-2 sm:gap-2.5 items-center text-left px-2 py-2 sm:px-2.5 sm:py-3 border-2 cursor-pointer font-pixel text-[9px] sm:text-[10px] leading-normal ${NAV_HOVER_BG[i % NAV_HOVER_BG.length]} hover:border-nb-ink hover:text-nb-on ${
+                className={`grid grid-cols-[18px_minmax(0,1fr)] gap-2 sm:gap-2.5 items-center text-left px-2 py-2 sm:px-2.5 sm:py-3 border-2 cursor-pointer font-pixel text-[10px] leading-normal ${NAV_HOVER_BG[i % NAV_HOVER_BG.length]} hover:border-nb-ink hover:text-nb-on ${
                   active
                     ? `${NAV_BG[i % NAV_BG.length]} border-nb-ink text-nb-on`
                     : 'bg-transparent border-transparent text-nb-ink'

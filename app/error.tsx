@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import DetailTopBar from './common/DetailTopBar';
-import Footer from './component/Footer';
+import Footer from './components/Footer';
 
 const buttonMotion =
   'transition-[translate,rotate,scale,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6 active:translate-x-1 active:translate-y-1 active:shadow-hard-0';

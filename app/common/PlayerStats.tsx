@@ -57,7 +57,7 @@ export function PlayerExp({ serverNow }: { serverNow: number }) {
             <span className="flex self-stretch h-3.5 md:h-4 border-2 border-nb-ink bg-white">
                 <span className="bg-nb-green border-r-2 border-nb-ink" style={{ width: `${(exp / expToNext) * 100}%` }} />
             </span>
-            <span className="font-pixel text-[8px] md:text-[11px] text-nb-ink">
+            <span className="font-pixel text-[9px] md:text-[11px] text-nb-ink">
                 {exp}/{expToNext}
             </span>
         </>

@@ -29,7 +29,9 @@ const config: Config = {
                     panel: 'var(--nb-panel)',
                     map: 'var(--nb-map)',
                     on: '#121212',
-                    blue: '#007bff',
+                    // Deep enough for white text on it (5.3:1); text uses the themed blue-ink below
+                    blue: '#0066dd',
+                    'blue-ink': 'var(--nb-blue-ink)',
                     yellow: '#FFD23F',
                     sky: '#7FB8FF',
                     pink: '#FF5C8A',

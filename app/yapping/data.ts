@@ -7,8 +7,8 @@ import { cache } from 'react';
 // Function to get all blog posts from markdown files
 // Using react cache to memorize the result for server components
 export const getBlogPosts = cache((): BlogPost[] => {
-  // Path to the markdown files
-  const contentDirectory = path.join(process.cwd(), 'public/content/yapping');
+  // Outside public/ so the raw markdown isn't downloadable; read at build time only
+  const contentDirectory = path.join(process.cwd(), 'content/yapping');
   
   // Get all files from the directory
   const filenames = fs.readdirSync(contentDirectory);

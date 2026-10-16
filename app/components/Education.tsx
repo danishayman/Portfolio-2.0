@@ -243,7 +243,7 @@ const Education: React.FC = () => {
 
             {/* In-game map screen */}
             <div className="border-[3px] border-nb-ink shadow-hard-8 bg-nb-map">
-                <div className="bg-nb-panel text-white border-b-[3px] border-nb-ink px-4 py-3 flex flex-wrap justify-between items-center gap-x-6 gap-y-2 font-pixel text-[9px]">
+                <div className="bg-nb-panel text-white border-b-[3px] border-nb-ink px-4 py-3 flex flex-wrap justify-between items-center gap-x-6 gap-y-2 font-pixel text-[10px]">
                     <span className="text-nb-yellow">WORLD 1 · ACADEMY</span>
                     <span className="hidden sm:flex items-center gap-4">
                         <span className="flex items-center gap-1.5"><i className="w-2.5 h-2.5 bg-nb-green" />CLEARED</span>
@@ -301,7 +301,7 @@ const Education: React.FC = () => {
                                         <div className={`${accent} text-nb-on border-b-[3px] border-nb-ink px-3 sm:px-4 py-2 sm:py-3 flex flex-wrap justify-between items-center gap-x-3 gap-y-2`}>
                                             {/* Two nowrap halves so a narrow card breaks at the dot, not mid-label.
                                                 Phones drop the status: the node's check mark or player already shows it. */}
-                                            <span className="font-pixel text-[9px] sm:text-[10px] flex flex-wrap gap-x-[1ch] gap-y-1.5">
+                                            <span className="font-pixel text-[10px] flex flex-wrap gap-x-[1ch] gap-y-1.5">
                                                 <span className="whitespace-nowrap">LV {num}<span className="hidden sm:inline"> ·</span></span>
                                                 <span className="hidden sm:inline whitespace-nowrap">{here ? '▶ YOU ARE HERE' : '✓ CLEARED'}</span>
                                             </span>
@@ -312,7 +312,7 @@ const Education: React.FC = () => {
                                             <p className="text-xs sm:text-sm leading-normal whitespace-pre-line">{edu.degree}</p>
                                             <div className="mt-auto pt-1.5 sm:pt-2 flex flex-wrap justify-between items-center gap-2">
                                                 {edu.achievements.map((a) => (
-                                                    <span key={a} className="font-pixel text-[8px] sm:text-[9px] leading-normal bg-nb-panel text-nb-yellow px-2 py-1.5 sm:px-2.5 sm:py-2">
+                                                    <span key={a} className="font-pixel text-[9px] sm:text-[10px] leading-normal bg-nb-panel text-nb-yellow px-2 py-1.5 sm:px-2.5 sm:py-2">
                                                         ★ {a}
                                                     </span>
                                                 ))}
@@ -334,7 +334,7 @@ const Education: React.FC = () => {
                             }
                         >
                             <div className="h-11 sm:h-12 md:h-16 flex items-center">
-                                <span className="font-pixel text-[8px] sm:text-[9px] md:text-[10px] leading-normal bg-nb-card border-[3px] border-nb-ink px-3 py-2">
+                                <span className="font-pixel text-[9px] sm:text-[10px] leading-normal bg-nb-card border-[3px] border-nb-ink px-3 py-2">
                                     PLAYER 0 SPAWNED · 2015
                                 </span>
                             </div>

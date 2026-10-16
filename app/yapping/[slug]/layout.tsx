@@ -5,6 +5,9 @@ interface BlogPostParams {
   params: Promise<{ slug: string }>;
 }
 
+// Every post is prerendered; unknown slugs 404 instead of reading files at request time
+export const dynamicParams = false;
+
 // Generate static params for all blog posts at build time
 export function generateStaticParams() {
   const posts = getBlogPosts();
@@ -31,6 +34,9 @@ export async function generateMetadata({
   const description = post.preview || post.content.substring(0, 160).replace(/\n/g, ' ').trim() + '...';
   // Untitled posts fall back to their slug, as on the page itself
   const title = post.title || slug.replace(/-/g, ' ');
+  // First photo in the post, else the site-wide card from app/opengraph-image.tsx
+  const firstImage = post.content.match(/!\[[^\]]*\]\(([^)]+)\)/)?.[1];
+  const image = firstImage ? `/${firstImage.replace(/^\/?(public\/)?/, '')}` : '/opengraph-image';
   const keywords = [
     title,
     'blog',
@@ -57,9 +63,11 @@ export async function generateMetadata({
       publishedTime: new Date(post.date).toISOString(),
       authors: [post.author || 'Danish Aiman'],
       tags: post.tags,
+      images: [image],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
+      images: [image],
       title,
       description: description,
       creator: '@zagreusaiman',

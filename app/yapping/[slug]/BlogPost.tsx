@@ -2,12 +2,12 @@
 import Image from 'next/image';
 import React from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
-import Footer from '../../component/Footer';
+import Footer from '../../components/Footer';
 import DetailTopBar from '../../common/DetailTopBar';
-import { BlogPost } from '../types';
+import type { BlogPost as BlogPostData } from '../types';
 
-interface BlogPostClientProps {
-  post: BlogPost;
+interface BlogPostProps {
+  post: BlogPostData;
   slug: string;
 }
 
@@ -24,7 +24,7 @@ const markdownComponents: Components = {
   em: ({ node, ...props }) => <em className="italic" {...props} />,
   a: ({ node, ...props }) => (
     <a
-      className="font-bold text-nb-blue dark:text-nb-sky underline decoration-2 underline-offset-4 hover:bg-nb-yellow hover:text-nb-on"
+      className="font-bold text-nb-blue-ink underline decoration-2 underline-offset-4 hover:bg-nb-yellow hover:text-nb-on"
       target="_blank"
       rel="noopener noreferrer"
       {...props}
@@ -116,7 +116,7 @@ function PostContent({ content }: { content: string }) {
   return <>{elements}</>;
 }
 
-export default function BlogPostClient({ post, slug }: BlogPostClientProps) {
+export default function BlogPost({ post, slug }: BlogPostProps) {
   // Some posts are untitled; fall back to the slug, as the home page does
   const title = (post.title || slug.replace(/-/g, ' ')).toUpperCase();
 
@@ -130,7 +130,7 @@ export default function BlogPostClient({ post, slug }: BlogPostClientProps) {
             <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">DIALOGUE</span>
             <span className="font-pixel text-[10px] text-nb-on bg-nb-sky border-2 border-nb-ink px-2.5 py-1.5">{post.date.toUpperCase()}</span>
           </div>
-          <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,40px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_#FFD23F]">
+          <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,40px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_#FFD23F] dark:[text-shadow:4px_4px_0_#007bff]">
             {title}
           </h1>
           {post.tags && post.tags.length > 0 && (

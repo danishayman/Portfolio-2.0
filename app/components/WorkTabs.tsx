@@ -52,7 +52,7 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
                         aria-expanded={dropdownOpen}
                         className="w-full text-left flex gap-2.5 items-center p-2.5 bg-nb-blue text-white border-[3px] border-nb-ink shadow-hard-4 font-mono"
                     >
-                        <span className="font-pixel text-[9px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(activeTab)}</span>
+                        <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(activeTab)}</span>
                         <span className="flex flex-col gap-0.5 min-w-0 flex-1">
                             <span className="font-rubik font-bold text-sm">{job.role}</span>
                             <span className="text-xs">{job.company}</span>
@@ -70,7 +70,7 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
                                         onClick={() => selectJob(i)}
                                         className="w-full text-left flex gap-2.5 items-center p-2.5 font-mono text-nb-ink border-b-[3px] border-nb-ink last:border-b-0 hover:bg-nb-yellow hover:text-nb-on"
                                     >
-                                        <span className="font-pixel text-[9px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(i)}</span>
+                                        <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(i)}</span>
                                         <span className="flex flex-col gap-0.5 min-w-0">
                                             <span className="font-rubik font-bold text-sm">{work.role}</span>
                                             <span className="text-xs">{work.company}</span>
@@ -97,7 +97,7 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
                                         : 'bg-nb-card text-nb-ink shadow-hard-3'
                                 }`}
                             >
-                                <span className="font-pixel text-[9px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(i)}</span>
+                                <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(i)}</span>
                                 <span className="flex flex-col gap-1 min-w-0">
                                     <span className="font-rubik font-bold text-base">{work.role}</span>
                                     <span className="text-xs">{work.company}</span>
@@ -109,14 +109,14 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
 
                 <div className="flex-[999_1_480px] max-w-full bg-nb-card border-[3px] border-nb-ink shadow-hard-4 md:shadow-hard-8">
                     <div className="bg-nb-panel text-white px-3 py-2 md:px-[18px] md:py-3 flex justify-between items-center gap-x-3 gap-y-1 flex-wrap">
-                        <span className="font-pixel text-[9px] md:text-[10px] text-nb-yellow">QUEST LOG · LV.{level(activeTab)}</span>
+                        <span className="font-pixel text-[10px] text-nb-yellow">QUEST LOG · LV.{level(activeTab)}</span>
                         <span className="text-[11px] md:text-xs whitespace-nowrap">{job.duration}</span>
                     </div>
 
                     <div className="p-4 md:p-[26px] flex flex-col gap-3.5 md:gap-[22px]">
                         <div className="flex flex-col gap-1 md:gap-1.5">
                             <h3 className="font-rubik font-black text-xl md:text-[clamp(22px,3vw,30px)] leading-[1.15]">{job.role}</h3>
-                            <p className="text-sm md:text-[15px] font-medium text-nb-blue">@ {job.company}</p>
+                            <p className="text-sm md:text-[15px] font-medium text-nb-blue-ink">@ {job.company}</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2.5 md:gap-3.5">
@@ -151,7 +151,7 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
 
                         <Link
                             href={`/work/${job.slug}`}
-                            className="self-start font-pixel text-[9px] md:text-[10px] bg-nb-yellow text-nb-on px-3 py-2.5 md:px-4 md:py-3.5 border-[3px] border-nb-ink shadow-hard-4 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6"
+                            className="self-start font-pixel text-[10px] bg-nb-yellow text-nb-on px-3 py-2.5 md:px-4 md:py-3.5 border-[3px] border-nb-ink shadow-hard-4 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6"
                         >
                             READ THE YAPPING →
                         </Link>

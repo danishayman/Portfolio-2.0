@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getBlogPostBySlug } from '../data';
 import { BlogPostStructuredData } from '../../components/StructuredData';
-import BlogPostClient from './BlogPostClient';
+import BlogPost from './BlogPost';
 
 interface BlogPostParams {
   params: Promise<{ slug: string }>;
@@ -27,7 +27,7 @@ export default async function BlogPostPage({ params }: BlogPostParams) {
         tags={post.tags}
         author={post.author}
       />
-      <BlogPostClient post={post} slug={slug} />
+      <BlogPost post={post} slug={slug} />
     </>
   );
 }

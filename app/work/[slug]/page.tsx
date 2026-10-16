@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Footer from '../../component/Footer';
+import Footer from '../../components/Footer';
 import WorkDetailClient from './WorkDetailClient';
 import { getWorkDataBySlug, workExperienceData } from '../workData';
 import { WorkExperienceStructuredData } from '../../components/StructuredData';
+
+// Every job page is prerendered; unknown slugs 404
+export const dynamicParams = false;
 
 // Generate static params for all work pages at build time
 export function generateStaticParams() {
@@ -46,8 +49,6 @@ export async function generateMetadata({
       images: [
         {
           url: `https://danishaiman.com${workData.images[0]}`,
-          width: 1200,
-          height: 630,
           alt: `${workData.role} at ${workData.company}`,
         }
       ],

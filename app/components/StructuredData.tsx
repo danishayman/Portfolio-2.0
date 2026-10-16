@@ -20,7 +20,7 @@ export function PersonStructuredData() {
     jobTitle: 'Computer Science Student & AI Developer',
     description: 'Computer Science student specializing in AI and Machine Learning with experience in web development and software engineering',
     url: 'https://danishaiman.com',
-    image: 'https://danishaiman.com/hero/lelouch.webp',
+    image: 'https://danishaiman.com/hero/hd-me.png',
     sameAs: [
       'https://github.com/danishayman',
       'https://www.linkedin.com/in/danishayman',
@@ -116,7 +116,7 @@ export function BlogPostStructuredData({
     '@type': 'BlogPosting',
     headline: title,
     description: description,
-    image: 'https://danishaiman.com/hero/screenshot.png',
+    image: 'https://danishaiman.com/opengraph-image',
     author: {
       '@type': 'Person',
       name: author,

@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
                 </h1>
 
                 <div className="bg-nb-card px-4 py-3 md:px-[22px] md:py-5 max-w-[520px] mx-1 md:mt-1 md:mb-2.5 shadow-[0_-4px_0_var(--nb-ink),0_4px_0_var(--nb-ink),-4px_0_0_var(--nb-ink),4px_0_0_var(--nb-ink),10px_10px_0_var(--nb-ink)]">
-                    <p className="hidden md:block font-pixel text-[10px] text-nb-blue dark:text-nb-yellow mb-3">COMPUTER SCIENCE STUDENT</p>
+                    <p className="hidden md:block font-pixel text-[10px] text-nb-blue-ink dark:text-nb-yellow mb-3">COMPUTER SCIENCE STUDENT</p>
                     <p className="text-sm md:text-[17px] leading-normal md:leading-[1.6] text-pretty">
                         A developer majoring in Intelligent Computing. SUPER into Machine Learning &amp; Artificial Intelligence.
                     </p>
@@ -113,24 +113,24 @@ const Hero: React.FC = () => {
                 {/* Labels share the top line; each value centers in the space below */}
                 <div className="grid grid-cols-3">
                     <div className="px-1.5 py-2.5 md:px-3 md:py-4 border-r-[3px] border-nb-ink flex flex-col items-center text-center gap-2 md:gap-3">
-                        <span className="font-pixel text-[9px] md:text-xs text-nb-muted">LIVES</span>
+                        <span className="font-pixel text-[10px] md:text-xs text-nb-muted">LIVES</span>
                         <span className="flex-1 flex flex-col md:flex-row gap-1.5 md:gap-1 items-center justify-center">
                             <span className="flex gap-0.5 md:gap-1">
                                 <PixelHeart full />
                                 <PixelHeart full={false} />
                                 <PixelHeart full={false} />
                             </span>
-                            <span className="font-pixel text-[9px] md:text-xs md:ml-0.5">x1</span>
+                            <span className="font-pixel text-[10px] md:text-xs md:ml-0.5">x1</span>
                         </span>
                     </div>
                     <div className="px-1.5 py-2.5 md:px-3 md:py-4 border-r-[3px] border-nb-ink flex flex-col items-center text-center gap-2 md:gap-3">
-                        <span className="font-pixel text-[9px] md:text-xs text-nb-muted">LEVEL</span>
-                        <span className="flex-1 flex items-center font-pixel text-lg md:text-2xl leading-none text-nb-blue">
+                        <span className="font-pixel text-[10px] md:text-xs text-nb-muted">LEVEL</span>
+                        <span className="flex-1 flex items-center font-pixel text-lg md:text-2xl leading-none text-nb-blue-ink">
                             <PlayerLevel serverNow={serverNow} />
                         </span>
                     </div>
                     <div className="px-1.5 py-2.5 md:px-3 md:py-4 flex flex-col items-center text-center gap-2 md:gap-3">
-                        <span className="font-pixel text-[9px] md:text-xs text-nb-muted">EXP</span>
+                        <span className="font-pixel text-[10px] md:text-xs text-nb-muted">EXP</span>
                         <span className="flex-1 self-stretch flex flex-col items-center justify-center gap-2 md:gap-3">
                             <PlayerExp serverNow={serverNow} />
                         </span>

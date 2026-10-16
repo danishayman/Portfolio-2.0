@@ -1,12 +1,12 @@
-import Hero from './component/Hero';
-import Education from './component/Education';
-import Skills from './component/Skills';
-import Projects from './component/Projects';
-import Work from './component/Work';
-import Yapping from './component/Yapping';
+import Hero from './components/Hero';
+import Education from './components/Education';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Work from './components/Work';
+import Yapping from './components/Yapping';
 
-import Footer from './component/Footer';
-import Navigation from './component/Navigation';
+import Footer from './components/Footer';
+import Navigation from './components/Navigation';
 
 export default function Home() {
   return (

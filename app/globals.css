@@ -80,6 +80,8 @@
   --nb-heart: #E6E0D4;
   --nb-panel: #121212;
   --nb-map: #E7EFD9;
+  /* Blue for text: passes WCAG AA on white and cream */
+  --nb-blue-ink: #0066DD;
 }
 
 [data-theme='dark'] {
@@ -91,6 +93,8 @@
   --nb-heart: #3A3A40;
   --nb-panel: #000000;
   --nb-map: #1A1F1B;
+  /* Lighter blue so text stays readable on the dark cards */
+  --nb-blue-ink: #5AA9FF;
 }
 
 html {

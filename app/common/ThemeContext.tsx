@@ -54,20 +54,30 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
     useEffect(() => {
         setMounted(true);
-        // Handle client-side only
+        // A saved choice wins; otherwise follow the OS setting (the inline script in layout.tsx does the same before paint)
         const savedTheme = getLocalStorage('theme') as Theme | null;
-        setTheme(savedTheme || 'light');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+        setTheme(savedTheme || (systemDark.matches ? 'dark' : 'light'));
+
+        // Track OS changes until the visitor picks a theme themselves
+        const onSystemChange = (e: MediaQueryListEvent) => {
+            if (!getLocalStorage('theme')) setTheme(e.matches ? 'dark' : 'light');
+        };
+        systemDark.addEventListener('change', onSystemChange);
+        return () => systemDark.removeEventListener('change', onSystemChange);
     }, []);
 
     useEffect(() => {
         if (mounted) {
             document.body.setAttribute('data-theme', theme);
-            setLocalStorage('theme', theme);
         }
     }, [theme, mounted]);
 
+    // Only an explicit toggle is saved, so the OS setting keeps applying until then
     const toggleTheme = (): void => {
-        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+        const next = theme === 'light' ? 'dark' : 'light';
+        setTheme(next);
+        setLocalStorage('theme', next);
     };
 
     return (

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import DetailTopBar from './common/DetailTopBar';
-import Footer from './component/Footer';
+import Footer from './components/Footer';
 
 export const metadata: Metadata = {
   // The root layout's title template appends "| Danish Aiman"
@@ -33,7 +33,7 @@ export default function NotFound() {
           <div className="w-full max-w-[560px] flex flex-col items-center gap-10 text-center">
             <div className="flex flex-col items-center gap-5">
               <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">STAGE ??-??</span>
-              <h1 className="font-pixel font-normal text-[clamp(64px,16vw,120px)] leading-none [text-shadow:6px_6px_0_#FFD23F]">
+              <h1 className="font-pixel font-normal text-[clamp(64px,16vw,120px)] leading-none [text-shadow:6px_6px_0_#FFD23F] dark:[text-shadow:6px_6px_0_#007bff]">
                 404
               </h1>
             </div>
@@ -72,7 +72,7 @@ export default function NotFound() {
 
             <p className="text-sm text-nb-muted">
               Think this is a bug?{' '}
-              <a href="mailto:danishaiman3b@gmail.com" className="font-bold text-nb-ink underline underline-offset-4 decoration-2 hover:text-nb-blue">
+              <a href="mailto:danishaiman3b@gmail.com" className="font-bold text-nb-ink underline underline-offset-4 decoration-2 hover:text-nb-blue-ink">
                 Send a report
               </a>
             </p>

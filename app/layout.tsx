@@ -17,6 +17,8 @@ const robotoMono = Roboto_Mono({
   preload: true,
 });
 
+// Rubik only appears below the fold (card titles), so it isn't preloaded and
+// doesn't compete with the hero's pixel font and Roboto Mono
 const rubik = Rubik({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '900'],
@@ -24,7 +26,7 @@ const rubik = Rubik({
   display: 'swap',
   adjustFontFallback: true,
   fallback: ['Arial', 'sans-serif'],
-  preload: true,
+  preload: false,
 });
 
 const pressStart = Press_Start_2P({
@@ -82,14 +84,7 @@ export const metadata: Metadata = {
     siteName: 'Danish Aiman Portfolio',
     type: 'website',
     locale: 'en_US',
-    images: [
-      {
-        url: '/hero/screenshot.png',
-        width: 1200,
-        height: 630,
-        alt: 'Danish Aiman Portfolio',
-      }
-    ],
+    // The image comes from app/opengraph-image.tsx
   },
   icons: {
     icon: [
@@ -109,7 +104,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'danishayman',
     description: 'Computer Science student specializing in AI and Machine Learning.',
-    images: ['/hero/screenshot.png'],
+    images: ['/opengraph-image'],
   },
   robots: {
     index: true,
@@ -133,8 +128,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Runs before first paint so a saved dark theme never flashes light first
-const themeScript = `try{document.body.setAttribute('data-theme',localStorage.getItem('theme')==='dark'?'dark':'light')}catch(e){}`;
+// Runs before first paint so the theme never flashes: a saved choice, else the OS setting
+const themeScript = `try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.body.setAttribute('data-theme',t)}catch(e){}`;
 
 export default function RootLayout({
   children,
