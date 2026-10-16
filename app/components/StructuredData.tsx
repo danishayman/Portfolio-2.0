@@ -1,4 +1,14 @@
-import Script from 'next/script';
+// JSON-LD is data, not code: a plain script tag (as the Next.js docs recommend) rather than
+// next/script, with '<' escaped so post content can't close the tag early
+function JsonLd({ id, data }: { id: string; data: object }) {
+  return (
+    <script
+      id={id}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }}
+    />
+  );
+}
 
 // Person structured data for the homepage
 export function PersonStructuredData() {
@@ -60,12 +70,7 @@ export function PersonStructuredData() {
   };
 
   return (
-    <Script
-      id="person-structured-data"
-      type="application/ld+json"
-      strategy="beforeInteractive"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <JsonLd id="person-structured-data" data={jsonLd} />
   );
 }
 
@@ -95,12 +100,7 @@ export function WebsiteStructuredData() {
   };
 
   return (
-    <Script
-      id="website-structured-data"
-      type="application/ld+json"
-      strategy="beforeInteractive"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <JsonLd id="website-structured-data" data={jsonLd} />
   );
 }
 
@@ -149,12 +149,7 @@ export function BlogPostStructuredData({
   };
 
   return (
-    <Script
-      id="blog-post-structured-data"
-      type="application/ld+json"
-      strategy="beforeInteractive"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <JsonLd id="blog-post-structured-data" data={jsonLd} />
   );
 }
 
@@ -210,11 +205,6 @@ export function WorkExperienceStructuredData({
   };
 
   return (
-    <Script
-      id="work-experience-structured-data"
-      type="application/ld+json"
-      strategy="beforeInteractive"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <JsonLd id="work-experience-structured-data" data={jsonLd} />
   );
 }
