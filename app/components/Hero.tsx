@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import IndecisiveBubble from '../common/IndecisiveBubble';
 import { PixelHeart } from '../common/PixelIcons';
 import { PlayerExp, PlayerLevel } from '../common/PlayerStats';
 import ThemeToggle from '../common/ThemeToggle';
@@ -105,6 +106,7 @@ const Hero: React.FC = () => {
                         <span className="absolute left-2.5 top-2.5 font-pixel text-[8px] bg-nb-yellow text-nb-on border-2 border-nb-on px-[7px] py-[5px] pointer-events-none whitespace-nowrap">
                             LV.<PlayerLevel serverNow={serverNow} /> DANISH
                         </span>
+                        <IndecisiveBubble />
                         <span className="absolute left-2.5 bottom-2.5 font-pixel text-[8px] bg-nb-on text-white px-2 py-1.5 pointer-events-none whitespace-nowrap">
                             <span className="pointer-coarse:hidden">HOVER</span>
                             <span className="hidden pointer-coarse:inline">TAP</span> → HD

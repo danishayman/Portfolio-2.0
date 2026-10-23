@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
 import { timeOfDayTheme } from './dayNight';
 
 type Theme = 'light' | 'dark';
@@ -8,7 +8,13 @@ type Theme = 'light' | 'dark';
 interface ThemeContextType {
     theme: Theme;
     toggleTheme: () => void;
+    // Easter egg: true for a few seconds after the visitor flips the theme too many times too fast
+    indecisive: boolean;
 }
+
+const INDECISIVE_FLIPS = 8;
+const INDECISIVE_WINDOW_MS = 4000;
+const INDECISIVE_SHOW_MS = 3000;
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -73,15 +79,30 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         }
     }, [theme, mounted]);
 
+    const [indecisive, setIndecisive] = useState(false);
+    const flips = useRef<number[]>([]);
+    const indecisiveTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+    useEffect(() => () => clearTimeout(indecisiveTimer.current), []);
+
     // Only an explicit toggle is saved, so the day/night cycle keeps applying until then
     const toggleTheme = (): void => {
         const next = theme === 'light' ? 'dark' : 'light';
         setTheme(next);
         setLocalStorage('theme', next);
+
+        // Count flips inside the window; once tripped, every further flip keeps the complaint up
+        const now = Date.now();
+        flips.current = [...flips.current.filter((t) => now - t < INDECISIVE_WINDOW_MS), now];
+        if (indecisive || flips.current.length >= INDECISIVE_FLIPS) {
+            flips.current = [];
+            setIndecisive(true);
+            clearTimeout(indecisiveTimer.current);
+            indecisiveTimer.current = setTimeout(() => setIndecisive(false), INDECISIVE_SHOW_MS);
+        }
     };
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme, indecisive }}>
             {children}
         </ThemeContext.Provider>
     );

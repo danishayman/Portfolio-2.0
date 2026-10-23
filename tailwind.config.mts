@@ -87,10 +87,17 @@ const config: Config = {
                     '0%, 49%': { translate: '-50% 0' },
                     '50%, 100%': { translate: '-50% -4px' },
                 },
+                // Speech bubble popping in, overshooting a frame before it settles
+                pop: {
+                    '0%': { opacity: '0', scale: '0.5' },
+                    '60%': { opacity: '1', scale: '1.15' },
+                    '100%': { opacity: '1', scale: '1' },
+                },
             },
             animation: {
                 blink: 'blink 1s steps(1) infinite',
                 hop: 'hop 0.8s linear infinite',
+                pop: 'pop 0.25s steps(3) both',
                 dropdownFadeIn: 'dropdownFadeIn 0.3s ease-out',
                 fadeIn: 'fadeIn 0.5s ease-out',
                 fadeInUp: 'fadeInUp 0.6s ease forwards',
