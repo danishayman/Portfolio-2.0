@@ -52,14 +52,22 @@ export function PlayerLevel({ serverNow }: { serverNow: number }) {
 
 export function PlayerExp({ serverNow }: { serverNow: number }) {
     const { exp, expToNext } = usePlayerStats(serverNow);
+    const daysLeft = expToNext - exp;
     return (
-        <>
+        // Focusable so a tap shows the countdown on touch screens, where hover never fires
+        <span
+            tabIndex={0}
+            className="group relative self-stretch flex flex-col items-center gap-2 md:gap-3 cursor-help outline-none [-webkit-tap-highlight-color:transparent]"
+        >
             <span className="flex self-stretch h-3.5 md:h-4 border-2 border-nb-ink bg-white">
                 <span className="bg-nb-green border-r-2 border-nb-ink" style={{ width: `${(exp / expToNext) * 100}%` }} />
             </span>
             <span className="font-pixel text-[9px] md:text-[11px] text-nb-ink">
                 {exp}/{expToNext}
             </span>
-        </>
+            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 font-pixel text-[8px] md:text-[9px] bg-nb-panel text-white border-2 border-nb-ink px-2 py-1.5 whitespace-nowrap pointer-events-none opacity-0 transition-opacity duration-150 ease-[steps(3)] motion-reduce:transition-none group-hover:opacity-100 group-focus:opacity-100">
+                NEXT LV IN {daysLeft} {daysLeft === 1 ? 'DAY' : 'DAYS'}
+            </span>
+        </span>
     );
 }

@@ -1,5 +1,6 @@
 import './globals.css';
 import { ThemeProvider } from './common/ThemeContext';
+import { DAY_START_HOUR, NIGHT_START_HOUR } from './common/dayNight';
 import { PersonStructuredData, WebsiteStructuredData } from './components/StructuredData';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
@@ -128,8 +129,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Runs before first paint so the theme never flashes: a saved choice, else the OS setting
-const themeScript = `try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.body.setAttribute('data-theme',t)}catch(e){}`;
+// Runs before first paint so the theme never flashes: a saved choice, else the time of day (same rule as timeOfDayTheme)
+const themeScript = `var h=new Date().getHours(),t=h>=${DAY_START_HOUR}&&h<${NIGHT_START_HOUR}?'light':'dark';try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')t=s}catch(e){}document.body.setAttribute('data-theme',t)`;
 
 export default function RootLayout({
   children,
