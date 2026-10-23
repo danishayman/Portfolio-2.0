@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { timeOfDayTheme } from './dayNight';
 
 type Theme = 'light' | 'dark';
 
@@ -54,17 +55,16 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
     useEffect(() => {
         setMounted(true);
-        // A saved choice wins; otherwise follow the OS setting (the inline script in layout.tsx does the same before paint)
+        // A saved choice wins; otherwise follow the time of day (the inline script in layout.tsx does the same before paint)
         const savedTheme = getLocalStorage('theme') as Theme | null;
-        const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
-        setTheme(savedTheme || (systemDark.matches ? 'dark' : 'light'));
+        setTheme(savedTheme || timeOfDayTheme());
 
-        // Track OS changes until the visitor picks a theme themselves
-        const onSystemChange = (e: MediaQueryListEvent) => {
-            if (!getLocalStorage('theme')) setTheme(e.matches ? 'dark' : 'light');
-        };
-        systemDark.addEventListener('change', onSystemChange);
-        return () => systemDark.removeEventListener('change', onSystemChange);
+        // Check once a minute so an open tab flips at 7am/7pm, until the visitor picks a theme themselves.
+        // Polling rather than one timer to the next switch, so it also catches up after the laptop sleeps.
+        const timer = setInterval(() => {
+            if (!getLocalStorage('theme')) setTheme(timeOfDayTheme());
+        }, 60_000);
+        return () => clearInterval(timer);
     }, []);
 
     useEffect(() => {
@@ -73,7 +73,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         }
     }, [theme, mounted]);
 
-    // Only an explicit toggle is saved, so the OS setting keeps applying until then
+    // Only an explicit toggle is saved, so the day/night cycle keeps applying until then
     const toggleTheme = (): void => {
         const next = theme === 'light' ? 'dark' : 'light';
         setTheme(next);
