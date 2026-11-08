@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
 
                 <div className="flex gap-2.5 md:gap-4 md:flex-wrap items-center">
                     <a
-                        href="/RESUME_DANISH_AIMAN_AI_ML.pdf"
+                        href="/RESUME_DANISH_AIMAN_FULL_STACK.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-pixel text-[10px] md:text-xs bg-nb-blue text-white dark:bg-nb-purple dark:text-nb-on h-11 md:h-auto px-3.5 md:px-[22px] md:py-[18px] border-[3px] border-nb-ink shadow-hard-4 md:shadow-hard-6 flex gap-2 md:gap-3 items-center transition-[translate,rotate,scale,box-shadow] duration-100 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-8 active:translate-x-1.5 active:translate-y-1.5 active:shadow-hard-0"
