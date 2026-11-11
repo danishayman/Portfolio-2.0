@@ -12,7 +12,7 @@ export interface WorkPreview {
     duration: string;
     description: string[];
     slug: string;
-    images: StaticImageData[];
+    images: { photo: StaticImageData; alt: string }[];
 }
 
 // Text comes from workData.ts via the server wrapper in Work.tsx, so it can never drift from the detail pages
@@ -20,6 +20,7 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
     const [activeTab, setActiveTab] = useState(0);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const triggerRef = useRef<HTMLButtonElement>(null);
     const job = workExperience[activeTab];
     const level = (i: number) => pad2(workExperience.length - i);
 
@@ -28,16 +29,28 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
         setDropdownOpen(false);
     };
 
-    // Close the mobile dropdown when clicking outside it
+    // Close the mobile dropdown on an outside click, when focus leaves it, or on Escape
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
+        if (!dropdownOpen) return;
+        const closeIfOutside = (event: Event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setDropdownOpen(false);
             }
         };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
+        const closeOnEscape = (event: KeyboardEvent) => {
+            if (event.key !== 'Escape') return;
+            setDropdownOpen(false);
+            triggerRef.current?.focus();
+        };
+        document.addEventListener('mousedown', closeIfOutside);
+        document.addEventListener('focusin', closeIfOutside);
+        document.addEventListener('keydown', closeOnEscape);
+        return () => {
+            document.removeEventListener('mousedown', closeIfOutside);
+            document.removeEventListener('focusin', closeIfOutside);
+            document.removeEventListener('keydown', closeOnEscape);
+        };
+    }, [dropdownOpen]);
 
     return (
         <section id="work" className="max-w-[1200px] mx-auto px-6 py-12 md:py-[72px]">
@@ -47,38 +60,45 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
                 {/* Mobile: dropdown picker, as in the previous layout */}
                 <div className="relative md:hidden w-full" ref={dropdownRef}>
                     <button
+                        ref={triggerRef}
                         type="button"
                         onClick={() => setDropdownOpen((open) => !open)}
                         aria-expanded={dropdownOpen}
+                        aria-controls="job-picker"
                         className="w-full text-left flex gap-2.5 items-center p-2.5 bg-nb-blue text-white border-[3px] border-nb-ink shadow-hard-4 font-mono"
                     >
-                        <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(activeTab)}</span>
+                        <span className="font-pixel text-2xs bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(activeTab)}</span>
                         <span className="flex flex-col gap-0.5 min-w-0 flex-1">
                             <span className="font-rubik font-bold text-sm">{job.role}</span>
                             <span className="text-xs">{job.company}</span>
                         </span>
-                        <span className={`font-pixel text-[10px] transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} aria-hidden="true">▼</span>
+                        <span className={`font-pixel text-2xs transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} aria-hidden="true">▼</span>
                     </button>
 
                     {dropdownOpen && (
-                        <div className="absolute top-[calc(100%+10px)] left-0 w-full z-10 bg-nb-card border-[3px] border-nb-ink shadow-hard-6 animate-dropdownFadeIn">
+                        <ul id="job-picker" className="list-none p-0 m-0 absolute top-[calc(100%+10px)] left-0 w-full z-10 bg-nb-card border-[3px] border-nb-ink shadow-hard-6 motion-safe:animate-dropdownFadeIn">
                             {workExperience.map((work, i) =>
                                 i === activeTab ? null : (
+                                    <li key={work.slug} className="border-b-[3px] border-nb-ink last:border-b-0">
                                     <button
-                                        key={work.slug}
                                         type="button"
-                                        onClick={() => selectJob(i)}
-                                        className="w-full text-left flex gap-2.5 items-center p-2.5 font-mono text-nb-ink border-b-[3px] border-nb-ink last:border-b-0 hover:bg-nb-yellow hover:text-nb-on"
+                                        onClick={() => {
+                                            selectJob(i);
+                                            // The chosen row unmounts, so hand focus back to the picker
+                                            triggerRef.current?.focus();
+                                        }}
+                                        className="w-full text-left flex gap-2.5 items-center p-2.5 font-mono text-nb-ink -outline-offset-3 hover:bg-nb-yellow hover:text-nb-on"
                                     >
-                                        <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(i)}</span>
+                                        <span className="font-pixel text-2xs bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(i)}</span>
                                         <span className="flex flex-col gap-0.5 min-w-0">
                                             <span className="font-rubik font-bold text-sm">{work.role}</span>
                                             <span className="text-xs">{work.company}</span>
                                         </span>
                                     </button>
+                                    </li>
                                 )
                             )}
-                        </div>
+                        </ul>
                     )}
                 </div>
 
@@ -97,7 +117,7 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
                                         : 'bg-nb-card text-nb-ink shadow-hard-3'
                                 }`}
                             >
-                                <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(i)}</span>
+                                <span className="font-pixel text-2xs bg-nb-panel text-nb-yellow px-1.5 py-[7px] shrink-0">LV.{level(i)}</span>
                                 <span className="flex flex-col gap-1 min-w-0">
                                     <span className="font-rubik font-bold text-base">{work.role}</span>
                                     <span className="text-xs">{work.company}</span>
@@ -109,14 +129,14 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
 
                 <div className="flex-[999_1_480px] max-w-full bg-nb-card border-[3px] border-nb-ink shadow-hard-4 md:shadow-hard-8">
                     <div className="bg-nb-panel text-white px-3 py-2 md:px-[18px] md:py-3 flex justify-between items-center gap-x-3 gap-y-1 flex-wrap">
-                        <span className="font-pixel text-[10px] text-nb-yellow">QUEST LOG · LV.{level(activeTab)}</span>
-                        <span className="text-[11px] md:text-xs whitespace-nowrap">{job.duration}</span>
+                        <span className="font-pixel text-2xs text-nb-yellow">QUEST LOG · LV.{level(activeTab)}</span>
+                        <span className="text-xs whitespace-nowrap">{job.duration}</span>
                     </div>
 
                     <div className="p-4 md:p-[26px] flex flex-col gap-3.5 md:gap-[22px]">
                         <div className="flex flex-col gap-1 md:gap-1.5">
                             <h3 className="font-rubik font-black text-xl md:text-[clamp(22px,3vw,30px)] leading-[1.15]">{job.role}</h3>
-                            <p className="text-sm md:text-[15px] font-medium text-nb-blue-ink">@ {job.company}</p>
+                            <p className="text-sm md:text-[0.9375rem] font-medium text-nb-blue-ink">@ {job.company}</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2.5 md:gap-3.5">
@@ -128,8 +148,8 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
                                         className={`relative aspect-[4/3] md:aspect-square border-[3px] border-nb-ink overflow-hidden bg-nb-bg ${workIndex === activeTab ? 'block' : 'hidden'}`}
                                     >
                                         <Image
-                                            src={image}
-                                            alt={`${work.role} ${imgIndex + 1}`}
+                                            src={image.photo}
+                                            alt={image.alt}
                                             className="object-cover"
                                             fill
                                             sizes="(max-width: 800px) 45vw, 330px"
@@ -142,7 +162,7 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
 
                         <ul className="list-none p-0 flex flex-col gap-2 md:gap-3">
                             {job.description.map((item) => (
-                                <li key={item} className="flex gap-2.5 md:gap-3 text-[13px] md:text-[15px] leading-normal">
+                                <li key={item} className="flex gap-2.5 md:gap-3 text-[0.8125rem] md:text-[0.9375rem] leading-normal">
                                     <span className="w-2 h-2 md:w-2.5 md:h-2.5 bg-nb-pink border-2 border-nb-ink shrink-0 mt-1.5" />
                                     <span>{item}</span>
                                 </li>
@@ -151,7 +171,7 @@ export default function WorkTabs({ workExperience }: { workExperience: WorkPrevi
 
                         <Link
                             href={`/work/${job.slug}`}
-                            className="self-start font-pixel text-[10px] bg-nb-yellow text-nb-on px-3 py-2.5 md:px-4 md:py-3.5 border-[3px] border-nb-ink shadow-hard-4 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6"
+                            className="self-start inline-flex items-center min-h-11 font-pixel text-2xs bg-nb-yellow text-nb-on px-3 py-2.5 md:px-4 md:py-3.5 border-[3px] border-nb-ink shadow-hard-4 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-6"
                         >
                             READ THE YAPPING →
                         </Link>

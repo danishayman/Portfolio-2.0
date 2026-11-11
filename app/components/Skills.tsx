@@ -56,7 +56,7 @@ const Skills: React.FC = () => {
                         {/* Phones get a one-line header so each group card stays short */}
                         <div className="flex items-center gap-2.5 sm:flex-col sm:items-start">
                             <span className={`w-4 h-4 border-2 sm:w-7 sm:h-7 sm:border-[3px] ${ACCENT_BG[i % ACCENT_BG.length]} border-nb-ink`} />
-                            <span className="font-pixel text-[11px] leading-normal">{group.label}</span>
+                            <span className="font-pixel text-2xs leading-normal">{group.label}</span>
                             <span className="ml-auto sm:ml-0 text-xs text-nb-muted">{group.items.length} skills</span>
                         </div>
                         <div className="flex flex-wrap gap-2 sm:gap-3">

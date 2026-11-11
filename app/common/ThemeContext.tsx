@@ -76,6 +76,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     useEffect(() => {
         if (mounted) {
             document.body.setAttribute('data-theme', theme);
+            // Keep the browser chrome (mobile address bar) on the page colour
+            const pageColor = getComputedStyle(document.body).getPropertyValue('--nb-bg').trim();
+            if (pageColor) document.querySelector('meta[name="theme-color"]')?.setAttribute('content', pageColor);
         }
     }, [theme, mounted]);
 

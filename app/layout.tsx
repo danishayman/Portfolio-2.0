@@ -48,12 +48,12 @@ export const metadata: Metadata = {
     default: 'Danish Aiman',
     template: '%s | Danish Aiman'
   },
-  description: 'Computer Science student at USM specializing in AI and Machine Learning. Explore my projects, work experience and writing.',
+  description: 'Computer Science graduate from USM specializing in AI and Machine Learning. Explore my projects, work experience and writing.',
   keywords: [
     'Danish Aiman',
     'AI Developer', 
     'Machine Learning',
-    'Computer Science Student',
+    'Computer Science Graduate',
     'Web Development',
     'Software Engineer',
     'Portfolio',
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Danish Aiman',
-    description: 'Computer Science student specializing in AI and Machine Learning. Experienced in web development and software engineering.',
+    description: 'Computer Science graduate specializing in AI and Machine Learning. Experienced in web development and software engineering.',
     url: 'https://danishaiman.com',
     siteName: 'Danish Aiman Portfolio',
     type: 'website',
@@ -104,7 +104,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Danish Aiman',
-    description: 'Computer Science student specializing in AI and Machine Learning.',
+    description: 'Computer Science graduate specializing in AI and Machine Learning.',
     images: ['/opengraph-image'],
   },
   robots: {
@@ -141,6 +141,7 @@ export default function RootLayout({
     <html lang="en" className={`${robotoMono.variable} ${rubik.variable} ${pressStart.variable}`}>
       <body suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <a href="#content" className="skip-link font-pixel text-2xs">SKIP TO CONTENT</a>
         <PersonStructuredData />
         <WebsiteStructuredData />
         <ThemeProvider>

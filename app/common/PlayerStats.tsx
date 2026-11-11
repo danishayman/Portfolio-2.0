@@ -57,15 +57,21 @@ export function PlayerExp({ serverNow }: { serverNow: number }) {
         // Focusable so a tap shows the countdown on touch screens, where hover never fires
         <span
             tabIndex={0}
-            className="group relative self-stretch flex flex-col items-center gap-2 md:gap-3 cursor-help outline-none [-webkit-tap-highlight-color:transparent]"
+            role="progressbar"
+            aria-label="EXP"
+            aria-valuemin={0}
+            aria-valuemax={expToNext}
+            aria-valuenow={exp}
+            aria-valuetext={`${exp} of ${expToNext} days. Next level in ${daysLeft} ${daysLeft === 1 ? 'day' : 'days'}`}
+            className="group relative self-stretch flex flex-col items-center gap-2 md:gap-3 cursor-help [-webkit-tap-highlight-color:transparent]"
         >
             <span className="flex self-stretch h-3.5 md:h-4 border-2 border-nb-ink bg-white">
                 <span className="bg-nb-green border-r-2 border-nb-ink" style={{ width: `${(exp / expToNext) * 100}%` }} />
             </span>
-            <span className="font-pixel text-[9px] md:text-[11px] text-nb-ink">
+            <span className="font-mono font-bold md:font-pixel md:font-normal text-2xs text-nb-ink">
                 {exp}/{expToNext}
             </span>
-            <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 font-pixel text-[8px] md:text-[9px] bg-nb-panel text-white border-2 border-nb-ink px-2 py-1.5 whitespace-nowrap pointer-events-none opacity-0 transition-opacity duration-150 ease-[steps(3)] motion-reduce:transition-none group-hover:opacity-100 group-focus:opacity-100">
+            <span className="absolute bottom-full right-0 mb-2 font-pixel text-2xs bg-nb-panel text-white border-2 border-nb-ink px-2 py-1.5 whitespace-nowrap pointer-events-none opacity-0 transition-opacity duration-150 ease-[steps(3)] motion-reduce:transition-none group-hover:opacity-100 group-focus:opacity-100">
                 NEXT LV IN {daysLeft} {daysLeft === 1 ? 'DAY' : 'DAYS'}
             </span>
         </span>

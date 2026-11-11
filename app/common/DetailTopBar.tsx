@@ -15,7 +15,7 @@ export default function DetailTopBar({ backHref, backLabel }: DetailTopBarProps)
             <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-3 flex items-center gap-4 justify-between">
                 <Link
                     href={backHref}
-                    className="font-pixel text-[10px] bg-nb-card text-nb-ink px-3 py-2.5 border-[3px] border-nb-ink shadow-hard-3 whitespace-nowrap transition-[translate,rotate,scale,box-shadow] duration-100 hover:bg-nb-yellow hover:text-nb-on hover:-translate-x-px hover:-translate-y-px hover:shadow-hard-4 active:translate-x-[3px] active:translate-y-[3px] active:shadow-hard-0"
+                    className="inline-flex items-center min-h-11 font-pixel text-2xs bg-nb-card text-nb-ink px-3 py-2.5 border-[3px] border-nb-ink shadow-hard-3 whitespace-nowrap transition-[translate,rotate,scale,box-shadow] duration-100 hover:bg-nb-yellow hover:text-nb-on hover:-translate-x-px hover:-translate-y-px hover:shadow-hard-4 active:translate-x-[3px] active:translate-y-[3px] active:shadow-hard-0"
                 >
                     ◀ {backLabel}
                 </Link>
@@ -24,9 +24,9 @@ export default function DetailTopBar({ backHref, backLabel }: DetailTopBarProps)
                     <span className="w-8 h-8 bg-black border-[3px] border-nb-ink overflow-hidden shadow-hard-3">
                         <Image
                             src="/my-favicon/web-app-manifest-192x192.png"
-                            alt="Logo"
-                            width={32}
-                            height={32}
+                            alt=""
+                            width={52}
+                            height={52}
                             className="w-full h-full scale-[1.6]"
                         />
                     </span>

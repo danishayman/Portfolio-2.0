@@ -125,25 +125,25 @@ export default function BlogPost({ post, slug }: BlogPostProps) {
     <div className="nb-grid bg-nb-bg text-nb-ink min-h-screen">
       <DetailTopBar backHref="/yapping" backLabel="YAPPING" />
 
-      <main className="max-w-[860px] mx-auto px-6 pt-12 pb-20 md:pt-[72px] md:pb-24">
+      <main id="content" className="max-w-[860px] mx-auto px-6 pt-12 pb-20 md:pt-[72px] md:pb-24">
         <header className="flex flex-col gap-5 border-b-[3px] border-nb-ink pb-8 mb-12">
           <div className="flex gap-2.5 flex-wrap items-center">
-            <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">DIALOGUE</span>
-            <span className="font-pixel text-[10px] text-nb-on bg-nb-sky border-2 border-nb-ink px-2.5 py-1.5">{formatDate(post.date).toUpperCase()}</span>
+            <span className="font-pixel text-2xs bg-nb-panel text-nb-yellow px-2.5 py-2">DIALOGUE</span>
+            <span className="font-pixel text-2xs text-nb-on bg-nb-sky border-2 border-nb-ink px-2.5 py-1.5">{formatDate(post.date).toUpperCase()}</span>
           </div>
-          <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,40px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_#FFD23F] dark:[text-shadow:4px_4px_0_#007bff]">
+          <h1 className="font-pixel font-normal text-[clamp(22px,4.4vw,40px)] leading-[1.35] text-balance [text-shadow:4px_4px_0_var(--nb-title-shadow)]">
             {title}
           </h1>
         </header>
 
         <article className="flex flex-col">
-          <div className="self-start ml-5 bg-nb-yellow text-nb-on border-[3px] border-b-0 border-nb-ink px-3.5 py-2.5 font-pixel text-[11px]">
+          <div className="self-start ml-5 bg-nb-yellow text-nb-on border-[3px] border-b-0 border-nb-ink px-3.5 py-2.5 font-pixel text-2xs">
             {(post.author || 'Danish').split(' ')[0].toUpperCase()}
           </div>
           <div className="bg-nb-card border-[3px] border-nb-ink shadow-hard-8 px-[clamp(20px,4vw,40px)] py-[clamp(24px,4vw,40px)]">
             <PostContent content={post.content} />
-            <p className="mt-10 font-pixel text-[10px] text-nb-muted text-right" aria-hidden="true">
-              END OF DIALOGUE <span className="text-nb-pink animate-blink">▼</span>
+            <p className="mt-10 font-pixel text-2xs text-nb-muted text-right" aria-hidden="true">
+              END OF DIALOGUE <span className="text-nb-pink motion-safe:animate-blink">▼</span>
             </p>
           </div>
         </article>

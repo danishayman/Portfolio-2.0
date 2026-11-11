@@ -50,19 +50,19 @@ function Navigation() {
   return (
     <>
       {/* Desktop: sticky top bar */}
-      <nav className="hidden md:block sticky top-0 z-1000 bg-nb-bg border-b-[3px] border-nb-ink select-none">
+      <nav aria-label="Sections" className="hidden md:block sticky top-0 z-1000 bg-nb-bg border-b-[3px] border-nb-ink select-none">
         <div className="max-w-[1200px] mx-auto px-6 py-3 flex items-center gap-6 justify-between">
-          <a href="#hero" className="flex items-center gap-2.5 shrink-0">
+          <a href="#hero" aria-label="danishayman.exe, back to top" className="flex items-center gap-2.5 shrink-0">
             <span className="w-8 h-8 bg-black border-[3px] border-nb-ink overflow-hidden shadow-hard-3">
               <Image
                 src="/my-favicon/web-app-manifest-192x192.png"
-                alt="Logo"
-                width={32}
-                height={32}
+                alt=""
+                width={52}
+                height={52}
                 className="w-full h-full scale-[1.6]"
               />
             </span>
-            <span className="font-pixel text-xs text-nb-ink">danishayman.exe</span>
+            <span className="hidden lg:inline font-pixel text-xs text-nb-ink">danishayman.exe</span>
           </a>
 
           <div className="flex items-center gap-1.5 min-w-0">
@@ -74,7 +74,7 @@ function Navigation() {
                     key={item.id}
                     href={`#${item.id}`}
                     aria-current={active ? 'true' : undefined}
-                    className={`font-pixel text-[10px] px-3 py-2.5 whitespace-nowrap border-[3px] ${NAV_HOVER_BG[i % NAV_HOVER_BG.length]} hover:text-nb-on hover:border-nb-ink hover:shadow-hard-3 hover:-translate-x-px hover:-translate-y-px ${
+                    className={`font-pixel text-2xs px-2 lg:px-3 py-2.5 whitespace-nowrap border-[3px] ${NAV_HOVER_BG[i % NAV_HOVER_BG.length]} hover:text-nb-on hover:border-nb-ink hover:shadow-hard-3 hover:-translate-x-px hover:-translate-y-px ${
                       active
                         ? `${NAV_BG[i % NAV_BG.length]} text-nb-on border-nb-ink shadow-hard-3`
                         : 'bg-transparent text-nb-ink border-transparent'

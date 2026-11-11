@@ -10,15 +10,17 @@ import Navigation from './components/Navigation';
 
 export default function Home() {
   return (
-    <main className="nb-grid bg-nb-bg text-nb-ink min-h-screen">
+    <div className="nb-grid bg-nb-bg text-nb-ink min-h-screen">
       <Navigation />
-      <Hero />
-      <Education />
-      <Skills />
-      <Projects />
-      <Work />
-      <Yapping />
+      <main id="content">
+        <Hero />
+        <Education />
+        <Skills />
+        <Projects />
+        <Work />
+        <Yapping />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

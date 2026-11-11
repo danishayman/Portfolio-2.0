@@ -8,11 +8,11 @@ export default function Footer({ topHref = '#hero' }: { topHref?: string }) {
             <div className="max-w-[1200px] mx-auto px-6 pt-14 pb-28 md:pb-14 flex flex-col md:flex-row flex-wrap gap-6 justify-between items-center text-center md:text-left">
                 <div className="flex flex-col gap-3.5">
                     <span className="font-pixel text-[clamp(16px,2.6vw,24px)] text-nb-yellow leading-[1.4]">THANKS FOR PLAYING</span>
-                    <span className="text-[13px] text-nb-silver">&copy; {currentYear} danishayman. All rights reserved.</span>
+                    <span className="text-[0.8125rem] text-nb-silver">&copy; {currentYear} danishayman. All rights reserved.</span>
                 </div>
                 <a
                     href={topHref}
-                    className="font-pixel text-[10px] bg-white text-nb-on px-4 py-3.5 border-[3px] border-white shadow-[4px_4px_0_#007bff] hover:bg-nb-yellow"
+                    className="font-pixel text-2xs bg-white text-nb-on px-4 py-3.5 border-[3px] border-white shadow-[4px_4px_0_var(--nb-electric)] hover:bg-nb-yellow"
                 >
                     CONTINUE? ▲
                 </a>

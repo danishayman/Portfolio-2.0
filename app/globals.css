@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 
 @config '../tailwind.config.mts';
-@plugin '@tailwindcss/typography';
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -49,13 +48,13 @@
   }
 
   body[data-theme='light'] {
-    background-color: white;
-    color: #222; /* Slightly darker than pure black for better readability */
+    background-color: var(--nb-bg);
+    color: var(--nb-ink);
   }
 
   body[data-theme='dark'] {
-    background-color: #222; /* Dark theme background color */
-    color: #fff;
+    background-color: var(--nb-bg);
+    color: var(--nb-ink);
   }
 
   /* Make sure sections don't create scrolling issues */
@@ -80,8 +79,16 @@
   --nb-heart: #E6E0D4;
   --nb-panel: #121212;
   --nb-map: #E7EFD9;
-  /* Blue for text: passes WCAG AA on white and cream */
-  --nb-blue-ink: #0066DD;
+  /* Blue for text: passes WCAG AA on white, cream, and cream under a grid line (4.8:1) */
+  --nb-blue-ink: #005CC8;
+  /* Focus ring: stays visible on cream, white and the black panels (3.5:1 or better) */
+  --nb-focus: #0066DD;
+  /* Fixed accents that also appear inside shadows, where a Tailwind colour class can't reach */
+  --nb-yellow: #FFD23F;
+  --nb-pink: #FF5C8A;
+  --nb-electric: #007BFF;
+  /* Offset shadow behind page titles */
+  --nb-title-shadow: var(--nb-yellow);
 }
 
 [data-theme='dark'] {
@@ -95,11 +102,49 @@
   --nb-map: #1A1F1B;
   /* Lighter blue so text stays readable on the dark cards */
   --nb-blue-ink: #5AA9FF;
+  --nb-focus: #5AA9FF;
+  --nb-title-shadow: var(--nb-electric);
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 84px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* One focus ring for everything: thick and square, like the borders */
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--nb-focus);
+    outline-offset: 3px;
+  }
+}
+
+::selection {
+  background-color: var(--nb-yellow);
+  color: #121212;
+}
+
+/* Hidden until a keyboard user tabs to it */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1100;
+  padding: 12px 14px;
+  background-color: var(--nb-yellow);
+  color: #121212;
+  border: 3px solid #121212;
+  box-shadow: 4px 4px 0 #121212;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
 }
 
 /* No top bar below md (800px); the nav floats at the bottom instead */

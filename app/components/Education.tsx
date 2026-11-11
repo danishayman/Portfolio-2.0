@@ -231,23 +231,24 @@ const Education: React.FC = () => {
         return () => ro.disconnect();
     }, []);
 
-    const current = educationData.length - 1;
+    // Graduated: every level is cleared, and the player stands on the last one
+    const last = educationData.length - 1;
 
     return (
         <section id="education" className="max-w-[1200px] mx-auto px-6 py-12 sm:py-[72px]">
             <SectionHeader
                 stage="STAGE 1-1"
                 title="EDUCATION"
-                meta={`${educationData.length} LEVELS · ${current} CLEARED`}
+                meta={`${educationData.length} LEVELS · ALL CLEARED`}
             />
 
             {/* In-game map screen */}
             <div className="border-[3px] border-nb-ink shadow-hard-8 bg-nb-map">
-                <div className="bg-nb-panel text-white border-b-[3px] border-nb-ink px-4 py-3 flex flex-wrap justify-between items-center gap-x-6 gap-y-2 font-pixel text-[10px]">
+                <div className="bg-nb-panel text-white border-b-[3px] border-nb-ink px-4 py-3 flex flex-wrap justify-between items-center gap-x-6 gap-y-2 font-pixel text-2xs">
                     <span className="text-nb-yellow">WORLD 1 · ACADEMY</span>
                     <span className="hidden sm:flex items-center gap-4">
                         <span className="flex items-center gap-1.5"><i className="w-2.5 h-2.5 bg-nb-green" />CLEARED</span>
-                        <span className="flex items-center gap-1.5"><i className="w-2.5 h-2.5 bg-nb-pink" />YOU ARE HERE</span>
+                        <span className="flex items-center gap-1.5"><i className="w-2.5 h-2.5 bg-nb-pink" />GRADUATED</span>
                     </span>
                 </div>
 
@@ -268,7 +269,7 @@ const Education: React.FC = () => {
                             const i = educationData.length - 1 - r;
                             const num = pad2(i + 1);
                             const accent = ACCENT_BG[i % ACCENT_BG.length];
-                            const here = i === current;
+                            const here = i === last;
 
                             return (
                                 <MapRow
@@ -278,17 +279,16 @@ const Education: React.FC = () => {
                                     node={
                                         <div data-node className={`${NODE} ${accent} text-nb-on shadow-hard-4 font-pixel text-sm md:text-base`}>
                                             {i + 1}
-                                            {here ? (
+                                            {here && (
                                                 <Sprite
                                                     rows={PLAYER}
                                                     px={4}
                                                     className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 w-6 h-[33px] sm:w-8 sm:h-11 motion-safe:animate-hop"
                                                 />
-                                            ) : (
-                                                <span className="absolute -top-2.5 -right-2.5 w-5 h-5 bg-nb-green border-2 border-nb-ink grid place-items-center text-[9px] leading-none">
-                                                    ✓
-                                                </span>
                                             )}
+                                            <span className="absolute -top-2.5 -right-2.5 w-5 h-5 bg-nb-green border-2 border-nb-ink grid place-items-center text-2xs leading-none">
+                                                ✓
+                                            </span>
                                         </div>
                                     }
                                 >
@@ -301,18 +301,18 @@ const Education: React.FC = () => {
                                         <div className={`${accent} text-nb-on border-b-[3px] border-nb-ink px-3 sm:px-4 py-2 sm:py-3 flex flex-wrap justify-between items-center gap-x-3 gap-y-2`}>
                                             {/* Two nowrap halves so a narrow card breaks at the dot, not mid-label.
                                                 Phones drop the status: the node's check mark or player already shows it. */}
-                                            <span className="font-pixel text-[10px] flex flex-wrap gap-x-[1ch] gap-y-1.5">
+                                            <span className="font-pixel text-2xs flex flex-wrap gap-x-[1ch] gap-y-1.5">
                                                 <span className="whitespace-nowrap">LV {num}<span className="hidden sm:inline"> ·</span></span>
-                                                <span className="hidden sm:inline whitespace-nowrap">{here ? '▶ YOU ARE HERE' : '✓ CLEARED'}</span>
+                                                <span className="hidden sm:inline whitespace-nowrap">{here ? '★ GRADUATED' : '✓ CLEARED'}</span>
                                             </span>
-                                            <span className="text-[11px] sm:text-xs font-bold whitespace-nowrap">{edu.duration}</span>
+                                            <span className="text-2xs sm:text-xs font-bold whitespace-nowrap">{edu.duration}</span>
                                         </div>
                                         <div className="px-3 py-3 sm:px-[18px] sm:py-5 flex flex-col gap-1.5 sm:gap-3 flex-1">
-                                            <h3 className="font-rubik font-bold text-base sm:text-[22px] leading-[1.2] text-balance">{edu.institution}</h3>
+                                            <h3 className="font-rubik font-bold text-base sm:text-[1.375rem] leading-[1.2] text-balance">{edu.institution}</h3>
                                             {edu.degree && <p className="text-xs sm:text-sm leading-normal whitespace-pre-line">{edu.degree}</p>}
                                             <div className="mt-auto pt-1.5 sm:pt-2 flex flex-wrap justify-between items-center gap-2">
                                                 {edu.achievements.map((a) => (
-                                                    <span key={a} className="font-pixel text-[9px] sm:text-[10px] leading-normal bg-nb-panel text-nb-yellow px-2 py-1.5 sm:px-2.5 sm:py-2">
+                                                    <span key={a} className="font-pixel text-2xs leading-normal bg-nb-panel text-nb-yellow px-2 py-1.5 sm:px-2.5 sm:py-2">
                                                         ★ {a}
                                                     </span>
                                                 ))}
@@ -328,13 +328,14 @@ const Education: React.FC = () => {
                             cardLeft={false}
                             scenery={SCENERY[0]}
                             node={
-                                <div data-node className={`${NODE} bg-nb-panel text-nb-yellow shadow-hard-4 font-pixel text-[7px] sm:text-[8px] md:text-[10px]`}>
-                                    START
+                                <div data-node className={`${NODE} bg-nb-panel text-nb-yellow shadow-hard-4 font-pixel text-2xs`}>
+                                    <span className="md:hidden">GO</span>
+                                    <span className="hidden md:inline">START</span>
                                 </div>
                             }
                         >
                             <div className="h-11 sm:h-12 md:h-16 flex items-center">
-                                <span className="font-pixel text-[9px] sm:text-[10px] leading-normal bg-nb-card border-[3px] border-nb-ink px-3 py-2">
+                                <span className="font-pixel text-2xs leading-normal bg-nb-card border-[3px] border-nb-ink px-3 py-2">
                                     PLAYER 0 SPAWNED · 2015
                                 </span>
                             </div>

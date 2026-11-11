@@ -17,8 +17,8 @@ export function PersonStructuredData() {
     '@type': 'Person',
     name: 'Danish Aiman',
     alternateName: ['danishayman'],
-    jobTitle: 'Computer Science Student & AI Developer',
-    description: 'Computer Science student specializing in AI and Machine Learning with experience in web development and software engineering',
+    jobTitle: 'Computer Science Graduate & AI Developer',
+    description: 'Computer Science graduate specializing in AI and Machine Learning with experience in web development and software engineering',
     url: 'https://danishaiman.com',
     image: 'https://danishaiman.com/hero/hd-me.png',
     sameAs: [
@@ -81,7 +81,7 @@ export function WebsiteStructuredData() {
     name: 'Danish Aiman Portfolio',
     alternateName: 'danishayman',
     url: 'https://danishaiman.com',
-    description: 'Portfolio of Danish Aiman - Computer Science student specializing in AI and Machine Learning',
+    description: 'Portfolio of Danish Aiman - Computer Science graduate specializing in AI and Machine Learning',
     author: {
       '@type': 'Person',
       name: 'Danish Aiman'

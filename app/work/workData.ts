@@ -1,4 +1,47 @@
 // Work experience data
+// What each photo shows, for screen readers. Add a line here whenever a photo is added to the lists below.
+export const imageAlt: Record<string, string> = {
+    '/inari/inari1.webp': 'The Inari sign on the blue front of the factory building, seen from the car park',
+    '/inari/inari2.webp': 'Four people at a meeting table watching a dashboard projected on the wall',
+    '/inari/inari3.jpg': 'A desk with the FETS login page on a monitor and code open on a laptop beside it',
+    '/inari/inari4.jpg': 'Industrial pipes, valves and tanks in the plant facility area',
+    '/inari/inari5.jpg': 'A labelled close-up of a chip after wire bonding, marking the die, bond pads and gold wire',
+    '/inari/inari6.jpg': 'An empty meeting room with a long wooden table and tan chairs',
+    '/inari/inari7.jpg': 'Seven people in yellow safety vests standing in front of the Inari building',
+    '/inari/inari8.jpg': 'A large group in matching jerseys posing in front of a fire station',
+    '/inari/inari9.jpg': 'Three people standing on a factory roof beside rows of solar panels',
+    '/inari/inari10.jpg': 'Two workers setting up an instrument on a tripod on the grass',
+    '/inari/inari11.jpg': 'A row of toy brick cartoon figures on top of a desk partition in the office',
+    '/inari/inari12.jpg': 'The Inari building lit up at night, with people gathered outside',
+    '/daboss/daboss1.webp': 'Close-up of an open laptop showing the heat pipes and motherboard',
+    '/daboss/daboss2.webp': 'A PC build in progress, with the case surrounded by the boxes of its parts',
+    '/daboss/daboss3.jpg': 'A laptop charger resting on top of a pastry on a workbench',
+    '/daboss/daboss4.jpg': 'A hand holding an old 256 MB laptop RAM stick with a key attached, used as a keychain',
+    '/daboss/daboss5.jpg': 'An opened laptop being dusted with a small brush and a cloth',
+    '/daboss/daboss6.jpg': 'The green main board inside an opened television',
+    '/daboss/daboss7.jpg': 'A small white PC case with the side off, showing a white tower cooler and tidy cables',
+    '/daboss/daboss8.jpg': 'A black PC case with the side off, showing the CPU cooler and an MSI GeForce graphics card',
+    '/daboss/daboss9.jpg': 'The other side of the small white PC, showing a dual-fan graphics card',
+    '/gsc/gsc1.webp': 'The cinema entrance, with a lit "Now Seating" sign above hall numbers 1 to 8',
+    '/gsc/gsc2.webp': 'A digital cinema projector and its equipment rack in the projection room',
+    '/gsc/gsc3.jpg': 'A ticket-checking screen that reads "Scan barcode to proceed"',
+    '/gsc/gsc4.jpg': 'An empty cinema hall with the screen on, seen from the back row',
+    '/gsc/gsc5.jpg': 'The long, dim projection corridor lined with equipment racks',
+    '/gsc/gsc6.jpg': 'A hand holding two Venom: The Last Dance collectible tickets',
+    '/teenfix/teenfix1.webp': 'Phone parts laid out in order on a repair mat',
+    '/teenfix/teenfix2.webp': 'A fully disassembled iPhone arranged on a blue repair mat, with screws sorted on a magnetic pad',
+    '/teenfix/teenfix3.jpg': 'The inside of a phone, showing four camera modules and metal shielding',
+    '/teenfix/teenfix4.jpg': 'An iPhone next to its replaced battery, with a Teenfix Studio card behind it',
+    '/teenfix/teenfix5.jpg': 'Close-up of an iPhone logic board with the shield cut open over a chip',
+    '/teenfix/teenfix6.jpg': 'A triple-lens phone camera module removed from the phone',
+    '/teenfix/teenfix7.jpg': 'A cluttered repair bench covered in tools, screwdrivers and phone parts',
+    '/teenfix/teenfix8.jpg': 'Rows of phones held in clamps on a table while their back glass sets',
+    '/teenfix/teenfix9.jpg': 'A phone screen showing a full panic log used to diagnose a fault',
+    '/teenfix/teenfix10.jpg': 'Tweezers working on a connector inside a Huawei phone',
+    '/teenfix/teenfix11.jpg': 'A tiny surface-mount component sitting on a fingertip',
+    '/teenfix/teenfix12.jpg': 'The repair bench in sunlight, with a blue mat, tools and phones waiting',
+};
+
 export interface WorkExperience {
     role: string;
     company: string;

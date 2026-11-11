@@ -29,19 +29,19 @@ export default function NotFound() {
       <div className="nb-grid bg-nb-bg text-nb-ink min-h-screen flex flex-col">
         <DetailTopBar backHref="/" backLabel="HOME" />
 
-        <main className="flex-1 flex items-center justify-center px-6 py-16 md:py-24">
+        <main id="content" className="flex-1 flex items-center justify-center px-6 py-16 md:py-24">
           <div className="w-full max-w-[560px] flex flex-col items-center gap-10 text-center">
             <div className="flex flex-col items-center gap-5">
-              <span className="font-pixel text-[10px] bg-nb-panel text-nb-yellow px-2.5 py-2">STAGE ??-??</span>
-              <h1 className="font-pixel font-normal text-[clamp(64px,16vw,120px)] leading-none [text-shadow:6px_6px_0_#FFD23F] dark:[text-shadow:6px_6px_0_#007bff]">
+              <span className="font-pixel text-2xs bg-nb-panel text-nb-yellow px-2.5 py-2">STAGE ??-??</span>
+              <h1 className="font-pixel font-normal text-[clamp(64px,16vw,120px)] leading-none [text-shadow:6px_6px_0_var(--nb-title-shadow)]">
                 404
               </h1>
             </div>
 
             <div className="w-full bg-nb-card border-[3px] border-nb-ink shadow-hard-8 text-left">
               <div className="bg-nb-panel text-white px-[18px] py-3 flex justify-between gap-3 flex-wrap">
-                <span className="font-pixel text-[10px] text-nb-yellow">LEVEL NOT FOUND</span>
-                <span className="font-pixel text-[10px] text-nb-silver">ERR 404</span>
+                <span className="font-pixel text-2xs text-nb-yellow">LEVEL NOT FOUND</span>
+                <span className="font-pixel text-2xs text-nb-silver">ERR 404</span>
               </div>
               <p className="p-[22px] text-base leading-[1.7] text-pretty">
                 This level doesn&apos;t exist. It might have been moved, deleted, or the URL has a typo.
@@ -53,7 +53,7 @@ export default function NotFound() {
                 href="/"
                 className={`font-pixel text-xs bg-nb-blue text-white px-[22px] py-[18px] border-[3px] border-nb-ink shadow-hard-4 flex gap-3 items-center justify-center ${buttonMotion}`}
               >
-                <span>▶</span>
+                <span aria-hidden="true">▶</span>
                 <span>RETURN HOME</span>
               </Link>
 
@@ -62,7 +62,7 @@ export default function NotFound() {
                   <Link
                     key={w.href}
                     href={w.href}
-                    className={`flex-1 font-pixel text-[10px] ${w.accent} text-nb-on px-4 py-3.5 border-[3px] border-nb-ink shadow-hard-4 text-center ${buttonMotion}`}
+                    className={`flex-1 font-pixel text-2xs ${w.accent} text-nb-on px-4 py-3.5 border-[3px] border-nb-ink shadow-hard-4 text-center ${buttonMotion}`}
                   >
                     WARP TO {w.label}
                   </Link>

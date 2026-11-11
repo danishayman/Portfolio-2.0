@@ -3,7 +3,7 @@ import { join } from 'path';
 import { ImageResponse } from 'next/og';
 
 // Social preview card for links shared to LinkedIn, X, Discord, etc. Rendered once at build time.
-export const alt = 'Danish Aiman, Computer Science student building with AI & Machine Learning';
+export const alt = 'Danish Aiman, Computer Science graduate building with AI & Machine Learning';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -21,7 +21,7 @@ async function loadGoogleFont(family: string, text: string) {
 
 export default async function OpengraphImage() {
     const name = ['DANISH', 'AIMAN'];
-    const tagline = 'COMPUTER SCIENCE STUDENT';
+    const tagline = 'COMPUTER SCIENCE GRADUATE';
     const blurb = 'Intelligent Computing @ USM. Building with AI & Machine Learning.';
     const site = 'danishaiman.com';
 

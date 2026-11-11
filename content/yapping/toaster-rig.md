@@ -7,7 +7,7 @@ author: "Danish Aiman"
 
 So here it is — the first ever ITX build. The goal was something small enough to hand carry between hostel and home, without sacrificing raw power just because of the compact size. Basically: tiny footprint, no compromises.
 
-![Toaster Rig](public/toaster-rig/toaster-rig1.jpg)
+![A small black PC with the side panel off, showing a twin-tower cooler and a Gigabyte graphics card](public/toaster-rig/toaster-rig1.jpg)
 
 Most of the parts were hunted down on Facebook Marketplace. Second-hand deals are always a gamble, but the chase made the whole process more fun. Each component felt like a puzzle piece, and piecing them together was extra satisfying knowing the budget didn’t blow up in the process.
 
@@ -33,9 +33,9 @@ This “toaster” of a PC now serves as the daily driver for both programming a
 
 - **PSU**: Cooler Master V850 SFX GOLD 850 W 80+ Gold Fully Modular
 
-![Toaster Rig](public/toaster-rig/toaster-rig2.jpg)
+![The desk up close: a monitor with a red emblem wallpaper above a teal backlit keyboard](public/toaster-rig/toaster-rig2.jpg)
 
-![Toaster Rig](public/toaster-rig/toaster-rig3.jpg)
+![The full desk setup in a dim room, with two monitors, one of them vertical, and the PC on the right](public/toaster-rig/toaster-rig3.jpg)
 
 
 

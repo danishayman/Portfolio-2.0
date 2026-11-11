@@ -3,9 +3,6 @@ import type { Config } from 'tailwindcss';
 const config: Config = {
     content: [
         './app/**/*.{js,ts,jsx,tsx,mdx}',
-        './pages/**/*.{js,ts,jsx,tsx,mdx}',
-        './components/**/*.{js,ts,jsx,tsx,mdx}',
-        './public/**/*.{html,md}',
     ],
     // ThemeProvider sets data-theme on <body>
     darkMode: ['selector', '[data-theme="dark"]'],
@@ -17,6 +14,10 @@ const config: Config = {
                 mono: ['var(--font-roboto-mono)', 'monospace'],
                 rubik: ['var(--font-rubik)', 'sans-serif'],
                 pixel: ['var(--font-pixel)', 'monospace'],
+            },
+            fontSize: {
+                // Smallest size any text may use (11px at the default root size)
+                '2xs': '0.6875rem',
             },
             colors: {
                 // Neo-brutalist 8-bit palette (themeable tokens live in globals.css)
@@ -32,9 +33,9 @@ const config: Config = {
                     // Deep enough for white text on it (5.3:1); text uses the themed blue-ink below
                     blue: '#0066dd',
                     'blue-ink': 'var(--nb-blue-ink)',
-                    yellow: '#FFD23F',
+                    yellow: 'var(--nb-yellow)',
                     sky: '#7FB8FF',
-                    pink: '#FF5C8A',
+                    pink: 'var(--nb-pink)',
                     green: '#2ED47A',
                     orange: '#FF9F43',
                     purple: '#B892FF',
@@ -43,8 +44,6 @@ const config: Config = {
                 },
             },
             boxShadow: {
-                'md': '0 4px 4px rgba(0, 0, 0, 0.25)',
-                'sm': '0 2px 2px rgba(0, 0, 0, 0.25)',
                 // Hard offset shadows
                 'hard-0': '0 0 0 var(--nb-ink)',
                 'hard-3': '3px 3px 0 var(--nb-ink)',
@@ -55,27 +54,12 @@ const config: Config = {
                 'hard-9': '9px 9px 0 var(--nb-ink)',
                 'hard-12': '12px 12px 0 var(--nb-ink)',
             },
-            scale: {
-                '115': '1.15',
-            },
-            transitionDuration: {
-                '400': '400ms',
-                '600': '600ms',
-            },
             screens: {
                 'md': '800px',
             },
             keyframes: {
                 dropdownFadeIn: {
                     '0%': { opacity: '0', transform: 'translateY(-10px)' },
-                    '100%': { opacity: '1', transform: 'translateY(0)' },
-                },
-                fadeIn: {
-                    '0%': { opacity: '0' },
-                    '100%': { opacity: '1' },
-                },
-                fadeInUp: {
-                    '0%': { opacity: '0', transform: 'translateY(10px)' },
                     '100%': { opacity: '1', transform: 'translateY(0)' },
                 },
                 blink: {
@@ -95,30 +79,15 @@ const config: Config = {
                 },
             },
             animation: {
-                blink: 'blink 1s steps(1) infinite',
-                hop: 'hop 0.8s linear infinite',
+                // Five blinks, then it rests: nothing on the page flashes for longer than 5s
+                blink: 'blink 1s steps(1) 5',
+                // Six hops (4.8s), then the player stands still: nothing moves for longer than 5s
+                hop: 'hop 0.8s linear 6',
                 pop: 'pop 0.25s steps(3) both',
                 dropdownFadeIn: 'dropdownFadeIn 0.3s ease-out',
-                fadeIn: 'fadeIn 0.5s ease-out',
-                fadeInUp: 'fadeInUp 0.6s ease forwards',
-            },
-            typography: {
-                DEFAULT: {
-                    css: {
-                        'p': {
-                            marginTop: '1.5rem',
-                            marginBottom: '1.5rem',
-                            fontWeight: '400',
-                            letterSpacing: '0.01em',
-                            lineHeight: '1.8',
-                            color: '#000000',
-                        },
-                    },
-                },
             },
         },
     },
-    // @tailwindcss/typography is loaded with @plugin in app/globals.css
 };
 
 export default config;

@@ -9,9 +9,9 @@ export default function IndecisiveBubble() {
     return (
         // Always rendered so screen readers announce the line when it appears. Sits below the LV badge
         // on phones, where the two can't fit side by side, and across from it on wider screens.
-        <span role="status" className="absolute right-2 top-9 md:right-3 md:top-3 max-w-[62%] pointer-events-none">
+        <span role="status" className="absolute right-1.5 top-10 md:right-3 md:top-3 max-w-[85%] md:max-w-[54%] pointer-events-none">
             {indecisive && (
-                <span className="relative block origin-bottom-left animate-pop motion-reduce:animate-none font-pixel text-[7px] md:text-[10px] leading-[1.6] bg-white text-nb-on border-2 border-nb-on px-2 py-1.5 md:px-2.5 md:py-2">
+                <span className="relative block origin-bottom-left animate-pop motion-reduce:animate-none font-pixel text-2xs leading-[1.6] bg-white text-nb-on border-2 border-nb-on px-2 py-1.5 md:px-2.5 md:py-2">
                     Make up your mind !!!
                     {/* Stair-stepped tail pointing down-left at the face; its top row covers the bubble's bottom border */}
                     <svg viewBox="0 0 7 6" shapeRendering="crispEdges" aria-hidden className="absolute top-full left-4 -mt-[2px] w-3.5 h-3">
