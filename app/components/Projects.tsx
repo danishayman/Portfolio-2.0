@@ -21,7 +21,7 @@ const projects = [
     { src: "/projects/bird.webp", link: "https://github.com/danishayman/Flappy-Bird-AI", h3: "Flappy Bird AI", p: "Neural Network Model" },
     { src: "/projects/teapot.webp", link: "https://danishayman.github.io/3D-Objects-Playground/", h3: "3D Objects Playground", p: "WebGL Application" },
     { src: "/projects/speaker.webp", link: "https://github.com/danishayman/Speaker-Change-Detection/blob/main/Speaker-Change-Detection.ipynb", h3: "Speaker Change Detection", p: "Neural Network Model" },
-    { src: "/projects/rainmeter.webp", link: "", h3: "Code Geass Rainmeter Skin", p: "My Rainmeter Setup" },
+    { src: "/projects/rainmeter.webp", link: "https://github.com/danishayman/Code-Geass-Rainmeter/releases/tag/v1.0.0", h3: "Code Geass Rainmeter Skin", p: "My Rainmeter Setup" },
     { src: "/projects/law.webp", link: "https://github.com/danishayman/Law-Firm-Management", h3: "Law Firm Management", p: "JavaFx Application" },
     { src: "/projects/gasket.webp", link: "https://danishayman.github.io/3D-Sierpinski-Gasket/", h3: "3D Sierpinski Gasket", p: "WebGL Application" },
     { src: "/projects/creditcard.webp", link: "https://github.com/danishayman/Credit-Card-Fraud-Detection/blob/main/FraudDetection.ipynb", h3: "Credit Card Fraud Detection", p: "Machine Learning Model" },
