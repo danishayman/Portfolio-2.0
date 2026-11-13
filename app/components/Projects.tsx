@@ -6,6 +6,7 @@ import SectionHeader from '../common/SectionHeader';
 import { PROJECT_BG, pad2 } from '../common/palette';
 
 const projects = [
+    { src: "/projects/pixeldeck.webp", link: "https://github.com/danishayman/PixelDeck", h3: "PixelDeck", p: "Android Desk Dashboard" },
     { src: "/projects/water.webp", link: "https://wmw-usm.netlify.app", h3: "Wheres My Water?", p: "USM Water Filter Finder" },
     { src: "/projects/usm.webp", link: "https://usm.danishaiman.com", h3: "USM T&L Week", p: "USM Academic Calendar" },
     { src: "/projects/f22.webp", link: "https://f22-raptor.vercel.app/", h3: "Lockheed Martin F-22 Raptor", p: "DIY RC Plane" },
